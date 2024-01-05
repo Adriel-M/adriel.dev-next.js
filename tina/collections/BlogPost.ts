@@ -1,10 +1,10 @@
-import { Collection } from "@tinacms/cli";
+import { Collection } from '@tinacms/cli'
 
 const BlogPost: Collection = {
-  name: "post",
-  label: "Blog Posts",
-  path: "data/blog",
-  format: "mdx",
+  name: 'post',
+  label: 'Blog Posts',
+  path: 'data/blog',
+  format: 'mdx',
   defaultItem: () => {
     return {
       date: new Date().toISOString(),
@@ -12,41 +12,41 @@ const BlogPost: Collection = {
   },
   fields: [
     {
-      type: "string",
-      name: "title",
-      label: "Title",
+      type: 'string',
+      name: 'title',
+      label: 'Title',
       isTitle: true,
       required: true,
     },
     {
-      label: "Date",
-      name: "date",
-      type: "datetime",
+      label: 'Date',
+      name: 'date',
+      type: 'datetime',
       required: true,
     },
     {
-      label: "Last Modified",
-      name: "lastmod",
-      type: "datetime",
+      label: 'Last Modified',
+      name: 'lastmod',
+      type: 'datetime',
     },
     {
-      type: "string",
-      name: "summary",
-      label: "Summary",
+      type: 'string',
+      name: 'summary',
+      label: 'Summary',
     },
     {
-      type: "rich-text",
-      name: "body",
-      label: "Body",
+      type: 'rich-text',
+      name: 'body',
+      label: 'Body',
       isBody: true,
     },
     {
-      label: "Tags",
-      name: "tags",
-      type: "string",
+      label: 'Tags',
+      name: 'tags',
+      type: 'string',
       list: true,
     },
-  ]
-};
+  ],
+}
 
-export default BlogPost;
+export default BlogPost

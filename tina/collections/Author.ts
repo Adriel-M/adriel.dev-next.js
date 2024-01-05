@@ -1,12 +1,12 @@
-import { Collection } from "@tinacms/cli";
+import { Collection } from '@tinacms/cli'
 
 const Author: Collection = {
-  name: "author",
-  label: "Author Info",
-  path: "data/authors",
-  format: "mdx",
+  name: 'author',
+  label: 'Author Info',
+  path: 'data/authors',
+  format: 'mdx',
   match: {
-    include: "default",
+    include: 'default',
   },
   ui: {
     allowedActions: {
@@ -16,18 +16,18 @@ const Author: Collection = {
   },
   fields: [
     {
-      type: "string",
-      name: "name",
-      label: "Name",
+      type: 'string',
+      name: 'name',
+      label: 'Name',
       required: true,
     },
     {
-      type: "rich-text",
-      name: "body",
-      label: "Body",
+      type: 'rich-text',
+      name: 'body',
+      label: 'Body',
       isBody: true,
     },
   ],
-};
+}
 
-export default Author;
+export default Author
