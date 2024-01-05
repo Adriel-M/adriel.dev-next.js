@@ -22,7 +22,7 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
+        monospace: ['var(--font-space-jebtrains-mono)'],
       },
       colors: {
         primary: colors.pink,
