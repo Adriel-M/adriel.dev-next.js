@@ -4,13 +4,14 @@ import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { genPageMetadata } from 'app/seo'
 import PageSimple from '@/layouts/PageSimple'
 
-export const metadata = genPageMetadata({ title: 'About' })
+const title = 'About'
+export const metadata = genPageMetadata({ title: title })
 
 export default function Page() {
   const author = allAuthors.find((p) => p.slug === 'default') as Authors
   return (
     <>
-      <PageSimple title="About">
+      <PageSimple title={title}>
         <MDXLayoutRenderer code={author.body.code} components={components} />
       </PageSimple>
     </>
