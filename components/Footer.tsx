@@ -19,9 +19,7 @@ export default function Footer() {
           <div>{` • `}</div>
           <div>adriel.dev by Adriel Martinez</div>
           <div>{` • `}</div>
-          <Link href="https://creativecommons.org/licenses/by/4.0/">
-            CC BY 4.0
-          </Link>
+          <Link href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</Link>
         </div>
         <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
           <Link href="https://github.com/timlrx/tailwind-nextjs-starter-blog">
