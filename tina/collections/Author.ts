@@ -18,7 +18,7 @@ const Author: Collection = {
     {
       type: 'string',
       name: 'name',
-      label: 'Name',
+      label: 'Author Name',
       required: true,
     },
     {
