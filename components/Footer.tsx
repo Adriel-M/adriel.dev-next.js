@@ -17,7 +17,17 @@ export default function Footer() {
         <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>{`© ${new Date().getFullYear()}`}</div>
           <div>{` • `}</div>
-          <div>adriel.dev by Adriel Martinez</div>
+          <div>
+            <Link href="/">adriel.dev</Link> by Adriel Martinez
+          </div>
+          <div>{` • `}</div>
+          <Link href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</Link>
+        </div>
+        <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+          <div>
+            Logo from{' '}
+            <Link href="https://twemoji.twitter.com/content/twemoji-twitter/en.html">Twemoji</Link>
+          </div>
           <div>{` • `}</div>
           <Link href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</Link>
         </div>
