@@ -81,7 +81,7 @@ module.exports = () => {
         },
         {
           source: '/stats/:match*',
-          destination: 'https://analytics.umami.is/:match*',
+          destination: 'https://analytics.adriel.dev/:match*',
         },
       ]
     },
