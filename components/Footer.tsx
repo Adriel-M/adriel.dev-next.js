@@ -18,21 +18,45 @@ export default function Footer() {
           <div>{`© ${new Date().getFullYear()}`}</div>
           <div>{` • `}</div>
           <div>
-            <Link href="/">adriel.dev</Link> by Adriel Martinez
+            <Link
+              className="text-primary-500 underline hover:text-primary-600 dark:hover:text-primary-400"
+              href="/"
+            >
+              adriel.dev
+            </Link>{' '}
+            by Adriel Martinez
           </div>
           <div>{` • `}</div>
-          <Link href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</Link>
+          <Link
+            className="text-primary-500 underline hover:text-primary-600 dark:hover:text-primary-400"
+            href="https://creativecommons.org/licenses/by/4.0/"
+          >
+            CC BY 4.0
+          </Link>
         </div>
         <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>
             Logo from{' '}
-            <Link href="https://twemoji.twitter.com/content/twemoji-twitter/en.html">Twemoji</Link>
+            <Link
+              className="text-primary-500 underline hover:text-primary-600 dark:hover:text-primary-400"
+              href="https://twemoji.twitter.com/content/twemoji-twitter/en.html"
+            >
+              Twemoji
+            </Link>
           </div>
           <div>{` • `}</div>
-          <Link href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</Link>
+          <Link
+            className="text-primary-500 underline hover:text-primary-600 dark:hover:text-primary-400"
+            href="https://creativecommons.org/licenses/by/4.0/"
+          >
+            CC BY 4.0
+          </Link>
         </div>
-        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <Link href="https://github.com/timlrx/tailwind-nextjs-starter-blog">
+        <div className="mb-8 text-sm">
+          <Link
+            className="text-primary-500 underline hover:text-primary-600 dark:hover:text-primary-400"
+            href="https://github.com/timlrx/tailwind-nextjs-starter-blog"
+          >
             Tailwind Nextjs Theme
           </Link>
         </div>
