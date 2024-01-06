@@ -21,14 +21,6 @@
             "uid": false
           },
           {
-            "label": "Date",
-            "name": "date",
-            "type": "datetime",
-            "namespace": ["post", "date"],
-            "searchable": true,
-            "uid": false
-          },
-          {
             "type": "string",
             "name": "summary",
             "label": "Summary",
@@ -56,7 +48,16 @@
             "uid": false
           },
           {
-            "label": "Last Modified",
+            "label": "Created At",
+            "name": "date",
+            "type": "datetime",
+            "ui": {},
+            "namespace": ["post", "date"],
+            "searchable": true,
+            "uid": false
+          },
+          {
+            "label": "Updated At",
             "name": "lastmod",
             "type": "datetime",
             "ui": {},
@@ -935,12 +936,6 @@
           },
           {
             "kind": "FieldDefinition",
-            "name": { "kind": "Name", "value": "date" },
-            "arguments": [],
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
-          },
-          {
-            "kind": "FieldDefinition",
             "name": { "kind": "Name", "value": "summary" },
             "arguments": [],
             "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
@@ -959,6 +954,12 @@
               "kind": "ListType",
               "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
             }
+          },
+          {
+            "kind": "FieldDefinition",
+            "name": { "kind": "Name", "value": "date" },
+            "arguments": [],
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
           },
           {
             "kind": "FieldDefinition",
@@ -1026,6 +1027,27 @@
       },
       {
         "kind": "InputObjectTypeDefinition",
+        "name": { "kind": "Name", "value": "RichTextFilter" },
+        "fields": [
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "startsWith" },
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "eq" },
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "exists" },
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "Boolean" } }
+          }
+        ]
+      },
+      {
+        "kind": "InputObjectTypeDefinition",
         "name": { "kind": "Name", "value": "DatetimeFilter" },
         "fields": [
           {
@@ -1060,38 +1082,12 @@
       },
       {
         "kind": "InputObjectTypeDefinition",
-        "name": { "kind": "Name", "value": "RichTextFilter" },
-        "fields": [
-          {
-            "kind": "InputValueDefinition",
-            "name": { "kind": "Name", "value": "startsWith" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
-          },
-          {
-            "kind": "InputValueDefinition",
-            "name": { "kind": "Name", "value": "eq" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
-          },
-          {
-            "kind": "InputValueDefinition",
-            "name": { "kind": "Name", "value": "exists" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "Boolean" } }
-          }
-        ]
-      },
-      {
-        "kind": "InputObjectTypeDefinition",
         "name": { "kind": "Name", "value": "PostFilter" },
         "fields": [
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "title" },
             "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "StringFilter" } }
-          },
-          {
-            "kind": "InputValueDefinition",
-            "name": { "kind": "Name", "value": "date" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "DatetimeFilter" } }
           },
           {
             "kind": "InputValueDefinition",
@@ -1107,6 +1103,11 @@
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "tags" },
             "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "StringFilter" } }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "date" },
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "DatetimeFilter" } }
           },
           {
             "kind": "InputValueDefinition",
@@ -1784,11 +1785,6 @@
           },
           {
             "kind": "InputValueDefinition",
-            "name": { "kind": "Name", "value": "date" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
-          },
-          {
-            "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "summary" },
             "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
           },
@@ -1804,6 +1800,11 @@
               "kind": "ListType",
               "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
             }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "date" },
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
           },
           {
             "kind": "InputValueDefinition",

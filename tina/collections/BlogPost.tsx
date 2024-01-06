@@ -1,7 +1,15 @@
 import React from 'react'
 
 import { Collection } from '@tinacms/cli'
-import { Form, TinaCMS } from 'tinacms'
+import { Form, InputFieldType, InputProps, TinaCMS, wrapFieldsWithMeta } from 'tinacms'
+
+const displayDateField = (props: InputFieldType<unknown, InputProps>) => {
+  if (props.input.value) {
+    return wrapFieldsWithMeta(({ input }) => <div>{input.value}</div>)(props)
+  } else {
+    return <div className="hidden"></div>
+  }
+}
 
 const BlogPost: Collection = {
   name: 'post',
@@ -33,11 +41,7 @@ const BlogPost: Collection = {
       isTitle: true,
       required: true,
     },
-    {
-      label: 'Date',
-      name: 'date',
-      type: 'datetime',
-    },
+
     {
       type: 'string',
       name: 'summary',
@@ -56,11 +60,19 @@ const BlogPost: Collection = {
       list: true,
     },
     {
-      label: 'Last Modified',
+      label: 'Created At',
+      name: 'date',
+      type: 'datetime',
+      ui: {
+        component: displayDateField,
+      },
+    },
+    {
+      label: 'Updated At',
       name: 'lastmod',
       type: 'datetime',
       ui: {
-        component: () => <div className="hidden"></div>,
+        component: displayDateField,
       },
     },
   ],
