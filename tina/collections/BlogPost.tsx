@@ -1,4 +1,7 @@
+import React from 'react'
+
 import { Collection } from '@tinacms/cli'
+import { Form, TinaCMS } from 'tinacms'
 
 const BlogPost: Collection = {
   name: 'post',
@@ -9,6 +12,22 @@ const BlogPost: Collection = {
     return {
       date: new Date().toISOString(),
     }
+  },
+  ui: {
+    beforeSubmit: async ({
+      form,
+      cms,
+      values,
+    }: {
+      form: Form
+      cms: TinaCMS
+      values: Record<string, unknown>
+    }) => {
+      return {
+        ...values,
+        lastmod: new Date().toISOString(),
+      }
+    },
   },
   fields: [
     {
@@ -23,11 +42,6 @@ const BlogPost: Collection = {
       name: 'date',
       type: 'datetime',
       required: true,
-    },
-    {
-      label: 'Last Modified',
-      name: 'lastmod',
-      type: 'datetime',
     },
     {
       type: 'string',
@@ -45,6 +59,14 @@ const BlogPost: Collection = {
       name: 'tags',
       type: 'string',
       list: true,
+    },
+    {
+      label: 'Last Modified',
+      name: 'lastmod',
+      type: 'datetime',
+      ui: {
+        component: () => <div className="hidden"></div>,
+      },
     },
   ],
 }
