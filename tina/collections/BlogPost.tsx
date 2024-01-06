@@ -3,9 +3,17 @@ import React from 'react'
 import { Collection } from '@tinacms/cli'
 import { Form, InputFieldType, InputProps, TinaCMS, wrapFieldsWithMeta } from 'tinacms'
 
+const formatter = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})
 const displayDateField = (props: InputFieldType<unknown, InputProps>) => {
   if (props.input.value) {
-    return wrapFieldsWithMeta(({ input }) => <div>{input.value}</div>)(props)
+    return wrapFieldsWithMeta(({ input }) => {
+      const date = new Date(input.value)
+      return <div>{formatter.format(date)}</div>
+    })(props)
   } else {
     return <div className="hidden"></div>
   }
