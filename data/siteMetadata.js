@@ -3,10 +3,10 @@ const siteMetadata = {
   title: "Adriel's Thoughts",
   author: 'Adriel Martinez',
   headerTitle: "Adriel's Thoughts",
-  description: 'A dumping ground on stuff I think about',
+  description: 'Stuff I think about',
   language: 'en-us',
   theme: 'light', // system, dark or light
-  siteUrl: 'https://adriel-dev-nu.vercel.app/',
+  siteUrl: 'https://adriel.dev',
   siteRepo: 'https://github.com/Adriel-M/adriel.dev',
   siteLogo: '/static/images/logo.png',
   socialBanner: '/static/images/twitter-card.png',
