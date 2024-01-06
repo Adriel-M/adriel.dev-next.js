@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Enable debugging to echo commands
-set -x
-
 echo "Starting the script..."
 
 # Check if .next/install-state.gz exists and copy it to .yarn/install-state.gz
