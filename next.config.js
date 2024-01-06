@@ -17,19 +17,15 @@ const ContentSecurityPolicy = `
 `
 
 const securityHeaders = [
-  // // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
-  {
-    key: 'Content-Security-Policy',
-    value: ContentSecurityPolicy.replace(/\n/g, ''),
-  },
+  // // // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+  // {
+  //   key: 'Content-Security-Policy',
+  //   value: ContentSecurityPolicy.replace(/\n/g, ''),
+  // },
   // // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
   {
     key: 'Referrer-Policy',
     value: 'strict-origin-when-cross-origin',
-  },
-  {
-    key: 'Access-Control-Allow-Origin',
-    value: 'https://identity.tinajs.io',
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
   {
