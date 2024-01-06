@@ -8,7 +8,9 @@ const formatter = new Intl.DateTimeFormat('en-US', {
   month: 'long',
   day: 'numeric',
 })
-const displayDateField = (props: InputFieldType<unknown, InputProps>) => {
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const displayDateField = (props: InputFieldType<any, InputProps>) => {
   if (props.input.value) {
     return wrapFieldsWithMeta(({ input }) => {
       const date = new Date(input.value)
