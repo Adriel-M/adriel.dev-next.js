@@ -1,3 +1,3 @@
 {
-  "installCommand": "YARN_CACHE_FOLDER=./.next/cache/yarn  yarn install --immutable"
+  "installCommand": "./vercel-build.sh"
 }
