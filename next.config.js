@@ -23,11 +23,11 @@ const securityHeaders = [
   //   value: ContentSecurityPolicy.replace(/\n/g, ''),
   // },
   // // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
-  {
-    key: 'Referrer-Policy',
-    value: 'strict-origin-when-cross-origin',
-  },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+  // {
+  //   key: 'Referrer-Policy',
+  //   value: 'strict-origin-when-cross-origin',
+  // },
+  // // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
   {
     key: 'X-Frame-Options',
     value: 'DENY',
