@@ -79,6 +79,10 @@ module.exports = () => {
           source: '/admin',
           destination: '/admin/index.html',
         },
+        {
+          source: '/stats/:match*',
+          destination: 'https://analytics.umami.is/:match*',
+        },
       ]
     },
     async headers() {
