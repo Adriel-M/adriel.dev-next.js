@@ -14,6 +14,7 @@ import { Metadata } from 'next'
 const jetbrains_mono = JetBrains_Mono({
   subsets: ['latin'],
   display: 'swap',
+  weight: '500',
   variable: '--font-space-jebtrains-mono',
 })
 
