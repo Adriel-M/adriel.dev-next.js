@@ -8,11 +8,6 @@ const BlogPost: Collection = {
   label: 'Blog Posts',
   path: 'data/blog',
   format: 'mdx',
-  defaultItem: () => {
-    return {
-      date: new Date().toISOString(),
-    }
-  },
   ui: {
     beforeSubmit: async ({
       form,
@@ -25,6 +20,7 @@ const BlogPost: Collection = {
     }) => {
       return {
         ...values,
+        date: values.date ? values.date : new Date().toISOString(),
         lastmod: new Date().toISOString(),
       }
     },
@@ -41,7 +37,6 @@ const BlogPost: Collection = {
       label: 'Date',
       name: 'date',
       type: 'datetime',
-      required: true,
     },
     {
       type: 'string',
