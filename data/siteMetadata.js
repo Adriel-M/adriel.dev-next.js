@@ -3,7 +3,7 @@ const siteMetadata = {
   title: "Adriel's Thoughts",
   author: 'Adriel Martinez',
   headerTitle: "Adriel's Thoughts",
-  description: "A dumping ground on stuff I'm thinking about",
+  description: 'A dumping ground on stuff I think about',
   language: 'en-us',
   theme: 'light', // system, dark or light
   siteUrl: 'https://adriel-dev-nu.vercel.app/',
