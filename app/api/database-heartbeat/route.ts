@@ -15,8 +15,8 @@ export async function GET(request: NextRequest) {
     body: JSON.stringify({
       type: 'event',
       payload: {
-        website: '163e9f9d-1c0f-4f74-b254-a7d5be036c28',
-        hostname: 'adriel.dev',
+        website: process.env.NEXT_UMAMI_ID,
+        hostname: request.nextUrl.hostname,
         url: '/databaseHeartbeat',
       },
     }),
