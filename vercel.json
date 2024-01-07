@@ -1,3 +1,9 @@
 {
-  "installCommand": "./scripts/vercel-build.sh"
+  "installCommand": "./scripts/vercel-build.sh",
+  "crons": [
+    {
+      "path": "/api/database-heartbeat",
+      "schedule": "* * * * *"
+    }
+  ]
 }
