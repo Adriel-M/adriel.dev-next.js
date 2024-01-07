@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
       payload: {
         website: process.env.NEXT_UMAMI_ID,
         hostname: request.nextUrl.hostname,
-        url: '/databaseHeartbeatCron',
+        url: '/databaseHeartbeatCronAgain',
       },
     }),
   })
