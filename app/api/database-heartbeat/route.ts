@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
       payload: {
         website: '163e9f9d-1c0f-4f74-b254-a7d5be036c28',
         hostname: 'adriel.dev',
-        url: '/finalAgain',
+        url: '/databaseHeartbeat',
       },
     }),
   })
