@@ -21,13 +21,9 @@ export async function GET(request: NextRequest) {
       },
     }),
   })
-  const body = await response.text()
   return NextResponse.json(
     {
-      body,
-      nextUrl: request.nextUrl.basePath,
-      query: request.nextUrl.search,
-      cookies: request.cookies.getAll(),
+      heartbeatStatusCode: response.status,
     },
     {
       status: 200,
