@@ -56,7 +56,7 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
                     Tags
                   </h2>
                   <div className="flex flex-wrap">
-                    {tags.map((tag) => (
+                    {tags.sort().map((tag) => (
                       <Tag key={tag} text={tag} />
                     ))}
                   </div>
