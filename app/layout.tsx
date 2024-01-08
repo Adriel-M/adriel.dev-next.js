@@ -38,7 +38,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: './',
     types: {
-      'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml`,
+      'application/rss+xml': `${siteMetadata.siteUrl}/rss.xml`,
+      'application/atom+xml': `${siteMetadata.siteUrl}/feed.xml`,
+      'application/feed+json': `${siteMetadata.siteUrl}/feed.json`,
     },
   },
   robots: {
@@ -73,7 +75,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#5bbad5" />
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
-      <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+      <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
+      <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+      <link rel="alternate" type="application/feed+json" href="/feed.json" />
       <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />

@@ -23,7 +23,9 @@ public/sitemap.xml
 *.xml
 
 # rss feed
-/public/feed.xml
+/public/**/feed.xml
+/public/**/feed.json
+/public/**/rss.xml
 
 # search
 /public/search.json
