@@ -8,10 +8,17 @@ import { sortPosts } from 'pliny/utils/contentlayer.js'
 import { Feed } from "feed";
 
 const copyrightNotice = "Copyright Adriel Martinez. Some rights reserved. Licensed under CC BY 4.0: http://creativecommons.org/licenses/by/4.0/"
-const generateFeedObject = (config, posts, feedPath = '/') => {
-  let feedPathWithSitUrl = config.siteUrl + feedPath
+const generateFeedObject = (config, posts, tagName = '') => {
+  let feedPathWithSiteUrl = config.siteUrl + '/'
+  if (tagName) {
+    feedPathWithSiteUrl += `tags/${tagName}/`
+  }
+  let title = config.title
+  if (tagName) {
+    title += ' ' + `[tag: ${tagName}]`
+  }
   const feed = new Feed({
-    title: config.title,
+    title,
     description: config.description,
     id: config.siteUrl,
     link: `${config.siteUrl}/blog`,
@@ -19,12 +26,12 @@ const generateFeedObject = (config, posts, feedPath = '/') => {
     favicon: `${config.siteUrl}/static/images/favicon.ico`,
     updated: posts.length > 0 ? new Date(posts[0].date) : undefined,
     feedLinks: {
-      rss: feedPathWithSitUrl + 'rss.xml',
-      atom: feedPathWithSitUrl + 'feed.xml',
+      rss: feedPathWithSiteUrl + 'rss.xml',
+      atom: feedPathWithSiteUrl + 'feed.xml',
     },
     author: {
       name: config.author,
-      email: "<contact>@<websiteDomain>",
+      email: "contact@[websiteDomain]",
     },
     copyright: copyrightNotice,
   })
@@ -39,7 +46,7 @@ const generateFeedObject = (config, posts, feedPath = '/') => {
         author: [
           {
             name: config.author,
-            email: "<contact>@<websiteDomain>"
+            email: "contact@[websiteDomain]"
           }
         ],
         category: post.tags.map(tag => ({
@@ -69,7 +76,7 @@ async function generateFeed(config, allBlogs) {
       const filteredPosts = allBlogs.filter((post) =>
         post.tags.map((t) => GithubSlugger.slug(t)).includes(tag)
       )
-      const feedObject = generateFeedObject(config, filteredPosts, `/tags/${tag}/`)
+      const feedObject = generateFeedObject(config, filteredPosts, tag)
       const rssPath = path.join('public', 'tags', tag)
       mkdirSync(rssPath, { recursive: true })
       writeFileSync(path.join(rssPath, "rss.xml"), feedObject.rss2())
