@@ -7,6 +7,30 @@ import { allBlogs } from '../.contentlayer/generated/index.mjs'
 import { sortPosts } from 'pliny/utils/contentlayer.js'
 import { Feed } from "feed";
 
+// TODO: Figure out how to style these feeds
+class FeedFileWriter {
+  constructor(folderPath, feedObject) {
+    this.folderPath = folderPath
+    this.feedObject = feedObject
+  }
+
+  writeRssFile() {
+    writeFileSync(path.join(this.folderPath, this.RSS_FILE_NAME), this.feedObject.rss2())
+  }
+
+  writeAtomFile() {
+    writeFileSync(path.join(this.folderPath, this.ATOM_FILE_NAME), this.feedObject.atom1())
+  }
+
+  writeJsonFile() {
+    writeFileSync(path.join(this.folderPath, this.JSON_FILE_NAME), this.feedObject.json1())
+  }
+
+  RSS_FILE_NAME = 'rss.xml'
+  ATOM_FILE_NAME = 'feed.xml'
+  JSON_FILE_NAME = 'feed.json'
+}
+
 const copyrightNotice = "Copyright Adriel Martinez. Some rights reserved. Licensed under CC BY 4.0: http://creativecommons.org/licenses/by/4.0/"
 const generateFeedObject = (config, posts, tagName = '') => {
   let feedPathWithSiteUrl = config.siteUrl + '/'
@@ -65,10 +89,11 @@ async function generateFeed(config, allBlogs) {
   // RSS for blog post
   if (publishPosts.length > 0) {
     const feedObject = generateFeedObject(config, sortPosts(publishPosts))
+    const feedFileWriter = new FeedFileWriter(path.join('public'), feedObject)
 
-    writeFileSync(`./public/rss.xml`, feedObject.rss2())
-    writeFileSync(`./public/feed.xml`, feedObject.atom1())
-    writeFileSync(`./public/feed.json`, feedObject.json1())
+    feedFileWriter.writeRssFile()
+    feedFileWriter.writeAtomFile()
+    feedFileWriter.writeJsonFile()
   }
 
   if (publishPosts.length > 0) {
@@ -79,9 +104,11 @@ async function generateFeed(config, allBlogs) {
       const feedObject = generateFeedObject(config, filteredPosts, tag)
       const rssPath = path.join('public', 'tags', tag)
       mkdirSync(rssPath, { recursive: true })
-      writeFileSync(path.join(rssPath, "rss.xml"), feedObject.rss2())
-      writeFileSync(path.join(rssPath, "feed.xml"), feedObject.atom1())
-      writeFileSync(path.join(rssPath, "feed.json"), feedObject.json1())
+      const feedFileWriter = new FeedFileWriter(rssPath, feedObject)
+
+      feedFileWriter.writeRssFile()
+      feedFileWriter.writeAtomFile()
+      feedFileWriter.writeJsonFile()
     }
   }
 }
