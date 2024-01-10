@@ -18,15 +18,7 @@ export default function Footer() {
         <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>{`© ${new Date().getFullYear()}`}</div>
           <div>{` • `}</div>
-          <div>
-            <Link
-              className="text-primary-500 underline hover:text-primary-600 dark:hover:text-primary-400"
-              href="/"
-            >
-              adriel.dev
-            </Link>{' '}
-            by Adriel Martinez
-          </div>
+          <div>Adriel Martinez</div>
           <div>{` • `}</div>
           <Link
             className="text-primary-500 underline hover:text-primary-600 dark:hover:text-primary-400"
