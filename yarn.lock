@@ -5379,6 +5379,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/mdast@npm:^4.0.0":
+  version: 4.0.3
+  resolution: "@types/mdast@npm:4.0.3"
+  dependencies:
+    "@types/unist": "npm:*"
+  checksum: 6d2d8f00ffaff6663dd67ea9ab999a5e52066c001432a9b99947fa9e76bccba819dfca40e419588a637a70d42cd405071f5b76efd4ddeb1dc721353b7cc73623
+  languageName: node
+  linkType: hard
+
 "@types/mdx@npm:^2.0.0, @types/mdx@npm:^2.0.5":
   version: 2.0.10
   resolution: "@types/mdx@npm:2.0.10"
@@ -5507,6 +5516,13 @@ __metadata:
   version: 2.0.7
   resolution: "@types/trusted-types@npm:2.0.7"
   checksum: 8e4202766a65877efcf5d5a41b7dd458480b36195e580a3b1085ad21e948bc417d55d6f8af1fd2a7ad008015d4117d5fdfe432731157da3c68678487174e4ba3
+  languageName: node
+  linkType: hard
+
+"@types/unist@npm:*":
+  version: 3.0.2
+  resolution: "@types/unist@npm:3.0.2"
+  checksum: 3d04d0be69316e5f14599a0d993a208606c12818cf631fd399243d1dc7a9bd8a3917d6066baa6abc290814afbd744621484756803c80cba892c39cd4b4a85616
   languageName: node
   linkType: hard
 
@@ -7931,6 +7947,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"compromise@npm:^14.11.0":
+  version: 14.11.0
+  resolution: "compromise@npm:14.11.0"
+  dependencies:
+    efrt: "npm:2.7.0"
+    grad-school: "npm:0.0.5"
+    suffix-thumb: "npm:5.0.2"
+  checksum: 5d0afc2f75ba4df29ee824522772a9d3ee848d2275bed338763abad83f9e6141c9f20ac0e51d8e79a6967f222e62420839e9027b1d702061cbd264e9551521e6
+  languageName: node
+  linkType: hard
+
 "compute-scroll-into-view@npm:^1.0.17, compute-scroll-into-view@npm:^1.0.20":
   version: 1.0.20
   resolution: "compute-scroll-into-view@npm:1.0.20"
@@ -8654,6 +8681,13 @@ __metadata:
   version: 1.1.1
   resolution: "ee-first@npm:1.1.1"
   checksum: 1b4cac778d64ce3b582a7e26b218afe07e207a0f9bfe13cc7395a6d307849cfe361e65033c3251e00c27dd060cab43014c2d6b2647676135e18b77d2d05b3f4f
+  languageName: node
+  linkType: hard
+
+"efrt@npm:2.7.0":
+  version: 2.7.0
+  resolution: "efrt@npm:2.7.0"
+  checksum: 76febcd9efccce436beca5c5cc056187f9d9f4c64c9528b6fb467b4eb91f2b9f689f602f2451cd6bf37c77a2664b38ae4a6c506c03db462fec6c74d9d92b4e67
   languageName: node
   linkType: hard
 
@@ -10324,6 +10358,13 @@ __metadata:
   version: 4.2.11
   resolution: "graceful-fs@npm:4.2.11"
   checksum: bf152d0ed1dc159239db1ba1f74fdbc40cb02f626770dcd5815c427ce0688c2635a06ed69af364396da4636d0408fcf7d4afdf7881724c3307e46aff30ca49e2
+  languageName: node
+  linkType: hard
+
+"grad-school@npm:0.0.5":
+  version: 0.0.5
+  resolution: "grad-school@npm:0.0.5"
+  checksum: 1330b02b71ef37f9a507261c1219056d19caa46f99e65fe30fe9b5c98235b5dec23d74928ed166516054b30c4cf470903de482311d2d25d985e904989b53c69a
   languageName: node
   linkType: hard
 
@@ -17236,6 +17277,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"strip-markdown@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "strip-markdown@npm:6.0.0"
+  dependencies:
+    "@types/mdast": "npm:^4.0.0"
+  checksum: 0906bce617c33fc58ee7778f2d3cea005f0bbcfcf996ea68d5c96ade20fcd10d43d8bc44064a510ea9b331f8d2fa4b8ef100921a9fc38cbeaf78de7e4cb6aa72
+  languageName: node
+  linkType: hard
+
 "style-mod@npm:^4.0.0, style-mod@npm:^4.1.0":
   version: 4.1.0
   resolution: "style-mod@npm:4.1.0"
@@ -17293,6 +17343,13 @@ __metadata:
     sucrase: bin/sucrase
     sucrase-node: bin/sucrase-node
   checksum: b64d154a7a7eaa4b39668c3124bd08cd505f683d36ac4fb94def6491fb3af155b24b6e41b55011e38582e7d59c440af79ffba8709f3da78aeedf2f07b6d51d84
+  languageName: node
+  linkType: hard
+
+"suffix-thumb@npm:5.0.2":
+  version: 5.0.2
+  resolution: "suffix-thumb@npm:5.0.2"
+  checksum: cd1d656c5804ad686b7d0b89eba3dcc47a55a8134c5f4dc6cff1cfb7b12bb26007ec8f58e52b5a29e0a9812d463f93f4091942f9cb6c76e53ab88280ded9c1cb
   languageName: node
   linkType: hard
 
@@ -17415,6 +17472,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:^6.1.0"
     "@vercel/speed-insights": "npm:^1.0.2"
     autoprefixer: "npm:^10.4.13"
+    compromise: "npm:^14.11.0"
     contentlayer: "npm:0.3.4"
     cross-env: "npm:^7.0.3"
     esbuild: "npm:0.18.11"
@@ -17447,6 +17505,7 @@ __metadata:
     remark: "npm:^14.0.2"
     remark-gfm: "npm:^3.0.1"
     remark-math: "npm:^5.1.1"
+    strip-markdown: "npm:^6.0.0"
     tailwindcss: "npm:^3.3.3"
     tinacms: "npm:^1.5.28"
     typescript: "npm:^5.1.3"

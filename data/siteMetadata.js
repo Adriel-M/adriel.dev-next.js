@@ -13,6 +13,7 @@ const siteMetadata = {
   github: 'https://github.com/Adriel-M',
   linkedin: 'https://www.linkedin.com/in/adrielmartinez/',
   locale: 'en-US',
+  postSummaryLength: 25,
   analytics: {
     // If you want to use an analytics provider you have to add it to the
     // content security policy in the `next.config.js` file.
