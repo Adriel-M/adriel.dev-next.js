@@ -24,6 +24,8 @@ import rehypePresetMinify from 'rehype-preset-minify'
 import siteMetadata from './data/siteMetadata'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 import nlp from 'compromise'
+import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
+import octicons from '@primer/octicons'
 
 const root = process.cwd()
 const isProduction = process.env.NODE_ENV === 'production'
@@ -159,6 +161,15 @@ export const Projects = defineDocumentType(() => ({
   computedFields,
 }))
 
+const icon = fromHtmlIsomorphic(
+  `
+  <span class="content-header-link-placeholder">
+    ${octicons.link.toSVG()}
+  </span>
+  `,
+  { fragment: true }
+)
+
 export default makeSource({
   contentDirPath: 'data',
   documentTypes: [Blog, Authors, Projects],
@@ -173,7 +184,16 @@ export default makeSource({
     ],
     rehypePlugins: [
       rehypeSlug,
-      rehypeAutolinkHeadings,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'prepend',
+          headingProperties: {
+            className: ['content-header'],
+          },
+          content: icon,
+        },
+      ],
       rehypeKatex,
       [rehypeCitation, { path: path.join(root, 'data') }],
       [rehypePrismPlus, { defaultLanguage: 'js', ignoreMissing: true }],
