@@ -4,8 +4,10 @@ import readingTime from 'reading-time'
 import GithubSlugger from 'github-slugger'
 import path from 'path'
 // Remark packages
+import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
+import stripMarkdown from 'strip-markdown'
 import {
   remarkExtractFrontmatter,
   remarkCodeTitles,
@@ -21,6 +23,7 @@ import rehypePrismPlus from 'rehype-prism-plus'
 import rehypePresetMinify from 'rehype-preset-minify'
 import siteMetadata from './data/siteMetadata'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
+import nlp from 'compromise'
 
 const root = process.cwd()
 const isProduction = process.env.NODE_ENV === 'production'
@@ -75,6 +78,26 @@ function createSearchIndex(allBlogs) {
   }
 }
 
+// exclude the image description as well
+const markdownStripper = remark().use(stripMarkdown, {
+  remove: ['image'],
+})
+
+const generateSummary = async (rawPostBody: string) => {
+  const strippedBody = String(await markdownStripper.process(rawPostBody))
+  const sentences = nlp(strippedBody).sentences().json()
+  let currentNumberOfWords = 0
+  const output: string[] = []
+  for (const sentence of sentences) {
+    output.push(sentence.text)
+    currentNumberOfWords += sentence.terms.length
+    if (currentNumberOfWords >= siteMetadata.postSummaryLength) {
+      break
+    }
+  }
+  return output.join(' ')
+}
+
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
   filePathPattern: 'blog/**/*.mdx',
@@ -106,6 +129,15 @@ export const Blog = defineDocumentType(() => ({
         image: doc.images ? doc.images[0] : siteMetadata.socialBanner,
         url: `${siteMetadata.siteUrl}/${doc._raw.flattenedPath}`,
       }),
+    },
+    summary: {
+      type: 'string',
+      resolve: async (doc) => {
+        if (doc.summary) {
+          return doc.summary
+        }
+        return generateSummary(doc.body.raw)
+      },
     },
   },
 }))
