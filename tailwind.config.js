@@ -47,22 +47,6 @@ module.exports = {
             code: {
               color: theme('colors.indigo.500'),
             },
-            '.content-header-link-placeholder': {
-              opacity: 0,
-              marginLeft: '-20px',
-              paddingRight: '4px',
-            },
-            '.content-header-link-placeholder:hover': {
-              opacity: 100,
-            },
-            '.content-header:hover .content-header-link-placeholder': {
-              opacity: 100,
-            },
-            '.octicon': {
-              display: 'inline',
-              verticalAlign: 'middle',
-              overflow: 'visible',
-            },
           },
         },
         invert: {
