@@ -43,6 +43,7 @@
             "name": "tags",
             "type": "string",
             "list": true,
+            "ui": { "component": "tags" },
             "namespace": ["post", "tags"],
             "searchable": true,
             "uid": false

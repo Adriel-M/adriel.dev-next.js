@@ -68,6 +68,9 @@ const BlogPost: Collection = {
       name: 'tags',
       type: 'string',
       list: true,
+      ui: {
+        component: 'tags',
+      },
     },
     {
       label: 'Created At',
