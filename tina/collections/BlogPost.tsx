@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Collection } from '@tinacms/cli'
 import { Form, InputFieldType, InputProps, TinaCMS, wrapFieldsWithMeta } from 'tinacms'
+import { slug } from 'github-slugger'
 
 const formatter = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
@@ -27,6 +28,14 @@ const BlogPost: Collection = {
   path: 'data/blog',
   format: 'mdx',
   ui: {
+    filename: {
+      slugify: (values) => {
+        // YYYY-MM-DD
+        const dateString = new Date().toISOString().split('T')[0]
+        const titleSlug = values.title ? slug(values.title) : ''
+        return dateString + '-' + titleSlug
+      },
+    },
     beforeSubmit: async ({
       form,
       cms,
@@ -51,7 +60,6 @@ const BlogPost: Collection = {
       isTitle: true,
       required: true,
     },
-
     {
       type: 'string',
       name: 'summary',

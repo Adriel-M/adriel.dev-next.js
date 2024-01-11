@@ -8,7 +8,7 @@
         "label": "Blog Posts",
         "path": "data/blog",
         "format": "mdx",
-        "ui": {},
+        "ui": { "filename": {} },
         "fields": [
           {
             "type": "string",
