@@ -97,7 +97,7 @@ module.exports = () => {
           headers: [
             {
               key: 'Cache-Control',
-              value: 'public, max-age=60, must-revalidate',
+              value: 'public, max-age=60, immutable',
             },
           ],
         },
