@@ -72,6 +72,7 @@ module.exports = () => {
           hostname: 'picsum.photos',
         },
       ],
+      minimumCacheTTL: 600,
     },
     async rewrites() {
       return [
@@ -92,7 +93,7 @@ module.exports = () => {
           headers: securityHeaders,
         },
         {
-          source: '/_next/image(.*)',
+          source: '/static/images/(.*)',
           headers: [
             {
               key: 'Cache-Control',
