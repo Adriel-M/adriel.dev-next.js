@@ -91,6 +91,15 @@ module.exports = () => {
           source: '/(.*)',
           headers: securityHeaders,
         },
+        {
+          source: '/_next/image(.*)',
+          headers: [
+            {
+              key: 'Cache-Control',
+              value: 'public, max-age=60, must-revalidate',
+            },
+          ],
+        },
       ]
     },
     webpack: (config, options) => {
