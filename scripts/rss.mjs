@@ -7,7 +7,6 @@ import { allBlogs } from '../.contentlayer/generated/index.mjs'
 import { sortPosts } from 'pliny/utils/contentlayer.js'
 import { Feed } from "feed";
 
-// TODO: Figure out how to style these feeds
 class FeedFileWriter {
   constructor(folderPath, feedObject) {
     this.folderPath = folderPath
@@ -15,20 +14,36 @@ class FeedFileWriter {
   }
 
   writeRssFile() {
-    writeFileSync(path.join(this.folderPath, this.RSS_FILE_NAME), this.feedObject.rss2())
+    const rssContent = this.feedObject.rss2()
+    const styledContent = this.addStyleToFeedContent(rssContent, 'rss.xslt')
+    writeFileSync(path.join(this.folderPath, this.#RSS_FILE_NAME), styledContent)
   }
 
   writeAtomFile() {
-    writeFileSync(path.join(this.folderPath, this.ATOM_FILE_NAME), this.feedObject.atom1())
+    const rssContent = this.feedObject.atom1()
+    const styledContent = this.addStyleToFeedContent(rssContent, 'atom.xslt')
+    writeFileSync(path.join(this.folderPath, this.#ATOM_FILE_NAME), styledContent)
   }
 
   writeJsonFile() {
-    writeFileSync(path.join(this.folderPath, this.JSON_FILE_NAME), this.feedObject.json1())
+    writeFileSync(path.join(this.folderPath, this.#JSON_FILE_NAME), this.feedObject.json1())
   }
 
-  RSS_FILE_NAME = 'rss.xml'
-  ATOM_FILE_NAME = 'feed.xml'
-  JSON_FILE_NAME = 'feed.json'
+  addStyleToFeedContent(content, styleFileName) {
+    return content.replace(
+      this.#XML_CONTENT_TO_REPLACE,
+      this.#XML_CONTENT_TO_REPLACE + '\n' + this.generateRssImportContent(styleFileName)
+    )
+  }
+
+  generateRssImportContent(fileName) {
+    return `<?xml-stylesheet href="/static/feed/${fileName}" type="text/xsl"?>`
+  }
+
+  #XML_CONTENT_TO_REPLACE = '<?xml version="1.0" encoding="utf-8"?>'
+  #RSS_FILE_NAME = 'rss.xml'
+  #ATOM_FILE_NAME = 'feed.xml'
+  #JSON_FILE_NAME = 'feed.json'
 }
 
 const copyrightNotice = "Copyright Adriel Martinez. Some rights reserved. Licensed under CC BY 4.0: http://creativecommons.org/licenses/by/4.0/"
@@ -45,7 +60,7 @@ const generateFeedObject = (config, posts, tagName = '') => {
     title,
     description: config.description,
     id: config.siteUrl,
-    link: `${config.siteUrl}/blog`,
+    link: config.siteUrl,
     language: "en",
     favicon: `${config.siteUrl}/static/images/favicon.ico`,
     updated: posts.length > 0 ? new Date(posts[0].date) : undefined,
@@ -84,7 +99,7 @@ const generateFeedObject = (config, posts, tagName = '') => {
   return feed
 }
 
-async function generateFeed(config, allBlogs) {
+function generateFeed(config, allBlogs) {
   const publishPosts = allBlogs.filter((post) => post.draft !== true)
   // RSS for blog post
   if (publishPosts.length > 0) {
