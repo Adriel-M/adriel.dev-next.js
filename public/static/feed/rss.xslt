@@ -33,8 +33,8 @@ SOFTWARE.
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="referrer" content="unsafe-url" />
 		<title><xsl:value-of select="/rss/channel/title"/></title>
-		<link rel="stylesheet" href="https://www.feed.style/css/water.min.css" />
-		<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+		<link rel="stylesheet" href="/static/feed/water.light.min.css" />
+		<script src="/static/feed/clipboard.min.js"></script>
 		<script>
 			new ClipboardJS('.clipboard');
 		</script>
