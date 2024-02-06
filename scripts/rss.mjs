@@ -1,6 +1,6 @@
 import { writeFileSync, mkdirSync } from 'fs'
 import path from 'path'
-import GithubSlugger from 'github-slugger'
+import { slug } from 'github-slugger'
 import siteMetadata from '../data/siteMetadata.js'
 import tagData from '../app/tag-data.json' assert { type: 'json' }
 import { allBlogs } from '../.contentlayer/generated/index.mjs'
@@ -114,7 +114,7 @@ function generateFeed(config, allBlogs) {
   if (publishPosts.length > 0) {
     for (const tag of Object.keys(tagData)) {
       const filteredPosts = allBlogs.filter((post) =>
-        post.tags.map((t) => GithubSlugger.slug(t)).includes(tag)
+        post.tags.map((t) => slug(t)).includes(tag)
       )
       const feedObject = generateFeedObject(config, filteredPosts, tag)
       const rssPath = path.join('public', 'tags', tag)
