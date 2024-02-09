@@ -26,7 +26,4 @@ else
     echo ".yarn/install-state.gz does not exist. Skipping copy."
 fi
 
-# Disable debugging
-set +x
-
 echo "Script completed."
