@@ -85,8 +85,17 @@ const markdownStripper = remark().use(stripMarkdown, {
   remove: ['image'],
 })
 
+const footnoteReferenceRegex = /\s+\[\^\w+]/
+
+// markdownStripper can't handle a footnote definition that is more than one word
+// just use regex to remove it.
+function removeFootnoteReferences(postBody: string): string {
+  return postBody.replace(footnoteReferenceRegex, '')
+}
+
 const generateSummary = async (rawPostBody: string) => {
-  const strippedBody = String(await markdownStripper.process(rawPostBody))
+  const noFootnoteReferences = removeFootnoteReferences(rawPostBody)
+  const strippedBody = String(await markdownStripper.process(noFootnoteReferences))
   const sentences = nlp(strippedBody).sentences().json()
   let currentNumberOfWords = 0
   const output: string[] = []
