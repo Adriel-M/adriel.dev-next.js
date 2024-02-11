@@ -3,7 +3,7 @@ const siteMetadata = {
   title: "Adriel's Thoughts",
   author: 'Adriel Martinez',
   headerTitle: "Adriel's Thoughts",
-  description: 'Stuff I think 🤔',
+  description: 'Stuff I think about 🤔',
   language: 'en-us',
   theme: 'light', // system, dark or light
   siteUrl: 'https://adriel.dev',
