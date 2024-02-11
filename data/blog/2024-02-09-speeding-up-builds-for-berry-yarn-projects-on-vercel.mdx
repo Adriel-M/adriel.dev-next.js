@@ -77,7 +77,7 @@ empty commit right after each step to showcase the cache being hit/missed.
 We'll be overriding the install step on the vercel build pipeline. For now, it will just run the `yarn install` command.
 We'll put this script in `scripts/vercel-build.sh`. Don't forget to `chmod +x` so it can be executed.
 
-```bash
+```bash:scripts/vercel-build.sh
 #!/bin/bash
 
 echo "Starting the script..."
@@ -134,7 +134,7 @@ cached [^VercelCaching] which contains the cache folder used by yarn [^YarnCache
 by vercel; for this project, we'll use `.next/cache` as that's cached [^VercelCaching].
 We also need to set the `YARN_CACHE_FOLDER` environment variable [^YarnCacheFolder] when we run `yarn install`.
 
-```diff
+```diff:scripts/vercel-build.sh
 #!/bin/bash
 
 echo "Starting the script..."
@@ -184,7 +184,7 @@ of this file just like the previous section with an environment variable, but we
 during the install step. To do this, we'll check if this file exists in `node_modules` and copy it to `.yarn`. Inversely copy it
 from `.yarn` back to `node_modules` after `yarn install` so it can be cached for future builds.
 
-```diff
+```diff:scripts/vercel-build.sh
 #!/bin/bash
 
 echo "Starting the script..."
@@ -241,7 +241,7 @@ PR can be found [here](https://github.com/Adriel-M/speed-up-berry-builds-vercel/
 This is what the final script looks like that copies that `install-state.gz`, set the `YARN_CACHE_FOLDER` environment
 variable, runs `yarn install`, and copies back the `install-state.gz` to a cacheable folder:
 
-```bash
+```bash:scripts/vercel-build.sh
 #!/bin/bash
 
 echo "Starting the script..."
