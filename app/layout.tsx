@@ -69,7 +69,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
       <link rel="alternate" type="application/atom+xml" href="/atom.xml" />
-      <body className="bg-white text-black antialiased">
+      <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased">
         <UmamiAnalytics
           websiteId={siteMetadata.analytics.umamiAnalytics.umamiWebsiteId}
           scriptPath={siteMetadata.analytics.umamiAnalytics.src}
