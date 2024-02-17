@@ -7965,13 +7965,13 @@ __metadata:
   linkType: hard
 
 "compromise@npm:^14.11.0":
-  version: 14.11.0
-  resolution: "compromise@npm:14.11.0"
+  version: 14.12.0
+  resolution: "compromise@npm:14.12.0"
   dependencies:
     efrt: "npm:2.7.0"
     grad-school: "npm:0.0.5"
     suffix-thumb: "npm:5.0.2"
-  checksum: 10/5d0afc2f75ba4df29ee824522772a9d3ee848d2275bed338763abad83f9e6141c9f20ac0e51d8e79a6967f222e62420839e9027b1d702061cbd264e9551521e6
+  checksum: 10/cc46e5f2d356cb59b967ef10b73865a28ae7c823d22e64863fd78644aa873a7efbc8d8896ee6ec2b27a521acf3e66b1da888df2af430469218058e48e386b403
   languageName: node
   linkType: hard
 
