@@ -1,6 +1,5 @@
 import 'css/tailwind.css'
 import 'css/post-layout.css'
-import 'pliny/search/algolia.css'
 
 import { JetBrains_Mono } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
