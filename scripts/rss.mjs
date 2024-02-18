@@ -5,7 +5,7 @@ import siteMetadata from '../data/siteMetadata.js'
 import tagData from '../app/tag-data.json' assert { type: 'json' }
 import { allBlogs } from '../.contentlayer/generated/index.mjs'
 import { sortPosts } from 'pliny/utils/contentlayer.js'
-import { Feed } from "feed";
+import { Feed } from 'feed'
 
 class FeedFileWriter {
   constructor(folderPath, feedObject) {
@@ -46,7 +46,8 @@ class FeedFileWriter {
   #JSON_FILE_NAME = 'feed.json'
 }
 
-const copyrightNotice = "Copyright Adriel Martinez. Some rights reserved. Licensed under CC BY 4.0: http://creativecommons.org/licenses/by/4.0/"
+const copyrightNotice =
+  'Copyright Adriel Martinez. Some rights reserved. Licensed under CC BY 4.0: http://creativecommons.org/licenses/by/4.0/'
 const generateFeedObject = (config, posts, tagName = '') => {
   let feedPathWithSiteUrl = config.siteUrl + '/'
   if (tagName) {
@@ -61,7 +62,7 @@ const generateFeedObject = (config, posts, tagName = '') => {
     description: config.description,
     id: config.siteUrl,
     link: config.siteUrl,
-    language: "en",
+    language: 'en',
     favicon: `${config.siteUrl}/static/images/favicon.ico`,
     updated: posts.length > 0 ? new Date(posts[0].date) : undefined,
     feedLinks: {
@@ -70,30 +71,28 @@ const generateFeedObject = (config, posts, tagName = '') => {
     },
     author: {
       name: config.author,
-      email: "contact@[websiteDomain]",
+      email: 'contact@[websiteDomain]',
     },
     copyright: copyrightNotice,
   })
-  posts.forEach(post => {
-    feed.addItem(
-      {
-        title: post.title,
-        id: `${config.siteUrl}/blog/${post.slug}`,
-        link: `${config.siteUrl}/blog/${post.slug}`,
-        description: post.summary,
-        date: new Date(post.date),
-        author: [
-          {
-            name: config.author,
-            email: "contact@[websiteDomain]"
-          }
-        ],
-        category: post.tags.map(tag => ({
-          name: tag,
-          domain: `${siteMetadata.siteUrl}/tags/${tag}`
-        })),
-      }
-    )
+  posts.forEach((post) => {
+    feed.addItem({
+      title: post.title,
+      id: `${config.siteUrl}/blog/${post.slug}`,
+      link: `${config.siteUrl}/blog/${post.slug}`,
+      description: post.summary,
+      date: new Date(post.date),
+      author: [
+        {
+          name: config.author,
+          email: 'contact@[websiteDomain]',
+        },
+      ],
+      category: post.tags.map((tag) => ({
+        name: tag,
+        domain: `${siteMetadata.siteUrl}/tags/${tag}`,
+      })),
+    })
   })
 
   return feed
@@ -113,9 +112,7 @@ function generateFeed(config, allBlogs) {
 
   if (publishPosts.length > 0) {
     for (const tag of Object.keys(tagData)) {
-      const filteredPosts = allBlogs.filter((post) =>
-        post.tags.map((t) => slug(t)).includes(tag)
-      )
+      const filteredPosts = allBlogs.filter((post) => post.tags.map((t) => slug(t)).includes(tag))
       const feedObject = generateFeedObject(config, filteredPosts, tag)
       const rssPath = path.join('public', 'tags', tag)
       mkdirSync(rssPath, { recursive: true })
