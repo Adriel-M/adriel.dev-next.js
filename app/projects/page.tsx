@@ -1,5 +1,5 @@
 import { genPageMetadata } from 'app/seo'
-import { allAuthors, allProjects, Authors, Projects } from 'contentlayer/generated'
+import { allProjects, Projects } from 'contentlayer/generated'
 import PageSimple from '@/layouts/PageSimple'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { components } from '@/components/MDXComponents'

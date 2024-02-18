@@ -17,7 +17,7 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, next, prev, children }: LayoutProps) {
-  const { path, slug, date, title, tags } = content
+  const { date, title, tags } = content
 
   return (
     <SectionContainer>
