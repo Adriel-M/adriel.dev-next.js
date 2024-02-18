@@ -1,10 +1,10 @@
 {
-  "random": 1,
-  "next": 2,
   "vercel": 2,
-  "tina": 1,
-  "tech": 2,
   "optimization": 1,
   "caching": 1,
-  "longform": 1
+  "next": 2,
+  "tech": 2,
+  "longform": 1,
+  "tina": 1,
+  "random": 1
 }
