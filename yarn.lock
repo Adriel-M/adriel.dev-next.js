@@ -1954,15 +1954,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@citation-js/core@npm:^0.6.8":
-  version: 0.6.9
-  resolution: "@citation-js/core@npm:0.6.9"
+"@citation-js/core@npm:^0.7.1":
+  version: 0.7.6
+  resolution: "@citation-js/core@npm:0.7.6"
   dependencies:
     "@citation-js/date": "npm:^0.5.0"
     "@citation-js/name": "npm:^0.4.2"
     fetch-ponyfill: "npm:^7.1.0"
     sync-fetch: "npm:^0.4.1"
-  checksum: 10/d774c5eac8dbf4adc72178237499f6b5db2e310e373d50a560d77efb02d348bc51e424566404d2f511cf44f9155b816f2db3ebea6cd0d14ffe72e3290509dbad
+  checksum: 10/517dabc9f109bb569afba0dbc2fc87719677c3b632f9a3eb101c27a0df5ce418ebf73e1999d02eaf719b9b53e5b20d408a9047de1cb0d200708dc5bb265ee221
   languageName: node
   linkType: hard
 
@@ -1980,40 +1980,40 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@citation-js/plugin-bibjson@npm:^0.6.8":
-  version: 0.6.9
-  resolution: "@citation-js/plugin-bibjson@npm:0.6.9"
+"@citation-js/plugin-bibjson@npm:^0.7.2":
+  version: 0.7.6
+  resolution: "@citation-js/plugin-bibjson@npm:0.7.6"
   dependencies:
     "@citation-js/date": "npm:^0.5.0"
     "@citation-js/name": "npm:^0.4.2"
   peerDependencies:
-    "@citation-js/core": ^0.6.0
-  checksum: 10/25e0d3a75e02ae7f3bdabc1950f438b699dfd4f279aab88b6401b6db27c63d53ea13e34ab5129258b3866747e6a28a94f743969c60d1def35ca2978a8a2151ac
+    "@citation-js/core": ^0.7.0
+  checksum: 10/86269728225aa5d2a7533d9f36f21e26e0f6e8687a93aafc2dd952814920aad87e6bcc172b3371a80a9563d9c182f0a523108e9ab922ffde27257caad43bc78b
   languageName: node
   linkType: hard
 
-"@citation-js/plugin-bibtex@npm:^0.6.8":
-  version: 0.6.9
-  resolution: "@citation-js/plugin-bibtex@npm:0.6.9"
+"@citation-js/plugin-bibtex@npm:^0.7.2":
+  version: 0.7.8
+  resolution: "@citation-js/plugin-bibtex@npm:0.7.8"
   dependencies:
     "@citation-js/date": "npm:^0.5.0"
     "@citation-js/name": "npm:^0.4.2"
     moo: "npm:^0.5.1"
   peerDependencies:
-    "@citation-js/core": ^0.6.0
-  checksum: 10/1fef7c4c766d7a76884d7466d50528d3864e59ae016877aefb3ef597a222452c03bfa18b90b8a5a5b48ab71ed9dd6a9a342aebfb90ce05b8beb9f12398e76c06
+    "@citation-js/core": ^0.7.0
+  checksum: 10/1e2a5ebc51c83a8c003394c6a166002218af6f4df776bd7adbb9cf558d23bd6f70840954b4844b7542d1fdcfc34eede8f9d26f9cfed964850585d6742e4be4f7
   languageName: node
   linkType: hard
 
-"@citation-js/plugin-csl@npm:^0.6.8":
-  version: 0.6.9
-  resolution: "@citation-js/plugin-csl@npm:0.6.9"
+"@citation-js/plugin-csl@npm:^0.7.2":
+  version: 0.7.6
+  resolution: "@citation-js/plugin-csl@npm:0.7.6"
   dependencies:
     "@citation-js/date": "npm:^0.5.0"
     citeproc: "npm:^2.4.6"
   peerDependencies:
-    "@citation-js/core": ^0.6.0
-  checksum: 10/2c5810d2746bd0e638f8df2bf2824ec1575ad40466bee242434cb6ca10f94fb6477db632d01a44a9be520ac2591fef842575d164a5dcc6c6f14af7b47c3074ed
+    "@citation-js/core": ^0.7.0
+  checksum: 10/1bd155ca90824fc14344bed8912b2c3e2949dd409664816201032b3266f3e987ce5462146e65a447cbc1f6f19d73f2f4e650c71230e0f464ab9197ccc4e94402
   languageName: node
   linkType: hard
 
@@ -8162,6 +8162,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cross-fetch@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "cross-fetch@npm:4.0.0"
+  dependencies:
+    node-fetch: "npm:^2.6.12"
+  checksum: 10/e231a71926644ef122d334a3a4e73d9ba3ba4b480a8a277fb9badc434c1ba905b3d60c8034e18b348361a09afbec40ba9371036801ba2b675a7b84588f9f55d8
+  languageName: node
+  linkType: hard
+
 "cross-inspect@npm:1.0.0":
   version: 1.0.0
   resolution: "cross-inspect@npm:1.0.0"
@@ -10447,7 +10456,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hast-util-from-dom@npm:^4.0.0, hast-util-from-dom@npm:^4.2.0":
+"hast-util-from-dom@npm:^4.0.0":
   version: 4.2.0
   resolution: "hast-util-from-dom@npm:4.2.0"
   dependencies:
@@ -10519,7 +10528,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hast-util-from-parse5@npm:^7.0.0, hast-util-from-parse5@npm:^7.1.0":
+"hast-util-from-parse5@npm:^7.0.0":
   version: 7.1.2
   resolution: "hast-util-from-parse5@npm:7.1.2"
   dependencies:
@@ -10534,7 +10543,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hast-util-from-parse5@npm:^8.0.0":
+"hast-util-from-parse5@npm:^8.0.0, hast-util-from-parse5@npm:^8.0.1":
   version: 8.0.1
   resolution: "hast-util-from-parse5@npm:8.0.1"
   dependencies:
@@ -14463,14 +14472,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"parse5@npm:^6.0.0, parse5@npm:^6.0.1":
+"parse5@npm:^6.0.0":
   version: 6.0.1
   resolution: "parse5@npm:6.0.1"
   checksum: 10/dfb110581f62bd1425725a7c784ae022a24669bd0efc24b58c71fc731c4d868193e2ebd85b74cde2dbb965e4dcf07059b1e651adbec1b3b5267531bd132fdb75
   languageName: node
   linkType: hard
 
-"parse5@npm:^7.0.0":
+"parse5@npm:^7.0.0, parse5@npm:^7.1.2":
   version: 7.1.2
   resolution: "parse5@npm:7.1.2"
   dependencies:
@@ -15700,24 +15709,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rehype-citation@npm:^1.0.2":
-  version: 1.0.3
-  resolution: "rehype-citation@npm:1.0.3"
+"rehype-citation@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "rehype-citation@npm:2.0.0"
   dependencies:
-    "@citation-js/core": "npm:^0.6.8"
+    "@citation-js/core": "npm:^0.7.1"
     "@citation-js/date": "npm:^0.5.1"
     "@citation-js/name": "npm:^0.4.2"
-    "@citation-js/plugin-bibjson": "npm:^0.6.8"
-    "@citation-js/plugin-bibtex": "npm:^0.6.8"
-    "@citation-js/plugin-csl": "npm:^0.6.8"
+    "@citation-js/plugin-bibjson": "npm:^0.7.2"
+    "@citation-js/plugin-bibtex": "npm:^0.7.2"
+    "@citation-js/plugin-csl": "npm:^0.7.2"
     citeproc: "npm:^2.4.63"
-    cross-fetch: "npm:^3.1.5"
-    hast-util-from-dom: "npm:^4.2.0"
-    hast-util-from-parse5: "npm:^7.1.0"
-    parse5: "npm:^6.0.1"
-    unified: "npm:^10.1.0"
-    unist-util-visit: "npm:^4.1.0"
-  checksum: 10/bfc347aeee4f6e8cd0ec85bb3111b0cfc31fb3f39df2c3bb436f9877998178572da98bdff322139155e990acef02d4091cffd10a1f1efd384850f3aed023d4cd
+    cross-fetch: "npm:^4.0.0"
+    hast-util-from-dom: "npm:^5.0.0"
+    hast-util-from-parse5: "npm:^8.0.1"
+    js-yaml: "npm:^4.1.0"
+    parse5: "npm:^7.1.2"
+    unified: "npm:^11.0.0"
+    unist-util-visit: "npm:^5.0.0"
+  checksum: 10/e3a1c7404dcff4257fdea3608236c92b089cd678475229cd47beb7a31440c25c2684eff019812a5da83033071dc0d0822f14a425da6f224024a2cf74e1a2f599
   languageName: node
   linkType: hard
 
@@ -17503,7 +17513,7 @@ __metadata:
     react-dom: "npm:18.2.0"
     reading-time: "npm:1.5.0"
     rehype-autolink-headings: "npm:^7.1.0"
-    rehype-citation: "npm:^1.0.2"
+    rehype-citation: "npm:^2.0.0"
     rehype-katex: "npm:^6.0.3"
     rehype-preset-minify: "npm:6.0.0"
     rehype-prism-plus: "npm:^1.6.0"
@@ -18172,7 +18182,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unified@npm:^10.0.0, unified@npm:^10.1.0, unified@npm:^10.1.2":
+"unified@npm:^10.0.0, unified@npm:^10.1.2":
   version: 10.1.2
   resolution: "unified@npm:10.1.2"
   dependencies:
