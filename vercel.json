@@ -1,3 +1,4 @@
 {
+  "buildCommand": "turbo run build",
   "installCommand": "./scripts/vercel-build.sh"
 }
