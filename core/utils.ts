@@ -1,4 +1,5 @@
 // Sort by tag frequency descending then by alphabetical
+// Add a comment
 export function compareTagsByCountThenAlpha(
   tagCounts: Record<string, number>
 ): (a: string, b: string) => number {
