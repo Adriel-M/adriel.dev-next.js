@@ -105,7 +105,7 @@ module.exports = () => {
           headers: securityHeaders,
         },
         {
-          source: '/admin/(.*)',
+          source: '/admin(.*)',
           headers: tinaHeaders,
         },
       ]
