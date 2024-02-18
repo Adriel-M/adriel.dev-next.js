@@ -3,7 +3,6 @@ import 'css/post-layout.css'
 
 import { JetBrains_Mono } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
-import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Header'
 import SectionContainer from '@/components/SectionContainer'
 import Footer from '@/components/Footer'
@@ -11,6 +10,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { KBarConfig, KBarSearchProvider } from 'pliny/search/KBar'
 
 const jetbrains_mono = JetBrains_Mono({
   subsets: ['latin'],
@@ -62,6 +62,7 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const searchConfig = siteMetadata.search as KBarConfig
   return (
     <html
       lang={siteMetadata.language}
@@ -84,10 +85,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <SpeedInsights />
           <SectionContainer>
             <div className="flex h-screen flex-col justify-between font-monospace">
-              <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
+              <KBarSearchProvider kbarConfig={searchConfig.kbarConfig}>
                 <Header />
                 <main className="mb-auto">{children}</main>
-              </SearchProvider>
+              </KBarSearchProvider>
               <Footer />
             </div>
           </SectionContainer>
