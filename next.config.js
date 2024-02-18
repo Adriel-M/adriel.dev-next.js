@@ -50,9 +50,6 @@ const securityHeaders = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()',
   },
-]
-
-const tinaHeaders = [
   {
     key: 'Access-Control-Allow-Origin',
     value: 'https://identity.tinajs.io',
@@ -103,10 +100,6 @@ module.exports = () => {
         {
           source: '/(.*)',
           headers: securityHeaders,
-        },
-        {
-          source: '/admin(.*)',
-          headers: tinaHeaders,
         },
       ]
     },
