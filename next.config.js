@@ -7,27 +7,25 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self'
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app analytics.umami.is localhost:*;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' va.vercel-scripts.com;
   style-src 'self' 'unsafe-inline';
   img-src * blob: data:;
-  media-src *.s3.amazonaws.com;
   connect-src *;
   font-src 'self' data:;
-  frame-src giscus.app
 `
 
 const securityHeaders = [
-  // // // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
-  // {
-  //   key: 'Content-Security-Policy',
-  //   value: ContentSecurityPolicy.replace(/\n/g, ''),
-  // },
-  // // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
-  // {
-  //   key: 'Referrer-Policy',
-  //   value: 'strict-origin-when-cross-origin',
-  // },
-  // // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+  // // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+  {
+    key: 'Content-Security-Policy',
+    value: ContentSecurityPolicy.replace(/\n/g, ''),
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
+  {
+    key: 'Referrer-Policy',
+    value: 'strict-origin-when-cross-origin',
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
   {
     key: 'X-Frame-Options',
     value: 'DENY',
@@ -93,7 +91,7 @@ module.exports = () => {
         },
       ]
     },
-    webpack: (config, options) => {
+    webpack: (config) => {
       config.module.rules.push({
         test: /\.svg$/,
         use: ['@svgr/webpack'],
