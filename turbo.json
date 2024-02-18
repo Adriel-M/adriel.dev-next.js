@@ -2,8 +2,10 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
+      "env": ["NEXT_UMAMI_ID", "TINA_TOKEN", "NEXT_PUBLIC_TINA_CLIENT_ID"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "type-check": {}
-  }
+  },
+  "globalDependencies": ["tsconfig.json"]
 }
