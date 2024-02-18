@@ -63,7 +63,7 @@ const tinaHeaders = [
   },
   {
     key: 'Access-Control-Allow-Headers',
-    value: 'Content-Type',
+    value: 'X-Requested-With, Content-Type, Authorization',
   },
 ]
 
