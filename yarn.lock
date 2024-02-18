@@ -17536,7 +17536,6 @@ __metadata:
     tailwindcss: "npm:^3.4.1"
     tinacms: "npm:^1.5.28"
     typescript: "npm:^5.1.3"
-    unist-util-visit: "npm:^4.1.0"
   languageName: unknown
   linkType: soft
 
