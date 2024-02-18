@@ -7,7 +7,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self'
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' va.vercel-scripts.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' va.vercel-scripts.com localhost:*;
   style-src 'self' 'unsafe-inline';
   img-src * blob: data:;
   connect-src *;
@@ -24,10 +24,6 @@ const securityHeaders = [
   {
     key: 'Referrer-Policy',
     value: 'strict-origin-when-cross-origin',
-  },
-  {
-    key: 'Access-Control-Allow-Origin',
-    value: 'https://identity.tinajs.io',
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
   {
@@ -53,6 +49,21 @@ const securityHeaders = [
   {
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()',
+  },
+]
+
+const tinaHeaders = [
+  {
+    key: 'Access-Control-Allow-Origin',
+    value: 'https://identity.tinajs.io',
+  },
+  {
+    key: 'Access-Control-Allow-Methods',
+    value: 'GET, POST',
+  },
+  {
+    key: 'Access-Control-Allow-Headers',
+    value: 'Content-Type',
   },
 ]
 
@@ -92,6 +103,10 @@ module.exports = () => {
         {
           source: '/(.*)',
           headers: securityHeaders,
+        },
+        {
+          source: '/admin/(.*)',
+          headers: tinaHeaders,
         },
       ]
     },
