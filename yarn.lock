@@ -15694,13 +15694,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reading-time@npm:1.5.0":
-  version: 1.5.0
-  resolution: "reading-time@npm:1.5.0"
-  checksum: 10/d52921d2563693f34e71ecc6ec97bd48ec960c44dff04384e56c47ee68cfa36749acbcaeec4d0cd1d18113e53ae67825bb067ea63ba1f86107e289573e5f584f
-  languageName: node
-  linkType: hard
-
 "redux@npm:^4.0.0, redux@npm:^4.0.4":
   version: 4.2.1
   resolution: "redux@npm:4.2.1"
@@ -17629,7 +17622,6 @@ __metadata:
     prettier-plugin-tailwindcss: "npm:^0.5.11"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
-    reading-time: "npm:1.5.0"
     rehype-autolink-headings: "npm:^7.1.0"
     rehype-citation: "npm:^1.0.2"
     rehype-katex: "npm:^6.0.3"
