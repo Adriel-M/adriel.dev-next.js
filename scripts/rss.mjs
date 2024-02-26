@@ -71,7 +71,7 @@ const generateFeedObject = (config, posts, tagName = '') => {
     },
     author: {
       name: config.author,
-      email: 'contact@[websiteDomain]',
+      email: 'contact@websiteDomain',
     },
     copyright: copyrightNotice,
   })
@@ -85,7 +85,7 @@ const generateFeedObject = (config, posts, tagName = '') => {
       author: [
         {
           name: config.author,
-          email: 'contact@[websiteDomain]',
+          email: 'contact@websiteDomain',
         },
       ],
       category: post.tags.map((tag) => ({
