@@ -6340,60 +6340,60 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/compiler-core@npm:3.4.19":
-  version: 3.4.19
-  resolution: "@vue/compiler-core@npm:3.4.19"
+"@vue/compiler-core@npm:3.4.20":
+  version: 3.4.20
+  resolution: "@vue/compiler-core@npm:3.4.20"
   dependencies:
     "@babel/parser": "npm:^7.23.9"
-    "@vue/shared": "npm:3.4.19"
+    "@vue/shared": "npm:3.4.20"
     entities: "npm:^4.5.0"
     estree-walker: "npm:^2.0.2"
     source-map-js: "npm:^1.0.2"
-  checksum: 10/97c65d67894b6217abbbb02abd37190c7ba3b079ee9c02a7170567da3c0e6baf47c54d8c7b6f967cda6950043a16e6fbaf774f371b01355bd555bbf2f1086d1b
+  checksum: 10/30baa380486b1ec5d40cf95f718d093ed779e91511ce24ed0e76d355b3d7ca3d8dadac49991eaa0856de41bed95aa50dced682daaf26d60ea4b663074f8aebee
   languageName: node
   linkType: hard
 
-"@vue/compiler-dom@npm:3.4.19":
-  version: 3.4.19
-  resolution: "@vue/compiler-dom@npm:3.4.19"
+"@vue/compiler-dom@npm:3.4.20":
+  version: 3.4.20
+  resolution: "@vue/compiler-dom@npm:3.4.20"
   dependencies:
-    "@vue/compiler-core": "npm:3.4.19"
-    "@vue/shared": "npm:3.4.19"
-  checksum: 10/f74374a6ff7620d9bb0590d48e4f23c4f0ad0b88e3ab6f46780e44f1f7689a0231b6ced88b40956ff73d7d2d870dcd4c039e5e9903a231f4d36a13304ee81ecd
+    "@vue/compiler-core": "npm:3.4.20"
+    "@vue/shared": "npm:3.4.20"
+  checksum: 10/5a4fdee26753366cec83024cd7f9418d40b531d9e8586511a9bd9cf672dde54e055b063555a3a498bc18986dfcf20946ecae0813fb215cdbbd70662d8c470ed1
   languageName: node
   linkType: hard
 
 "@vue/compiler-sfc@npm:^3.3.4":
-  version: 3.4.19
-  resolution: "@vue/compiler-sfc@npm:3.4.19"
+  version: 3.4.20
+  resolution: "@vue/compiler-sfc@npm:3.4.20"
   dependencies:
     "@babel/parser": "npm:^7.23.9"
-    "@vue/compiler-core": "npm:3.4.19"
-    "@vue/compiler-dom": "npm:3.4.19"
-    "@vue/compiler-ssr": "npm:3.4.19"
-    "@vue/shared": "npm:3.4.19"
+    "@vue/compiler-core": "npm:3.4.20"
+    "@vue/compiler-dom": "npm:3.4.20"
+    "@vue/compiler-ssr": "npm:3.4.20"
+    "@vue/shared": "npm:3.4.20"
     estree-walker: "npm:^2.0.2"
-    magic-string: "npm:^0.30.6"
-    postcss: "npm:^8.4.33"
+    magic-string: "npm:^0.30.7"
+    postcss: "npm:^8.4.35"
     source-map-js: "npm:^1.0.2"
-  checksum: 10/b4cbc1c12066a5c613a95dc156fbf8d67e54c5658f8c65616eb0d921079ba5c8e1475b18c2ebdd64c8cf280a27ee6224090deae84e9e3e421a30b4389167f76b
+  checksum: 10/050002d3ae6f6f9b1d066077646c6ee208add852d940f25ee85982bafc85bca5d3a8b00f3279d9d5b88da0dec59f147c49f7f8e1197ec6a09b2fb81774d4095f
   languageName: node
   linkType: hard
 
-"@vue/compiler-ssr@npm:3.4.19":
-  version: 3.4.19
-  resolution: "@vue/compiler-ssr@npm:3.4.19"
+"@vue/compiler-ssr@npm:3.4.20":
+  version: 3.4.20
+  resolution: "@vue/compiler-ssr@npm:3.4.20"
   dependencies:
-    "@vue/compiler-dom": "npm:3.4.19"
-    "@vue/shared": "npm:3.4.19"
-  checksum: 10/4e3b219aa1761e99316db6b86318e5bfc07d150de343c28899623b554d6c19e835aa31e723515d1be50eff579f638121ffeefa0ebb73e690af41094e4e8b2fe5
+    "@vue/compiler-dom": "npm:3.4.20"
+    "@vue/shared": "npm:3.4.20"
+  checksum: 10/12e44f645ea1404945e9df8aecc08cd2dd8216dd7c5485c4ff59c9488fe17d9e9779f39ddb3fbb86c7eac7b0d3aa836ead1d09e1fe3c99e2177c910a3694f37c
   languageName: node
   linkType: hard
 
-"@vue/shared@npm:3.4.19":
-  version: 3.4.19
-  resolution: "@vue/shared@npm:3.4.19"
-  checksum: 10/2048de92283de8a10ad71f4248786fd9191770cd6a0137c60739838f544a222124526d46af905fe26eb46901ae8c9135c186e8f5f00824f94969335efb9a14f5
+"@vue/shared@npm:3.4.20":
+  version: 3.4.20
+  resolution: "@vue/shared@npm:3.4.20"
+  checksum: 10/7177b0fe98f95217cf9abd8374e3ca7126f6867f4f6875de408eeafa822fe0a670821ee89ec9b24407ab89c3af93ac674c086e148810314e592e278eb1ec6d59
   languageName: node
   linkType: hard
 
@@ -12324,7 +12324,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"magic-string@npm:^0.30.6":
+"magic-string@npm:^0.30.7":
   version: 0.30.7
   resolution: "magic-string@npm:0.30.7"
   dependencies:
@@ -14738,7 +14738,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.3.3, postcss@npm:^8.4.14, postcss@npm:^8.4.23, postcss@npm:^8.4.24, postcss@npm:^8.4.27, postcss@npm:^8.4.33":
+"postcss@npm:^8.3.3, postcss@npm:^8.4.14, postcss@npm:^8.4.23, postcss@npm:^8.4.24, postcss@npm:^8.4.27, postcss@npm:^8.4.35":
   version: 8.4.35
   resolution: "postcss@npm:8.4.35"
   dependencies:
