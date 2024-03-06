@@ -8,7 +8,7 @@ tags:
   - tech
   - longform
 date: 2024-02-09T20:03:12.109Z
-lastmod: 2024-02-11T04:12:08.152Z
+lastmod: 2024-03-06T23:09:23.603Z
 ---
 
 # TL;DR
@@ -238,7 +238,7 @@ PR can be found [here](https://github.com/Adriel-M/speed-up-berry-builds-vercel/
 
 ## Putting It All Together
 
-This is what the final script looks like that copies that `install-state.gz`, set the `YARN_CACHE_FOLDER` environment
+This is what the final script looks like that copies the `install-state.gz`, set the `YARN_CACHE_FOLDER` environment
 variable, runs `yarn install`, and copies back the `install-state.gz` to a cacheable folder:
 
 ```bash:scripts/vercel-build.sh
