@@ -16,23 +16,11 @@ export default function Footer() {
           <SocialIcon kind="rss" href="/rss.xml" size={6} />
         </div>
         <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
-          <div>{`© ${new Date().getFullYear()}`}</div>
-          <div>{` • `}</div>
-          <div>Adriel Martinez</div>
-          <div>{` • `}</div>
-          <Link
-            className="text-primary-500 underline hover:text-primary-600 dark:hover:text-primary-400"
-            href="https://creativecommons.org/licenses/by/4.0/"
-          >
-            CC BY 4.0
-          </Link>
-        </div>
-        <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>
             Logo from{' '}
             <Link
               className="text-primary-500 underline hover:text-primary-600 dark:hover:text-primary-400"
-              href="https://twemoji.twitter.com/content/twemoji-twitter/en.html"
+              href="https://github.com/twitter/twemoji"
             >
               Twemoji
             </Link>
@@ -45,12 +33,16 @@ export default function Footer() {
             CC BY 4.0
           </Link>
         </div>
-        <div className="mb-8 text-sm">
+        <div className="mb-8 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+          <div>{`© ${new Date().getFullYear()}`}</div>
+          <div>{` • `}</div>
+          <div>Adriel Martinez</div>
+          <div>{` • `}</div>
           <Link
             className="text-primary-500 underline hover:text-primary-600 dark:hover:text-primary-400"
-            href="https://github.com/timlrx/tailwind-nextjs-starter-blog"
+            href="https://creativecommons.org/licenses/by/4.0/"
           >
-            Tailwind Nextjs Theme
+            CC BY 4.0
           </Link>
         </div>
       </div>
