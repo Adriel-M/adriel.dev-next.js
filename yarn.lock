@@ -14768,8 +14768,8 @@ __metadata:
   linkType: hard
 
 "prettier-plugin-tailwindcss@npm:^0.5.11":
-  version: 0.5.11
-  resolution: "prettier-plugin-tailwindcss@npm:0.5.11"
+  version: 0.5.12
+  resolution: "prettier-plugin-tailwindcss@npm:0.5.12"
   peerDependencies:
     "@ianvs/prettier-plugin-sort-imports": "*"
     "@prettier/plugin-pug": "*"
@@ -14783,6 +14783,7 @@ __metadata:
     prettier-plugin-marko: "*"
     prettier-plugin-organize-attributes: "*"
     prettier-plugin-organize-imports: "*"
+    prettier-plugin-sort-imports: "*"
     prettier-plugin-style-order: "*"
     prettier-plugin-svelte: "*"
   peerDependenciesMeta:
@@ -14808,13 +14809,15 @@ __metadata:
       optional: true
     prettier-plugin-organize-imports:
       optional: true
+    prettier-plugin-sort-imports:
+      optional: true
     prettier-plugin-style-order:
       optional: true
     prettier-plugin-svelte:
       optional: true
     prettier-plugin-twig-melody:
       optional: true
-  checksum: 10/79d294c035845f35dbf4cdb0707c3da235dd9c0eb5d2a7db9d779da9efdd8851dbb435646d872f507e55657dc348050c5a15fcbed09d00ef95359ccfa50ff400
+  checksum: 10/599ac540d323dfeacea14bb81991cffe18ca63524e44fdf6d758a1ed1c0c9cd06e0e43a509e475f0de0a4d66b318a885ccf4e806c473373fa9784449b6d99317
   languageName: node
   linkType: hard
 
