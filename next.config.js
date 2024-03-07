@@ -8,7 +8,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' localhost:* cdn.jsdelivr.net;
-  style-src 'self' 'unsafe-inline';
+  style-src 'self' 'unsafe-inline' cdn.jsdelivr.net;
   img-src * blob: data:;
   connect-src *;
   font-src 'self' data:;
