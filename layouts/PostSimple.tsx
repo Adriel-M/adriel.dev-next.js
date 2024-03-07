@@ -57,8 +57,8 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
                 </div>
               )}
               <div className="flex flex-col text-sm font-medium sm:flex-row sm:justify-between sm:text-base">
-                {prev && prev.path && (
-                  <div className="pt-4 xl:pt-8">
+                <div className="pt-4 xl:pt-8">
+                  {prev && prev.path && (
                     <Link
                       href={`/${prev.path}`}
                       className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
@@ -66,10 +66,10 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
                     >
                       &larr; {prev.title}
                     </Link>
-                  </div>
-                )}
-                {next && next.path && (
-                  <div className="pt-4 xl:pt-8">
+                  )}
+                </div>
+                <div className="pt-4 xl:pt-8">
+                  {next && next.path && (
                     <Link
                       href={`/${next.path}`}
                       className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
@@ -77,8 +77,8 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
                     >
                       {next.title} &rarr;
                     </Link>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </footer>
           </div>
