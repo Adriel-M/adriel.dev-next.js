@@ -8,7 +8,7 @@ const title = 'Projects'
 
 export const metadata = genPageMetadata({ title: title })
 
-export default function Projects() {
+export default function Page() {
   const projects = allProjects.find((p) => p.slug === 'projects') as Projects
   return (
     <>
