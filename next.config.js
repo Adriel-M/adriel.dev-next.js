@@ -11,7 +11,7 @@ const ContentSecurityPolicy = `
   style-src 'self' 'unsafe-inline' cdn.jsdelivr.net;
   img-src * blob: data:;
   connect-src *;
-  font-src 'self' data:;
+  font-src 'self' data: cdn.jsdelivr.net;
 `
 
 const securityHeaders = [
