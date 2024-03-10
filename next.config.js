@@ -74,6 +74,20 @@ module.exports = () => {
         },
       ]
     },
+    async redirects() {
+      return [
+        {
+          source: '/blog',
+          destination: '/posts',
+          permanent: true,
+        },
+        {
+          source: '/blog/:path',
+          destination: '/posts/:path',
+          permanent: true,
+        },
+      ]
+    },
     async headers() {
       return [
         {

@@ -22,10 +22,10 @@ const displayDateField = (props: InputFieldType<any, InputProps>) => {
   }
 }
 
-const BlogPost: Collection = {
+const Post: Collection = {
   name: 'post',
   label: 'Blog Posts',
-  path: 'data/blog',
+  path: 'data/posts',
   format: 'mdx',
   ui: {
     filename: {
@@ -37,8 +37,6 @@ const BlogPost: Collection = {
       },
     },
     beforeSubmit: async ({
-      form,
-      cms,
       values,
     }: {
       form: Form
@@ -99,4 +97,4 @@ const BlogPost: Collection = {
   ],
 }
 
-export default BlogPost
+export default Post

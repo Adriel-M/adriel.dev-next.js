@@ -6,7 +6,7 @@
       {
         "name": "post",
         "label": "Blog Posts",
-        "path": "data/blog",
+        "path": "data/posts",
         "format": "mdx",
         "ui": { "filename": {} },
         "fields": [

@@ -1,5 +1,5 @@
 import { defineConfig } from 'tinacms'
-import BlogPost from './collections/BlogPost'
+import Post from './collections/Post'
 import Author from './collections/Author'
 import Projects from './collections/Projects'
 
@@ -27,6 +27,6 @@ export default defineConfig({
   },
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
   schema: {
-    collections: [BlogPost, Author, Projects],
+    collections: [Post, Author, Projects],
   },
 })
