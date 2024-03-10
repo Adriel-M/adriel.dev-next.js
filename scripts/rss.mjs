@@ -78,8 +78,8 @@ const generateFeedObject = (config, posts, tagName = '') => {
   posts.forEach((post) => {
     feed.addItem({
       title: post.title,
-      id: `${config.siteUrl}/blog/${post.slug}`,
-      link: `${config.siteUrl}/blog/${post.slug}`,
+      id: `${config.siteUrl}/${post.path}`,
+      link: `${config.siteUrl}/${post.path}`,
       description: post.summary,
       date: new Date(post.date),
       author: [
