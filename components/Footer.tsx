@@ -19,7 +19,7 @@ export default function Footer() {
           <div>
             Logo from{' '}
             <Link
-              className="text-primary-500 underline hover:text-primary-600 dark:hover:text-primary-400"
+              className="hover:text-primary-500 dark:hover:text-primary-400"
               href="https://github.com/twitter/twemoji"
             >
               Twemoji
@@ -27,7 +27,7 @@ export default function Footer() {
           </div>
           <div>{` • `}</div>
           <Link
-            className="text-primary-500 underline hover:text-primary-600 dark:hover:text-primary-400"
+            className="hover:text-primary-500 dark:hover:text-primary-400"
             href="https://creativecommons.org/licenses/by/4.0/"
           >
             CC BY 4.0
@@ -39,7 +39,7 @@ export default function Footer() {
           <div>Adriel Martinez</div>
           <div>{` • `}</div>
           <Link
-            className="text-primary-500 underline hover:text-primary-600 dark:hover:text-primary-400"
+            className="hover:text-primary-500 dark:hover:text-primary-400"
             href="https://creativecommons.org/licenses/by/4.0/"
           >
             CC BY 4.0

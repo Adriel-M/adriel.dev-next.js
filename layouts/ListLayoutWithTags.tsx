@@ -60,6 +60,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
         )}
         {prevPage && (
           <Link
+            className="hover:text-primary-500"
             href={currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`}
             rel="prev"
           >
@@ -75,7 +76,11 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
           </button>
         )}
         {nextPage && (
-          <Link href={`/${basePath}/page/${currentPage + 1}`} rel="next">
+          <Link
+            className="hover:text-primary-500"
+            href={`/${basePath}/page/${currentPage + 1}`}
+            rel="next"
+          >
             Next
           </Link>
         )}
@@ -158,7 +163,10 @@ export default function ListLayoutWithTags({
                       <div className="space-y-3">
                         <div>
                           <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                            <Link href={`/${path}`} className="text-gray-900 dark:text-gray-100">
+                            <Link
+                              href={`/${path}`}
+                              className="text-gray-900 hover:text-primary-500 dark:text-gray-100"
+                            >
                               {title}
                             </Link>
                           </h2>
