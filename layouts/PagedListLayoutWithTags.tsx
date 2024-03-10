@@ -1,5 +1,3 @@
-'use client'
-
 import { CoreContent } from 'pliny/utils/contentlayer'
 import { Blog } from 'contentlayer/generated'
 import { getListLayoutsProps } from '@/core/PagingUtils'
