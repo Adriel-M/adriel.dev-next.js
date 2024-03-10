@@ -83,6 +83,7 @@ const siteMetadata = {
     //   indexName: 'docsearch',
     // },
   },
+  emailAddress: process.env.EMAIL_ADDRESS,
 }
 
 module.exports = siteMetadata

@@ -3,15 +3,26 @@ import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { genPageMetadata } from 'app/seo'
 import PageSimple from '@/layouts/PageSimple'
 import { author } from '../../core/AuthorInfo'
+import { MDXComponents } from 'mdx/types'
+import ObfuscatedEmail from '@/components/ObfuscatedEmail'
+import siteMetadata from '@/data/siteMetadata'
 
 const title = 'About'
 export const metadata = genPageMetadata({ title: title })
 
 export default function Page() {
+  const AboutComponents: MDXComponents = {
+    ObfuscatedEmail,
+    ...components,
+  }
   return (
     <>
       <PageSimple title={title}>
-        <MDXLayoutRenderer code={author.body.code} components={components} />
+        <MDXLayoutRenderer
+          code={author.body.code}
+          components={AboutComponents}
+          emailAddress={siteMetadata.emailAddress}
+        />
       </PageSimple>
     </>
   )
