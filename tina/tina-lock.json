@@ -1,6 +1,6 @@
 {
   "schema": {
-    "version": { "fullVersion": "1.4.32", "major": "1", "minor": "4", "patch": "32" },
+    "version": { "fullVersion": "1.4.33", "major": "1", "minor": "4", "patch": "33" },
     "meta": { "flags": ["experimentalData"] },
     "collections": [
       {
@@ -103,18 +103,34 @@
         "name": "projects",
         "label": "Projects",
         "path": "data/projects",
-        "format": "mdx",
-        "match": { "include": "index" },
-        "ui": { "allowedActions": { "create": false, "delete": false } },
+        "format": "yaml",
+        "ui": { "filename": {} },
         "fields": [
           {
-            "type": "rich-text",
-            "name": "body",
-            "label": "Body",
-            "isBody": true,
-            "namespace": ["projects", "body"],
+            "type": "string",
+            "name": "title",
+            "label": "Title",
+            "required": true,
+            "namespace": ["projects", "title"],
             "searchable": true,
-            "parser": { "type": "mdx" },
+            "uid": false
+          },
+          {
+            "type": "rich-text",
+            "name": "description",
+            "label": "Description",
+            "required": true,
+            "namespace": ["projects", "description"],
+            "searchable": true,
+            "parser": { "type": "markdown" },
+            "uid": false
+          },
+          {
+            "type": "string",
+            "name": "href",
+            "label": "URL",
+            "namespace": ["projects", "href"],
+            "searchable": true,
             "uid": false
           }
         ],
@@ -1319,9 +1335,27 @@
         "fields": [
           {
             "kind": "FieldDefinition",
-            "name": { "kind": "Name", "value": "body" },
+            "name": { "kind": "Name", "value": "title" },
             "arguments": [],
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
+            "type": {
+              "kind": "NonNullType",
+              "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            }
+          },
+          {
+            "kind": "FieldDefinition",
+            "name": { "kind": "Name", "value": "description" },
+            "arguments": [],
+            "type": {
+              "kind": "NonNullType",
+              "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
+            }
+          },
+          {
+            "kind": "FieldDefinition",
+            "name": { "kind": "Name", "value": "href" },
+            "arguments": [],
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
           },
           {
             "kind": "FieldDefinition",
@@ -1358,8 +1392,18 @@
         "fields": [
           {
             "kind": "InputValueDefinition",
-            "name": { "kind": "Name", "value": "body" },
+            "name": { "kind": "Name", "value": "title" },
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "StringFilter" } }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "description" },
             "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "RichTextFilter" } }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "href" },
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "StringFilter" } }
           }
         ]
       },
@@ -1836,8 +1880,18 @@
         "fields": [
           {
             "kind": "InputValueDefinition",
-            "name": { "kind": "Name", "value": "body" },
+            "name": { "kind": "Name", "value": "title" },
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "description" },
             "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "href" },
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
           }
         ]
       }

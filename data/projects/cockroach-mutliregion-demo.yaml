@@ -1,0 +1,4 @@
+title: Cockroach Mutliregion Demo
+description: |
+  An electron app to showcase the various multiregion modes for CockroachDB.
+href: 'https://github.com/Adriel-M/cockroach-multiregion-demo'

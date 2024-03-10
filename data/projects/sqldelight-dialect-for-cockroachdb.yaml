@@ -1,0 +1,5 @@
+title: SqlDelight Dialect for CockroachDB
+description: >
+  A dialect enabling the usage of CockroachDB with SqlDelight. Written in Kotlin
+  + Gradle and BNF to define the grammar.
+href: 'https://github.com/Faire/sqldelight-cockroachdb-dialect'
