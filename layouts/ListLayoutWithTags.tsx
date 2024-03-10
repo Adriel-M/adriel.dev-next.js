@@ -89,6 +89,9 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   )
 }
 
+const LINK_CURRENT_PAGE = 'text-primary-500 hover:text-primary-600'
+const LINK_NOT_CURRENT_PAGE = 'text-gray-700 hover:text-primary-500'
+
 export default function ListLayoutWithTags({
   posts,
   title,
@@ -103,9 +106,7 @@ export default function ListLayoutWithTags({
 
   const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
 
-  const allPostCss = pathname.startsWith('/posts')
-    ? 'text-primary-500 hover:text-primary-600'
-    : 'text-gray-700 hover:text-primary-500'
+  const allPostCss = pathname.startsWith('/posts') ? LINK_CURRENT_PAGE : LINK_NOT_CURRENT_PAGE
 
   return (
     <>
@@ -126,10 +127,7 @@ export default function ListLayoutWithTags({
               </Link>
               <ul>
                 {sortedTags.map((t) => {
-                  const tagCss =
-                    currentTag === slug(t)
-                      ? 'text-primary-500 hover:text-primary-600'
-                      : 'text-gray-700 hover:text-primary-500'
+                  const tagCss = currentTag === slug(t) ? LINK_CURRENT_PAGE : LINK_NOT_CURRENT_PAGE
                   return (
                     <li key={t} className="my-3">
                       <Link
