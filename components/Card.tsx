@@ -6,7 +6,7 @@ const Card = ({ title, description, href }) => (
       <div className="p-6">
         <h2 className="mb-3 text-lg font-bold leading-8 tracking-tight">
           {href ? (
-            <Link href={href} aria-label={`Link to ${title}`}>
+            <Link href={href} className="hover:text-primary-500" aria-label={`Link to ${title}`}>
               {title}
             </Link>
           ) : (
