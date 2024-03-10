@@ -169,9 +169,13 @@ export const Authors = defineDocumentType(() => ({
 
 export const Projects = defineDocumentType(() => ({
   name: 'Projects',
-  filePathPattern: 'projects/**/*.mdx',
-  contentType: 'mdx',
-  computedFields,
+  filePathPattern: 'projects/**/*.yaml',
+  contentType: 'data',
+  fields: {
+    title: { type: 'string', required: true },
+    description: { type: 'string', required: true },
+    href: { type: 'string' },
+  },
 }))
 
 const icon = fromHtmlIsomorphic(

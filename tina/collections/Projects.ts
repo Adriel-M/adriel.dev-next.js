@@ -1,25 +1,35 @@
 import { Collection } from '@tinacms/cli'
+import { slug } from 'github-slugger'
 
 const Projects: Collection = {
   name: 'projects',
   label: 'Projects',
   path: 'data/projects',
-  format: 'mdx',
-  match: {
-    include: 'index',
-  },
+  format: 'yaml',
   ui: {
-    allowedActions: {
-      create: false,
-      delete: false,
+    filename: {
+      slugify: (values) => {
+        return values.title ? slug(values.title) : ''
+      },
     },
   },
   fields: [
     {
+      type: 'string',
+      name: 'title',
+      label: 'Title',
+      required: true,
+    },
+    {
       type: 'rich-text',
-      name: 'body',
-      label: 'Body',
-      isBody: true,
+      name: 'description',
+      label: 'Description',
+      required: true,
+    },
+    {
+      type: 'string',
+      name: 'href',
+      label: 'URL',
     },
   ],
 }
