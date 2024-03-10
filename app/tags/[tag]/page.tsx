@@ -1,11 +1,11 @@
 import { slug } from 'github-slugger'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import siteMetadata from '@/data/siteMetadata'
-import ListLayout from '@/layouts/ListLayoutWithTags'
 import { allBlogs } from 'contentlayer/generated'
 import tagData from 'app/tag-data.json'
 import { genPageMetadata } from 'app/seo'
 import { Metadata } from 'next'
+import PagedListLayoutWithTags from '@/layouts/PagedListLayoutWithTags'
 
 export async function generateMetadata({ params }: { params: { tag: string } }): Promise<Metadata> {
   const tag = decodeURI(params.tag)
@@ -26,10 +26,9 @@ export async function generateMetadata({ params }: { params: { tag: string } }):
 export const generateStaticParams = async () => {
   const tagCounts = tagData as Record<string, number>
   const tagKeys = Object.keys(tagCounts)
-  const paths = tagKeys.map((tag) => ({
+  return tagKeys.map((tag) => ({
     tag: encodeURI(tag),
   }))
-  return paths
 }
 
 export default function TagPage({ params }: { params: { tag: string } }) {
@@ -39,5 +38,6 @@ export default function TagPage({ params }: { params: { tag: string } }) {
   const filteredPosts = allCoreContent(
     sortPosts(allBlogs.filter((post) => post.tags && post.tags.map((t) => slug(t)).includes(tag)))
   )
-  return <ListLayout posts={filteredPosts} title={title} />
+
+  return <PagedListLayoutWithTags posts={filteredPosts} title={title} pageNumber={1} />
 }

@@ -10,22 +10,43 @@ import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import tagData from 'app/tag-data.json'
-import { compareTagsByCountThenAlpha } from '../core/utils'
+import { compareTagsByCountThenAlpha } from '@/core/utils'
+import { PaginationProps } from '@/core/PagingUtils'
 
-interface PaginationProps {
-  totalPages: number
-  currentPage: number
-}
-interface ListLayoutProps {
+interface ListLayoutWithTagsProps {
   posts: CoreContent<Blog>[]
   title: string
   initialDisplayPosts?: CoreContent<Blog>[]
   pagination?: PaginationProps
 }
 
+const getBasePath = (pathname: string): string => {
+  const paths: string[] = []
+  const split = pathname.split('/')
+
+  for (const path of split) {
+    if (path === 'page') break
+
+    if (path) {
+      paths.push(path)
+    }
+  }
+
+  return paths.join('/')
+}
+
+const getCurrentTag = (pathname: string): string => {
+  const split = pathname.split('/')
+
+  // actual tag appears right after the tags path
+  const tagIndex = split.indexOf('tags') + 1
+
+  return split[tagIndex]
+}
+
 function Pagination({ totalPages, currentPage }: PaginationProps) {
   const pathname = usePathname()
-  const basePath = pathname.split('/')[1]
+  const basePath = getBasePath(pathname)
   const prevPage = currentPage - 1 > 0
   const nextPage = currentPage + 1 <= totalPages
 
@@ -68,11 +89,12 @@ export default function ListLayoutWithTags({
   title,
   initialDisplayPosts = [],
   pagination,
-}: ListLayoutProps) {
+}: ListLayoutWithTagsProps) {
   const pathname = usePathname()
   const tagCounts = tagData as Record<string, number>
   const tagKeys = Object.keys(tagCounts)
   const sortedTags = tagKeys.sort(compareTagsByCountThenAlpha(tagCounts))
+  const currentTag = getCurrentTag(pathname)
 
   const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
 
@@ -101,7 +123,7 @@ export default function ListLayoutWithTags({
                 {sortedTags.map((t) => {
                   return (
                     <li key={t} className="my-3">
-                      {pathname.split('/tags/')[1] === slug(t) ? (
+                      {currentTag === slug(t) ? (
                         <h3 className="inline px-3 py-2 text-sm font-bold uppercase text-primary-500">
                           {`${t} (${tagCounts[t]})`}
                         </h3>
