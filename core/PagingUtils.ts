@@ -20,7 +20,7 @@ const getPaginationProps = (posts: CoreContent<Blog>[], pageNumber: number): Pag
 }
 
 export const getTotalPages = (posts: CoreContent<Blog>[]): number => {
-  return posts.length / POSTS_PER_PAGE
+  return Math.ceil(posts.length / POSTS_PER_PAGE)
 }
 
 export const getListLayoutsProps = (
