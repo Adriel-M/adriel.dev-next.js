@@ -2,8 +2,7 @@ import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
-
-const MAX_DISPLAY = 5
+import { FRONT_PAGE_POST_COUNT } from '@/core/PagingUtils'
 
 export default function Home({ posts }) {
   return (
@@ -17,7 +16,7 @@ export default function Home({ posts }) {
         </div>
         <ul className="divide-y divide-gray-200">
           {!posts.length && 'No posts found.'}
-          {posts.slice(0, MAX_DISPLAY).map((post) => {
+          {posts.slice(0, FRONT_PAGE_POST_COUNT).map((post) => {
             const { slug, date, title, summary, tags, path } = post
             return (
               <li key={slug} className="py-12">
@@ -51,7 +50,7 @@ export default function Home({ posts }) {
                       <div className="text-base font-medium leading-6">
                         <Link
                           href={`/${path}`}
-                          className="text-primary-500 underline hover:text-primary-600"
+                          className="hover:text-primary-500"
                           aria-label={`Read more: "${title}"`}
                         >
                           Read more &rarr;
@@ -65,13 +64,9 @@ export default function Home({ posts }) {
           })}
         </ul>
       </div>
-      {posts.length > MAX_DISPLAY && (
+      {posts.length > FRONT_PAGE_POST_COUNT && (
         <div className="flex justify-end text-base font-medium leading-6">
-          <Link
-            href="/posts"
-            className="text-primary-500 underline hover:text-primary-600"
-            aria-label="All posts"
-          >
+          <Link href="/posts" className="hover:text-primary-500" aria-label="All posts">
             All Posts &rarr;
           </Link>
         </div>

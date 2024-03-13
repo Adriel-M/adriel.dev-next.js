@@ -1,6 +1,7 @@
 import { CoreContent } from 'pliny/utils/contentlayer'
 import { Blog } from 'contentlayer/generated'
 
+export const FRONT_PAGE_POST_COUNT = 5
 const POSTS_PER_PAGE = 5
 
 export interface PaginationProps {
