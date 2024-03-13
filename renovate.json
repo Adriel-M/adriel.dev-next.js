@@ -18,5 +18,5 @@
     "enabled": true,
     "automerge": true
   },
-  "reviewers": ["team:foo"],
+  "reviewers": ["Adriel-M"]
 }
