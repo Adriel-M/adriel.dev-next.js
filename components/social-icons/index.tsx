@@ -1,13 +1,8 @@
-import { Mail, Github, Facebook, Youtube, Linkedin, Twitter, Mastodon, RSS } from './icons'
+import { Github, Linkedin, RSS } from './icons'
 
 const components = {
-  mail: Mail,
   github: Github,
-  facebook: Facebook,
-  youtube: Youtube,
   linkedin: Linkedin,
-  twitter: Twitter,
-  mastodon: Mastodon,
   rss: RSS,
 }
 
@@ -18,8 +13,7 @@ type SocialIconProps = {
 }
 
 const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
-  if (!href || (kind === 'mail' && !/^mailto:\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(href)))
-    return null
+  if (!href) return null
 
   const SocialSvg = components[kind]
 
