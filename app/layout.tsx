@@ -7,7 +7,6 @@ import Header from '@/components/Header'
 import SectionContainer from '@/components/SectionContainer'
 import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
-import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { KBarConfig, KBarSearchProvider } from 'pliny/search/KBar'
@@ -80,19 +79,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
       <link rel="alternate" type="application/feed+json" href="/feed.json" />
       <body className="bg-white text-black antialiased">
-        <ThemeProviders>
-          <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
-          <SpeedInsights />
-          <SectionContainer>
-            <div className="flex h-screen flex-col justify-between font-monospace">
-              <KBarSearchProvider kbarConfig={searchConfig.kbarConfig}>
-                <Header />
-                <main className="mb-auto">{children}</main>
-              </KBarSearchProvider>
-              <Footer />
-            </div>
-          </SectionContainer>
-        </ThemeProviders>
+        <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
+        <SpeedInsights />
+        <SectionContainer>
+          <div className="flex h-screen flex-col justify-between font-monospace">
+            <KBarSearchProvider kbarConfig={searchConfig.kbarConfig}>
+              <Header />
+              <main className="mb-auto">{children}</main>
+            </KBarSearchProvider>
+            <Footer />
+          </div>
+        </SectionContainer>
       </body>
     </html>
   )
