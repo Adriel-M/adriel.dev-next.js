@@ -108,6 +108,31 @@ const generateSummary = async (rawPostBody: string) => {
   return output.join(' ')
 }
 
+const TITLE_MAX_LENGTH = 20
+const generateShortenedTitle = (title: string): string => {
+  if (title.length < TITLE_MAX_LENGTH) return title
+
+  const words = title.split(' ')
+  let characterLength = 0
+  const newTitleArr: string[] = []
+
+  let isEnd = false
+  for (let i = 0; i < words.length; i++) {
+    newTitleArr.push(words[i])
+    characterLength += words[i].length
+    if (i === words.length - 1) isEnd = true
+    if (characterLength > TITLE_MAX_LENGTH) break
+  }
+
+  let newTitle = newTitleArr.join(' ')
+
+  if (!isEnd) {
+    newTitle += '...'
+  }
+
+  return newTitle
+}
+
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
   filePathPattern: 'posts/**/*.mdx',
@@ -148,6 +173,14 @@ export const Blog = defineDocumentType(() => ({
           return doc.summary
         }
         return generateSummary(doc.body.raw)
+      },
+    },
+    shortenedTitle: {
+      type: 'string',
+      resolve: (doc) => {
+        if (!doc.title) return doc.title
+
+        return generateShortenedTitle(doc.title)
       },
     },
   },

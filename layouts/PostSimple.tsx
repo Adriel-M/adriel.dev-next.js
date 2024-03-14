@@ -12,8 +12,8 @@ import Tag from '@/components/Tag'
 interface LayoutProps {
   content: CoreContent<Blog>
   children: ReactNode
-  next?: { path: string; title: string }
-  prev?: { path: string; title: string }
+  next?: { path: string; title: string; shortenedTitle: string }
+  prev?: { path: string; title: string; shortenedTitle: string }
 }
 
 export default function PostLayout({ content, next, prev, children }: LayoutProps) {
@@ -55,26 +55,36 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
                 </div>
               )}
               <div className="flex flex-col text-sm font-medium sm:flex-row sm:justify-between sm:text-base">
-                <div className="pt-4 xl:pt-8">
+                <div>
                   {prev && prev.path && (
-                    <Link
-                      href={`/${prev.path}`}
-                      className="hover:text-primary-500"
-                      aria-label={`Previous post: ${prev.title}`}
-                    >
-                      &larr; {prev.title}
-                    </Link>
+                    <>
+                      <div className="flex flex-col items-start">
+                        <h2 className="text-xs uppercase tracking-wide text-gray-500">Previous</h2>
+                        <Link
+                          href={`/${prev.path}`}
+                          className="hover:text-primary-500"
+                          aria-label={`Previous post: ${prev.title}`}
+                        >
+                          &larr; {prev.shortenedTitle}
+                        </Link>
+                      </div>
+                    </>
                   )}
                 </div>
-                <div className="pt-4 xl:pt-8">
+                <div>
                   {next && next.path && (
-                    <Link
-                      href={`/${next.path}`}
-                      className="hover:text-primary-500"
-                      aria-label={`Next post: ${next.title}`}
-                    >
-                      {next.title} &rarr;
-                    </Link>
+                    <>
+                      <div className="flex flex-col items-start pt-3 sm:items-end sm:pt-0">
+                        <h2 className="text-xs uppercase tracking-wide text-gray-500">Next</h2>
+                        <Link
+                          href={`/${next.path}`}
+                          className="hover:text-primary-500"
+                          aria-label={`Next post: ${next.title}`}
+                        >
+                          {next.shortenedTitle} &rarr;
+                        </Link>
+                      </div>
+                    </>
                   )}
                 </div>
               </div>
