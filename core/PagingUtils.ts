@@ -2,7 +2,7 @@ import { CoreContent } from 'pliny/utils/contentlayer'
 import { Blog } from 'contentlayer/generated'
 
 export const FRONT_PAGE_POST_COUNT = 5
-const POSTS_PER_PAGE = 5
+const POSTS_PER_PAGE = 1
 
 export interface PaginationProps {
   totalPages: number
@@ -21,7 +21,11 @@ const getPaginationProps = (posts: CoreContent<Blog>[], pageNumber: number): Pag
 }
 
 export const getTotalPages = (posts: CoreContent<Blog>[]): number => {
-  return Math.ceil(posts.length / POSTS_PER_PAGE)
+  return getTotalPagesFromPostSize(posts.length)
+}
+
+export const getTotalPagesFromPostSize = (numberOfPosts: number): number => {
+  return Math.ceil(numberOfPosts / POSTS_PER_PAGE)
 }
 
 export const getListLayoutsProps = (
