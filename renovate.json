@@ -10,7 +10,11 @@
     {
       "groupName": "TinaCMS",
       "groupSlug": "tinacms",
-      "matchPackagePatterns": ["tinacms"],
+      "matchPackagePatterns": ["tinacms"]
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchPackagePatterns": ["@types/"],
       "automerge": true
     }
   ],
