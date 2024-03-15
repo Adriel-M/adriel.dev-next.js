@@ -1,16 +1,8 @@
-import NextImage, { ImageProps, StaticImageData } from 'next/image'
+import NextImage, { ImageProps } from 'next/image'
+import test from '../public/static/images/cockroach-multiregion-demo/client.png'
 
 const Image = ({ ...rest }: ImageProps) => {
-  const src: StaticImageData = {
-    src: rest.src as string,
-    height: rest.height as number,
-    width: rest.width as number,
-  }
-  const newProps: ImageProps = {
-    ...rest,
-    src,
-  }
-  return <NextImage {...newProps} />
+  return <NextImage {...rest} src={test} />
 }
 
 export default Image
