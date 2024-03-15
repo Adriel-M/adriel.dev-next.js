@@ -5,7 +5,6 @@ import path from 'path'
 // Remark packages
 import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
-import remarkMath from 'remark-math'
 import stripMarkdown from 'strip-markdown'
 import {
   remarkExtractFrontmatter,
@@ -16,7 +15,6 @@ import {
 // Rehype packages
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypeKatex from 'rehype-katex'
 import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypePresetMinify from 'rehype-preset-minify'
@@ -221,13 +219,7 @@ export default makeSource({
   documentTypes: [Blog, Authors, Projects],
   mdx: {
     cwd: process.cwd(),
-    remarkPlugins: [
-      remarkExtractFrontmatter,
-      remarkGfm,
-      remarkCodeTitles,
-      remarkMath,
-      remarkImgToJsx,
-    ],
+    remarkPlugins: [remarkExtractFrontmatter, remarkGfm, remarkCodeTitles, remarkImgToJsx],
     rehypePlugins: [
       rehypeSlug,
       [
@@ -240,7 +232,6 @@ export default makeSource({
           content: icon,
         },
       ],
-      rehypeKatex,
       [rehypeCitation, { path: path.join(root, 'data') }],
       [rehypePrismPlus, { defaultLanguage: 'js', ignoreMissing: true }],
       rehypePresetMinify,
