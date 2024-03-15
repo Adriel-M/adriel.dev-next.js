@@ -14,7 +14,8 @@
     },
     {
       "matchDepTypes": ["devDependencies"],
-      "matchPackagePatterns": ["@types/"],
+      "matchPackageNames": ["@types/react", "@types/node"],
+      "schedule": "on saturday",
       "automerge": true
     }
   ],
