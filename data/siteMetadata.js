@@ -8,7 +8,6 @@ const siteMetadata = {
   theme: 'light', // system, dark or light
   siteUrl: 'https://adriel.dev',
   siteRepo: 'https://github.com/Adriel-M/adriel.dev',
-  siteLogo: '/static/images/logo.png',
   socialBanner: '/static/images/twitter-card.png',
   github: 'https://github.com/Adriel-M',
   linkedin: 'https://www.linkedin.com/in/adrielmartinez/',
