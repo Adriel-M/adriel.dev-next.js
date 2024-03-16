@@ -1,7 +1,7 @@
 import { CoreContent } from 'pliny/utils/contentlayer'
 import { Blog } from 'contentlayer/generated'
-import { getListLayoutsProps } from '@/core/PagingUtils'
 import ListLayoutWithTags from '@/layouts/ListLayoutWithTags'
+import { getTotalPages, POSTS_PAGE_POST_COUNT } from '@/core/PagingUtils'
 
 interface PagedListLayoutWithTagsProps {
   posts: CoreContent<Blog>[]
@@ -14,7 +14,14 @@ export default function PagedListLayoutWithTags({
   title,
   pageNumber,
 }: PagedListLayoutWithTagsProps) {
-  const { displayPosts, pagination } = getListLayoutsProps(posts, pageNumber)
+  const displayPosts = posts.slice(
+    POSTS_PAGE_POST_COUNT * (pageNumber - 1),
+    POSTS_PAGE_POST_COUNT * pageNumber
+  )
+  const pagination = {
+    currentPage: pageNumber,
+    totalPages: getTotalPages(posts.length),
+  }
 
   return (
     <ListLayoutWithTags

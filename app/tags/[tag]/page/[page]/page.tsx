@@ -1,6 +1,6 @@
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
-import { getTotalPagesFromPostSize } from '@/core/PagingUtils'
+import { getTotalPages } from '@/core/PagingUtils'
 import PagedListLayoutWithTags from '@/layouts/PagedListLayoutWithTags'
 import { slug } from 'github-slugger'
 import tagData from '../../../../tag-data.json'
@@ -16,7 +16,7 @@ export function generateStaticParams() {
   const entries: TagAndPage[] = []
 
   for (const tag of tags) {
-    const numberOfPages = getTotalPagesFromPostSize(tagCounts[tag])
+    const numberOfPages = getTotalPages(tagCounts[tag])
 
     for (let i = 0; i < numberOfPages; i++) {
       entries.push({

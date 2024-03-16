@@ -11,8 +11,11 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import tagData from 'app/tag-data.json'
 import { compareTagsByCountThenAlpha } from '@/core/utils'
-import { PaginationProps } from '@/core/PagingUtils'
 
+export interface PaginationProps {
+  totalPages: number
+  currentPage: number
+}
 interface ListLayoutWithTagsProps {
   posts: CoreContent<Blog>[]
   title: string
