@@ -99,10 +99,9 @@ const generateFeedObject = (config, posts, tagName = '') => {
 }
 
 function generateFeed(config, allBlogs) {
-  const publishPosts = allBlogs.filter((post) => post.draft !== true)
   // RSS for blog post
-  if (publishPosts.length > 0) {
-    const feedObject = generateFeedObject(config, sortPosts(publishPosts))
+  if (allBlogs.length > 0) {
+    const feedObject = generateFeedObject(config, sortPosts(allBlogs))
     const feedFileWriter = new FeedFileWriter(path.join('public'), feedObject)
 
     feedFileWriter.writeRssFile()
@@ -110,7 +109,7 @@ function generateFeed(config, allBlogs) {
     feedFileWriter.writeJsonFile()
   }
 
-  if (publishPosts.length > 0) {
+  if (allBlogs.length > 0) {
     for (const tag of Object.keys(tagData)) {
       const filteredPosts = allBlogs.filter((post) => post.tags.map((t) => slug(t)).includes(tag))
       const feedObject = generateFeedObject(config, filteredPosts, tag)
