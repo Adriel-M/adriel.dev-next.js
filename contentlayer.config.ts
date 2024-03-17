@@ -9,8 +9,8 @@ import stripMarkdown from 'strip-markdown'
 import {
   remarkExtractFrontmatter,
   remarkCodeTitles,
-  remarkImgToJsx,
   extractTocHeadings,
+  ImageNode,
 } from 'pliny/mdx-plugins/index.js'
 // Rehype packages
 import rehypeSlug from 'rehype-slug'
@@ -23,6 +23,11 @@ import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 import nlp from 'compromise'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 import octicons from '@primer/octicons'
+
+import { Parent, Node } from 'unist'
+import { visit } from 'unist-util-visit'
+import { sync as sizeOf } from 'probe-image-size'
+import fs from 'fs'
 
 const root = process.cwd()
 const isProduction = process.env.NODE_ENV === 'production'
@@ -213,6 +218,41 @@ const icon = fromHtmlIsomorphic(
   `,
   { fragment: true }
 )
+
+function remarkImgToJsx() {
+  return (tree: Node) => {
+    visit(
+      tree,
+      // only visit p tags that contain an img element
+      (node: Parent): node is Parent =>
+        node.type === 'paragraph' && node.children.some((n) => n.type === 'image'),
+      (node: Parent) => {
+        const imageNodeIndex = node.children.findIndex((n) => n.type === 'image')
+        const imageNode = node.children[imageNodeIndex] as ImageNode
+
+        // only local files
+        console.log('imageNode', imageNode.url)
+        console.log('imageNodeAlt', imageNode.alt)
+        if (fs.existsSync(`${process.cwd()}${imageNode.url}`)) {
+          const dimensions = sizeOf(fs.readFileSync(`${process.cwd()}${imageNode.url}`))
+
+          // Convert original node to next/image
+          ;(imageNode.type = 'mdxJsxFlowElement'),
+            (imageNode.name = 'Image'),
+            (imageNode.attributes = [
+              { type: 'mdxJsxAttribute', name: 'alt', value: imageNode.alt },
+              { type: 'mdxJsxAttribute', name: 'src', value: imageNode.url },
+              { type: 'mdxJsxAttribute', name: 'width', value: dimensions!.width },
+              { type: 'mdxJsxAttribute', name: 'height', value: dimensions!.height },
+            ])
+          // Change node type from p to div to avoid nesting error
+          node.type = 'div'
+          node.children[imageNodeIndex] = imageNode
+        }
+      }
+    )
+  }
+}
 
 export default makeSource({
   contentDirPath: 'data',
