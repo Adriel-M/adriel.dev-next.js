@@ -9,7 +9,6 @@ import stripMarkdown from 'strip-markdown'
 import {
   remarkExtractFrontmatter,
   remarkCodeTitles,
-  remarkImgToJsx,
   extractTocHeadings,
 } from 'pliny/mdx-plugins/index.js'
 // Rehype packages
@@ -23,6 +22,7 @@ import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 import nlp from 'compromise'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 import octicons from '@primer/octicons'
+import { remarkImgToJsx } from './core/RemarkUtils'
 
 const root = process.cwd()
 const isProduction = process.env.NODE_ENV === 'production'
