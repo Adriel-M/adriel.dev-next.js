@@ -231,8 +231,6 @@ function remarkImgToJsx() {
         const imageNode = node.children[imageNodeIndex] as ImageNode
 
         // only local files
-        console.log('imageNode', imageNode.url)
-        console.log('imageNodeAlt', imageNode.alt)
         if (fs.existsSync(`${process.cwd()}${imageNode.url}`)) {
           const dimensions = sizeOf(fs.readFileSync(`${process.cwd()}${imageNode.url}`))
 
