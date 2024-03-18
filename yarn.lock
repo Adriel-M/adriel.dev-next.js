@@ -4907,11 +4907,11 @@ __metadata:
   linkType: hard
 
 "@swc/helpers@npm:^0.5.0":
-  version: 0.5.6
-  resolution: "@swc/helpers@npm:0.5.6"
+  version: 0.5.7
+  resolution: "@swc/helpers@npm:0.5.7"
   dependencies:
     tslib: "npm:^2.4.0"
-  checksum: 10/16f0a18367b1248317dcc3e5f32411da1a2906f983f4f072e394dfed37523385bc4d7bf71bab204cc8b3875c024a91421dd5c1f9c5bad1b1172fcb50aa2ec96f
+  checksum: 10/f9c4cbd2d59ef86dbe9f955651f1d49561cd897ca113d713f370853ebcc44841712b9b4c674508a314cceadc2ef27cdc0979b36cbb3af8b26b727e345ffe1f2e
   languageName: node
   linkType: hard
 
