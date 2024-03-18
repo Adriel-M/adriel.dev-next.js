@@ -46,5 +46,7 @@ export default function TagPage({ params }: { params: { tag: string } }) {
     sortPosts(allBlogs.filter((post) => post.tags && post.tags.map((t) => slug(t)).includes(tag)))
   )
 
-  return <PagedListLayoutWithTags posts={filteredPosts} title={title} pageNumber={1} />
+  return (
+    <PagedListLayoutWithTags posts={filteredPosts} title={title} pageNumber={1} currentTag={tag} />
+  )
 }

@@ -8,12 +8,14 @@ interface PagedListLayoutWithTagsProps {
   posts: CoreContent<Blog>[]
   title: string
   pageNumber: number
+  currentTag?: string
 }
 
 export default function PagedListLayoutWithTags({
   posts,
   title,
   pageNumber,
+  currentTag,
 }: PagedListLayoutWithTagsProps) {
   const totalPages = getTotalPages(posts.length)
 
@@ -25,9 +27,18 @@ export default function PagedListLayoutWithTags({
     POSTS_PAGE_POST_COUNT * (pageNumber - 1),
     POSTS_PAGE_POST_COUNT * pageNumber
   )
+
+  let basePath: string
+
+  if (currentTag) {
+    basePath = `/tags/${currentTag}`
+  } else {
+    basePath = '/posts'
+  }
   const pagination = {
     currentPage: pageNumber,
     totalPages: totalPages,
+    basePath,
   }
 
   return (
@@ -36,6 +47,7 @@ export default function PagedListLayoutWithTags({
       initialDisplayPosts={displayPosts}
       pagination={pagination}
       title={title}
+      currentTag={currentTag}
     />
   )
 }
