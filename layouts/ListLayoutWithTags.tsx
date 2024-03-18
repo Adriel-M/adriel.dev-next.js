@@ -1,7 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-'use client'
-
-import { usePathname } from 'next/navigation'
 import { slug } from 'github-slugger'
 import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
@@ -15,41 +11,16 @@ import { compareTagsByCountThenAlpha } from '@/core/utils'
 export interface PaginationProps {
   totalPages: number
   currentPage: number
+  basePath: string
 }
 interface ListLayoutWithTagsProps {
   posts: CoreContent<Blog>[]
   title: string
   initialDisplayPosts?: CoreContent<Blog>[]
   pagination?: PaginationProps
+  currentTag?: string
 }
-
-const getBasePath = (pathname: string): string => {
-  const paths: string[] = []
-  const split = pathname.split('/')
-
-  for (const path of split) {
-    if (path === 'page') break
-
-    if (path) {
-      paths.push(path)
-    }
-  }
-
-  return paths.join('/')
-}
-
-const getCurrentTag = (pathname: string): string => {
-  const split = pathname.split('/')
-
-  // actual tag appears right after the tags path
-  const tagIndex = split.indexOf('tags') + 1
-
-  return split[tagIndex]
-}
-
-function Pagination({ totalPages, currentPage }: PaginationProps) {
-  const pathname = usePathname()
-  const basePath = getBasePath(pathname)
+function Pagination({ totalPages, currentPage, basePath }: PaginationProps) {
   const prevPage = currentPage - 1 > 0
   const nextPage = currentPage + 1 <= totalPages
 
@@ -64,7 +35,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
         {prevPage && (
           <Link
             className="hover:text-primary-500"
-            href={currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`}
+            href={currentPage - 1 === 1 ? basePath : `${basePath}/page/${currentPage - 1}`}
             rel="prev"
             scroll={false}
           >
@@ -82,7 +53,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
         {nextPage && (
           <Link
             className="hover:text-primary-500"
-            href={`/${basePath}/page/${currentPage + 1}`}
+            href={`${basePath}/page/${currentPage + 1}`}
             rel="next"
             scroll={false}
           >
@@ -94,24 +65,29 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   )
 }
 
-const LINK_CURRENT_PAGE = 'text-primary-500 hover:text-primary-600'
-const LINK_NOT_CURRENT_PAGE = 'text-gray-700 hover:text-primary-500'
+const ON_CURRENT_PAGE = 'text-primary-500 hover:text-primary-600'
+const NOT_CURRENT_PAGE = 'text-gray-700 hover:text-primary-500'
 
 export default function ListLayoutWithTags({
   posts,
   title,
   initialDisplayPosts = [],
   pagination,
+  currentTag,
 }: ListLayoutWithTagsProps) {
-  const pathname = usePathname()
   const tagCounts = tagData as Record<string, number>
   const tagKeys = Object.keys(tagCounts)
   const sortedTags = tagKeys.sort(compareTagsByCountThenAlpha(tagCounts))
-  const currentTag = getCurrentTag(pathname)
 
   const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
 
-  const allPostCss = pathname.startsWith('/posts') ? LINK_CURRENT_PAGE : LINK_NOT_CURRENT_PAGE
+  let allPostsCss: string
+
+  if (currentTag) {
+    allPostsCss = NOT_CURRENT_PAGE
+  } else {
+    allPostsCss = ON_CURRENT_PAGE
+  }
 
   return (
     <>
@@ -124,12 +100,12 @@ export default function ListLayoutWithTags({
         <div className="flex sm:space-x-24">
           <div className="shadow-md/70/40 hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded bg-gray-50 pt-5 sm:flex">
             <div className="px-6 py-4">
-              <Link href={`/posts`} className={`${allPostCss} font-bold uppercase`}>
+              <Link href={`/posts`} className={`${allPostsCss} font-bold uppercase`}>
                 All Posts
               </Link>
               <ul>
                 {sortedTags.map((t) => {
-                  const tagCss = currentTag === slug(t) ? LINK_CURRENT_PAGE : LINK_NOT_CURRENT_PAGE
+                  const tagCss = currentTag === slug(t) ? ON_CURRENT_PAGE : NOT_CURRENT_PAGE
                   return (
                     <li key={t} className="my-3">
                       <Link
@@ -179,9 +155,7 @@ export default function ListLayoutWithTags({
                 )
               })}
             </ul>
-            {pagination && pagination.totalPages > 1 && (
-              <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
-            )}
+            {pagination && pagination.totalPages > 1 && <Pagination {...pagination} />}
           </div>
         </div>
       </div>
