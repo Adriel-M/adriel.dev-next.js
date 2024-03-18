@@ -1,7 +1,6 @@
 import 'css/tailwind.css'
 import 'css/post-layout.css'
 
-import { JetBrains_Mono } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import Header from '@/components/Header'
 import SectionContainer from '@/components/SectionContainer'
@@ -10,13 +9,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { Metadata } from 'next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { KBarConfig, KBarSearchProvider } from 'pliny/search/KBar'
-
-const jetbrains_mono = JetBrains_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: '500',
-  variable: '--font-space-jebtrains-mono',
-})
+import fonts from './fonts'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteMetadata.siteUrl),
@@ -65,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang={siteMetadata.language}
-      className={`${jetbrains_mono.variable} scroll-smooth`}
+      className={`${fonts.className} scroll-smooth`}
       suppressHydrationWarning
     >
       <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />
