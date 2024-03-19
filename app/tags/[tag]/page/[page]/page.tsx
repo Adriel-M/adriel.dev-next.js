@@ -9,6 +9,7 @@ interface TagAndPage {
   tag: string
   page: string
 }
+export const dynamicParams = false
 
 export function generateStaticParams() {
   const tagCounts = tagData as Record<string, number>

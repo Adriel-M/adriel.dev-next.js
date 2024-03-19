@@ -3,6 +3,8 @@ import { allBlogs } from 'contentlayer/generated'
 import { getTotalPages } from '@/core/PagingUtils'
 import PagedListLayoutWithTags from '@/layouts/PagedListLayoutWithTags'
 
+export const dynamicParams = false
+
 export const generateStaticParams = async () => {
   const totalPages = getTotalPages(allBlogs.length)
   return Array.from({ length: totalPages }, (_, i) => ({ page: (i + 1).toString() }))

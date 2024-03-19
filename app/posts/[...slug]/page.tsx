@@ -8,7 +8,6 @@ import { allBlogs } from 'contentlayer/generated'
 import PostSimple from '@/layouts/PostSimple'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
-import { notFound } from 'next/navigation'
 
 export async function generateMetadata({
   params,
@@ -54,6 +53,8 @@ export async function generateMetadata({
   }
 }
 
+export const dynamicParams = false
+
 export const generateStaticParams = async () => {
   return allBlogs.map((p) => ({ slug: p.slug.split('/') }))
 }
@@ -63,9 +64,6 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
   // Filter out drafts in production
   const sortedCoreContents = allCoreContent(sortPosts(allBlogs))
   const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug)
-  if (postIndex === -1) {
-    return notFound()
-  }
 
   const prev = sortedCoreContents[postIndex + 1]
   const next = sortedCoreContents[postIndex - 1]
