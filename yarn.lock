@@ -13908,6 +13908,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"next-compose-plugins@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "next-compose-plugins@npm:2.2.1"
+  checksum: 10/e3c8b26617534d5eee06338c5d17779af1775830174e3640a56dc63ffcedfd6260c9dc0638b6d83ea24349c06cffe19b09b0831227ec0009f3f580332d0129a8
+  languageName: node
+  linkType: hard
+
 "next-contentlayer@npm:0.3.4, next-contentlayer@npm:^0.3.4":
   version: 0.3.4
   resolution: "next-contentlayer@npm:0.3.4"
@@ -17580,6 +17587,7 @@ __metadata:
     husky: "npm:^9.0.0"
     lint-staged: "npm:^15.2.0"
     next: "npm:14.1.3"
+    next-compose-plugins: "npm:^2.2.1"
     next-contentlayer: "npm:0.3.4"
     pliny: "npm:0.1.7"
     postcss: "npm:^8.4.24"

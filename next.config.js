@@ -1,3 +1,4 @@
+const withPlugins = require('next-compose-plugins');
 const { withContentlayer } = require('next-contentlayer')
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
@@ -52,57 +53,56 @@ const securityHeaders = [
   },
 ]
 
+const nextConfig = {
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  eslint: {
+    dirs: ['app', 'components', 'layouts', 'scripts'],
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/admin',
+        destination: '/admin/index.html',
+      },
+      {
+        source: '/stats/:match*',
+        destination: 'https://analytics.adriel.dev/:match*',
+      },
+    ]
+  },
+  async redirects() {
+    return [
+      {
+        source: '/blog',
+        destination: '/posts',
+        permanent: true,
+      },
+      {
+        source: '/blog/:path',
+        destination: '/posts/:path',
+        permanent: true,
+      },
+    ]
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders,
+      },
+    ]
+  },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    })
+
+    return config
+  },
+}
+
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
  **/
-module.exports = () => {
-  const plugins = [withContentlayer, withBundleAnalyzer]
-  return plugins.reduce((acc, next) => next(acc), {
-    pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-    eslint: {
-      dirs: ['app', 'components', 'layouts', 'scripts'],
-    },
-    async rewrites() {
-      return [
-        {
-          source: '/admin',
-          destination: '/admin/index.html',
-        },
-        {
-          source: '/stats/:match*',
-          destination: 'https://analytics.adriel.dev/:match*',
-        },
-      ]
-    },
-    async redirects() {
-      return [
-        {
-          source: '/blog',
-          destination: '/posts',
-          permanent: true,
-        },
-        {
-          source: '/blog/:path',
-          destination: '/posts/:path',
-          permanent: true,
-        },
-      ]
-    },
-    async headers() {
-      return [
-        {
-          source: '/(.*)',
-          headers: securityHeaders,
-        },
-      ]
-    },
-    webpack: (config) => {
-      config.module.rules.push({
-        test: /\.svg$/,
-        use: ['@svgr/webpack'],
-      })
-
-      return config
-    },
-  })
-}
+module.exports = withPlugins([withContentlayer, withBundleAnalyzer], nextConfig)
