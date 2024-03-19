@@ -10,6 +10,7 @@ interface TagAndPage {
   page: string
 }
 export const dynamicParams = false
+
 export function generateStaticParams() {
   const tagCounts = tagData as Record<string, number>
   const tags = Object.keys(tagCounts)
