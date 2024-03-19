@@ -1,7 +1,6 @@
 import { defineDocumentType, ComputedFields, makeSource } from 'contentlayer/source-files'
 import { writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
-import path from 'path'
 // Remark packages
 import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
@@ -14,7 +13,6 @@ import {
 // Rehype packages
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypePresetMinify from 'rehype-preset-minify'
 import siteMetadata from './data/siteMetadata'
@@ -23,8 +21,6 @@ import nlp from 'compromise'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 import octicons from '@primer/octicons'
 import { remarkImgToJsx } from './core/RemarkUtils'
-
-const root = process.cwd()
 
 const computedFields: ComputedFields = {
   slug: {
@@ -230,7 +226,6 @@ export default makeSource({
           content: icon,
         },
       ],
-      [rehypeCitation, { path: path.join(root, 'data') }],
       [rehypePrismPlus, { defaultLanguage: 'js', ignoreMissing: true }],
       rehypePresetMinify,
     ],
