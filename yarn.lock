@@ -3733,11 +3733,11 @@ __metadata:
   linkType: hard
 
 "@primer/octicons@npm:^19.8.0":
-  version: 19.8.0
-  resolution: "@primer/octicons@npm:19.8.0"
+  version: 19.9.0
+  resolution: "@primer/octicons@npm:19.9.0"
   dependencies:
     object-assign: "npm:^4.1.1"
-  checksum: 10/f1fb2bb85e8ff298c3c670c37395a9d3fe17339999bb12e84418f502c426423049395866a9cb5e616faf1b2473537f997c0125f5215235e9c7c3b03d69b0fad2
+  checksum: 10/1f6d65f4952092cc4489ad50391a8d24a74d9974d171964fea2e37f6d4340de8937fd8fba2e369fb50c005ad75739bbf56f6ef4c4ab1b205bfdab3db9b147b78
   languageName: node
   linkType: hard
 
