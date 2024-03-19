@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-const ScrollTopAndComment = () => {
+const ScrollTop = () => {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const ScrollTopAndComment = () => {
         aria-label="Scroll To Top"
         onClick={handleScrollTop}
         className="rounded-full bg-gray-200 p-2 text-gray-500 transition-all hover:bg-gray-300"
+        data-umami-event="ScrollTop Button"
       >
         <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
           <path
@@ -40,4 +41,4 @@ const ScrollTopAndComment = () => {
   )
 }
 
-export default ScrollTopAndComment
+export default ScrollTop

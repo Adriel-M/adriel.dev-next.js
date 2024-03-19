@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
-import ScrollTopAndComment from '@/components/ScrollTopAndComment'
+import ScrollTop from '@/components/ScrollTop'
 
 interface LayoutProps {
   title: string
@@ -11,7 +11,7 @@ interface LayoutProps {
 export default function PageSimple({ title, children }: LayoutProps) {
   return (
     <SectionContainer>
-      <ScrollTopAndComment />
+      <ScrollTop />
       <article>
         <div>
           <header>
