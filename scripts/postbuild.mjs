@@ -1,7 +1,10 @@
 import rss from './rss.mjs'
+import images from '../core/Images'
 
-async function postbuild() {
-  await rss()
+function postbuild() {
+  rss()
+  console.log('postbuild')
+  console.log(images)
 }
 
 postbuild()

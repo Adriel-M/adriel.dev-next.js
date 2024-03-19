@@ -71,6 +71,7 @@ const nextConfig = {
     ]
   },
   async redirects() {
+    console.log('redirects')
     return [
       {
         source: '/blog',
