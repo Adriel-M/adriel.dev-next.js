@@ -26,10 +26,6 @@ const computedFields: ComputedFields = {
     type: 'string',
     resolve: (doc) => doc._raw.flattenedPath,
   },
-  filePath: {
-    type: 'string',
-    resolve: (doc) => doc._raw.sourceFilePath,
-  },
 }
 
 /**
