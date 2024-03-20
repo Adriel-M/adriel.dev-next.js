@@ -18,7 +18,6 @@ const importFromFolder = (
 }
 
 const getImages = () => {
-  console.log('getImages')
   const keyToModule = importFromFolder(require.context('../images', true, /\.(png|jpe?g|svg)$/))
   const keyToPath: { [key: string]: string } = {}
 
