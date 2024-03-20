@@ -175,7 +175,6 @@ export const Authors = defineDocumentType(() => ({
   fields: {
     name: { type: 'string', required: true },
   },
-  computedFields,
 }))
 
 export const Projects = defineDocumentType(() => ({
