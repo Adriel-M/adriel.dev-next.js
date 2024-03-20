@@ -5,7 +5,7 @@ import siteMetadata from '@/data/siteMetadata'
 const SearchButton = () => {
   if (siteMetadata.search && siteMetadata.search.provider === 'kbar') {
     return (
-      <KBarButton aria-label="Search">
+      <KBarButton aria-label="Search" data-umami-event="Search Button">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
