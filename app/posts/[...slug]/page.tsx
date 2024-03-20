@@ -78,7 +78,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(post.structuredData) }}
       />
       <PostSimple content={mainContent} next={next} prev={prev}>
-        <MDXLayoutRenderer code={post.body.code} components={components} toc={post.toc} />
+        <MDXLayoutRenderer code={post.body.code} components={components} />
       </PostSimple>
     </>
   )

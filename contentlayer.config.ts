@@ -4,11 +4,7 @@ import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/sou
 import { writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
-import {
-  extractTocHeadings,
-  remarkCodeTitles,
-  remarkExtractFrontmatter,
-} from 'pliny/mdx-plugins/index.js'
+import { remarkCodeTitles, remarkExtractFrontmatter } from 'pliny/mdx-plugins/index.js'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePresetMinify from 'rehype-preset-minify'
@@ -34,7 +30,6 @@ const computedFields: ComputedFields = {
     type: 'string',
     resolve: (doc) => doc._raw.sourceFilePath,
   },
-  toc: { type: 'string', resolve: (doc) => extractTocHeadings(doc.body.raw) },
 }
 
 /**
