@@ -1,5 +1,5 @@
 import NextImage, { ImageProps } from 'next/image'
-import images from '@/core/Images'
+import images from '@/lib/Images'
 
 const Image = ({ ...rest }: ImageProps) => {
   let imageSrc = rest.src

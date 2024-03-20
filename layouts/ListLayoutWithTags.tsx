@@ -6,7 +6,7 @@ import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import tagData from 'app/tag-data.json'
-import { compareTagsByCountThenAlpha } from '@/core/utils'
+import { compareTagsByCountThenAlpha } from '@/lib/utils'
 
 export interface PaginationProps {
   totalPages: number

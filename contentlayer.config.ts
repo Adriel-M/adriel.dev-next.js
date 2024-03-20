@@ -20,7 +20,7 @@ import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 import nlp from 'compromise'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 import octicons from '@primer/octicons'
-import { remarkImgToJsx } from './core/RemarkUtils'
+import { remarkImgToJsx } from './lib/RemarkUtils'
 
 const computedFields: ComputedFields = {
   slug: {

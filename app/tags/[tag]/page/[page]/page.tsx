@@ -1,6 +1,6 @@
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
-import { getTotalPages } from '@/core/PagingUtils'
+import { getTotalPages } from '@/lib/PagingUtils'
 import PagedListLayoutWithTags from '@/layouts/PagedListLayoutWithTags'
 import { slug } from 'github-slugger'
 import tagData from '../../../../tag-data.json'
