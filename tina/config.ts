@@ -21,8 +21,8 @@ export default defineConfig({
   },
   media: {
     tina: {
-      mediaRoot: 'static/images',
-      publicFolder: 'public',
+      mediaRoot: 'images',
+      publicFolder: '',
     },
   },
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
