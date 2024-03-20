@@ -1,10 +1,11 @@
-import { slug } from 'github-slugger'
-import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
-import siteMetadata from '@/data/siteMetadata'
-import { allBlogs } from 'contentlayer/generated'
-import tagData from 'app/tag-data.json'
 import { genPageMetadata } from 'app/seo'
+import tagData from 'app/tag-data.json'
+import { allBlogs } from 'contentlayer/generated'
+import { slug } from 'github-slugger'
 import { Metadata } from 'next'
+import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
+
+import siteMetadata from '@/data/siteMetadata'
 import PagedListLayoutWithTags from '@/layouts/PagedListLayoutWithTags'
 
 export async function generateMetadata({ params }: { params: { tag: string } }): Promise<Metadata> {

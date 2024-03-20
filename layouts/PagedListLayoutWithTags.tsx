@@ -1,5 +1,6 @@
-import { CoreContent } from 'pliny/utils/contentlayer'
 import { Blog } from 'contentlayer/generated'
+import { CoreContent } from 'pliny/utils/contentlayer'
+
 import ListLayoutWithTags from '@/layouts/ListLayoutWithTags'
 import { getTotalPages, POSTS_PAGE_POST_COUNT } from '@/lib/PagingUtils'
 

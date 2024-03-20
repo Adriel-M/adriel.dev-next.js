@@ -1,7 +1,8 @@
 import { ReactNode } from 'react'
+
 import PageTitle from '@/components/PageTitle'
-import SectionContainer from '@/components/SectionContainer'
 import ScrollTop from '@/components/ScrollTop'
+import SectionContainer from '@/components/SectionContainer'
 
 interface LayoutProps {
   title: string

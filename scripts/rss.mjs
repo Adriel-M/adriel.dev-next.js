@@ -1,11 +1,12 @@
-import { writeFileSync, mkdirSync } from 'fs'
-import path from 'path'
-import { slug } from 'github-slugger'
-import siteMetadata from '../data/siteMetadata.js'
-import tagData from '../app/tag-data.json' assert { type: 'json' }
-import { allBlogs } from '../.contentlayer/generated/index.mjs'
-import { sortPosts } from 'pliny/utils/contentlayer.js'
 import { Feed } from 'feed'
+import { mkdirSync, writeFileSync } from 'fs'
+import { slug } from 'github-slugger'
+import path from 'path'
+import { sortPosts } from 'pliny/utils/contentlayer.js'
+
+import { allBlogs } from '../.contentlayer/generated/index.mjs'
+import tagData from '../app/tag-data.json' assert { type: 'json' }
+import siteMetadata from '../data/siteMetadata.js'
 
 class FeedFileWriter {
   constructor(folderPath, feedObject) {

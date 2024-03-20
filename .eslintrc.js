@@ -7,7 +7,7 @@ module.exports = {
     node: true,
     es6: true,
   },
-  plugins: ['@typescript-eslint', 'unused-imports'],
+  plugins: ['@typescript-eslint', 'unused-imports', 'simple-import-sort'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
@@ -20,6 +20,8 @@ module.exports = {
   parserOptions: {
     project: true,
     tsconfigRootDir: __dirname,
+    sourceType: 'module',
+    ecmaVersion: 'latest',
   },
   rules: {
     'prettier/prettier': 'error',
@@ -49,5 +51,7 @@ module.exports = {
         argsIgnorePattern: '^_',
       },
     ],
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error'
   },
 }

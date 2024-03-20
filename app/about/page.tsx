@@ -1,11 +1,12 @@
-import { components } from '@/components/MDXComponents'
-import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { genPageMetadata } from 'app/seo'
-import PageSimple from '@/layouts/PageSimple'
-import { author } from '@/lib/AuthorInfo'
 import { MDXComponents } from 'mdx/types'
+import { MDXLayoutRenderer } from 'pliny/mdx-components'
+
+import { components } from '@/components/MDXComponents'
 import ObfuscatedEmail from '@/components/ObfuscatedEmail'
 import siteMetadata from '@/data/siteMetadata'
+import PageSimple from '@/layouts/PageSimple'
+import { author } from '@/lib/AuthorInfo'
 
 const title = 'About'
 export const metadata = genPageMetadata({ title: title })

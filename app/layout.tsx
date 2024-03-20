@@ -1,14 +1,16 @@
 import 'css/tailwind.css'
 import 'css/post-layout.css'
 
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Metadata } from 'next'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
+import { KBarConfig, KBarSearchProvider } from 'pliny/search/KBar'
+
+import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import SectionContainer from '@/components/SectionContainer'
-import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
-import { Metadata } from 'next'
-import { SpeedInsights } from '@vercel/speed-insights/next'
-import { KBarConfig, KBarSearchProvider } from 'pliny/search/KBar'
+
 import fonts from './fonts'
 
 export const metadata: Metadata = {

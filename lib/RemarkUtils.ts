@@ -1,8 +1,8 @@
-import { Parent, Node } from 'unist'
-import { visit } from 'unist-util-visit'
-import { sync as sizeOf } from 'probe-image-size'
 import fs from 'fs'
 import { ImageNode } from 'pliny/mdx-plugins/index.js'
+import { sync as sizeOf } from 'probe-image-size'
+import { Node, Parent } from 'unist'
+import { visit } from 'unist-util-visit'
 
 /**
  * MIT License

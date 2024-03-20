@@ -1,4 +1,5 @@
 import NextImage, { ImageProps } from 'next/image'
+
 import images from '@/lib/Images'
 
 const Image = ({ ...rest }: ImageProps) => {

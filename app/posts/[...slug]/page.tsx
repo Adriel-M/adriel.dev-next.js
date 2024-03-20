@@ -1,13 +1,14 @@
 import 'css/prism.css'
 
-import { components } from '@/components/MDXComponents'
-import { MDXLayoutRenderer } from 'pliny/mdx-components'
-import { allCoreContent, coreContent, sortPosts } from 'pliny/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
 import { allBlogs } from 'contentlayer/generated'
-import PostSimple from '@/layouts/PostSimple'
 import { Metadata } from 'next'
+import { MDXLayoutRenderer } from 'pliny/mdx-components'
+import { allCoreContent, coreContent, sortPosts } from 'pliny/utils/contentlayer'
+
+import { components } from '@/components/MDXComponents'
 import siteMetadata from '@/data/siteMetadata'
+import PostSimple from '@/layouts/PostSimple'
 
 export async function generateMetadata({
   params,

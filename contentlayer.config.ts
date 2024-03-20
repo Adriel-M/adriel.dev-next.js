@@ -1,25 +1,24 @@
-import { defineDocumentType, ComputedFields, makeSource } from 'contentlayer/source-files'
+import octicons from '@primer/octicons'
+import nlp from 'compromise'
+import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files'
 import { writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
-// Remark packages
+import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
+import {
+  extractTocHeadings,
+  remarkCodeTitles,
+  remarkExtractFrontmatter,
+} from 'pliny/mdx-plugins/index.js'
+import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypePresetMinify from 'rehype-preset-minify'
+import rehypePrismPlus from 'rehype-prism-plus'
+import rehypeSlug from 'rehype-slug'
 import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
 import stripMarkdown from 'strip-markdown'
-import {
-  remarkExtractFrontmatter,
-  remarkCodeTitles,
-  extractTocHeadings,
-} from 'pliny/mdx-plugins/index.js'
-// Rehype packages
-import rehypeSlug from 'rehype-slug'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypePrismPlus from 'rehype-prism-plus'
-import rehypePresetMinify from 'rehype-preset-minify'
+
 import siteMetadata from './data/siteMetadata'
-import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
-import nlp from 'compromise'
-import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
-import octicons from '@primer/octicons'
 import { remarkImgToJsx } from './lib/RemarkUtils'
 
 const computedFields: ComputedFields = {

@@ -1,4 +1,5 @@
 import { KBarButton } from 'pliny/search/KBarButton'
+
 import siteMetadata from '@/data/siteMetadata'
 
 const SearchButton = () => {

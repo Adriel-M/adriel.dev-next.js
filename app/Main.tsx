@@ -1,7 +1,8 @@
+import { formatDate } from 'pliny/utils/formatDate'
+
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
-import { formatDate } from 'pliny/utils/formatDate'
 import { FRONT_PAGE_POST_COUNT } from '@/lib/PagingUtils'
 
 export default function Home({ posts }) {
