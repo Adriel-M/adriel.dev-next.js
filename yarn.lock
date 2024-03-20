@@ -4861,17 +4861,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/forms@npm:^0.5.7":
-  version: 0.5.7
-  resolution: "@tailwindcss/forms@npm:0.5.7"
-  dependencies:
-    mini-svg-data-uri: "npm:^1.2.3"
-  peerDependencies:
-    tailwindcss: ">=3.0.0 || >= 3.0.0-alpha.1"
-  checksum: 10/74aea1776f5ce03d21e069f47680e3b472d8237dd5b9330e440e3c4f3a4c3d73f2fa27680998cdbd48176538273c5bc47efbd1c7eb9f71cff29504ab2158ceca
-  languageName: node
-  linkType: hard
-
 "@tailwindcss/line-clamp@npm:^0.3.1":
   version: 0.3.1
   resolution: "@tailwindcss/line-clamp@npm:0.3.1"
@@ -13600,15 +13589,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mini-svg-data-uri@npm:^1.2.3":
-  version: 1.4.4
-  resolution: "mini-svg-data-uri@npm:1.4.4"
-  bin:
-    mini-svg-data-uri: cli.js
-  checksum: 10/1336c2b00b6a72b0ce3cf942f7ab074faf463b941042fbe51d7a70be119c5d4223880aaa29584d5a804496ca1dda9b6fff7dd5aa284721907519b646192d8aaa
-  languageName: node
-  linkType: hard
-
 "minimatch@npm:9.0.3, minimatch@npm:^9.0.1":
   version: 9.0.3
   resolution: "minimatch@npm:9.0.3"
@@ -17568,7 +17548,6 @@ __metadata:
     "@next/bundle-analyzer": "npm:14.1.3"
     "@primer/octicons": "npm:^19.8.0"
     "@svgr/webpack": "npm:^8.0.1"
-    "@tailwindcss/forms": "npm:^0.5.7"
     "@tailwindcss/typography": "npm:^0.5.10"
     "@tinacms/cli": "npm:^1.5.39"
     "@types/mdx": "npm:^2.0.5"
