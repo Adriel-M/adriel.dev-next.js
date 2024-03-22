@@ -5,8 +5,8 @@
   "scripts": {
     "start": "next dev",
     "dev": "cross-env INIT_CWD=$PWD next dev",
-    "dev:with-tina": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"cross-env INIT_CWD=$PWD next dev\"",
-    "build": "yarn run build:conditionaltinacms && cross-env INIT_CWD=$PWD next build && cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/postbuild.mjs",
+    "dev:with-tina": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"next dev\"",
+    "build": "yarn run build:conditionaltinacms && next build && cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/postbuild.mjs",
     "build:tinacms": "tinacms build",
     "build:conditionaltinacms": "bash scripts/build-tinacms.sh",
     "serve": "next start",
