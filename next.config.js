@@ -1,4 +1,4 @@
-const withPlugins = require('next-compose-plugins');
+const withPlugins = require('next-compose-plugins')
 const { withContentlayer } = require('next-contentlayer')
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
@@ -8,7 +8,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' localhost:* cdn.jsdelivr.net;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' localhost:* cdn.jsdelivr.net snippet.meticulous.ai;
   style-src 'self' 'unsafe-inline' cdn.jsdelivr.net;
   img-src * blob: data:;
   connect-src *;
