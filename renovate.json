@@ -13,8 +13,9 @@
       "matchPackagePatterns": ["tinacms"]
     },
     {
+      "groupName": "Types dependencies",
       "matchDepTypes": ["devDependencies"],
-      "matchPackageNames": ["@types/react", "@types/node"],
+      "matchPackagePrefixes": ["@types/"],
       "schedule": "on saturday",
       "automerge": true
     }
