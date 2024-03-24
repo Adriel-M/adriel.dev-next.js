@@ -1,5 +1,4 @@
 import type { Blog } from 'contentlayer/generated'
-import { CoreContent } from 'pliny/utils/contentlayer'
 import { formatDate } from 'pliny/utils/formatDate'
 import { ReactNode } from 'react'
 
@@ -11,7 +10,7 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 
 interface LayoutProps {
-  content: CoreContent<Blog>
+  content: Blog
   children: ReactNode
   next?: { path: string; title: string; shortenedTitle: string }
   prev?: { path: string; title: string; shortenedTitle: string }

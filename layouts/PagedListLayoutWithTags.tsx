@@ -1,11 +1,10 @@
 import { Blog } from 'contentlayer/generated'
-import { CoreContent } from 'pliny/utils/contentlayer'
 
 import ListLayoutWithTags from '@/layouts/ListLayoutWithTags'
 import { getTotalPages, POSTS_PAGE_POST_COUNT } from '@/lib/PagingUtils'
 
 interface PagedListLayoutWithTagsProps {
-  posts: CoreContent<Blog>[]
+  posts: Blog[]
   title: string
   pageNumber: number
   currentTag?: string

@@ -1,7 +1,6 @@
 import tagData from 'app/tag-data.json'
 import type { Blog } from 'contentlayer/generated'
 import { slug } from 'github-slugger'
-import { CoreContent } from 'pliny/utils/contentlayer'
 import { formatDate } from 'pliny/utils/formatDate'
 
 import Link from '@/components/Link'
@@ -15,9 +14,9 @@ export interface PaginationProps {
   basePath: string
 }
 interface ListLayoutWithTagsProps {
-  posts: CoreContent<Blog>[]
+  posts: Blog[]
   title: string
-  initialDisplayPosts?: CoreContent<Blog>[]
+  initialDisplayPosts?: Blog[]
   pagination?: PaginationProps
   currentTag?: string
 }

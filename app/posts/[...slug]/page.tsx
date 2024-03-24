@@ -1,10 +1,9 @@
 import 'css/prism.css'
 
-import type { Blog } from 'contentlayer/generated'
 import { allBlogs } from 'contentlayer/generated'
 import { Metadata } from 'next'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
-import { allCoreContent, coreContent, sortPosts } from 'pliny/utils/contentlayer'
+import { sortPosts } from 'pliny/utils/contentlayer'
 
 import { components } from '@/components/MDXComponents'
 import siteMetadata from '@/data/siteMetadata'
@@ -62,14 +61,13 @@ export const generateStaticParams = async () => {
 
 export default async function Page({ params }: { params: { slug: string[] } }) {
   const slug = decodeURI(params.slug.join('/'))
-  // Filter out drafts in production
-  const sortedCoreContents = allCoreContent(sortPosts(allBlogs))
-  const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug)
 
-  const prev = sortedCoreContents[postIndex + 1]
-  const next = sortedCoreContents[postIndex - 1]
-  const post = allBlogs.find((p) => p.slug === slug) as Blog
-  const mainContent = coreContent(post)
+  const sortedPosts = sortPosts(allBlogs)
+  const postIndex = sortedPosts.findIndex((p) => p.slug === slug)
+
+  const prev = sortedPosts[postIndex + 1]
+  const next = sortedPosts[postIndex - 1]
+  const post = sortedPosts[postIndex]
 
   return (
     <>
@@ -77,7 +75,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(post.structuredData) }}
       />
-      <PostSimple content={mainContent} next={next} prev={prev}>
+      <PostSimple content={post} next={next} prev={prev}>
         <MDXLayoutRenderer code={post.body.code} components={components} />
       </PostSimple>
     </>

@@ -1,5 +1,5 @@
 import { allBlogs } from 'contentlayer/generated'
-import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
+import { sortPosts } from 'pliny/utils/contentlayer'
 
 import PagedListLayoutWithTags from '@/layouts/PagedListLayoutWithTags'
 import { getTotalPages } from '@/lib/PagingUtils'
@@ -12,7 +12,7 @@ export const generateStaticParams = async () => {
 }
 
 export default function Page({ params }: { params: { page: string } }) {
-  const posts = allCoreContent(sortPosts(allBlogs))
+  const posts = sortPosts(allBlogs)
   const pageNumber = parseInt(params.page as string)
 
   return <PagedListLayoutWithTags posts={posts} title="All Posts" pageNumber={pageNumber} />
