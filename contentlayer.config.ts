@@ -1,6 +1,6 @@
 import octicons from '@primer/octicons'
 import nlp from 'compromise'
-import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files'
+import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import { writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
@@ -16,17 +16,6 @@ import stripMarkdown from 'strip-markdown'
 
 import siteMetadata from './data/siteMetadata'
 import { remarkImgToJsx } from './lib/RemarkUtils'
-
-const computedFields: ComputedFields = {
-  slug: {
-    type: 'string',
-    resolve: (doc) => doc._raw.flattenedPath.replace(/^.+?(\/)/, ''),
-  },
-  path: {
-    type: 'string',
-    resolve: (doc) => doc._raw.flattenedPath,
-  },
-}
 
 /**
  * Count the occurrences of all tags across blog posts and write to json file
@@ -75,9 +64,9 @@ function removeFootnoteReferences(postBody: string): string {
   return postBody.replace(footnoteReferenceRegex, '')
 }
 
-const generateSummary = async (rawPostBody: string) => {
+const generateSummary = (rawPostBody: string) => {
   const noFootnoteReferences = removeFootnoteReferences(rawPostBody)
-  const strippedBody = String(await markdownStripper.process(noFootnoteReferences))
+  const strippedBody = String(markdownStripper.processSync(noFootnoteReferences))
   const sentences = nlp(strippedBody).sentences().json()
   let currentNumberOfWords = 0
   const output: string[] = []
@@ -128,7 +117,14 @@ export const Blog = defineDocumentType(() => ({
     summary: { type: 'string' },
   },
   computedFields: {
-    ...computedFields,
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/^.+?(\/)/, ''),
+    },
+    path: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath,
+    },
     structuredData: {
       type: 'json',
       resolve: (doc) => ({
@@ -150,7 +146,7 @@ export const Blog = defineDocumentType(() => ({
     },
     summary: {
       type: 'string',
-      resolve: async (doc) => {
+      resolve: (doc) => {
         if (doc.summary) {
           return doc.summary
         }
