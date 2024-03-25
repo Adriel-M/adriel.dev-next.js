@@ -4,7 +4,6 @@ import 'css/post-layout.css'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Metadata } from 'next'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
-import { KBarConfig, KBarSearchProvider } from 'pliny/search/KBar'
 
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
@@ -12,6 +11,7 @@ import SectionContainer from '@/components/SectionContainer'
 import siteMetadata from '@/data/siteMetadata'
 
 import fonts from './fonts'
+import { ThemeProviders } from './theme-providers'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteMetadata.siteUrl),
@@ -56,7 +56,6 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const searchConfig = siteMetadata.search as KBarConfig
   return (
     <html
       lang={siteMetadata.language}
@@ -76,15 +75,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-white text-black antialiased">
         <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
         <SpeedInsights />
-        <SectionContainer>
-          <div className="flex h-screen flex-col justify-between font-monospace">
-            <KBarSearchProvider kbarConfig={searchConfig.kbarConfig}>
+        <ThemeProviders>
+          <SectionContainer>
+            <div className="flex h-screen flex-col justify-between font-monospace">
               <Header />
               <main className="mb-auto">{children}</main>
-            </KBarSearchProvider>
-            <Footer />
-          </div>
-        </SectionContainer>
+              <Footer />
+            </div>
+          </SectionContainer>
+        </ThemeProviders>
       </body>
     </html>
   )

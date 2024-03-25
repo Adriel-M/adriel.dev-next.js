@@ -69,18 +69,18 @@ const siteMetadata = {
   //   },
   // },
   search: {
-    provider: 'kbar', // kbar or algolia
-    kbarConfig: {
-      searchDocumentsPath: 'search.json', // path to load documents to search
-    },
-    // provider: 'algolia',
-    // algoliaConfig: {
-    //   // The application ID provided by Algolia
-    //   appId: 'R2IYF7ETH7',
-    //   // Public API key: it is safe to commit it
-    //   apiKey: '599cec31baffa4868cae4e79f180729b',
-    //   indexName: 'docsearch',
+    // provider: 'kbar', // kbar or algolia
+    // kbarConfig: {
+    //   searchDocumentsPath: 'search.json', // path to load documents to search
     // },
+    provider: 'algolia',
+    algoliaConfig: {
+      // The application ID provided by Algolia
+      appId: '2F6FRLRIAP',
+      // Public API key: it is safe to commit it
+      apiKey: '518da9d8c62bdc48ab2a557b2f91d576',
+      indexName: 'adriel',
+    },
   },
   emailAddress: process.env.EMAIL_ADDRESS,
 }
