@@ -5,7 +5,6 @@ import 'pliny/search/algolia.css'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Metadata } from 'next'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
-import { SearchConfig, SearchProvider } from 'pliny/search'
 
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
@@ -80,10 +79,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProviders>
           <SectionContainer>
             <div className="flex h-screen flex-col justify-between font-monospace">
-              <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-                <Header />
-                <main className="mb-auto">{children}</main>
-              </SearchProvider>
+              <Header />
+              <main className="mb-auto">{children}</main>
               <Footer />
             </div>
           </SectionContainer>
