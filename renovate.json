@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
+  "extends": ["config:best-practices"],
   "packageRules": [
     {
       "matchDepTypes": ["devDependencies"],
@@ -10,7 +10,8 @@
     {
       "groupName": "TinaCMS",
       "groupSlug": "tinacms",
-      "matchPackagePatterns": ["tinacms"]
+      "matchPackagePatterns": ["tinacms"],
+      "automerge": true
     },
     {
       "groupName": "Types dependencies",
@@ -18,11 +19,15 @@
       "matchPackagePrefixes": ["@types/"],
       "schedule": "on saturday",
       "automerge": true
+    },
+    {
+      "matchDatasources": ["npm"],
+      "minimumReleaseAge": "3 days"
     }
   ],
   "lockFileMaintenance": {
     "enabled": true,
-    "automerge": true
+    "schedule": ["every 1 month on the first day of the month"]
   },
   "reviewers": ["Adriel-M"]
 }
