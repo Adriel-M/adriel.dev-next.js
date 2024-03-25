@@ -1,6 +1,5 @@
 import 'css/tailwind.css'
 import 'css/post-layout.css'
-import 'pliny/search/algolia.css'
 
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Metadata } from 'next'
