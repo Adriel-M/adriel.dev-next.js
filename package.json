@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
-    "@tinacms/cli": "^1.5.42",
+    "@tinacms/cli": "1.5.42",
     "@types/mdx": "^2.0.12",
     "@types/node": "^20.11.30",
     "@types/primer__octicons": "^19.6.3",
