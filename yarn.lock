@@ -13916,6 +13916,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"next-themes@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "next-themes@npm:0.3.0"
+  peerDependencies:
+    react: ^16.8 || ^17 || ^18
+    react-dom: ^16.8 || ^17 || ^18
+  checksum: 10/4285c4969eac517ad7addd773bcb71e7d14bc6c6e3b24eb97b80a6e06ac03fb6cb345e75dfb448156d14430d06289948eb8cfdeb52402ca7ce786093d01d2878
+  languageName: node
+  linkType: hard
+
 "next@npm:14.1.4":
   version: 14.1.4
   resolution: "next@npm:14.1.4"
@@ -17561,6 +17571,7 @@ __metadata:
     next: "npm:14.1.4"
     next-compose-plugins: "npm:^2.2.1"
     next-contentlayer: "npm:0.3.4"
+    next-themes: "npm:^0.3.0"
     pliny: "npm:0.1.7"
     postcss: "npm:^8.4.38"
     prettier: "npm:3.2.5"
