@@ -1,10 +1,11 @@
 import 'css/tailwind.css'
 import 'css/post-layout.css'
+import 'pliny/search/algolia.css'
 
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Metadata } from 'next'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
-import { KBarConfig, KBarSearchProvider } from 'pliny/search/KBar'
+import { SearchConfig, SearchProvider } from 'pliny/search'
 
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
@@ -56,7 +57,6 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const searchConfig = siteMetadata.search as KBarConfig
   return (
     <html
       lang={siteMetadata.language}
@@ -78,10 +78,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SpeedInsights />
         <SectionContainer>
           <div className="flex h-screen flex-col justify-between font-monospace">
-            <KBarSearchProvider kbarConfig={searchConfig.kbarConfig}>
+            <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
               <Header />
               <main className="mb-auto">{children}</main>
-            </KBarSearchProvider>
+            </SearchProvider>
             <Footer />
           </div>
         </SectionContainer>
