@@ -6,7 +6,7 @@ Here is an [RSS feed](https://adriel.dev/rss.xml) you can subscribe to for new p
 
 ## Licences
 
-Original license [MIT](https://github.com/timlrx/tailwind-nextjs-starter-blog/blob/main/LICENSE) © [Timothy Lin](https://www.timlrx.com)
+Original License [MIT](https://github.com/timlrx/tailwind-nextjs-starter-blog/blob/main/LICENSE) © [Timothy Lin](https://www.timlrx.com)
 
 Code License [MIT](LICENSE) © [Adriel Martinez](https://github.com/Adriel-M)
 
