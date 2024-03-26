@@ -11,7 +11,6 @@ import SectionContainer from '@/components/SectionContainer'
 import siteMetadata from '@/data/siteMetadata'
 
 import fonts from './fonts'
-import { ThemeProviders } from './theme-providers'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteMetadata.siteUrl),
@@ -75,15 +74,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-white text-black antialiased">
         <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
         <SpeedInsights />
-        <ThemeProviders>
-          <SectionContainer>
-            <div className="flex h-screen flex-col justify-between font-monospace">
-              <Header />
-              <main className="mb-auto">{children}</main>
-              <Footer />
-            </div>
-          </SectionContainer>
-        </ThemeProviders>
+        <SectionContainer>
+          <div className="flex h-screen flex-col justify-between font-monospace">
+            <Header />
+            <main className="mb-auto">{children}</main>
+            <Footer />
+          </div>
+        </SectionContainer>
       </body>
     </html>
   )
