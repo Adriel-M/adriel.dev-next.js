@@ -1,4 +1,4 @@
-import 'pliny/search/algolia.css'
+import './algolia.css'
 
 import { AlgoliaConfig, AlgoliaSearchProvider } from 'pliny/search/Algolia'
 import { AlgoliaButton } from 'pliny/search/AlgoliaButton'

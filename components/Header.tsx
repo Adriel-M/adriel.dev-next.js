@@ -4,7 +4,7 @@ import siteMetadata from '@/data/siteMetadata'
 
 import Link from './Link'
 import MobileNav from './MobileNav'
-import SearchButton from './SearchButton'
+import SearchButton from './search/SearchButton'
 
 const Header = () => {
   return (
