@@ -1,10 +1,10 @@
+import DocSearchButton from '@/components/search/DocSearchButton'
 import headerNavLinks from '@/data/headerNavLinks'
 import Logo from '@/data/logo.svg'
 import siteMetadata from '@/data/siteMetadata'
 
 import Link from './Link'
 import MobileNav from './MobileNav'
-import SearchButton from './search/SearchButton'
 
 const Header = () => {
   return (
@@ -31,7 +31,7 @@ const Header = () => {
             {link.title}
           </Link>
         ))}
-        <SearchButton />
+        <DocSearchButton />
         <MobileNav />
       </div>
     </header>
