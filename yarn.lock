@@ -1896,7 +1896,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docsearch/react@npm:^3.5.0":
+"@docsearch/react@npm:3.6.0, @docsearch/react@npm:^3.5.0":
   version: 3.6.0
   resolution: "@docsearch/react@npm:3.6.0"
   dependencies:
@@ -17537,6 +17537,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "tailwind-nextjs-starter-blog@workspace:."
   dependencies:
+    "@docsearch/react": "npm:3.6.0"
     "@next/bundle-analyzer": "npm:14.1.4"
     "@primer/octicons": "npm:^19.9.0"
     "@svgr/webpack": "npm:8.1.0"
