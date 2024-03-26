@@ -41,7 +41,9 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
           </header>
           <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:divide-y-0">
             <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose max-w-none pb-8 pt-10">{children}</div>
+              <div id="article-body" className="prose max-w-none pb-8 pt-10">
+                {children}
+              </div>
             </div>
             <footer>
               {tags && tags.length > 0 && (
