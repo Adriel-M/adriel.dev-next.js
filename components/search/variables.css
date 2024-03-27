@@ -61,3 +61,11 @@
     color: var(--docsearch-primary-color);
   }
 }
+
+.DocSearch-Hit-content-wrapper {
+  .DocSearch-Hit-title,
+  .DocSearch-Hit-path {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+}
