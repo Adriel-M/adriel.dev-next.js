@@ -5,7 +5,6 @@ import { writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 import { remarkCodeTitles, remarkExtractFrontmatter } from 'pliny/mdx-plugins/index.js'
-import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePresetMinify from 'rehype-preset-minify'
 import rehypePrismPlus from 'rehype-prism-plus'
@@ -36,19 +35,6 @@ function createTagCount(allBlogs) {
   })
   const orderedTagOutput = JSON.stringify(tagCount, Object.keys(tagCount).sort())
   writeFileSync('./app/tag-data.json', orderedTagOutput)
-}
-
-function createSearchIndex(allBlogs) {
-  if (
-    siteMetadata?.search?.provider === 'kbar' &&
-    siteMetadata.search.kbarConfig.searchDocumentsPath
-  ) {
-    writeFileSync(
-      `public/${siteMetadata.search.kbarConfig.searchDocumentsPath}`,
-      JSON.stringify(allCoreContent(sortPosts(allBlogs)))
-    )
-    console.log('Local search index generated...')
-  }
 }
 
 // exclude the image description as well
@@ -218,6 +204,5 @@ export default makeSource({
   onSuccess: async (importData) => {
     const { allBlogs } = await importData()
     createTagCount(allBlogs)
-    createSearchIndex(allBlogs)
   },
 })
