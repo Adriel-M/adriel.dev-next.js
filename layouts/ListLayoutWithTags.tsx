@@ -1,4 +1,3 @@
-import tagData from 'app/tag-data.json'
 import type { Blog } from 'contentlayer/generated'
 import { slug } from 'github-slugger'
 import { formatDate } from 'pliny/utils/formatDate'
@@ -6,6 +5,7 @@ import { formatDate } from 'pliny/utils/formatDate'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
+import { getTagCounts } from '@/lib/TagData'
 import { compareTagsByCountThenAlpha } from '@/lib/utils'
 
 export interface PaginationProps {
@@ -75,7 +75,7 @@ export default function ListLayoutWithTags({
   pagination,
   currentTag,
 }: ListLayoutWithTagsProps) {
-  const tagCounts = tagData as Record<string, number>
+  const tagCounts = getTagCounts()
   const tagKeys = Object.keys(tagCounts)
   const sortedTags = tagKeys.sort(compareTagsByCountThenAlpha(tagCounts))
 

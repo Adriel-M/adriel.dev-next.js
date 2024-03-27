@@ -4,8 +4,7 @@ import { sortPosts } from 'pliny/utils/contentlayer'
 
 import PagedListLayoutWithTags from '@/layouts/PagedListLayoutWithTags'
 import { getTotalPages } from '@/lib/PagingUtils'
-
-import tagData from '../../../../tag-data.json'
+import { getTagCounts } from '@/lib/TagData'
 
 interface TagAndPage {
   tag: string
@@ -14,7 +13,7 @@ interface TagAndPage {
 export const dynamicParams = false
 
 export function generateStaticParams() {
-  const tagCounts = tagData as Record<string, number>
+  const tagCounts = getTagCounts()
   const tags = Object.keys(tagCounts)
   const entries: TagAndPage[] = []
 

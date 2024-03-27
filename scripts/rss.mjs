@@ -5,8 +5,8 @@ import path from 'path'
 import { sortPosts } from 'pliny/utils/contentlayer.js'
 
 import { allBlogs } from '../.contentlayer/generated/index.mjs'
-import tagData from '../app/tag-data.json' assert { type: 'json' }
 import siteMetadata from '../data/siteMetadata.js'
+import { getTagCounts } from '../lib/TagData'
 
 class FeedFileWriter {
   constructor(folderPath, feedObject) {
@@ -111,7 +111,7 @@ function generateFeed(config, allBlogs) {
   }
 
   if (allBlogs.length > 0) {
-    for (const tag of Object.keys(tagData)) {
+    for (const tag of Object.keys(getTagCounts())) {
       const filteredPosts = allBlogs.filter((post) => post.tags.map((t) => slug(t)).includes(tag))
       const feedObject = generateFeedObject(config, filteredPosts, tag)
       const rssPath = path.join('public', 'tags', tag)

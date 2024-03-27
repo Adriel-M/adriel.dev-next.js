@@ -1,5 +1,4 @@
 import { genPageMetadata } from 'app/seo'
-import tagData from 'app/tag-data.json'
 import { allBlogs } from 'contentlayer/generated'
 import { slug } from 'github-slugger'
 import { Metadata } from 'next'
@@ -7,6 +6,7 @@ import { sortPosts } from 'pliny/utils/contentlayer'
 
 import siteMetadata from '@/data/siteMetadata'
 import PagedListLayoutWithTags from '@/layouts/PagedListLayoutWithTags'
+import { getTagCounts } from '@/lib/TagData'
 
 export async function generateMetadata({ params }: { params: { tag: string } }): Promise<Metadata> {
   const tag = decodeURI(params.tag)
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: { tag: string } }):
 export const dynamicParams = false
 
 export const generateStaticParams = async () => {
-  const tagCounts = tagData as Record<string, number>
+  const tagCounts = getTagCounts()
   const tagKeys = Object.keys(tagCounts)
   return tagKeys.map((tag) => ({
     tag: encodeURI(tag),

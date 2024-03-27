@@ -15,6 +15,7 @@ import stripMarkdown from 'strip-markdown'
 
 import siteMetadata from './data/siteMetadata'
 import { remarkImgToJsx } from './lib/RemarkUtils'
+import { reset } from './lib/TagData'
 
 /**
  * Count the occurrences of all tags across blog posts and write to json file
@@ -34,7 +35,7 @@ function createTagCount(allBlogs) {
     }
   })
   const orderedTagOutput = JSON.stringify(tagCount, Object.keys(tagCount).sort())
-  writeFileSync('./app/tag-data.json', orderedTagOutput)
+  writeFileSync('./tag-data.json', orderedTagOutput)
 }
 
 // exclude the image description as well
@@ -204,5 +205,6 @@ export default makeSource({
   onSuccess: async (importData) => {
     const { allBlogs } = await importData()
     createTagCount(allBlogs)
+    reset()
   },
 })
