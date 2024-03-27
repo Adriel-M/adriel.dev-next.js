@@ -47,6 +47,7 @@ const DocSearchButton = () => {
       transformItems={transformItems}
       hitComponent={Hit}
       disableUserPersonalization={true}
+      data-umami-event="Search Button"
     />
   )
 }
