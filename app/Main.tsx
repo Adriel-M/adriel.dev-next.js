@@ -3,7 +3,6 @@ import { formatDate } from 'pliny/utils/formatDate'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
-import { FRONT_PAGE_POST_COUNT } from '@/lib/PagingUtils'
 
 export default function Home({ posts }) {
   return (
@@ -17,7 +16,7 @@ export default function Home({ posts }) {
         </div>
         <ul className="divide-y divide-gray-200">
           {!posts.length && 'No posts found.'}
-          {posts.slice(0, FRONT_PAGE_POST_COUNT).map((post) => {
+          {posts.slice(0, siteMetadata.postsInFrontPageCount).map((post) => {
             const { slug, date, title, summary, tags, path } = post
             return (
               <li key={slug} className="py-12">
@@ -65,7 +64,7 @@ export default function Home({ posts }) {
           })}
         </ul>
       </div>
-      {posts.length > FRONT_PAGE_POST_COUNT && (
+      {posts.length > siteMetadata.postsInFrontPageCount && (
         <div className="flex justify-end text-base font-medium leading-6">
           <Link href="/posts" className="hover:text-primary-500" aria-label="All posts">
             All Posts &rarr;

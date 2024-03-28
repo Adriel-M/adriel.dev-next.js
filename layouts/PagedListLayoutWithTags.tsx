@@ -1,7 +1,8 @@
 import { Blog } from 'contentlayer/generated'
 
+import siteMetadata from '@/data/siteMetadata'
 import ListLayoutWithTags from '@/layouts/ListLayoutWithTags'
-import { getTotalPages, POSTS_PAGE_POST_COUNT } from '@/lib/PagingUtils'
+import { getTotalPages } from '@/lib/PagingUtils'
 
 interface PagedListLayoutWithTagsProps {
   posts: Blog[]
@@ -17,8 +18,8 @@ export default function PagedListLayoutWithTags({
   currentTag,
 }: PagedListLayoutWithTagsProps) {
   const displayPosts = posts.slice(
-    POSTS_PAGE_POST_COUNT * (pageNumber - 1),
-    POSTS_PAGE_POST_COUNT * pageNumber
+    siteMetadata.postsInPostsPageCount * (pageNumber - 1),
+    siteMetadata.postsInPostsPageCount * pageNumber
   )
 
   let basePath: string

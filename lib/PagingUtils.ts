@@ -1,6 +1,5 @@
-export const FRONT_PAGE_POST_COUNT = 5
-export const POSTS_PAGE_POST_COUNT = 5
+import siteMetadata from '@/data/siteMetadata'
 
 export const getTotalPages = (numberOfPosts: number): number => {
-  return Math.ceil(numberOfPosts / POSTS_PAGE_POST_COUNT)
+  return Math.ceil(numberOfPosts / siteMetadata.postsInPostsPageCount)
 }
