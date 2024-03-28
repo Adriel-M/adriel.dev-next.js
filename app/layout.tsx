@@ -75,7 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
         <SpeedInsights />
         <SectionContainer>
-          <div className="flex h-screen flex-col justify-between font-monospace">
+          <div className="flex h-screen flex-col justify-between">
             <Header />
             <main className="mb-auto">{children}</main>
             <Footer />

@@ -19,9 +19,6 @@ module.exports = {
         13: '3.25rem',
         14: '3.5rem',
       },
-      fontFamily: {
-        monospace: ['var(--font-space-jebtrains-mono)'],
-      },
       colors: {
         primary: colors.pink,
         gray: colors.gray,
