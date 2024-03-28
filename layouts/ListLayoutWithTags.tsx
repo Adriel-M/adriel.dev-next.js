@@ -6,7 +6,6 @@ import { formatDate } from 'pliny/utils/formatDate'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
-import { compareTagsByCountThenAlpha } from '@/lib/utils'
 
 export interface PaginationProps {
   totalPages: number
@@ -67,6 +66,14 @@ function Pagination({ totalPages, currentPage, basePath }: PaginationProps) {
 
 const ON_CURRENT_PAGE = 'text-primary-500 hover:text-primary-600'
 const NOT_CURRENT_PAGE = 'text-gray-700 hover:text-primary-500'
+
+function compareTagsByCountThenAlpha(
+  tagCounts: Record<string, number>
+): (a: string, b: string) => number {
+  return function (a, b): number {
+    return tagCounts[b] - tagCounts[a] || a.localeCompare(b)
+  }
+}
 
 export default function ListLayoutWithTags({
   posts,
