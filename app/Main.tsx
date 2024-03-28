@@ -1,10 +1,15 @@
+import { Blog } from 'contentlayer/generated'
 import { formatDate } from 'pliny/utils/formatDate'
 
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 
-export default function Home({ posts }) {
+interface Props {
+  posts: Blog[]
+}
+
+export default function Home({ posts }: Props) {
   return (
     <>
       <div className="divide-y divide-gray-200">

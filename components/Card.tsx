@@ -1,6 +1,12 @@
 import Link from './Link'
 
-const Card = ({ title, description, href }) => (
+interface Props {
+  title: string
+  description: string
+  href?: string
+}
+
+const Card = ({ title, description, href }: Props) => (
   <div className="md max-w-[544px] p-4 md:w-1/2">
     <div className="overflow-hidden rounded-md border-2 border-gray-200 border-opacity-60">
       <div className="p-6">

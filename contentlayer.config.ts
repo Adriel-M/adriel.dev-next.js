@@ -19,7 +19,7 @@ import { remarkImgToJsx } from './lib/RemarkUtils'
 /**
  * Count the occurrences of all tags across blog posts and write to json file
  */
-function createTagCount(allBlogs) {
+function createTagCount(allBlogs: { tags: string[] }[]) {
   const tagCount: Record<string, number> = {}
   allBlogs.forEach((file) => {
     if (file.tags) {
