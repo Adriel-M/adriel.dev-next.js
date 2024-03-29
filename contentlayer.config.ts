@@ -9,9 +9,8 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePresetMinify from 'rehype-preset-minify'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypeSlug from 'rehype-slug'
-import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
-import stripMarkdown from 'strip-markdown'
+import removeMd from 'remove-markdown'
 
 import siteMetadata from './data/siteMetadata'
 import remarkImgToJsx from './lib/remarkPlugins/RemarkImgToJsx'
@@ -37,11 +36,7 @@ function createTagCount(allBlogs: { tags: string[] }[]) {
   writeFileSync('./app/tag-data.json', orderedTagOutput)
 }
 
-// exclude the image description as well
-const markdownStripper = remark().use(stripMarkdown, {
-  remove: ['image'],
-})
-
+// Strip this since manually so we can get rid of the whitespace left behind
 const footnoteReferenceRegex = /\s+\[\^\w+]/
 
 // markdownStripper can't handle a footnote definition that is more than one word
@@ -52,7 +47,7 @@ function removeFootnoteReferences(postBody: string): string {
 
 const generateSummary = (rawPostBody: string) => {
   const noFootnoteReferences = removeFootnoteReferences(rawPostBody)
-  const strippedBody = String(markdownStripper.processSync(noFootnoteReferences))
+  const strippedBody = removeMd(noFootnoteReferences)
   const sentences = nlp(strippedBody).sentences().json()
   let currentNumberOfWords = 0
   const output: string[] = []
