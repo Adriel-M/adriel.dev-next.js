@@ -5,9 +5,9 @@ import Image from './Image'
 import CustomLink from './Link'
 import TableWrapper from './TableWrapper'
 
-export const components: MDXComponents = {
+export const components = {
   Image,
   a: CustomLink,
   pre: Pre,
   table: TableWrapper,
-}
+} as MDXComponents
