@@ -32,7 +32,7 @@ import { visit } from 'unist-util-visit'
 
 // copy of remarkImgToJsx from pliny but changing the path from public... to
 // image...
-export const remarkImgToJsx = () => {
+const remarkImgToJsx = () => {
   return (tree: Node) => {
     visit(
       tree,
@@ -57,3 +57,5 @@ export const remarkImgToJsx = () => {
     )
   }
 }
+
+export default remarkImgToJsx
