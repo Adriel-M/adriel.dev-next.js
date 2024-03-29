@@ -3661,7 +3661,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/bundle-analyzer@npm:^14.1.4":
+"@next/bundle-analyzer@npm:14.1.4":
   version: 14.1.4
   resolution: "@next/bundle-analyzer@npm:14.1.4"
   dependencies:
@@ -18807,7 +18807,7 @@ __metadata:
   resolution: "tailwind-nextjs-starter-blog@workspace:."
   dependencies:
     "@docsearch/react": "npm:3.6.0"
-    "@next/bundle-analyzer": "npm:^14.1.4"
+    "@next/bundle-analyzer": "npm:14.1.4"
     "@primer/octicons": "npm:^19.9.0"
     "@svgr/webpack": "npm:8.1.0"
     "@tailwindcss/forms": "npm:^0.5.7"
