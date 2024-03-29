@@ -80,7 +80,7 @@ const generateShortenedTitle = (title: string): string => {
   let newTitle = newTitleArr.join(' ')
 
   if (!isEnd) {
-    newTitle += '...'
+    newTitle += '…'
   }
 
   return newTitle
