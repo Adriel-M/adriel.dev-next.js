@@ -37,32 +37,22 @@ export const remarkImgToJsx = () => {
     visit(
       tree,
       // only visit p tags that contain an img element
-      'paragraph',
-      (node: Parent) => {
-        let containsImageNode = false
-        for (const child of node.children) {
-          if (child.type !== 'image') continue
-          containsImageNode = true
+      'image',
+      (node: Node, _, parent: Parent) => {
+        const imageNode = node as ImageNode
+        const path = process.cwd() + imageNode.url
+        const dimensions = sizeOf(fs.readFileSync(path))
 
-          const imageNode = child as ImageNode
-          const path = process.cwd() + imageNode.url
-          const dimensions = sizeOf(fs.readFileSync(path))
-
-          // Convert original node to next/image
-          ;(imageNode.type = 'mdxJsxFlowElement'),
-            (imageNode.name = 'Image'),
-            (imageNode.attributes = [
-              { type: 'mdxJsxAttribute', name: 'alt', value: imageNode.alt },
-              { type: 'mdxJsxAttribute', name: 'src', value: imageNode.url },
-              { type: 'mdxJsxAttribute', name: 'width', value: dimensions!.width },
-              { type: 'mdxJsxAttribute', name: 'height', value: dimensions!.height },
-            ])
-          // Change node type from p to div to avoid nesting error
-        }
-
-        if (containsImageNode) {
-          node.type = 'div'
-        }
+        // Convert original node to next/image
+        ;(imageNode.type = 'mdxJsxFlowElement'),
+          (imageNode.name = 'Image'),
+          (imageNode.attributes = [
+            { type: 'mdxJsxAttribute', name: 'alt', value: imageNode.alt },
+            { type: 'mdxJsxAttribute', name: 'src', value: imageNode.url },
+            { type: 'mdxJsxAttribute', name: 'width', value: dimensions!.width },
+            { type: 'mdxJsxAttribute', name: 'height', value: dimensions!.height },
+          ])
+        parent.type = 'div'
       }
     )
   }
