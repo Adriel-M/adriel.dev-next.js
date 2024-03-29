@@ -1,6 +1,6 @@
 import octicons from '@primer/octicons'
 import nlp from 'compromise'
-import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import { defineDocumentType, makeSource } from 'contentlayer-temp/source-files'
 import { writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
@@ -14,7 +14,7 @@ import remarkGfm from 'remark-gfm'
 import stripMarkdown from 'strip-markdown'
 
 import siteMetadata from './data/siteMetadata'
-import { remarkImgToJsx } from './lib/RemarkUtils'
+import remarkImgToJsx from './lib/remarkPlugins/RemarkImgToJsx'
 
 /**
  * Count the occurrences of all tags across blog posts and write to json file

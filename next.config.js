@@ -1,5 +1,5 @@
-const withPlugins = require('next-compose-plugins');
-const { withContentlayer } = require('next-contentlayer')
+const withPlugins = require('next-compose-plugins')
+const { withContentlayer } = require('next-contentlayer-temp')
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
