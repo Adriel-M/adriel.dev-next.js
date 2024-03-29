@@ -46,7 +46,7 @@
     "tinacms": "^1.6.0"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^14.1.4",
+    "@next/bundle-analyzer": "14.1.4",
     "@svgr/webpack": "8.1.0",
     "@tinacms/cli": "1.5.42",
     "@types/mdx": "^2.0.12",
