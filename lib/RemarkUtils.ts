@@ -37,15 +37,15 @@ export const remarkImgToJsx = () => {
     visit(
       tree,
       // only visit p tags that contain an img element
-      (node: Parent): node is Parent =>
-        node.type === 'paragraph' && node.children.some((n) => n.type === 'image'),
+      'paragraph',
       (node: Parent) => {
-        const imageNodeIndex = node.children.findIndex((n) => n.type === 'image')
-        const imageNode = node.children[imageNodeIndex] as ImageNode
+        let containsImageNode = false
+        for (const child of node.children) {
+          if (child.type !== 'image') continue
+          containsImageNode = true
 
-        const path = process.cwd() + imageNode.url
-        // only local files
-        if (fs.existsSync(path)) {
+          const imageNode = child as ImageNode
+          const path = process.cwd() + imageNode.url
           const dimensions = sizeOf(fs.readFileSync(path))
 
           // Convert original node to next/image
@@ -58,8 +58,10 @@ export const remarkImgToJsx = () => {
               { type: 'mdxJsxAttribute', name: 'height', value: dimensions!.height },
             ])
           // Change node type from p to div to avoid nesting error
+        }
+
+        if (containsImageNode) {
           node.type = 'div'
-          node.children[imageNodeIndex] = imageNode
         }
       }
     )
