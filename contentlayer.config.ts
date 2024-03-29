@@ -4,7 +4,7 @@ import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import { writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
-import { remarkCodeTitles, remarkExtractFrontmatter } from 'pliny/mdx-plugins/index.js'
+import { remarkCodeTitles } from 'pliny/mdx-plugins/index.js'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePresetMinify from 'rehype-preset-minify'
 import rehypePrismPlus from 'rehype-prism-plus'
@@ -184,7 +184,7 @@ export default makeSource({
   documentTypes: [Blog, Authors, Projects],
   mdx: {
     cwd: process.cwd(),
-    remarkPlugins: [remarkExtractFrontmatter, remarkGfm, remarkCodeTitles, remarkImgToJsx],
+    remarkPlugins: [remarkGfm, remarkCodeTitles, remarkImgToJsx],
     rehypePlugins: [
       rehypeSlug,
       [
