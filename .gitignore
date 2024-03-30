@@ -24,9 +24,6 @@ public/sitemap.xml
 !/app/rss.xml
 !/app/atom.xml
 
-# search
-/public/search.json
-
 # misc
 .DS_Store
 

@@ -68,8 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
-      <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-      <link rel="alternate" type="application/feed+json" href="/feed.json" />
+      <link rel="alternate" type="application/atom+xml" href="/atom.xml" />
       <body className="bg-white text-black antialiased">
         <UmamiAnalytics
           websiteId={siteMetadata.analytics.umamiAnalytics.umamiWebsiteId}
