@@ -18087,7 +18087,7 @@ __metadata:
     sharp: "npm:^0.33.3"
     tailwindcss: "npm:^3.4.1"
     tinacms: "npm:^1.6.0"
-    tsx: "npm:^4.7.1"
+    tsx: "npm:4.7.1"
     typescript: "npm:5.4.3"
   languageName: unknown
   linkType: soft
@@ -18446,7 +18446,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsx@npm:^4.7.1":
+"tsx@npm:4.7.1":
   version: 4.7.1
   resolution: "tsx@npm:4.7.1"
   dependencies:
