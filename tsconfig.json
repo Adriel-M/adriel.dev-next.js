@@ -34,6 +34,7 @@
   },
   "include": [
     "next-env.d.ts",
+    "**/*.js",
     "**/*.ts",
     "**/*.tsx",
     "**/*.json",
@@ -41,5 +42,5 @@
     ".contentlayer/generated/**/*.json",
     ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "tailwind.config.js"]
+  "exclude": ["node_modules"]
 }
