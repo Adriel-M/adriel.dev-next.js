@@ -10,7 +10,6 @@ export default {
     './layouts/**/*.{ts,tsx}',
     './data/**/*.mdx',
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       lineHeight: {
