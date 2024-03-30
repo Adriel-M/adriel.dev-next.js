@@ -1,0 +1,44 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "Adriel's Thoughts",
+  "home_page_url": "https://adriel.dev",
+  "description": "Stuff I think about 🤔",
+  "author": {
+    "name": "Adriel Martinez"
+  },
+  "items": [
+    {
+      "id": "https://adriel.dev/posts/2024-02-09-speeding-up-builds-for-berry-yarn-projects-on-vercel",
+      "url": "https://adriel.dev/posts/2024-02-09-speeding-up-builds-for-berry-yarn-projects-on-vercel",
+      "title": "Speeding Up Builds for Berry (Yarn v2) Projects on Vercel",
+      "summary": "TL;DR Berry (yarn v2) isn’t completely supported by vercel. While berry can be used manage and build the project, caching isn’t properly configured.",
+      "date_modified": "2024-02-09T20:03:12.109Z",
+      "author": {
+        "name": "Adriel Martinez"
+      },
+      "tags": ["vercel", "optimization", "caching", "next", "tech", "longform"]
+    },
+    {
+      "id": "https://adriel.dev/posts/2024-01-06-website-stack",
+      "url": "https://adriel.dev/posts/2024-01-06-website-stack",
+      "title": "Website Stack",
+      "summary": "The source code of this blog can be found here. The web stack of this site is: Next.js: React framework to do server side rendering.",
+      "date_modified": "2024-01-06T06:50:25.063Z",
+      "author": {
+        "name": "Adriel Martinez"
+      },
+      "tags": ["next", "vercel", "tina", "tech"]
+    },
+    {
+      "id": "https://adriel.dev/posts/2024-01-05-hello-world",
+      "url": "https://adriel.dev/posts/2024-01-05-hello-world",
+      "title": "Hello, World!",
+      "summary": "Not even sure what I'll be posting here. I don't even know how often I'll post and in what depth. Some stuff I have in mind are some analysis/review of various tech that I'll test out, thoughts/ideas that keep me up at night, or talk about my cycling adventures.",
+      "date_modified": "2024-01-05T23:02:23.081Z",
+      "author": {
+        "name": "Adriel Martinez"
+      },
+      "tags": ["random"]
+    }
+  ]
+}

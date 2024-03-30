@@ -6,12 +6,12 @@
     "start": "next dev",
     "dev": "INIT_CWD=$PWD next dev",
     "dev:with-tina": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"next dev\"",
-    "build": "yarn run build:conditionaltinacms && next build && tsx ./scripts/postbuild.ts",
+    "build": "yarn run build:conditionaltinacms && next build",
     "build:tinacms": "tinacms build",
     "build:conditionaltinacms": "bash scripts/build-tinacms.sh",
     "serve": "next start",
     "analyze": "ANALYZE=true next build",
-    "lint": "next lint --fix --dir app --dir components --dir lib --dir layouts --dir scripts --file contentlayer.config.ts",
+    "lint": "next lint --fix --dir app --dir components --dir lib --dir layouts --file contentlayer.config.ts",
     "prepare": "husky"
   },
   "dependencies": {
@@ -69,7 +69,6 @@
     "lint-staged": "15.2.2",
     "prettier": "3.2.5",
     "prettier-plugin-tailwindcss": "0.5.12",
-    "tsx": "4.7.1",
     "typescript": "5.4.3"
   },
   "lint-staged": {
