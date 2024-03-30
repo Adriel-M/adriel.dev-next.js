@@ -1736,6 +1736,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@builder.io/partytown@npm:^0.10.1":
+  version: 0.10.1
+  resolution: "@builder.io/partytown@npm:0.10.1"
+  bin:
+    partytown: bin/partytown.cjs
+  checksum: 10/5b63ee354cdc827819cb59f6e1e3a55d34ba696805e5ed6625dba3ff738697c37d13713bd2fc17c950020a39dc118a4fdd34247b61ae69a05b37d347b4d81799
+  languageName: node
+  linkType: hard
+
 "@codemirror/language@npm:6.0.0":
   version: 6.0.0
   resolution: "@codemirror/language@npm:6.0.0"
@@ -17794,6 +17803,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "tailwind-nextjs-starter-blog@workspace:."
   dependencies:
+    "@builder.io/partytown": "npm:^0.10.1"
     "@docsearch/react": "npm:3.6.0"
     "@next/bundle-analyzer": "npm:14.1.4"
     "@primer/octicons": "npm:^19.9.0"
