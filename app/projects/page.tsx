@@ -1,6 +1,6 @@
-import { genPageMetadata } from 'app/seo'
 import { allProjects } from 'contentlayer/generated'
 
+import { genPageMetadata } from '@/app/seo'
 import Card from '@/components/Card'
 
 export const metadata = genPageMetadata({ title: 'Projects' })

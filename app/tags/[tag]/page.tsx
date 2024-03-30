@@ -1,10 +1,10 @@
-import { genPageMetadata } from 'app/seo'
-import tagData from 'app/tag-data.json'
 import { allBlogs } from 'contentlayer/generated'
 import { slug } from 'github-slugger'
 import { Metadata } from 'next'
 import { sortPosts } from 'pliny/utils/contentlayer'
 
+import { genPageMetadata } from '@/app/seo'
+import tagData from '@/app/tag-data.json'
 import siteMetadata from '@/data/siteMetadata'
 import PagedListLayoutWithTags from '@/layouts/PagedListLayoutWithTags'
 
