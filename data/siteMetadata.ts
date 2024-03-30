@@ -1,4 +1,3 @@
-/** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
   title: "Adriel's Thoughts",
   author: 'Adriel Martinez',
@@ -87,4 +86,4 @@ const siteMetadata = {
   postsInPostsPageCount: 5,
 }
 
-module.exports = siteMetadata
+export default siteMetadata
