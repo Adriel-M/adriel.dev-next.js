@@ -4,10 +4,9 @@ import { slug } from 'github-slugger'
 import path from 'path'
 import { sortPosts } from 'pliny/utils/contentlayer.js'
 
-import siteMetadata from '@/data/siteMetadata.ts'
-
 import { allBlogs } from '../.contentlayer/generated/index.mjs'
 import tagData from '../app/tag-data.json' assert { type: 'json' }
+import siteMetadata from '../data/siteMetadata.js'
 
 class FeedFileWriter {
   constructor(folderPath, feedObject) {
