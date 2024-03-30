@@ -1,10 +1,4 @@
 /**
- * This file contains copied code from pliny.
- */
-
-import { Blog } from 'contentlayer/generated'
-
-/**
  * MIT License
  *
  * Copyright (c) 2021 Timothy Lin
@@ -27,6 +21,9 @@ import { Blog } from 'contentlayer/generated'
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
+import { Blog } from 'contentlayer/generated'
+
 export const formatDate = (date: string, locale = 'en-US') => {
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',

@@ -1,8 +1,3 @@
-import fs from 'fs'
-import { sync as sizeOf } from 'probe-image-size'
-import { Literal, Node, Parent } from 'unist'
-import { visit } from 'unist-util-visit'
-
 /**
  * MIT License
  *
@@ -26,6 +21,11 @@ import { visit } from 'unist-util-visit'
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
+import fs from 'fs'
+import { sync as sizeOf } from 'probe-image-size'
+import { Literal, Node, Parent } from 'unist'
+import { visit } from 'unist-util-visit'
 
 // original license can be found here https://github.com/timlrx/pliny/blob/main/LICENSE
 
