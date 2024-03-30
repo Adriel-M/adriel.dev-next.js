@@ -21,11 +21,8 @@ public/sitemap.xml
 # production
 /build
 *.xml
-
-# rss feed
-/public/**/feed.xml
-/public/**/feed.json
-/public/**/rss.xml
+!/app/rss.xml
+!/app/atom.xml
 
 # search
 /public/search.json

@@ -58,7 +58,7 @@ const getFeed = () => {
     },
     copyright: copyrightNotice,
   })
-  posts.forEach((post) => {
+  for (const post of posts) {
     feed.addItem({
       title: post.title,
       id: `${siteMetadata.siteUrl}/${post.path}`,
@@ -76,7 +76,7 @@ const getFeed = () => {
         domain: `${siteMetadata.siteUrl}/tags/${tag}`,
       })),
     })
-  })
+  }
 
   return new StyledFeed(feed)
 }
