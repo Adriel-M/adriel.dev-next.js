@@ -1,5 +1,5 @@
 import { genPageMetadata } from 'app/seo'
-import { allAuthors } from 'contentlayer/generated'
+import { author } from 'contentlayer/generated'
 import { MDXComponents } from 'mdx/types'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 
@@ -16,7 +16,6 @@ export default function Page() {
     ObfuscatedEmail,
     ...components,
   }
-  const author = allAuthors[0]
   return (
     <>
       <PageSimple title={title}>

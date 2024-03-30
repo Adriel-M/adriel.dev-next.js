@@ -145,9 +145,10 @@ export const Blog = defineDocumentType(() => ({
   },
 }))
 
-export const Authors = defineDocumentType(() => ({
-  name: 'Authors',
-  filePathPattern: 'authors/**/*.mdx',
+export const Author = defineDocumentType(() => ({
+  name: 'Author',
+  filePathPattern: 'author/index.mdx',
+  isSingleton: true,
   contentType: 'mdx',
   fields: {
     name: { type: 'string', required: true },
@@ -176,7 +177,7 @@ const icon = fromHtmlIsomorphic(
 
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Blog, Authors, Projects],
+  documentTypes: [Blog, Author, Projects],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [remarkGfm, remarkCodeTitles, remarkImgToJsx],
