@@ -1,8 +1,9 @@
-// @ts-check
-const colors = require('tailwindcss/colors')
+import type { Config } from 'tailwindcss'
+import colors from 'tailwindcss/colors'
 
-/** @type {import("tailwindcss/types").Config } */
-module.exports = {
+type Theme = (color: string) => string
+
+export default {
   content: [
     './app/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -22,7 +23,7 @@ module.exports = {
         primary: colors.pink,
         gray: colors.gray,
       },
-      typography: ({ theme }) => ({
+      typography: ({ theme }: { theme: Theme }) => ({
         DEFAULT: {
           css: {
             a: {
@@ -48,4 +49,4 @@ module.exports = {
     },
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
-}
+} satisfies Config
