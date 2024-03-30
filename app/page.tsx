@@ -1,5 +1,6 @@
 import { allBlogs } from 'contentlayer/generated'
-import { sortPosts } from 'pliny/utils/contentlayer'
+
+import { sortPosts } from '@/lib/PlinyUtils'
 
 import Main from './Main'
 

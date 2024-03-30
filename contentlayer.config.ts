@@ -4,7 +4,6 @@ import { defineDocumentType, makeSource } from 'contentlayer-temp/source-files'
 import { writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
-import { remarkCodeTitles } from 'pliny/mdx-plugins/index.js'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePresetMinify from 'rehype-preset-minify'
 import rehypePrismPlus from 'rehype-prism-plus'
@@ -13,6 +12,7 @@ import remarkGfm from 'remark-gfm'
 import removeMd from 'remove-markdown'
 
 import siteMetadata from './data/siteMetadata'
+import remarkCodeTitles from './lib/remarkPlugins/RemarkCodeTitles'
 import remarkImgToJsx from './lib/remarkPlugins/RemarkImgToJsx'
 
 /**

@@ -1,7 +1,6 @@
 import fs from 'fs'
-import { ImageNode } from 'pliny/mdx-plugins/index.js'
 import { sync as sizeOf } from 'probe-image-size'
-import { Node, Parent } from 'unist'
+import { Literal, Node, Parent } from 'unist'
 import { visit } from 'unist-util-visit'
 
 /**
@@ -32,6 +31,13 @@ import { visit } from 'unist-util-visit'
 
 // copy of remarkImgToJsx from pliny but changing the path from public... to
 // image...
+
+export type ImageNode = Parent & {
+  url: string
+  alt: string
+  name: string
+  attributes: (Literal & { name: string })[]
+}
 const remarkImgToJsx = () => {
   return (tree: Node) => {
     visit(

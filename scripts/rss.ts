@@ -2,14 +2,17 @@ import { Feed } from 'feed'
 import { mkdirSync, writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
 import path from 'path'
-import { sortPosts } from 'pliny/utils/contentlayer.js'
 
+import type { Blog } from '../.contentlayer/generated'
 import { allBlogs } from '../.contentlayer/generated/index.mjs'
-import tagData from '../app/tag-data.json' assert { type: 'json' }
-import siteMetadata from '../data/siteMetadata.js'
+import tagData from '../app/tag-data.json'
+import siteMetadata from '../data/siteMetadata'
+import { sortPosts } from '../lib/PlinyUtils'
 
 class FeedFileWriter {
-  constructor(folderPath, feedObject) {
+  private readonly folderPath: string
+  private readonly feedObject: Feed
+  constructor(folderPath: string, feedObject: Feed) {
     this.folderPath = folderPath
     this.feedObject = feedObject
   }
@@ -30,14 +33,14 @@ class FeedFileWriter {
     writeFileSync(path.join(this.folderPath, this.#JSON_FILE_NAME), this.feedObject.json1())
   }
 
-  addStyleToFeedContent(content, styleFileName) {
+  addStyleToFeedContent(content: string, styleFileName: string) {
     return content.replace(
       this.#XML_CONTENT_TO_REPLACE,
       this.#XML_CONTENT_TO_REPLACE + '\n' + this.generateRssImportContent(styleFileName)
     )
   }
 
-  generateRssImportContent(fileName) {
+  generateRssImportContent(fileName: string) {
     return `<?xml-stylesheet href="/static/feed/${fileName}" type="text/xsl"?>`
   }
 
@@ -49,7 +52,7 @@ class FeedFileWriter {
 
 const copyrightNotice =
   'Copyright Adriel Martinez. Some rights reserved. Licensed under CC BY 4.0: http://creativecommons.org/licenses/by/4.0/'
-const generateFeedObject = (config, posts, tagName = '') => {
+const generateFeedObject = (config: typeof siteMetadata, posts: Blog[], tagName = '') => {
   let feedPathWithSiteUrl = config.siteUrl + '/'
   if (tagName) {
     feedPathWithSiteUrl += `tags/${tagName}/`
@@ -99,7 +102,7 @@ const generateFeedObject = (config, posts, tagName = '') => {
   return feed
 }
 
-function generateFeed(config, allBlogs) {
+function generateFeed(config: typeof siteMetadata, allBlogs: Blog[]) {
   // RSS for blog post
   if (allBlogs.length > 0) {
     const feedObject = generateFeedObject(config, sortPosts(allBlogs))
@@ -126,7 +129,7 @@ function generateFeed(config, allBlogs) {
 }
 
 const rss = () => {
-  generateFeed(siteMetadata, allBlogs)
+  generateFeed(siteMetadata, allBlogs as Blog[])
   console.log('RSS feed generated...')
 }
 export default rss

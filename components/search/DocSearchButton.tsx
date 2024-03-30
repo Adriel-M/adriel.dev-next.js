@@ -10,7 +10,6 @@ import {
   InternalDocSearchHit,
   StoredDocSearchHit,
 } from '@docsearch/react/dist/esm/types'
-import { AlgoliaConfig } from 'pliny/search/Algolia'
 
 import CustomLink from '@/components/Link'
 import siteMetadata from '@/data/siteMetadata'
@@ -51,7 +50,7 @@ const Hit = ({
 }
 
 const DocSearchButton = () => {
-  const searchConfig = siteMetadata.search as AlgoliaConfig
+  const searchConfig = siteMetadata.search
   const { appId, apiKey, indexName } = searchConfig.algoliaConfig
   return (
     <DocSearch

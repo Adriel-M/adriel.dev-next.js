@@ -3,7 +3,6 @@ import 'css/post-layout.css'
 
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Metadata } from 'next'
-import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
@@ -11,6 +10,7 @@ import SectionContainer from '@/components/SectionContainer'
 import siteMetadata from '@/data/siteMetadata'
 
 import fonts from './fonts'
+import UmamiAnalytics from './UmamiAnalytics'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteMetadata.siteUrl),
@@ -72,7 +72,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
       <link rel="alternate" type="application/feed+json" href="/feed.json" />
       <body className="bg-white text-black antialiased">
-        <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
+        <UmamiAnalytics
+          websiteId={siteMetadata.analytics.umamiAnalytics.umamiWebsiteId}
+          scriptPath={siteMetadata.analytics.umamiAnalytics.src}
+        />
         <SpeedInsights />
         <SectionContainer>
           <div className="flex h-screen flex-col justify-between">
