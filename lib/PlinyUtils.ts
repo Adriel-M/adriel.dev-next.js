@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-import { Blog } from 'contentlayer/generated'
+import { Post } from 'contentlayer/generated'
 
 export const formatDate = (date: string, locale = 'en-US') => {
   const options: Intl.DateTimeFormatOptions = {
@@ -35,13 +35,13 @@ export const formatDate = (date: string, locale = 'en-US') => {
   return now
 }
 
-const postSortFun = (a: Blog, b: Blog): number => {
+const postSortFun = (a: Post, b: Post): number => {
   if (a.date > b.date) return -1
   if (a.date < b.date) return 1
 
   return 0
 }
 
-export const sortPosts = (posts: Blog[]): Blog[] => {
+export const sortPosts = (posts: Post[]): Post[] => {
   return posts.sort(postSortFun)
 }

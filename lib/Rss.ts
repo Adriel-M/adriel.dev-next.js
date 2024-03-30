@@ -1,4 +1,4 @@
-import { allBlogs } from 'contentlayer/generated'
+import { allPosts } from 'contentlayer/generated'
 import { Feed } from 'feed'
 
 import siteMetadata from '@/data/siteMetadata'
@@ -37,7 +37,7 @@ class StyledFeed {
 const copyrightNotice =
   'Copyright Adriel Martinez. Some rights reserved. Licensed under CC BY 4.0: http://creativecommons.org/licenses/by/4.0/'
 const getFeed = () => {
-  const posts = sortPosts(allBlogs)
+  const posts = sortPosts(allPosts)
   const feedPathWithSiteUrl = siteMetadata.siteUrl + '/'
   const title = siteMetadata.title
   const feed = new Feed({

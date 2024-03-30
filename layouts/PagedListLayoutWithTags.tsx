@@ -1,11 +1,11 @@
-import { Blog } from 'contentlayer/generated'
+import { Post } from 'contentlayer/generated'
 
 import siteMetadata from '@/data/siteMetadata'
 import ListLayoutWithTags from '@/layouts/ListLayoutWithTags'
 import { getTotalPages } from '@/lib/PagingUtils'
 
 interface PagedListLayoutWithTagsProps {
-  posts: Blog[]
+  posts: Post[]
   title: string
   pageNumber: number
   currentTag?: string

@@ -1,4 +1,4 @@
-import type { Blog } from 'contentlayer/generated'
+import type { Post } from 'contentlayer/generated'
 import { ReactNode } from 'react'
 
 import Link from '@/components/Link'
@@ -10,7 +10,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from '@/lib/PlinyUtils'
 
 interface LayoutProps {
-  content: Blog
+  content: Post
   children: ReactNode
   next?: { path: string; title: string; shortenedTitle: string }
   prev?: { path: string; title: string; shortenedTitle: string }

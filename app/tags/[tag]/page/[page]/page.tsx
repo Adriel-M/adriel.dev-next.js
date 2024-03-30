@@ -1,4 +1,4 @@
-import { allBlogs } from 'contentlayer/generated'
+import { allPosts } from 'contentlayer/generated'
 import { slug } from 'github-slugger'
 
 import tagData from '@/app/tag-data.json'
@@ -39,7 +39,7 @@ export default function Page({ params }: { params: { page: string; tag: string }
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
 
   const filteredPosts = sortPosts(
-    allBlogs.filter((post) => post.tags && post.tags.map((t) => slug(t)).includes(tag))
+    allPosts.filter((post) => post.tags && post.tags.map((t) => slug(t)).includes(tag))
   )
 
   return (

@@ -18,9 +18,9 @@ import remarkImgToJsx from './lib/remarkPlugins/RemarkImgToJsx'
 /**
  * Count the occurrences of all tags across blog posts and write to json file
  */
-function createTagCount(allBlogs: { tags: string[] }[]) {
+function createTagCount(allPosts: { tags: string[] }[]) {
   const tagCount: Record<string, number> = {}
-  allBlogs.forEach((file) => {
+  allPosts.forEach((file) => {
     if (file.tags) {
       file.tags.forEach((tag) => {
         const formattedTag = slug(tag)
@@ -86,8 +86,8 @@ const generateShortenedTitle = (title: string): string => {
   return newTitle
 }
 
-export const Blog = defineDocumentType(() => ({
-  name: 'Blog',
+export const Post = defineDocumentType(() => ({
+  name: 'Post',
   filePathPattern: 'posts/**/*.mdx',
   contentType: 'mdx',
   fields: {
@@ -110,7 +110,7 @@ export const Blog = defineDocumentType(() => ({
       type: 'json',
       resolve: (doc) => ({
         '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
+        '@type': 'PostPosting',
         headline: doc.title,
         datePublished: doc.date,
         dateModified: doc.lastmod || doc.date,
@@ -177,7 +177,7 @@ const icon = fromHtmlIsomorphic(
 
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Blog, Author, Project],
+  documentTypes: [Post, Author, Project],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [remarkGfm, remarkCodeTitles, remarkImgToJsx],
@@ -198,7 +198,7 @@ export default makeSource({
     ],
   },
   onSuccess: async (importData) => {
-    const { allBlogs } = await importData()
-    createTagCount(allBlogs)
+    const { allPosts } = await importData()
+    createTagCount(allPosts)
   },
 })

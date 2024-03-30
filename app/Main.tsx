@@ -1,4 +1,4 @@
-import { Blog } from 'contentlayer/generated'
+import { Post } from 'contentlayer/generated'
 
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
@@ -6,7 +6,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from '@/lib/PlinyUtils'
 
 interface Props {
-  posts: Blog[]
+  posts: Post[]
 }
 
 export default function Home({ posts }: Props) {

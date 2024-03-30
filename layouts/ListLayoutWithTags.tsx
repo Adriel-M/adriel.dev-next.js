@@ -1,4 +1,4 @@
-import type { Blog } from 'contentlayer/generated'
+import type { Post } from 'contentlayer/generated'
 import { slug } from 'github-slugger'
 
 import tagData from '@/app/tag-data.json'
@@ -13,9 +13,9 @@ export interface PaginationProps {
   basePath: string
 }
 interface ListLayoutWithTagsProps {
-  posts: Blog[]
+  posts: Post[]
   title: string
-  initialDisplayPosts?: Blog[]
+  initialDisplayPosts?: Post[]
   pagination?: PaginationProps
   currentTag?: string
 }

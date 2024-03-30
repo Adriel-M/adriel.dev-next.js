@@ -1,6 +1,6 @@
 import 'css/prism.css'
 
-import { allBlogs } from 'contentlayer/generated'
+import { allPosts } from 'contentlayer/generated'
 import { Metadata } from 'next'
 
 import MarkdownRenderer from '@/components/MarkdownRenderer'
@@ -14,7 +14,7 @@ export async function generateMetadata({
   params: { slug: string[] }
 }): Promise<Metadata | undefined> {
   const slug = decodeURI(params.slug.join('/'))
-  const post = allBlogs.find((p) => p.slug === slug)
+  const post = allPosts.find((p) => p.slug === slug)
   if (!post) {
     return
   }
@@ -55,13 +55,13 @@ export async function generateMetadata({
 export const dynamicParams = false
 
 export const generateStaticParams = async () => {
-  return allBlogs.map((p) => ({ slug: p.slug.split('/') }))
+  return allPosts.map((p) => ({ slug: p.slug.split('/') }))
 }
 
 export default async function Page({ params }: { params: { slug: string[] } }) {
   const slug = decodeURI(params.slug.join('/'))
 
-  const sortedPosts = sortPosts(allBlogs)
+  const sortedPosts = sortPosts(allPosts)
   const postIndex = sortedPosts.findIndex((p) => p.slug === slug)
 
   const prev = sortedPosts[postIndex + 1]
