@@ -6,7 +6,7 @@
     "start": "next dev",
     "dev": "INIT_CWD=$PWD next dev",
     "dev:with-tina": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"next dev\"",
-    "build": "yarn run build:conditionaltinacms && next build && tsx./scripts/postbuild.ts",
+    "build": "yarn run build:conditionaltinacms && next build && tsx ./scripts/postbuild.ts",
     "build:tinacms": "tinacms build",
     "build:conditionaltinacms": "bash scripts/build-tinacms.sh",
     "serve": "next start",
