@@ -192,7 +192,7 @@ export default makeSource({
           content: icon,
         },
       ],
-      [rehypePrismPlus, { defaultLanguage: 'js', ignoreMissing: true }],
+      [rehypePrismPlus, { defaultLanguage: 'ts' }],
       rehypePresetMinify,
     ],
   },

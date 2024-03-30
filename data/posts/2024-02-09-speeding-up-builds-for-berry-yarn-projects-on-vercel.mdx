@@ -30,7 +30,7 @@ The initial build time with just the template was 2 minutes 1 second where the f
 seconds. From here on out, I'll only be focusing on these two steps and will only mention these durations.
 In my opinion, this is fine so far and optimizing the build didn't even cross my mind yet.
 
-```
+```log
 ➤ YN0000: ┌ Fetch step
 ➤ YN0066: │ typescript@patch:typescript@npm%3A5.3.2#~builtin<compat/typescript>::version=5.3.2&hash=14eedb: Cannot apply hunk #2
 ➤ YN0013: │ 54 packages were already cached, 1089 had to be fetched
@@ -49,7 +49,7 @@ Now let's add TinaCMS [^TinaInstallation]. I've removed the `tinacms build` step
 isn't the linking step cached? Vercel has a finite amount of build minutes [^VercelPricing] and optimizing the build time might be
 necessary if I actually end up posting frequently.
 
-```
+```log
 ➤ YN0000: ┌ Fetch step
 ➤ YN0066: │ typescript@patch:typescript@npm%3A5.3.2#~builtin<compat/typescript>::version=5.3.2&hash=14eedb: Cannot apply hunk #2
 ➤ YN0013: │ 56 packages were already cached, 1707 had to be fetched
@@ -108,7 +108,7 @@ yarn cjs file. Don't forget to run `yarn install` which will update the `yarn.lo
 
 This did cut down the fetching time back to around a minute but I still want to avoid refetching the dependencies.
 
-```
+```log
 ➤ YN0000: · Yarn 4.1.0
 ➤ YN0000: ┌ Resolution step
 ➤ YN0000: └ Completed in 0s 623ms
@@ -134,15 +134,15 @@ cached [^VercelCaching] which contains the cache folder used by yarn [^YarnCache
 by vercel; for this project, we'll use `.next/cache` as that's cached [^VercelCaching].
 We also need to set the `YARN_CACHE_FOLDER` environment variable [^YarnCacheFolder] when we run `yarn install`.
 
-```diff:scripts/vercel-build.sh
+```shell:scripts/vercel-build.sh {5-7}
 #!/bin/bash
 
 echo "Starting the script..."
 
-+ # Set an environment variable YARN_CACHE_FOLDER=./.next/cache/yarn
-+ echo "Setting environment variable YARN_CACHE_FOLDER=./.next/cache/yarn..."
-+ export YARN_CACHE_FOLDER=./.next/cache/yarn
-+
+# Set an environment variable YARN_CACHE_FOLDER=./.next/cache/yarn
+echo "Setting environment variable YARN_CACHE_FOLDER=./.next/cache/yarn..."
+export YARN_CACHE_FOLDER=./.next/cache/yarn
+
 # Run yarn install --immutable
 echo "Running 'yarn install --immutable'..."
 yarn install --immutable
@@ -153,7 +153,7 @@ echo "Script completed."
 Now the fetch step takes around 1 second. This means that we're not refetching the dependencies anymore! That is roughly
 a minute of savings! It still looks like there are more improvements that can be made since the linking step wasn't skipped...
 
-```
+```log
 ➤ YN0000: · Yarn 4.1.0
 ➤ YN0000: ┌ Resolution step
 ➤ YN0000: └ Completed in 0s 628ms
@@ -184,19 +184,19 @@ of this file just like the previous section with an environment variable, but we
 during the install step. To do this, we'll check if this file exists in `node_modules` and copy it to `.yarn`. Inversely copy it
 from `.yarn` back to `node_modules` after `yarn install` so it can be cached for future builds.
 
-```diff:scripts/vercel-build.sh
+```shell:scripts/vercel-build.sh {5-11,21-27}
 #!/bin/bash
 
 echo "Starting the script..."
 
-+ # Check if node_modules/install-state.gz exists and copy it to .yarn/install-state.gz
-+ if [ -f "node_modules/install-state.gz" ]; then
-+     echo "Copying node_modules/install-state.gz to .yarn/install-state.gz..."
-+     cp node_modules/install-state.gz .yarn/install-state.gz
-+ else
-+     echo "node_modules/install-state.gz does not exist. Skipping copy."
-+ fi
-+
+# Check if node_modules/install-state.gz exists and copy it to .yarn/install-state.gz
+if [ -f "node_modules/install-state.gz" ]; then
+    echo "Copying node_modules/install-state.gz to .yarn/install-state.gz..."
+    cp node_modules/install-state.gz .yarn/install-state.gz
+else
+    echo "node_modules/install-state.gz does not exist. Skipping copy."
+fi
+
 # Set an environment variable YARN_CACHE_FOLDER=./.next/cache/yarn
 echo "Setting environment variable YARN_CACHE_FOLDER=./.next/cache/yarn..."
 export YARN_CACHE_FOLDER=./.next/cache/yarn
@@ -205,20 +205,20 @@ export YARN_CACHE_FOLDER=./.next/cache/yarn
 echo "Running 'yarn install --immutable'..."
 yarn install --immutable
 
-+ # Check if .yarn/install-state.gz exists and copy it to node_modules/install-state.gz
-+ if [ -f ".yarn/install-state.gz" ]; then
-+     echo "Copying .yarn/install-state.gz back to node_modules/install-state.gz..."
-+     cp .yarn/install-state.gz node_modules/install-state.gz
-+ else
-+     echo ".yarn/install-state.gz does not exist. Skipping copy."
-+ fi
-+
+# Check if .yarn/install-state.gz exists and copy it to node_modules/install-state.gz
+if [ -f ".yarn/install-state.gz" ]; then
+    echo "Copying .yarn/install-state.gz back to node_modules/install-state.gz..."
+    cp .yarn/install-state.gz node_modules/install-state.gz
+else
+    echo ".yarn/install-state.gz does not exist. Skipping copy."
+fi
+
 echo "Script completed."
 ```
 
 Looks like that did it! Another minute cut down from the build time.
 
-```
+```log
 ➤ YN0000: · Yarn 4.1.0
 ➤ YN0000: ┌ Resolution step
 ➤ YN0000: └ Completed in 0s 635ms
