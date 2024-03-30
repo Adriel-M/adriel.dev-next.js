@@ -1,8 +1,8 @@
+import { genPageMetadata } from 'app/seo'
 import { allAuthors } from 'contentlayer/generated'
 import { MDXComponents } from 'mdx/types'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 
-import { genPageMetadata } from '@/app/seo'
 import { components } from '@/components/MDXComponents'
 import ObfuscatedEmail from '@/components/ObfuscatedEmail'
 import siteMetadata from '@/data/siteMetadata'
