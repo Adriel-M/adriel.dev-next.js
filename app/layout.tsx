@@ -32,8 +32,7 @@ export const metadata: Metadata = {
     canonical: './',
     types: {
       'application/rss+xml': `${siteMetadata.siteUrl}/rss.xml`,
-      'application/atom+xml': `${siteMetadata.siteUrl}/feed.xml`,
-      'application/feed+json': `${siteMetadata.siteUrl}/feed.json`,
+      'application/atom+xml': `${siteMetadata.siteUrl}/atom.xml`,
     },
   },
   robots: {
