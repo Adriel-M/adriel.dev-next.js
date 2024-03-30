@@ -5827,7 +5827,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:18.2.69":
+"@types/react@npm:*":
   version: 18.2.69
   resolution: "@types/react@npm:18.2.69"
   dependencies:
@@ -5835,6 +5835,16 @@ __metadata:
     "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
   checksum: 10/5cc185f00ad5a4c2261e127ad25241448492f391e2206738b0477cbdba6aa75692e18ece5e75854ed513342d95c9ee83315744cb6b1470d488772cef1f8b40c8
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:18.2.72":
+  version: 18.2.72
+  resolution: "@types/react@npm:18.2.72"
+  dependencies:
+    "@types/prop-types": "npm:*"
+    csstype: "npm:^3.0.2"
+  checksum: 10/0c15461eeb8cd5153b48446d4aae681ae1d4f45fa5828fc53c12aaac9dfe426a64259a284737f6abfc3bea36df9507c129d7065ebb390b21349ad30128385ac1
   languageName: node
   linkType: hard
 
@@ -18817,7 +18827,7 @@ __metadata:
     "@types/node": "npm:20.11.30"
     "@types/primer__octicons": "npm:19.6.3"
     "@types/probe-image-size": "npm:7.2.4"
-    "@types/react": "npm:18.2.69"
+    "@types/react": "npm:18.2.72"
     "@types/remove-markdown": "npm:0.3.4"
     "@types/webpack-env": "npm:1.18.4"
     "@typescript-eslint/eslint-plugin": "npm:7.4.0"
