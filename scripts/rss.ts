@@ -3,7 +3,7 @@ import { mkdirSync, writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
 import path from 'path'
 
-import { allBlogs, Blog } from '../.contentlayer/generated'
+import { allBlogs, Blog } from '../.contentlayer/generated/index.mjs'
 import tagData from '../app/tag-data.json'
 import siteMetadata from '../data/siteMetadata'
 import { sortPosts } from '../lib/PlinyUtils'
