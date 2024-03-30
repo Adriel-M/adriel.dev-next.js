@@ -10,7 +10,7 @@ const UmamiAnalytics = ({ websiteId, scriptPath }: Props) => {
   return (
     <>
       {isProduction && websiteId && scriptPath && (
-        <Script defer data-website-id={websiteId} src={scriptPath} data-domains="adriel.dev" />
+        <Script defer data-website-id={websiteId} src={scriptPath} />
       )}
     </>
   )
