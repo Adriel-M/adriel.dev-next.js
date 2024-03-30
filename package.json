@@ -26,6 +26,7 @@
     "feed": "^4.2.2",
     "github-slugger": "^2.0.0",
     "hast-util-from-html-isomorphic": "^2.0.0",
+    "mdx-bundler": "^10.0.2",
     "next": "14.1.4",
     "next-compose-plugins": "^2.2.1",
     "next-contentlayer-temp": "^0.4.4",

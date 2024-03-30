@@ -13675,7 +13675,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mdx-bundler@npm:^10.0.1":
+"mdx-bundler@npm:^10.0.1, mdx-bundler@npm:^10.0.2":
   version: 10.0.2
   resolution: "mdx-bundler@npm:10.0.2"
   dependencies:
@@ -18837,6 +18837,7 @@ __metadata:
     hast-util-from-html-isomorphic: "npm:^2.0.0"
     husky: "npm:9.0.11"
     lint-staged: "npm:15.2.2"
+    mdx-bundler: "npm:^10.0.2"
     next: "npm:14.1.4"
     next-compose-plugins: "npm:^2.2.1"
     next-contentlayer-temp: "npm:^0.4.4"

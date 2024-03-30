@@ -2,10 +2,9 @@ import 'css/prism.css'
 
 import { allBlogs } from 'contentlayer/generated'
 import { Metadata } from 'next'
-import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { sortPosts } from 'pliny/utils/contentlayer'
 
-import { components } from '@/components/MDXComponents'
+import MarkdownRenderer from '@/components/MarkdownRenderer'
 import siteMetadata from '@/data/siteMetadata'
 import PostSimple from '@/layouts/PostSimple'
 
@@ -76,7 +75,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(post.structuredData) }}
       />
       <PostSimple content={post} next={next} prev={prev}>
-        <MDXLayoutRenderer code={post.body.code} components={components} />
+        <MarkdownRenderer content={post} />
       </PostSimple>
     </>
   )
