@@ -2,11 +2,11 @@ import 'css/prism.css'
 
 import { allBlogs } from 'contentlayer/generated'
 import { Metadata } from 'next'
-import { sortPosts } from 'pliny/utils/contentlayer'
 
 import MarkdownRenderer from '@/components/MarkdownRenderer'
 import siteMetadata from '@/data/siteMetadata'
 import PostSimple from '@/layouts/PostSimple'
+import { sortPosts } from '@/lib/PlinyUtils'
 
 export async function generateMetadata({
   params,

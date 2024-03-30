@@ -1,8 +1,8 @@
 import { allBlogs } from 'contentlayer/generated'
-import { sortPosts } from 'pliny/utils/contentlayer'
 
 import PagedListLayoutWithTags from '@/layouts/PagedListLayoutWithTags'
 import { getTotalPages } from '@/lib/PagingUtils'
+import { sortPosts } from '@/lib/PlinyUtils'
 
 export const dynamicParams = false
 

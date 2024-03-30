@@ -1,5 +1,4 @@
 import type { Blog } from 'contentlayer/generated'
-import { formatDate } from 'pliny/utils/formatDate'
 import { ReactNode } from 'react'
 
 import Link from '@/components/Link'
@@ -8,6 +7,7 @@ import ScrollTop from '@/components/ScrollTop'
 import SectionContainer from '@/components/SectionContainer'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
+import { formatDate } from '@/lib/PlinyUtils'
 
 interface LayoutProps {
   content: Blog
