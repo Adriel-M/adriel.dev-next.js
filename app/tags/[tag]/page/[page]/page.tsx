@@ -1,11 +1,10 @@
 import { allBlogs } from 'contentlayer/generated'
 import { slug } from 'github-slugger'
 
+import tagData from '@/app/tag-data.json'
 import PagedListLayoutWithTags from '@/layouts/PagedListLayoutWithTags'
 import { getTotalPages } from '@/lib/PagingUtils'
 import { sortPosts } from '@/lib/PlinyUtils'
-
-import tagData from '../../../../tag-data.json'
 
 interface TagAndPage {
   tag: string
