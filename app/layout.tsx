@@ -1,7 +1,6 @@
 import 'css/tailwind.css'
 import 'css/post-layout.css'
 
-import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Metadata } from 'next'
 
 import Footer from '@/components/Footer'
@@ -74,7 +73,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           websiteId={siteMetadata.analytics.umamiAnalytics.umamiWebsiteId}
           scriptPath={siteMetadata.analytics.umamiAnalytics.src}
         />
-        <SpeedInsights />
         <SectionContainer>
           <div className="flex h-screen flex-col justify-between">
             <Header />

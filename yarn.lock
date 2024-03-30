@@ -6557,33 +6557,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/speed-insights@npm:^1.0.10":
-  version: 1.0.10
-  resolution: "@vercel/speed-insights@npm:1.0.10"
-  peerDependencies:
-    "@sveltejs/kit": ^1 || ^2
-    next: ">= 13"
-    react: ^18 || ^19
-    svelte: ^4
-    vue: ^3
-    vue-router: ^4
-  peerDependenciesMeta:
-    "@sveltejs/kit":
-      optional: true
-    next:
-      optional: true
-    react:
-      optional: true
-    svelte:
-      optional: true
-    vue:
-      optional: true
-    vue-router:
-      optional: true
-  checksum: 10/5ceaad884a37c539e19f70da383f46d4e937dbd6fbad3c0d27b2c5748ca60649ce2259d24788d8564fba051926c444bbbe6e8549e303d75eb9cfb6edc2dedbde
-  languageName: node
-  linkType: hard
-
 "@vitejs/plugin-react@npm:3.1.0":
   version: 3.1.0
   resolution: "@vitejs/plugin-react@npm:3.1.0"
@@ -17811,7 +17784,6 @@ __metadata:
     "@types/webpack-env": "npm:1.18.4"
     "@typescript-eslint/eslint-plugin": "npm:7.4.0"
     "@typescript-eslint/parser": "npm:7.4.0"
-    "@vercel/speed-insights": "npm:^1.0.10"
     autoprefixer: "npm:^10.4.19"
     compromise: "npm:^14.12.0"
     contentlayer-temp: "npm:^0.4.4"
