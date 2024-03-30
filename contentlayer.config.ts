@@ -155,8 +155,8 @@ export const Author = defineDocumentType(() => ({
   },
 }))
 
-export const Projects = defineDocumentType(() => ({
-  name: 'Projects',
+export const Project = defineDocumentType(() => ({
+  name: 'Project',
   filePathPattern: 'projects/**/*.yaml',
   contentType: 'data',
   fields: {
@@ -177,7 +177,7 @@ const icon = fromHtmlIsomorphic(
 
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Blog, Author, Projects],
+  documentTypes: [Blog, Author, Project],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [remarkGfm, remarkCodeTitles, remarkImgToJsx],
