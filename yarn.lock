@@ -5738,7 +5738,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mdx@npm:^2.0.0, @types/mdx@npm:^2.0.12":
+"@types/mdx@npm:2.0.12, @types/mdx@npm:^2.0.0":
   version: 2.0.12
   resolution: "@types/mdx@npm:2.0.12"
   checksum: 10/653f8be013339167c86f26ab19908db720387c38d6b6f3a3a27ac959deefe05bb842d641e27c3b723adba39fa7ee093aecde15df0d240f430d398bdb4c44cb2b
@@ -5761,7 +5761,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=13.7.0, @types/node@npm:^20.11.30":
+"@types/node@npm:*, @types/node@npm:20.11.30, @types/node@npm:>=13.7.0":
   version: 20.11.30
   resolution: "@types/node@npm:20.11.30"
   dependencies:
@@ -5784,7 +5784,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/primer__octicons@npm:^19.6.3":
+"@types/primer__octicons@npm:19.6.3":
   version: 19.6.3
   resolution: "@types/primer__octicons@npm:19.6.3"
   checksum: 10/9ac4be252da2d1d61fbdc3acb81cbf6c470674894ed7b743e2e131b0e23e82b1f8f1ee8b718ff16d6baba32aa8a14c130d00bf9bda4883eff315675381e65726
@@ -5798,7 +5798,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/probe-image-size@npm:^7.2.4":
+"@types/probe-image-size@npm:7.2.4":
   version: 7.2.4
   resolution: "@types/probe-image-size@npm:7.2.4"
   dependencies:
@@ -5827,7 +5827,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18.2.69":
+"@types/react@npm:*, @types/react@npm:18.2.69":
   version: 18.2.69
   resolution: "@types/react@npm:18.2.69"
   dependencies:
@@ -5838,7 +5838,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/remove-markdown@npm:^0":
+"@types/remove-markdown@npm:0.3.4":
   version: 0.3.4
   resolution: "@types/remove-markdown@npm:0.3.4"
   checksum: 10/a748714a63cb02e96828750e27a679866420bde21411008ae266b6f43c819dea562233714dac0072776d5efd7871d54cf73ac54e3615747cbeddd348bde9e840
@@ -5896,7 +5896,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/webpack-env@npm:^1.18.4":
+"@types/webpack-env@npm:1.18.4":
   version: 1.18.4
   resolution: "@types/webpack-env@npm:1.18.4"
   checksum: 10/a1c37f8eb93fa86077b2406d3b8dd50c7505cd2b6ec46044786aa9681b0114ad6c3c3cd6402f8ecce9e4de6626c2fd91e5acda62d5d450c1f531533c3812b7c0
@@ -18813,13 +18813,13 @@ __metadata:
     "@tailwindcss/forms": "npm:^0.5.7"
     "@tailwindcss/typography": "npm:^0.5.10"
     "@tinacms/cli": "npm:1.5.42"
-    "@types/mdx": "npm:^2.0.12"
-    "@types/node": "npm:^20.11.30"
-    "@types/primer__octicons": "npm:^19.6.3"
-    "@types/probe-image-size": "npm:^7.2.4"
-    "@types/react": "npm:^18.2.69"
-    "@types/remove-markdown": "npm:^0"
-    "@types/webpack-env": "npm:^1.18.4"
+    "@types/mdx": "npm:2.0.12"
+    "@types/node": "npm:20.11.30"
+    "@types/primer__octicons": "npm:19.6.3"
+    "@types/probe-image-size": "npm:7.2.4"
+    "@types/react": "npm:18.2.69"
+    "@types/remove-markdown": "npm:0.3.4"
+    "@types/webpack-env": "npm:1.18.4"
     "@typescript-eslint/eslint-plugin": "npm:7.4.0"
     "@typescript-eslint/parser": "npm:7.4.0"
     "@vercel/speed-insights": "npm:^1.0.10"
