@@ -19,19 +19,17 @@ import remarkImgToJsx from './lib/remarkPlugins/RemarkImgToJsx'
  * Count the occurrences of all tags across blog posts and write to json file
  */
 function createTagCount(allPosts: { tags: string[] }[]) {
-  const tagCount: Record<string, number> = {}
-  allPosts.forEach((file) => {
-    if (file.tags) {
-      file.tags.forEach((tag) => {
-        const formattedTag = slug(tag)
-        if (formattedTag in tagCount) {
-          tagCount[formattedTag] += 1
-        } else {
-          tagCount[formattedTag] = 1
-        }
-      })
+  const tagCount: { [key: string]: number } = {}
+  for (const post of allPosts) {
+    for (const tag of post.tags) {
+      const formattedTag = slug(tag)
+      if (!(formattedTag in tagCount)) {
+        tagCount[formattedTag] = 0
+      }
+
+      tagCount[formattedTag] += 1
     }
-  })
+  }
   const orderedTagOutput = JSON.stringify(tagCount, Object.keys(tagCount).sort())
   writeFileSync('./app/tag-data.json', orderedTagOutput)
 }
