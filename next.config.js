@@ -61,10 +61,6 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/admin',
-        destination: '/admin/index.html',
-      },
-      {
         source: '/stats/:match*',
         destination: 'https://analytics.adriel.dev/:match*',
       },
