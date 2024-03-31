@@ -8,12 +8,6 @@
       "automerge": true
     },
     {
-      "groupName": "TinaCMS",
-      "groupSlug": "tinacms",
-      "matchPackagePatterns": ["tinacms"],
-      "automerge": true
-    },
-    {
       "groupName": "Types dependencies",
       "matchDepTypes": ["devDependencies"],
       "matchPackagePrefixes": ["@types/"],
