@@ -8,7 +8,10 @@ import siteMetadata from '@/data/siteMetadata'
 import PagedListLayoutWithTags from '@/layouts/PagedListLayoutWithTags'
 import { sortPosts } from '@/lib/PlinyUtils'
 
-export async function generateMetadata({ params }: { params: { tag: string } }): Promise<Metadata> {
+interface Params {
+  tag: string
+}
+export function generateMetadata({ params }: { params: Params }): Metadata {
   const tag = decodeURI(params.tag)
   return genPageMetadata({
     title: tag,
@@ -18,15 +21,13 @@ export async function generateMetadata({ params }: { params: { tag: string } }):
 
 export const dynamicParams = false
 
-export const generateStaticParams = async () => {
-  const tagCounts = tagData as Record<string, number>
-  const tagKeys = Object.keys(tagCounts)
-  return tagKeys.map((tag) => ({
+export const generateStaticParams = () => {
+  return Object.keys(tagData).map((tag) => ({
     tag: encodeURI(tag),
   }))
 }
 
-export default function TagPage({ params }: { params: { tag: string } }) {
+export default function TagPage({ params }: { params: Params }) {
   const tag = decodeURI(params.tag)
 
   // Capitalize first letter and convert space to dash

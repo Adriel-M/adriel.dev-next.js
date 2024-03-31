@@ -2,6 +2,7 @@ import 'css/tailwind.css'
 import 'css/post-layout.css'
 
 import { Metadata } from 'next'
+import { ReactNode } from 'react'
 
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang={siteMetadata.language}

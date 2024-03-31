@@ -17,8 +17,13 @@ export default function Projects() {
         </div>
         <div className="container py-12">
           <div className="-m-4 flex flex-wrap">
-            {allProjects.map((d) => (
-              <Card key={d.title} title={d.title} description={d.description} href={d.href} />
+            {allProjects.map((project) => (
+              <Card
+                key={project.title}
+                title={project.title}
+                description={project.description}
+                href={project.href}
+              />
             ))}
           </div>
         </div>

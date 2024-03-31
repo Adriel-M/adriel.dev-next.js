@@ -10,6 +10,7 @@ import {
   InternalDocSearchHit,
   StoredDocSearchHit,
 } from '@docsearch/react/dist/esm/types'
+import { ReactNode } from 'react'
 
 import CustomLink from '@/components/Link'
 import siteMetadata from '@/data/siteMetadata'
@@ -44,7 +45,7 @@ const Hit = ({
   children,
 }: {
   hit: InternalDocSearchHit | StoredDocSearchHit
-  children: React.ReactNode
+  children: ReactNode
 }) => {
   return <CustomLink href={hit.url}>{children}</CustomLink>
 }

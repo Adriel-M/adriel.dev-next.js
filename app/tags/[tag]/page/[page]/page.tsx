@@ -13,12 +13,10 @@ interface TagAndPage {
 export const dynamicParams = false
 
 export function generateStaticParams() {
-  const tagCounts = tagData as Record<string, number>
-  const tags = Object.keys(tagCounts)
   const entries: TagAndPage[] = []
 
-  for (const tag of tags) {
-    const numberOfPages = getTotalPages(tagCounts[tag])
+  for (const [tag, count] of Object.entries(tagData)) {
+    const numberOfPages = getTotalPages(count)
 
     for (let i = 0; i < numberOfPages; i++) {
       entries.push({
