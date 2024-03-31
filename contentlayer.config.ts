@@ -1,6 +1,6 @@
 import octicons from '@primer/octicons'
 import nlp from 'compromise'
-import { defineDocumentType, makeSource } from 'contentlayer-temp/source-files'
+import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
 import { writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
