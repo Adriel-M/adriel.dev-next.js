@@ -8,12 +8,12 @@ import siteMetadata from '@/data/siteMetadata'
 import PostSimple from '@/layouts/PostSimple'
 import { sortPosts } from '@/lib/PlinyUtils'
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string[] }
-}): Promise<Metadata | undefined> {
-  const slug = decodeURI(params.slug.join('/'))
+interface Params {
+  slug: string
+}
+
+export function generateMetadata({ params }: { params: Params }): Metadata | undefined {
+  const slug = decodeURI(params.slug)
   const post = allPosts.find((p) => p.slug === slug)
   if (!post) {
     return
@@ -54,12 +54,12 @@ export async function generateMetadata({
 
 export const dynamicParams = false
 
-export const generateStaticParams = async () => {
-  return allPosts.map((p) => ({ slug: p.slug.split('/') }))
+export const generateStaticParams = () => {
+  return allPosts.map((p) => ({ slug: p.slug }))
 }
 
-export default async function Page({ params }: { params: { slug: string[] } }) {
-  const slug = decodeURI(params.slug.join('/'))
+export default function Page({ params }: { params: Params }) {
+  const slug = decodeURI(params.slug)
 
   const sortedPosts = sortPosts(allPosts)
   const postIndex = sortedPosts.findIndex((p) => p.slug === slug)
