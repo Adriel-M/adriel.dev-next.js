@@ -34,28 +34,29 @@ class StyledFeed {
   #XML_CONTENT_TO_REPLACE = '<?xml version="1.0" encoding="utf-8"?>'
 }
 
+const author = {
+  name: siteMetadata.author,
+  email: 'contact@websiteDomain',
+}
+
 const copyrightNotice =
   'Copyright Adriel Martinez. Some rights reserved. Licensed under CC BY 4.0: http://creativecommons.org/licenses/by/4.0/'
 const getFeed = () => {
   const posts = sortPosts(allPosts)
-  const feedPathWithSiteUrl = siteMetadata.siteUrl + '/'
   const title = siteMetadata.title
   const feed = new Feed({
     title,
     description: siteMetadata.description,
     id: siteMetadata.siteUrl,
     link: siteMetadata.siteUrl,
-    language: 'en',
+    language: siteMetadata.locale,
     favicon: `${siteMetadata.siteUrl}/static/images/favicon.ico`,
     updated: posts.length > 0 ? new Date(posts[0].date) : undefined,
     feedLinks: {
-      rss: feedPathWithSiteUrl + 'rss.xml',
-      atom: feedPathWithSiteUrl + 'feed.xml',
+      rss: siteMetadata.siteUrl + '/rss.xml',
+      atom: siteMetadata.siteUrl + '/atom.xml',
     },
-    author: {
-      name: siteMetadata.author,
-      email: 'contact@websiteDomain',
-    },
+    author: author,
     copyright: copyrightNotice,
   })
   for (const post of posts) {
@@ -65,12 +66,7 @@ const getFeed = () => {
       link: `${siteMetadata.siteUrl}/${post.path}`,
       description: post.summary,
       date: new Date(post.date),
-      author: [
-        {
-          name: siteMetadata.author,
-          email: 'contact@websiteDomain',
-        },
-      ],
+      author: [author],
       category: post.tags.map((tag) => ({
         name: tag,
         domain: `${siteMetadata.siteUrl}/tags/${tag}`,
