@@ -4,7 +4,6 @@ import { writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypePresetMinify from 'rehype-preset-minify'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypeSlug from 'rehype-slug'
 import removeMd from 'remove-markdown'
@@ -164,9 +163,10 @@ const config = defineConfig({
         },
       ],
       [rehypePrismPlus, { defaultLanguage: 'ts' }],
-      rehypePresetMinify,
     ],
     copyLinkedFiles: false,
+    removeComments: true,
+    minify: true,
   },
   output: {
     assets: 'public/velite',
