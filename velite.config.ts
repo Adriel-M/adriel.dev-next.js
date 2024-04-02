@@ -63,11 +63,7 @@ const generateShortenedTitle = (title: string): string => {
 }
 
 const icon = fromHtmlIsomorphic(
-  `
-  <span class="content-header-link-placeholder">
-    ${octicons.link.toSVG()}
-  </span>
-  `,
+  `<span class="content-header-link-placeholder">${octicons.link.toSVG()}</span>`,
   { fragment: true }
 )
 
