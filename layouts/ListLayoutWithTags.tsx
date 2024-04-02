@@ -1,9 +1,9 @@
 import { slug } from 'github-slugger'
 
-import tagData from '@/app/tag-data.json'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
+import { getTagCounts } from '@/lib/CollectionUtils'
 import { formatDate } from '@/lib/PlinyUtils'
 import { Post } from '#veliteContent'
 
@@ -82,9 +82,8 @@ export default function ListLayoutWithTags({
   pagination,
   currentTag,
 }: ListLayoutWithTagsProps) {
-  const tagCounts = tagData as Record<string, number>
-  const tagKeys = Object.keys(tagCounts)
-  const sortedTags = tagKeys.sort(compareTagsByCountThenAlpha(tagCounts))
+  const tagKeys = Object.keys(getTagCounts())
+  const sortedTags = tagKeys.sort(compareTagsByCountThenAlpha(getTagCounts()))
 
   const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
 
@@ -120,7 +119,7 @@ export default function ListLayoutWithTags({
                         className={`${tagCss} px-3 py-2 text-sm font-medium uppercase`}
                         aria-label={`View posts tagged ${t}`}
                       >
-                        {`${t} (${tagCounts[t]})`}
+                        {`${t} (${getTagCounts()[t]})`}
                       </Link>
                     </li>
                   )

@@ -1,6 +1,5 @@
 import octicons from '@primer/octicons'
 import nlp from 'compromise'
-import { writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
@@ -12,22 +11,6 @@ import { defineConfig, s } from 'velite'
 import siteMetadata from '@/data/siteMetadata'
 import remarkCodeTitles from '@/lib/remarkPlugins/RemarkCodeTitles'
 import remarkImgToJsx from '@/lib/remarkPlugins/RemarkImgToJsx'
-
-function createTagCount(allPosts: { tags: string[] }[]) {
-  const tagCount: { [key: string]: number } = {}
-  for (const post of allPosts) {
-    for (const tag of post.tags) {
-      const formattedTag = slug(tag)
-      if (!(formattedTag in tagCount)) {
-        tagCount[formattedTag] = 0
-      }
-
-      tagCount[formattedTag] += 1
-    }
-  }
-  const orderedTagOutput = JSON.stringify(tagCount, Object.keys(tagCount).sort())
-  writeFileSync('./app/tag-data.json', orderedTagOutput)
-}
 
 // Strip this since manually so we can get rid of the whitespace left behind
 const footnoteReferenceRegex = /\s+\[\^\w+]/
@@ -146,6 +129,13 @@ const config = defineConfig({
         href: s.string().url(),
       }),
     },
+    tags: {
+      name: 'Tag',
+      pattern: 'tags/**/*.yaml',
+      schema: s.object({
+        counts: s.record(s.string(), s.number()),
+      }),
+    },
   },
   mdx: {
     gfm: true,
@@ -173,8 +163,8 @@ const config = defineConfig({
     base: '/velite/',
   },
   root: 'data',
-  complete: ({ posts }) => {
-    const tagCount: { [key: string]: number } = {}
+  prepare: ({ posts, tags }) => {
+    const tagCount: Record<string, number> = {}
     posts.forEach((post) => {
       post.tags.forEach((tag) => {
         const formattedTag = slug(tag)
@@ -185,9 +175,10 @@ const config = defineConfig({
         tagCount[formattedTag] += 1
       })
     })
-    const orderedTagOutput = JSON.stringify(tagCount, Object.keys(tagCount).sort())
-    writeFileSync('./app/tag-data.json', orderedTagOutput)
-    createTagCount(posts)
+
+    tags.push({
+      counts: tagCount,
+    })
   },
 })
 

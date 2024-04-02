@@ -1,6 +1,5 @@
-import tagData from '@/app/tag-data.json'
 import PagedListLayoutWithTags from '@/layouts/PagedListLayoutWithTags'
-import { getPostsByTagSlug } from '@/lib/CollectionUtils'
+import { getPostsByTagSlug, getTagCounts } from '@/lib/CollectionUtils'
 import { getTotalPages } from '@/lib/PagingUtils'
 import { sortPosts } from '@/lib/PlinyUtils'
 
@@ -13,7 +12,7 @@ export const dynamicParams = false
 export function generateStaticParams() {
   const entries: TagAndPage[] = []
 
-  for (const [tag, count] of Object.entries(tagData)) {
+  for (const [tag, count] of Object.entries(getTagCounts())) {
     const numberOfPages = getTotalPages(count)
 
     for (let i = 0; i < numberOfPages; i++) {

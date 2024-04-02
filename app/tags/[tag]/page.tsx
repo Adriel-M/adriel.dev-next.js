@@ -1,10 +1,9 @@
 import { genPageMetadata } from 'app/seo'
 import { Metadata } from 'next'
 
-import tagData from '@/app/tag-data.json'
 import siteMetadata from '@/data/siteMetadata'
 import PagedListLayoutWithTags from '@/layouts/PagedListLayoutWithTags'
-import { getPostsByTagSlug } from '@/lib/CollectionUtils'
+import { getPostsByTagSlug, getTagCounts } from '@/lib/CollectionUtils'
 import { sortPosts } from '@/lib/PlinyUtils'
 
 interface Params {
@@ -21,7 +20,7 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
 export const dynamicParams = false
 
 export const generateStaticParams = () => {
-  return Object.keys(tagData).map((tag) => ({
+  return Object.keys(getTagCounts()).map((tag) => ({
     tag: encodeURI(tag),
   }))
 }

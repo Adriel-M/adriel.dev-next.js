@@ -1,6 +1,6 @@
 import { slug } from 'github-slugger'
 
-import { Post, posts, projects } from '#veliteContent'
+import { Post, posts, projects, tags } from '#veliteContent'
 
 export const getAllPosts = (): Post[] => {
   return posts
@@ -16,4 +16,8 @@ export const getPostsByTagSlug = (tagSlug: string): Post[] => {
 
 export const getAllProjects = () => {
   return projects
+}
+
+export const getTagCounts = () => {
+  return tags[0].counts
 }
