@@ -1,8 +1,7 @@
-import { Post } from 'contentlayer/generated'
-
 import siteMetadata from '@/data/siteMetadata'
 import ListLayoutWithTags from '@/layouts/ListLayoutWithTags'
 import { getTotalPages } from '@/lib/PagingUtils'
+import { Post } from '#veliteContent'
 
 interface PagedListLayoutWithTagsProps {
   posts: Post[]

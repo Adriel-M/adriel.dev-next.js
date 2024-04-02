@@ -1,4 +1,3 @@
-import type { Post } from 'contentlayer/generated'
 import { ReactNode } from 'react'
 
 import Link from '@/components/Link'
@@ -8,6 +7,7 @@ import SectionContainer from '@/components/SectionContainer'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from '@/lib/PlinyUtils'
+import { Post } from '#veliteContent'
 
 interface LayoutProps {
   content: Post

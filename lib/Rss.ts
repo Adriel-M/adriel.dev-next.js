@@ -1,7 +1,7 @@
-import { allPosts } from 'contentlayer/generated'
 import { Feed } from 'feed'
 
 import siteMetadata from '@/data/siteMetadata'
+import { getAllPosts } from '@/lib/CollectionUtils'
 import { sortPosts } from '@/lib/PlinyUtils'
 
 class StyledFeed {
@@ -42,7 +42,7 @@ const author = {
 const copyrightNotice =
   'Copyright Adriel Martinez. Some rights reserved. Licensed under CC BY 4.0: http://creativecommons.org/licenses/by/4.0/'
 const getFeed = () => {
-  const posts = sortPosts(allPosts)
+  const posts = sortPosts(getAllPosts())
   const title = siteMetadata.title
   const feed = new Feed({
     title,

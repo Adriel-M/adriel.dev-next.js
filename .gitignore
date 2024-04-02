@@ -44,3 +44,4 @@ yarn-error.log*
 
 node_modules
 .env
+.velite

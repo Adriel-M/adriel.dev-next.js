@@ -1,9 +1,8 @@
-import { Post } from 'contentlayer/generated'
-
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from '@/lib/PlinyUtils'
+import { Post } from '#veliteContent'
 
 interface Props {
   posts: Post[]
