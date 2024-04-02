@@ -1,7 +1,7 @@
 import { genPageMetadata } from 'app/seo'
-import { allProjects } from 'contentlayer/generated'
 
 import Card from '@/components/Card'
+import { getAllProjects } from '@/lib/CollectionUtils'
 
 export const metadata = genPageMetadata({ title: 'Projects' })
 
@@ -17,7 +17,7 @@ export default function Projects() {
         </div>
         <div className="container py-12">
           <div className="-m-4 flex flex-wrap">
-            {allProjects.map((project) => (
+            {getAllProjects().map((project) => (
               <Card
                 key={project.title}
                 title={project.title}

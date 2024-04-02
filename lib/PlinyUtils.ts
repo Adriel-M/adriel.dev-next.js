@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-import { Post } from 'contentlayer/generated'
+import { Post } from '#veliteContent'
 
 export const formatDate = (date: string, locale = 'en-US') => {
   const options: Intl.DateTimeFormatOptions = {

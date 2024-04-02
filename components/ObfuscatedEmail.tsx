@@ -2,8 +2,11 @@
 
 import { Email } from 'react-obfuscate-email'
 
-const ObfuscatedEmail = ({ emailAddress }: { emailAddress?: string }) => {
-  return <Email email={emailAddress ?? 'place@holder.com'} />
+import siteMetadata from '@/data/siteMetadata'
+
+const ObfuscatedEmail = () => {
+  const email = siteMetadata.emailAddress ?? 'place@holder.com'
+  return <Email email={email} />
 }
 
 export default ObfuscatedEmail

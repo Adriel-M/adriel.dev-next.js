@@ -1,5 +1,4 @@
 const withPlugins = require('next-compose-plugins')
-const { withContentlayer } = require('next-contentlayer2')
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -94,11 +93,28 @@ const nextConfig = {
       use: ['@svgr/webpack'],
     })
 
+    config.plugins.push(new VeliteWebpackPlugin())
+
     return config
   },
+}
+
+class VeliteWebpackPlugin {
+  static started = false
+  apply(/** @type {import('webpack').Compiler} */ compiler) {
+    // executed three times in nextjs
+    // twice for the server (nodejs / edge runtime) and once for the client
+    compiler.hooks.beforeCompile.tap('VeliteWebpackPlugin', async () => {
+      if (VeliteWebpackPlugin.started) return
+      VeliteWebpackPlugin.started = true
+      const dev = compiler.options.mode === 'development'
+      const { build } = await import('velite')
+      await build({ watch: dev, clean: !dev })
+    })
+  }
 }
 
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
  **/
-module.exports = withPlugins([withContentlayer, withBundleAnalyzer], nextConfig)
+module.exports = withPlugins([withBundleAnalyzer], nextConfig)

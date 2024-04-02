@@ -1,11 +1,11 @@
 import 'css/prism.css'
 
-import { allPosts } from 'contentlayer/generated'
 import { Metadata } from 'next'
 
-import MarkdownRenderer from '@/components/MarkdownRenderer'
+import { VeliteMarkdownRenderer } from '@/components/VeliteMarkdownRenderer'
 import siteMetadata from '@/data/siteMetadata'
 import PostSimple from '@/layouts/PostSimple'
+import { getAllPosts, getPostBySlug } from '@/lib/CollectionUtils'
 import { sortPosts } from '@/lib/PlinyUtils'
 
 interface Params {
@@ -14,7 +14,7 @@ interface Params {
 
 export function generateMetadata({ params }: { params: Params }): Metadata | undefined {
   const slug = decodeURI(params.slug)
-  const post = allPosts.find((p) => p.slug === slug)
+  const post = getPostBySlug(slug)
   if (!post) {
     return
   }
@@ -55,13 +55,13 @@ export function generateMetadata({ params }: { params: Params }): Metadata | und
 export const dynamicParams = false
 
 export const generateStaticParams = () => {
-  return allPosts.map((p) => ({ slug: p.slug }))
+  return getAllPosts().map((p) => ({ slug: p.slug }))
 }
 
 export default function Page({ params }: { params: Params }) {
   const slug = decodeURI(params.slug)
 
-  const sortedPosts = sortPosts(allPosts)
+  const sortedPosts = sortPosts(getAllPosts())
   const postIndex = sortedPosts.findIndex((p) => p.slug === slug)
 
   const prev = sortedPosts[postIndex + 1]
@@ -75,7 +75,7 @@ export default function Page({ params }: { params: Params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(post.structuredData) }}
       />
       <PostSimple content={post} next={next} prev={prev}>
-        <MarkdownRenderer content={post} />
+        <VeliteMarkdownRenderer content={post} />
       </PostSimple>
     </>
   )
