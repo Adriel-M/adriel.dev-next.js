@@ -97,7 +97,7 @@ const config = defineConfig({
             slug: data.path.replace(/^.+?(\/)/, ''),
             structuredData: {
               '@context': 'https://schema.org',
-              '@type': 'PostPosting',
+              '@type': 'BlogPosting',
               headline: data.title,
               datePublished: data.date,
               dateModified: data.lastmod || data.date,
