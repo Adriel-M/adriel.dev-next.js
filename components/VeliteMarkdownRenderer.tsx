@@ -21,10 +21,11 @@ const useMDXComponent = (code: string) => {
 interface MDXProps {
   content: { code: string }
   components?: Record<string, React.ComponentType>
+  [key: string]: unknown
 }
 
 // MDXContent component
-export const VeliteMarkdownRenderer = ({ content, components }: MDXProps) => {
+export const VeliteMarkdownRenderer = ({ content, components, ...rest }: MDXProps) => {
   const Component = useMDXComponent(content.code)
-  return <Component components={{ ...globalComponents, ...components }} />
+  return <Component components={{ ...globalComponents, ...components }} {...rest} />
 }
