@@ -1,6 +1,8 @@
+import octicons from '@primer/octicons'
 import nlp from 'compromise'
 import { writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
+import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePresetMinify from 'rehype-preset-minify'
 import rehypePrismPlus from 'rehype-prism-plus'
@@ -78,6 +80,15 @@ const generateShortenedTitle = (title: string): string => {
   return newTitle
 }
 
+const icon = fromHtmlIsomorphic(
+  `
+  <span class="content-header-link-placeholder">
+    ${octicons.link.toSVG()}
+  </span>
+  `,
+  { fragment: true }
+)
+
 const config = defineConfig({
   collections: {
     authors: {
@@ -140,7 +151,21 @@ const config = defineConfig({
   mdx: {
     gfm: true,
     remarkPlugins: [remarkCodeTitles, remarkImgToJsx],
-    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypePrismPlus, rehypePresetMinify],
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'prepend',
+          headingProperties: {
+            className: ['content-header'],
+          },
+          content: icon,
+        },
+      ],
+      [rehypePrismPlus, { defaultLanguage: 'ts' }],
+      rehypePresetMinify,
+    ],
     copyLinkedFiles: false,
   },
   output: {
