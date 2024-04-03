@@ -1,10 +1,8 @@
 'use client'
 
 import '@docsearch/css/dist/button.css'
-import '@docsearch/css/dist/modal.css'
 import './variables.css'
 
-import { DocSearch } from '@docsearch/react'
 import {
   DocSearchHit,
   InternalDocSearchHit,
@@ -14,6 +12,8 @@ import { ReactNode } from 'react'
 
 import CustomLink from '@/components/Link'
 import siteMetadata from '@/data/siteMetadata'
+
+import { DocSearch } from './lazy/DocSearch'
 
 const TRAILING_ELLIPSIS_PATTERN = /\s+…$/
 const transformItems = (items: DocSearchHit[]): DocSearchHit[] => {
