@@ -7,10 +7,12 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import removeMd from 'remove-markdown'
+import { titleCase } from 'title-case'
 import { defineConfig, s } from 'velite'
 
 import siteMetadata from '@/data/siteMetadata'
 import remarkImgToJsx from '@/lib/remarkPlugins/RemarkImgToJsx'
+import remarkTitleCase from '@/lib/remarkPlugins/RemarkTitleCase'
 import getFeed from '@/lib/Rss'
 
 // Strip this since manually so we can get rid of the whitespace left behind
@@ -95,6 +97,7 @@ const config = defineConfig({
           const summary = generateSummary(meta.content!)
           return {
             ...data,
+            title: titleCase(data.title),
             slug: data.path.replace(/^.+?(\/)/, ''),
             structuredData: {
               '@context': 'https://schema.org',
@@ -120,11 +123,18 @@ const config = defineConfig({
     projects: {
       name: 'Project',
       pattern: 'projects/**/*.yaml',
-      schema: s.object({
-        title: s.string(),
-        description: s.string(),
-        href: s.string().url(),
-      }),
+      schema: s
+        .object({
+          title: s.string(),
+          description: s.string(),
+          href: s.string().url(),
+        })
+        .transform((data) => {
+          return {
+            ...data,
+            title: titleCase(data.title),
+          }
+        }),
     },
     tags: {
       name: 'Tag',
@@ -136,7 +146,7 @@ const config = defineConfig({
   },
   mdx: {
     gfm: true,
-    remarkPlugins: [remarkImgToJsx],
+    remarkPlugins: [remarkImgToJsx, remarkTitleCase],
     rehypePlugins: [
       rehypeSlug,
       [
