@@ -1,14 +1,13 @@
+import { ComponentType } from 'react'
 import * as runtime from 'react/jsx-runtime'
 
 import Image from '@/components/Image'
 import CustomLink from '@/components/Link'
-import Pre from '@/components/Pre'
 import TableWrapper from '@/components/TableWrapper'
 
 const globalComponents = {
   Image,
   a: CustomLink,
-  pre: Pre,
   table: TableWrapper,
 }
 
@@ -20,7 +19,7 @@ const useMDXComponent = (code: string) => {
 
 interface MDXProps {
   content: { code: string }
-  components?: Record<string, React.ComponentType>
+  components?: Record<string, ComponentType>
   [key: string]: unknown
 }
 
