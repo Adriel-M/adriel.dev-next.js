@@ -1,5 +1,4 @@
 import 'css/tailwind.css'
-import 'css/post-layout.css'
 
 import { Metadata } from 'next'
 import { ReactNode } from 'react'

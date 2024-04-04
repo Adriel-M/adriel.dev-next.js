@@ -1,3 +1,5 @@
+import '@/css/user-content.css'
+
 import { genPageMetadata } from 'app/seo'
 
 import ObfuscatedEmail from '@/components/ObfuscatedEmail'

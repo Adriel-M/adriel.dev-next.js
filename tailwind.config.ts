@@ -42,6 +42,7 @@ export default {
             code: {
               color: theme('colors.indigo.500'),
             },
+            '--tw-prose-pre-bg': theme('colors.slate.100 / 75%'),
           },
         },
       }),
