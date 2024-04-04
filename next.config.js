@@ -100,7 +100,8 @@ const nextConfig = {
   images: {
     loader: 'custom',
     loaderFile: './lib/imageLoader.ts'
-  }
+  },
+  poweredByHeader: false,
 }
 
 class VeliteWebpackPlugin {
