@@ -2,7 +2,6 @@ import '@/css/user-content.css'
 
 import { genPageMetadata } from 'app/seo'
 
-import ObfuscatedEmail from '@/components/ObfuscatedEmail'
 import { VeliteMarkdownRenderer } from '@/components/VeliteMarkdownRenderer'
 import siteMetadata from '@/data/siteMetadata'
 import PageSimple from '@/layouts/PageSimple'
@@ -11,6 +10,9 @@ import { authors } from '#veliteContent'
 const title = 'About'
 export const metadata = genPageMetadata({ title: title })
 
+const ObfuscatedEmail = ({ emailAddress }: { emailAddress?: string }) => {
+  return <a href={`mailto:${emailAddress}`}>{emailAddress}</a>
+}
 export default function Page() {
   return (
     <>
