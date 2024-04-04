@@ -1,8 +1,8 @@
 import { Feed } from 'feed'
 
 import siteMetadata from '@/data/siteMetadata'
-import { getAllPosts } from '@/lib/CollectionUtils'
 import { sortPosts } from '@/lib/PlinyUtils'
+import { Post } from '#veliteContent'
 
 class StyledFeed {
   private readonly feedObject: Feed
@@ -41,8 +41,8 @@ const author = {
 
 const copyrightNotice =
   'Copyright Adriel Martinez. Some rights reserved. Licensed under CC BY 4.0: http://creativecommons.org/licenses/by/4.0/'
-const getFeed = () => {
-  const posts = sortPosts(getAllPosts())
+const getFeed = (posts: Post[]) => {
+  const sortedPosts = sortPosts(posts)
   const title = siteMetadata.title
   const feed = new Feed({
     title,
@@ -51,7 +51,7 @@ const getFeed = () => {
     link: siteMetadata.siteUrl,
     language: siteMetadata.locale,
     favicon: `${siteMetadata.siteUrl}/static/images/favicon.ico`,
-    updated: posts.length > 0 ? new Date(posts[0].date) : undefined,
+    updated: sortedPosts.length > 0 ? new Date(sortedPosts[0].date) : undefined,
     feedLinks: {
       rss: siteMetadata.siteUrl + '/rss.xml',
       atom: siteMetadata.siteUrl + '/atom.xml',
@@ -59,7 +59,7 @@ const getFeed = () => {
     author: author,
     copyright: copyrightNotice,
   })
-  for (const post of posts) {
+  for (const post of sortedPosts) {
     feed.addItem({
       title: post.title,
       id: `${siteMetadata.siteUrl}/${post.path}`,
