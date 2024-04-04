@@ -1,5 +1,6 @@
 import octicons from '@primer/octicons'
 import nlp from 'compromise'
+import { writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
@@ -11,6 +12,7 @@ import { defineConfig, s } from 'velite'
 import siteMetadata from '@/data/siteMetadata'
 import remarkCodeTitles from '@/lib/remarkPlugins/RemarkCodeTitles'
 import remarkImgToJsx from '@/lib/remarkPlugins/RemarkImgToJsx'
+import getFeed from '@/lib/Rss'
 
 // Strip this since manually so we can get rid of the whitespace left behind
 const footnoteReferenceRegex = /\s+\[\^\w+]/
@@ -175,6 +177,12 @@ const config = defineConfig({
     tags.push({
       counts: tagCount,
     })
+  },
+  complete: ({ posts }) => {
+    const feed = getFeed(posts)
+
+    writeFileSync('./public/rss.xml', feed.rss2())
+    writeFileSync('./public/atom.xml', feed.atom1())
   },
 })
 
