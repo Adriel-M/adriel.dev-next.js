@@ -1,4 +1,4 @@
-import 'css/prism.css'
+import '@/css/user-content.css'
 
 import { Metadata } from 'next'
 

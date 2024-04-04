@@ -30,7 +30,7 @@ The initial build time with just the template was 2 minutes 1 second where the f
 seconds. From here on out, I'll only be focusing on these two steps and will only mention these durations.
 In my opinion, this is fine so far and optimizing the build didn't even cross my mind yet.
 
-```log
+```console
 ➤ YN0000: ┌ Fetch step
 ➤ YN0066: │ typescript@patch:typescript@npm%3A5.3.2#~builtin<compat/typescript>::version=5.3.2&hash=14eedb: Cannot apply hunk #2
 ➤ YN0013: │ 54 packages were already cached, 1089 had to be fetched
@@ -49,7 +49,7 @@ Now let's add TinaCMS [^TinaInstallation]. I've removed the `tinacms build` step
 isn't the linking step cached? Vercel has a finite amount of build minutes [^VercelPricing] and optimizing the build time might be
 necessary if I actually end up posting frequently.
 
-```log
+```console
 ➤ YN0000: ┌ Fetch step
 ➤ YN0066: │ typescript@patch:typescript@npm%3A5.3.2#~builtin<compat/typescript>::version=5.3.2&hash=14eedb: Cannot apply hunk #2
 ➤ YN0013: │ 56 packages were already cached, 1707 had to be fetched
@@ -77,7 +77,7 @@ empty commit right after each step to showcase the cache being hit/missed.
 We'll be overriding the install step on the vercel build pipeline. For now, it will just run the `yarn install` command.
 We'll put this script in `scripts/vercel-build.sh`. Don't forget to `chmod +x` so it can be executed.
 
-```bash:scripts/vercel-build.sh
+```shell title="scripts/vercel-build.sh"
 #!/bin/bash
 
 echo "Starting the script..."
@@ -108,7 +108,7 @@ yarn cjs file. Don't forget to run `yarn install` which will update the `yarn.lo
 
 This did cut down the fetching time back to around a minute but I still want to avoid refetching the dependencies.
 
-```log
+```console
 ➤ YN0000: · Yarn 4.1.0
 ➤ YN0000: ┌ Resolution step
 ➤ YN0000: └ Completed in 0s 623ms
@@ -134,7 +134,7 @@ cached [^VercelCaching] which contains the cache folder used by yarn [^YarnCache
 by vercel; for this project, we'll use `.next/cache` as that's cached [^VercelCaching].
 We also need to set the `YARN_CACHE_FOLDER` environment variable [^YarnCacheFolder] when we run `yarn install`.
 
-```shell:scripts/vercel-build.sh {5-7}
+```shell title="scripts/vercel-build.sh" {5-7}
 #!/bin/bash
 
 echo "Starting the script..."
@@ -153,7 +153,7 @@ echo "Script completed."
 Now the fetch step takes around 1 second. This means that we're not refetching the dependencies anymore! That is roughly
 a minute of savings! It still looks like there are more improvements that can be made since the linking step wasn't skipped...
 
-```log
+```console
 ➤ YN0000: · Yarn 4.1.0
 ➤ YN0000: ┌ Resolution step
 ➤ YN0000: └ Completed in 0s 628ms
@@ -184,7 +184,7 @@ of this file just like the previous section with an environment variable, but we
 during the install step. To do this, we'll check if this file exists in `node_modules` and copy it to `.yarn`. Inversely copy it
 from `.yarn` back to `node_modules` after `yarn install` so it can be cached for future builds.
 
-```shell:scripts/vercel-build.sh {5-11,21-27}
+```shell title="scripts/vercel-build.sh" {5-11,21-27}
 #!/bin/bash
 
 echo "Starting the script..."
@@ -218,7 +218,7 @@ echo "Script completed."
 
 Looks like that did it! Another minute cut down from the build time.
 
-```log
+```console
 ➤ YN0000: · Yarn 4.1.0
 ➤ YN0000: ┌ Resolution step
 ➤ YN0000: └ Completed in 0s 635ms
@@ -241,7 +241,7 @@ PR can be found [here](https://github.com/Adriel-M/speed-up-berry-builds-vercel/
 This is what the final script looks like that copies the `install-state.gz`, set the `YARN_CACHE_FOLDER` environment
 variable, runs `yarn install`, and copies back the `install-state.gz` to a cacheable folder:
 
-```bash:scripts/vercel-build.sh
+```shell :scripts/vercel-build.sh
 #!/bin/bash
 
 echo "Starting the script..."

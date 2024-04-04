@@ -4,13 +4,12 @@ import { writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypePrismPlus from 'rehype-prism-plus'
+import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import removeMd from 'remove-markdown'
 import { defineConfig, s } from 'velite'
 
 import siteMetadata from '@/data/siteMetadata'
-import remarkCodeTitles from '@/lib/remarkPlugins/RemarkCodeTitles'
 import remarkImgToJsx from '@/lib/remarkPlugins/RemarkImgToJsx'
 import getFeed from '@/lib/Rss'
 
@@ -137,7 +136,7 @@ const config = defineConfig({
   },
   mdx: {
     gfm: true,
-    remarkPlugins: [remarkCodeTitles, remarkImgToJsx],
+    remarkPlugins: [remarkImgToJsx],
     rehypePlugins: [
       rehypeSlug,
       [
@@ -150,7 +149,17 @@ const config = defineConfig({
           content: icon,
         },
       ],
-      [rehypePrismPlus, { defaultLanguage: 'ts' }],
+      [
+        rehypePrettyCode,
+        {
+          keepBackground: false,
+          defaultLang: {
+            block: 'ts',
+            inline: 'console',
+          },
+          theme: 'github-light',
+        },
+      ],
     ],
     copyLinkedFiles: false,
     removeComments: true,
