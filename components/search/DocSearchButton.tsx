@@ -32,6 +32,7 @@ const transformItems = (items: DocSearchHit[]): DocSearchHit[] => {
       }
     }
 
+    // Make the url just the relative path
     const url = new URL(item.url)
     return {
       ...item,
@@ -47,7 +48,20 @@ const Hit = ({
   hit: InternalDocSearchHit | StoredDocSearchHit
   children: ReactNode
 }) => {
-  return <CustomLink href={hit.url}>{children}</CustomLink>
+  const trackingProps: { [key: string]: string } = {}
+  const castedHit = hit as InternalDocSearchHit | undefined
+  let matchedWord = castedHit?._highlightResult?.content?.matchedWords[0]
+  if (matchedWord) {
+    if (matchedWord.length > 10) {
+      matchedWord = matchedWord.slice(0, 10) + '…'
+    }
+    trackingProps['data-umami-event'] = `Search: ${matchedWord}`
+  }
+  return (
+    <CustomLink {...trackingProps} href={hit.url}>
+      {children}
+    </CustomLink>
+  )
 }
 
 const DocSearchButton = () => {
