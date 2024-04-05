@@ -1,22 +1,25 @@
 import octicons from '@primer/octicons'
 import nlp from 'compromise'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
-import removeMd from 'remove-markdown'
+import { remark } from 'remark'
+import strip from 'strip-markdown'
 
 import siteMetadata from '@/data/siteMetadata'
+import remarkExtractFirstSectionText from '@/lib/remarkPlugins/RemarkExtractFirstSectionText'
 
 // Strip this since manually so we can get rid of the whitespace left behind
 const footnoteReferenceRegex = /\s+\[\^\w+]/
+const newLineRegex = /\s+/
 
-// markdownStripper can't handle a footnote definition that is more than one word
-// just use regex to remove it.
-function removeFootnoteReferences(postBody: string): string {
-  return postBody.replace(footnoteReferenceRegex, '')
+const markdownStripper = remark().use(remarkExtractFirstSectionText).use(strip)
+
+const stripMarkdown = (content: string): string => {
+  const regexedContent = content.replace(footnoteReferenceRegex, '').replace(newLineRegex, ' ') // replace new line as space
+  return String(markdownStripper.processSync(regexedContent)).trim()
 }
 
 export const generateSummary = (rawPostBody: string) => {
-  const noFootnoteReferences = removeFootnoteReferences(rawPostBody)
-  const strippedBody = removeMd(noFootnoteReferences)
+  const strippedBody = stripMarkdown(rawPostBody)
   const sentences = nlp(strippedBody).sentences().json()
   let currentNumberOfWords = 0
   const output: string[] = []
