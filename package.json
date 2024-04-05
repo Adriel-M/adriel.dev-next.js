@@ -8,7 +8,7 @@
     "build": "next build && bun optimize-images.ts",
     "serve": "next start",
     "analyze": "ANALYZE=true next build",
-    "lint": "next lint --fix --dir app --dir components --dir lib --dir layouts --dir scripts --file velite.config.ts",
+    "lint": "next lint --fix --dir app --dir components --dir lib --dir layouts --dir scripts --file velite.config.ts --dir data --dir content",
     "prepare": "husky",
     "post": "bun scripts/newPost.ts"
   },

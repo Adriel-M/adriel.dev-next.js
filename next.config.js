@@ -56,7 +56,7 @@ const securityHeaders = [
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'mdx'],
   eslint: {
-    dirs: ['app', 'components', 'layouts', 'lib', 'scripts'],
+    dirs: ['app', 'components', 'layouts', 'lib', 'scripts', 'data', 'content'],
   },
   async rewrites() {
     return [

@@ -6,9 +6,10 @@ type Theme = (color: string) => string
 export default {
   content: [
     './app/**/*.{ts,tsx}',
+    './data/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './layouts/**/*.{ts,tsx}',
-    './data/**/*.mdx',
+    './content/**/*.mdx',
   ],
   theme: {
     extend: {
