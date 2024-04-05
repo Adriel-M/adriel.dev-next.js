@@ -50,7 +50,8 @@ const Hit = ({
 }) => {
   const trackingProps: { [key: string]: string } = {}
   const castedHit = hit as InternalDocSearchHit | undefined
-  let matchedWord = castedHit?._highlightResult?.content?.matchedWords[0]
+  const matchedWordArr = castedHit?._highlightResult?.content?.matchedWords
+  let matchedWord = matchedWordArr && matchedWordArr[0]
   if (matchedWord) {
     if (matchedWord.length > 10) {
       matchedWord = matchedWord.slice(0, 10) + '…'
