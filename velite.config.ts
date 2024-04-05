@@ -122,7 +122,6 @@ const config = defineConfig({
     assets: 'public/velite',
     base: '/velite/',
   },
-  root: 'data',
   prepare: ({ posts, tags }) => {
     const tagCount: Record<string, number> = {}
     posts.forEach((post) => {
