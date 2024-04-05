@@ -12,6 +12,7 @@ lastmod: 2024-03-06T23:09:23.603Z
 ---
 
 # TL;DR
+
 Berry (yarn v2) isn’t completely supported by vercel [^VercelPackageManager]. While berry can be used manage and build the project,
 caching isn’t properly configured. To hack around the caching issue, we need to follow these two steps:
 
@@ -21,6 +22,7 @@ caching isn’t properly configured. To hack around the caching issue, we need t
 See the script that does all of these [here](#putting-it-all-together).
 
 # Intro/Problem
+
 This blog uses next.js and deployed to vercel. I didn’t create this blog from scratch and used this
 [template](https://github.com/timlrx/tailwind-nextjs-starter-blog) to bootstrap this blog. I am also using
 [TinaCMS](https://tina.io/) to manage the content for simple blog posts; it doesn’t fully support all the features I
@@ -177,7 +179,7 @@ Looking at this [GitHub discussion](https://github.com/yarnpkg/berry/discussions
 like caching `.yarn/install-state.gz` is what we want to do. The yarn docs state [^YarnQA]:
 
 > .yarn/install-state.gz is an optimization file that you shouldn't ever have to commit. It simply stores the exact
-state of your project so that the next commands can boot without having to resolve your workspaces all over again.
+> state of your project so that the next commands can boot without having to resolve your workspaces all over again.
 
 It doesn't explicitly mention how it stores the linking step information, but it sounds legit. We can't set the location
 of this file just like the previous section with an environment variable, but we can copy it to and from a cached folder
@@ -279,28 +281,34 @@ This took me longer than I wanted and did a lot of trial and error. It was espec
 each potential solution I wanted to test out. I could have downgraded to yarn classic as well, but where's the fun in that? Another thing I want to test out
 is [turborepo](https://turbo.build/) and see if that would speed up the build times.
 
-[^VercelPackageManager]: Vercel determines which package manager is being used by the committed lock file. While yarn is supported,
-only v1 is on the supported package manager table and not the next generation of yarn (berry). See the vercel documentation
-[here](https://vercel.com/docs/deployments/builds/package-managers#supported-package-managers).
+[^VercelPackageManager]:
+    Vercel determines which package manager is being used by the committed lock file. While yarn is supported,
+    only v1 is on the supported package manager table and not the next generation of yarn (berry). See the vercel documentation
+    [here](https://vercel.com/docs/deployments/builds/package-managers#supported-package-managers).
 
-[^YarnCacheFolder]: The yarn cache folder by default is `./.yarn/cache`. To override this, an environment vartiable can be set
-which will be the snake case of the config key. See the yarnrc documentation [here](https://yarnpkg.com/configuration/yarnrc#cacheFolder).
+[^YarnCacheFolder]:
+    The yarn cache folder by default is `./.yarn/cache`. To override this, an environment vartiable can be set
+    which will be the snake case of the config key. See the yarnrc documentation [here](https://yarnpkg.com/configuration/yarnrc#cacheFolder).
 
-[^YarnQA]: It’s not clear how `install-state.gz` is used by yarn from the QA section of the yarn documentation
-[here](https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored).
-This [GitHub discussion](https://github.com/yarnpkg/berry/discussions/4978#discussioncomment-7251866) suggests it is used in
-the linking step as deleting it will result in running that step again.
+[^YarnQA]:
+    It’s not clear how `install-state.gz` is used by yarn from the QA section of the yarn documentation
+    [here](https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored).
+    This [GitHub discussion](https://github.com/yarnpkg/berry/discussions/4978#discussioncomment-7251866) suggests it is used in
+    the linking step as deleting it will result in running that step again.
 
-[^TinaLimitation]: TinaCMS has been great for very simple posts that only contain markdown. It falls short once you do more advance stuff
-supported by MDX such as inlining JSX components. It also doesn't support [footnotes](https://tina.io/docs/reference/types/rich-text/#unsupported-elements).
+[^TinaLimitation]:
+    TinaCMS has been great for very simple posts that only contain markdown. It falls short once you do more advance stuff
+    supported by MDX such as inlining JSX components. It also doesn't support [footnotes](https://tina.io/docs/reference/types/rich-text/#unsupported-elements).
 
-[^TinaInstallation]: To install TinaCMS to an existing project, follow these steps from their
-[documentation](https://tina.io/docs/frameworks/other/).
+[^TinaInstallation]:
+    To install TinaCMS to an existing project, follow these steps from their
+    [documentation](https://tina.io/docs/frameworks/other/).
 
-[^FullBuildLogs]: I've truncated the build logs since it contained a lot of lines for linking better-sqlite. The
-un-truncated logs can be found [here](https://gist.github.com/Adriel-M/856546e5a064aeb55916dffbdbae9fe1).
+[^FullBuildLogs]:
+    I've truncated the build logs since it contained a lot of lines for linking better-sqlite. The
+    un-truncated logs can be found [here](https://gist.github.com/Adriel-M/856546e5a064aeb55916dffbdbae9fe1).
 
 [^VercelPricing]: At the time of this writing, vercel has 6000 minutes on the hobby plan. Check the pricing page [here](https://vercel.com/pricing).
-
-[^VercelCaching]: For our project, only `node_modules`, `.next/cache`, and `yarn.lock` are cached. Check out the vercel documentation on which folders are cached
-[here](https://vercel.com/docs/deployments/troubleshoot-a-build#what-is-cached).
+[^VercelCaching]:
+    For our project, only `node_modules`, `.next/cache`, and `yarn.lock` are cached. Check out the vercel documentation on which folders are cached
+    [here](https://vercel.com/docs/deployments/troubleshoot-a-build#what-is-cached).

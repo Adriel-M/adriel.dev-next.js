@@ -70,7 +70,7 @@
     "*.+(ts|tsx)": [
       "eslint --fix"
     ],
-    "*.+(ts|tsx|css)": [
+    "*.+(ts|tsx|css|mdx)": [
       "prettier --write"
     ]
   }

@@ -27,7 +27,7 @@ is less verbose plus being able to hook into the build process prior to outputti
 
 ### Moving Images From Public Folder to Being Bundle
 
->Next.js cannot safely cache assets in the public folder because they may change.
+> Next.js cannot safely cache assets in the public folder because they may change.
 
 The contents inside the public folder have a cache control with `max-age=0` [^NextJsPublicFolderCache]. For my blog, this is weird
 considering each update I do requires a full rebuild and deployment of the website. I initially thought all files would be static in the full
@@ -79,21 +79,22 @@ I'm pretty much done with tinkering and now it's time to write content. Some of 
 it was fun figuring out workarounds to the limitations as well as giving guidance on how to achieve the same changes.
 Just to aggregate it, I would need to write a post about:
 
-* Using velite
-* Bundling images to work around Next.js caching
-* Switching to Cloudflare Pages
-* Benchmarking bun
+- Using velite
+- Bundling images to work around Next.js caching
+- Switching to Cloudflare Pages
+- Benchmarking bun
 
-[^NextJsPublicFolderCache]: [Documentation](https://nextjs.org/docs/app/building-your-application/optimizing/static-assets#caching)
-state that the content in the `public` folder could change but for my blog, each new post requires a new deployment and I'm unlikely to change the files in this folder.
-I guess it does make sense since these files aren't bundled.
+[^NextJsPublicFolderCache]:
+    [Documentation](https://nextjs.org/docs/app/building-your-application/optimizing/static-assets#caching)
+    state that the content in the `public` folder could change but for my blog, each new post requires a new deployment and I'm unlikely to change the files in this folder.
+    I guess it does make sense since these files aren't bundled.
 
 [^CloudflarePagesPricing]: [Unlimited Bandwidth](https://www.cloudflare.com/en-ca/plans/developer-platform/) in the pages section :eyes:.
-
-[^VercelHobbyPricing]: [Not Unlimited Bandwidth](https://vercel.com/pricing) :frowning_face:. Plus they announced a [pricing change](https://vercel.com/blog/improved-infrastructure-pricing).
-I don't even think I would be affected by this lol.
+[^VercelHobbyPricing]:
+    [Not Unlimited Bandwidth](https://vercel.com/pricing) :frowning_face:. Plus they announced a [pricing change](https://vercel.com/blog/improved-infrastructure-pricing).
+    I don't even think I would be affected by this lol.
 
 [^EdgeRequirement]: [Edge runtime](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-nextjs-site/#edge-runtime) is much less capable than the node runtime offered by Vercel.
-
-[^ContentLayerMaintenance]: As of today (05 April 2024), [this is the current state of the project](https://github.com/contentlayerdev/contentlayer/issues/429).
-While it does sound hopeful that it will be maintained in the future, I like tinkering and switching libraries :smile:.
+[^ContentLayerMaintenance]:
+    As of today (05 April 2024), [this is the current state of the project](https://github.com/contentlayerdev/contentlayer/issues/429).
+    While it does sound hopeful that it will be maintained in the future, I like tinkering and switching libraries :smile:.
