@@ -41,6 +41,8 @@ const transformItems = (items: DocSearchHit[]): DocSearchHit[] => {
   })
 }
 
+const searchCharLimit = 30
+
 const Hit = ({
   hit,
   children,
@@ -53,8 +55,8 @@ const Hit = ({
   const matchedWords = castedHit?._highlightResult?.content?.matchedWords
   if (matchedWords) {
     let words = matchedWords.join(' ')
-    if (words.length > 10) {
-      words = words.slice(0, 10) + '…'
+    if (words.length > searchCharLimit) {
+      words = words.slice(0, searchCharLimit) + '…'
     }
     trackingProps['data-umami-event'] = `Search: ${words}`
   }
