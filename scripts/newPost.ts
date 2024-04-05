@@ -1,7 +1,7 @@
 import { slug } from 'github-slugger'
 import matter from 'gray-matter'
 
-const postPath = 'data/posts'
+const postPath = 'content/posts'
 
 const createNewPost = async () => {
   const postsFolder = `${process.cwd()}/${postPath}`
