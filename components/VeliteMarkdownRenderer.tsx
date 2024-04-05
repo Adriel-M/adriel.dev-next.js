@@ -2,12 +2,12 @@ import { ComponentType } from 'react'
 import * as runtime from 'react/jsx-runtime'
 
 import Image from '@/components/Image'
-import CustomLink from '@/components/Link'
+import Link from '@/components/Link'
 import TableWrapper from '@/components/TableWrapper'
 
 const globalComponents = {
   Image,
-  a: CustomLink,
+  a: Link,
   table: TableWrapper,
 }
 

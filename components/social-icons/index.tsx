@@ -1,3 +1,5 @@
+import Link from '@/components/Link'
+
 import { Github, Linkedin, RSS } from './icons'
 
 const components = {
@@ -18,10 +20,8 @@ const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
   const SocialSvg = components[kind]
 
   return (
-    <a
+    <Link
       className="text-sm text-gray-500 transition hover:text-gray-600"
-      target="_blank"
-      rel="noopener noreferrer"
       href={href}
       data-umami-event={'Footer ' + kind}
     >
@@ -29,7 +29,7 @@ const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
       <SocialSvg
         className={`fill-current text-gray-700 hover:text-primary-500 h-${size} w-${size}`}
       />
-    </a>
+    </Link>
   )
 }
 
