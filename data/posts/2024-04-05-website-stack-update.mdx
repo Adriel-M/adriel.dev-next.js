@@ -1,0 +1,99 @@
+---
+title: Website Stack Update
+date: 2024-04-05T04:19:31.253Z
+tags:
+  - tech
+  - stack
+  - bun
+  - nextjs
+  - cloudflare-pages
+  - contentlayer
+  - velite
+---
+
+# An Update
+
+Still no solid content on this website just yet. I'm pretty much done tinkering around and getting this site just the way
+I want it. Here are some updates to this website.
+
+## Notable Changes
+
+### Switch over from using Contentlayer to Velite
+
+For those not familiar with [Contentlayer](https://github.com/contentlayerdev/contentlayer) and [Velite](https://github.com/zce/velite), these tools are able to create collections from content (for this site, mdx + yaml files) and do
+transformations on them. The transformations it is able to do is transforming MDX (markdown with JSX) content into HTML (with mdx-bundler and mdx-js respectively).
+The most notable reason for the switch is due to Contentlayer not actively maintained anymore [^ContentLayerMaintenance]. The best win is that defining the schema
+is less verbose plus being able to hook into the build process prior to outputting the files. For my case, collecting and calculating stats for tags. I should write a post about this :thinking:.
+
+### Moving Images From Public Folder to Being Bundle
+
+>Next.js cannot safely cache assets in the public folder because they may change.
+
+The contents inside the public folder have a cache control with `max-age=0` [^NextJsPublicFolderCache]. For my blog, this is weird
+considering each update I do requires a full rebuild and deployment of the website. I initially thought all files would be static in the full
+lifetime of a deployment. After thinking about this, the reason does make sense considering that these files aren't part of the bundle and it
+has no way to differentiate if a file with the same name changes in future deploys. The only way for an image to be bundled is to statically import
+it and pass it to the Next.js `Image` component. My workaround involves calling `require` on all images in the `images` folder
+and rewriting the path passed into the `Image` component. I'll definitely write a post about this.
+
+### Vercel to Cloudflare Pages
+
+I switched to using [Cloudflare Pages](https://pages.cloudflare.com/) as the host of this website. There is no real reason why I would switch
+to this right now and it was just a super pre-optimization. Cloudflare has a more generous free tier [^CloudflarePagesPricing] compared to Vercel [^VercelHobbyPricing]
+but its limits are a little bit harder to gauge since it's not clear what functions hits are considered (are they consumed on build time as well????).
+The other downside from the switch is that image optimization isn't available on the free tier as well as requiring routes to use the edge
+runtime [^EdgeRequirement]. While there are limitations, the switch was quite easy though and definitely deserves a post in the future on the exact steps I took.
+
+### Yarn to Bun
+
+In my [previous post](/posts/2024-02-09-speeding-up-builds-for-berry-yarn-projects-on-vercel) on optimizing builds, switching to [bun](https://bun.sh/)
+is just a free speed-up to builds. Not only is installing the packages is way easier (and don't require messing with the cache on vercel),
+the Next.js builds were sped up as well. Another thing I need to write about.
+
+### Removing TinaCMS
+
+When I started this blog, I thought it would be to write content via a rich-text editor which was the original reason why I installed [TinaCMS](https://tina.io/).
+Well it turns out, it's much easier to create content offline and not rely on draft posts to restrict showing the post on the site. Also
+embedding JSX content ont't show up in the preview (since I didn't really hook it up properly) as well as it didn't support all the markdown features
+I wanted (specifically the footer links). At the moment, writing with a code editor and running dev mode to see changes seems way easier.
+Maybe in the future, I'll consider another CMS and in my opinion, [notion](https://www.notion.so/) has the best writing experience.
+
+### K-Bar to Algolia Docsearch
+
+[K-Bar](https://github.com/timc1/kbar) is an npm package that gives an ability to spawn a command menu which can be configured
+to be a search box for the website. It is less capable (doesn't have fuzzy matching or indexing post content) but it is way easier
+to configure and don't require external services. I've switched over to [Algolia Docsearch](https://docsearch.algolia.com/) which is
+a free service for technical blog/documentation, and is more capable. It does require an approval process as well as configuring
+the React component yourself (see my [sourcecode](https://github.com/Adriel-M/adriel.dev/tree/444366b43e9547f37447c176bc493b418f3e65b3/components/search)).
+I had to manually configure it since I've removed the [pliny](https://github.com/timlrx/pliny) package that was originally part of the template.
+
+### Prism-Plus to Pretty-Code
+
+I also switched from [Prism-Plus](https://github.com/timlrx/rehype-prism-plus) to [Pretty-Code](https://github.com/rehype-pretty/rehype-pretty-code)
+to render code blocks on the site. Honestly there was no reason to switch, but I think the styling was much easier since
+there were a lot of built-in themes already :shrug:.
+
+# Closing
+
+I'm pretty much done with tinkering and now it's time to write content. Some of these changes require its own post since
+it was fun figuring out workarounds to the limitations as well as giving guidance on how to achieve the same changes.
+Just to aggregate it, I would need to write a post about:
+
+* Using velite
+* Bundling images to work around Next.js caching
+* Switching to Cloudflare Pages
+* Benchmarking bun
+
+[^NextJsPublicFolderCache]: [Documentation](https://nextjs.org/docs/app/building-your-application/optimizing/static-assets#caching)
+state that the content in the `public` folder could change but for my blog, each new post requires a new deployment and I'm unlikely to change the files in this folder.
+I guess it does make sense since these files aren't bundled.
+
+[^CloudflarePagesPricing]: [Unlimited Bandwidth](https://www.cloudflare.com/en-ca/plans/developer-platform/) in the pages section :eyes:.
+
+[^VercelHobbyPricing]: [Not Unlimited Bandwidth](https://vercel.com/pricing) :frowning_face:. Plus they announced a [pricing change](https://vercel.com/blog/improved-infrastructure-pricing).
+I don't even think I would be affected by this lol.
+
+[^EdgeRequirement]: [Edge runtime](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-nextjs-site/#edge-runtime) is much less capable than the node runtime offered by Vercel.
+
+[^ContentLayerMaintenance]: As of today (05 April 2024), [this is the current state of the project](https://github.com/contentlayerdev/contentlayer/issues/429).
+While it does sound hopeful that it will be maintained in the future, I like tinkering and switching libraries :smile:.

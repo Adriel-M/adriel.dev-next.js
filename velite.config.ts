@@ -3,6 +3,7 @@ import { slug } from 'github-slugger'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
+import remarkGemoji from 'remark-gemoji'
 import { titleCase } from 'title-case'
 import { defineConfig, s } from 'velite'
 
@@ -88,7 +89,7 @@ const config = defineConfig({
   },
   mdx: {
     gfm: true,
-    remarkPlugins: [remarkImgToJsx, remarkTitleCase],
+    remarkPlugins: [remarkGemoji, remarkImgToJsx, remarkTitleCase],
     rehypePlugins: [
       rehypeSlug,
       [
