@@ -23,6 +23,9 @@ export default {
         primary: colors.pink,
         gray: colors.gray,
       },
+      fontFamily: {
+        mono: 'inherit',
+      },
       typography: ({ theme }: { theme: Theme }) => ({
         DEFAULT: {
           css: {
