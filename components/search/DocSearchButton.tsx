@@ -50,13 +50,13 @@ const Hit = ({
 }) => {
   const trackingProps: { [key: string]: string } = {}
   const castedHit = hit as InternalDocSearchHit | undefined
-  const matchedWordArr = castedHit?._highlightResult?.content?.matchedWords
-  let matchedWord = matchedWordArr && matchedWordArr[0]
-  if (matchedWord) {
-    if (matchedWord.length > 10) {
-      matchedWord = matchedWord.slice(0, 10) + '…'
+  const matchedWords = castedHit?._highlightResult?.content?.matchedWords
+  if (matchedWords) {
+    let words = matchedWords.join(' ')
+    if (words.length > 10) {
+      words = words.slice(0, 10) + '…'
     }
-    trackingProps['data-umami-event'] = `Search: ${matchedWord}`
+    trackingProps['data-umami-event'] = `Search: ${words}`
   }
   return (
     <CustomLink {...trackingProps} href={hit.url}>
