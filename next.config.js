@@ -12,6 +12,7 @@ const ContentSecurityPolicy = `
   img-src * blob: data:;
   connect-src *;
   font-src 'self';
+  manifest-src 'self';
 `
 
 const securityHeaders = [
