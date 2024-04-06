@@ -1,5 +1,6 @@
 name: Algolia Recrawl
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
     paths:
