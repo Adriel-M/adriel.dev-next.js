@@ -11,7 +11,7 @@ interface Params {
   tag: string
 }
 export function generateMetadata({ params }: { params: Params }): Metadata {
-  const tag = decodeURI(params.tag)
+  const tag = params.tag
   return genPageMetadata({
     title: tag,
     description: `${siteMetadata.title} ${tag} tagged content`,
@@ -22,12 +22,12 @@ export const dynamicParams = false
 
 export const generateStaticParams = () => {
   return Object.keys(getTagCounts()).map((tag) => ({
-    tag: encodeURI(tag),
+    tag,
   }))
 }
 
 export default function TagPage({ params }: { params: Params }) {
-  const tag = decodeURI(params.tag)
+  const tag = params.tag
   const sluggedTag = new SluggedTag(tag)
 
   // Capitalize first letter and convert space to dash
