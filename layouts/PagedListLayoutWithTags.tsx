@@ -2,6 +2,7 @@ import siteMetadata from '@/data/siteMetadata'
 import ListLayoutWithTags from '@/layouts/ListLayoutWithTags'
 import { getTotalPages } from '@/lib/PagingUtils'
 import { SluggedTag } from '@/lib/SluggedTag'
+import { generateTagsPath } from '@/lib/UtlLibs'
 import { Post } from '#veliteContent'
 
 interface PagedListLayoutWithTagsProps {
@@ -25,7 +26,7 @@ export default function PagedListLayoutWithTags({
   let basePath: string
 
   if (currentTag) {
-    basePath = `/tags/${currentTag.tag}`
+    basePath = generateTagsPath(currentTag)
   } else {
     basePath = '/posts'
   }

@@ -2,6 +2,7 @@ import { Feed } from 'feed'
 
 import siteMetadata from '@/data/siteMetadata'
 import { sortPosts } from '@/lib/PlinyUtils'
+import { generateTagsPath } from '@/lib/UtlLibs'
 import { Post } from '#veliteContent'
 
 class StyledFeed {
@@ -69,7 +70,7 @@ const getFeed = (posts: Post[]) => {
       author: [author],
       category: post.tags.map((sluggedTag) => ({
         name: sluggedTag.tag,
-        domain: `${siteMetadata.siteUrl}/tags/${sluggedTag.tag}`,
+        domain: `${siteMetadata.siteUrl}${generateTagsPath(sluggedTag)}`,
       })),
     })
   }

@@ -4,6 +4,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { getTagCounts, sortTagsByAlpha } from '@/lib/CollectionUtils'
 import { formatDate } from '@/lib/PlinyUtils'
 import { SluggedTag } from '@/lib/SluggedTag'
+import { generateTagsPath } from '@/lib/UtlLibs'
 import { Post } from '#veliteContent'
 
 export interface PaginationProps {
@@ -116,7 +117,7 @@ export default function ListLayoutWithTags({
                   return (
                     <li key={t.tag} className="my-3">
                       <Link
-                        href={`/tags/${t.tag}`}
+                        href={generateTagsPath(t)}
                         className={`${tagCss} px-3 py-2 text-sm font-medium uppercase`}
                         aria-label={`View posts tagged ${t.tag}`}
                       >
