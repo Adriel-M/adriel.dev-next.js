@@ -1,6 +1,7 @@
 ---
 title: Website Stack Update
 date: 2024-04-05T04:19:31.253Z
+lastmod: 2024-04-06T03:16:19.626Z
 tags:
   - tech
   - stack
@@ -13,17 +14,17 @@ tags:
 
 # An Update
 
-Still no solid content on this website just yet. I'm pretty much done tinkering around and getting this site just the way
-I want it. Here are some updates to this website.
+Still no solid content on this website just yet. I'm almost done tinkering around and getting this site just the way
+I want it. Here are some updates to this website:
 
 ## Notable Changes
 
 ### Switch over from using Contentlayer to Velite
 
 For those not familiar with [Contentlayer](https://github.com/contentlayerdev/contentlayer) and [Velite](https://github.com/zce/velite), these tools are able to create collections from content (for this site, mdx + yaml files) and do
-transformations on them. The transformations it is able to do is transforming MDX (markdown with JSX) content into HTML (with mdx-bundler and mdx-js respectively).
-The most notable reason for the switch is due to Contentlayer not actively maintained anymore [^ContentLayerMaintenance]. The best win is that defining the schema
-is less verbose plus being able to hook into the build process prior to outputting the files. For my case, collecting and calculating stats for tags. I should write a post about this :thinking:.
+transformations on them. The transformations beneficial for my use case is transforming MDX (markdown with JSX) content into HTML (with mdx-bundler and mdx-js respectively).
+The most main reason for the switch is because Contentlayer not actively maintained anymore [^ContentLayerMaintenance]. The biggest upside to the switch is that defining the schema
+is less verbose, being able to hook into the build process prior to outputting the files, as well as doing extra validation on the frontmatter. I should write a post about this :thinking:.
 
 ### Moving Images From Public Folder to Being Bundle
 
@@ -38,8 +39,8 @@ and rewriting the path passed into the `Image` component. I'll definitely write 
 
 ### Vercel to Cloudflare Pages
 
-I switched to using [Cloudflare Pages](https://pages.cloudflare.com/) as the host of this website. There is no real reason why I would switch
-to this right now and it was just a super pre-optimization. Cloudflare has a more generous free tier [^CloudflarePagesPricing] compared to Vercel [^VercelHobbyPricing]
+I switched to using [Cloudflare Pages](https://pages.cloudflare.com/) for hosting this website. There is no real reason to switch and it was more of a
+pre-optimization. Cloudflare has a more generous free tier [^CloudflarePagesPricing] compared to Vercel [^VercelHobbyPricing]
 but its limits are a little bit harder to gauge since it's not clear what functions hits are considered (are they consumed on build time as well????).
 The other downside from the switch is that image optimization isn't available on the free tier as well as requiring routes to use the edge
 runtime [^EdgeRequirement]. While there are limitations, the switch was quite easy though and definitely deserves a post in the future on the exact steps I took.
@@ -54,7 +55,7 @@ the Next.js builds were sped up as well. Another thing I need to write about.
 
 When I started this blog, I thought it would be to write content via a rich-text editor which was the original reason why I installed [TinaCMS](https://tina.io/).
 Well it turns out, it's much easier to create content offline and not rely on draft posts to restrict showing the post on the site. Also
-embedding JSX content ont't show up in the preview (since I didn't really hook it up properly) as well as it didn't support all the markdown features
+embedding JSX content don't show up in the preview (since I didn't really hook it up properly) as well as it didn't support all the markdown features
 I wanted (specifically the footer links). At the moment, writing with a code editor and running dev mode to see changes seems way easier.
 Maybe in the future, I'll consider another CMS and in my opinion, [notion](https://www.notion.so/) has the best writing experience.
 
