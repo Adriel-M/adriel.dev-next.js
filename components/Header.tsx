@@ -1,6 +1,6 @@
+import Logo from '@/components/Logo'
 import DocSearchButton from '@/components/search/DocSearchButton'
 import headerNavLinks from '@/data/headerNavLinks'
-import Logo from '@/data/logo.svg'
 import siteMetadata from '@/data/siteMetadata'
 
 import Link from './Link'
