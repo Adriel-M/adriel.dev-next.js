@@ -41,7 +41,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "14.1.4",
     "@types/bun": "1.0.12",
-    "@types/inquirer": "^9.0.7",
+    "@types/inquirer": "9.0.7",
     "@types/mdx": "2.0.12",
     "@types/node": "20.12.3",
     "@types/primer__octicons": "19.6.3",
