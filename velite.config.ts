@@ -31,7 +31,33 @@ const config = defineConfig({
         .object({
           title: s.string(),
           date: s.isodate(),
-          tags: s.array(s.string().transform((tag) => new SluggedTag(tag))),
+          tags: s
+            .array(s.string())
+            .superRefine((tags, { addIssue }) => {
+              const countsPerTag: Record<string, number> = {}
+
+              for (const tag of tags) {
+                if (!(tag in countsPerTag)) {
+                  countsPerTag[tag] = 0
+                }
+
+                countsPerTag[tag] += 1
+              }
+
+              const duplicateTags = Object.keys(countsPerTag).filter((tag) => countsPerTag[tag] > 1)
+
+              if (duplicateTags.length > 0) {
+                addIssue({
+                  code: 'custom',
+                  message: `Duplicate tags found: ${duplicateTags}`,
+                })
+
+                return s.NEVER
+              }
+            })
+            .transform((tags) => {
+              return tags.map((t) => new SluggedTag(t))
+            }),
           lastmod: s.isodate().optional(),
           path: s.path(),
           code: s.mdx(),
