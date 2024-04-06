@@ -1,10 +1,9 @@
-import { slug } from 'github-slugger'
-
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
-import { getTagCounts } from '@/lib/CollectionUtils'
+import { getTagCounts, sortTagsByAlpha } from '@/lib/CollectionUtils'
 import { formatDate } from '@/lib/PlinyUtils'
+import { SluggedTag } from '@/lib/SluggedTag'
 import { Post } from '#veliteContent'
 
 export interface PaginationProps {
@@ -17,7 +16,7 @@ interface ListLayoutWithTagsProps {
   title: string
   initialDisplayPosts?: Post[]
   pagination?: PaginationProps
-  currentTag?: string
+  currentTag?: SluggedTag
 }
 function Pagination({ totalPages, currentPage, basePath }: PaginationProps) {
   const prevPage = currentPage - 1 > 0
@@ -83,7 +82,9 @@ export default function ListLayoutWithTags({
   currentTag,
 }: ListLayoutWithTagsProps) {
   const tagKeys = Object.keys(getTagCounts())
-  const sortedTags = tagKeys.sort(compareTagsByCountThenAlpha(getTagCounts()))
+  const sortedTags = tagKeys
+    .sort(compareTagsByCountThenAlpha(getTagCounts()))
+    .map((t) => new SluggedTag(t))
 
   const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
 
@@ -111,15 +112,15 @@ export default function ListLayoutWithTags({
               </Link>
               <ul>
                 {sortedTags.map((t) => {
-                  const tagCss = currentTag === slug(t) ? ON_CURRENT_PAGE : NOT_CURRENT_PAGE
+                  const tagCss = currentTag?.tag === t.tag ? ON_CURRENT_PAGE : NOT_CURRENT_PAGE
                   return (
-                    <li key={t} className="my-3">
+                    <li key={t.tag} className="my-3">
                       <Link
-                        href={`/tags/${slug(t)}`}
+                        href={`/tags/${t.tag}`}
                         className={`${tagCss} px-3 py-2 text-sm font-medium uppercase`}
-                        aria-label={`View posts tagged ${t}`}
+                        aria-label={`View posts tagged ${t.tag}`}
                       >
-                        {`${t} (${getTagCounts()[t]})`}
+                        {`${t.tag} (${getTagCounts()[t.tag]})`}
                       </Link>
                     </li>
                   )
@@ -151,7 +152,9 @@ export default function ListLayoutWithTags({
                             </Link>
                           </h2>
                           <div className="flex flex-wrap">
-                            {tags?.sort()?.map((tag) => <Tag key={tag} text={tag} />)}
+                            {sortTagsByAlpha(tags).map((sluggedTag) => (
+                              <Tag key={sluggedTag.tag} sluggedTag={sluggedTag} />
+                            ))}
                           </div>
                         </div>
                         <div className="prose max-w-none text-gray-500">{summary}</div>

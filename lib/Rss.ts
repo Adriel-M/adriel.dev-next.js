@@ -67,9 +67,9 @@ const getFeed = (posts: Post[]) => {
       description: post.summary,
       date: new Date(post.date),
       author: [author],
-      category: post.tags.map((tag) => ({
-        name: tag,
-        domain: `${siteMetadata.siteUrl}/tags/${tag}`,
+      category: post.tags.map((sluggedTag) => ({
+        name: sluggedTag.tag,
+        domain: `${siteMetadata.siteUrl}/tags/${sluggedTag.tag}`,
       })),
     })
   }

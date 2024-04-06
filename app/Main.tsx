@@ -1,6 +1,7 @@
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
+import { sortTagsByAlpha } from '@/lib/CollectionUtils'
 import { formatDate } from '@/lib/PlinyUtils'
 import { Post } from '#veliteContent'
 
@@ -44,8 +45,8 @@ export default function Home({ posts }: Props) {
                             </Link>
                           </h2>
                           <div className="flex flex-wrap">
-                            {tags.sort().map((tag) => (
-                              <Tag key={tag} text={tag} />
+                            {sortTagsByAlpha(tags).map((sluggedTag) => (
+                              <Tag key={sluggedTag.tag} sluggedTag={sluggedTag} />
                             ))}
                           </div>
                         </div>

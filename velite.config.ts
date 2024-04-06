@@ -1,5 +1,4 @@
 import { writeFileSync } from 'fs'
-import { slug } from 'github-slugger'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
@@ -11,6 +10,7 @@ import siteMetadata from '@/data/siteMetadata'
 import remarkImgToJsx from '@/lib/remarkPlugins/RemarkImgToJsx'
 import remarkTitleCase from '@/lib/remarkPlugins/RemarkTitleCase'
 import getFeed from '@/lib/Rss'
+import { SluggedTag } from '@/lib/SluggedTag'
 import { generateShortenedTitle, generateSummary, headerIcon } from '@/lib/VeliteUtils'
 
 const config = defineConfig({
@@ -31,7 +31,7 @@ const config = defineConfig({
         .object({
           title: s.string(),
           date: s.isodate(),
-          tags: s.array(s.string()),
+          tags: s.array(s.string().transform((tag) => new SluggedTag(tag))),
           lastmod: s.isodate().optional(),
           path: s.path(),
           code: s.mdx(),
@@ -125,13 +125,12 @@ const config = defineConfig({
   prepare: ({ posts, tags }) => {
     const tagCount: Record<string, number> = {}
     posts.forEach((post) => {
-      post.tags.forEach((tag) => {
-        const formattedTag = slug(tag)
-        if (!(formattedTag in tagCount)) {
-          tagCount[formattedTag] = 0
+      post.tags.forEach((sluggedTag) => {
+        if (!(sluggedTag.tag in tagCount)) {
+          tagCount[sluggedTag.tag] = 0
         }
 
-        tagCount[formattedTag] += 1
+        tagCount[sluggedTag.tag] += 1
       })
     })
 
