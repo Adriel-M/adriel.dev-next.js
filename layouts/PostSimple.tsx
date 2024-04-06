@@ -6,6 +6,7 @@ import ScrollTop from '@/components/ScrollTop'
 import SectionContainer from '@/components/SectionContainer'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
+import { sortTagsByAlpha } from '@/lib/CollectionUtils'
 import { formatDate } from '@/lib/PlinyUtils'
 import { Post } from '#veliteContent'
 
@@ -50,8 +51,8 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
                 <div className="py-4 xl:py-8">
                   <h2 className="text-xs uppercase tracking-wide text-gray-500">Tags</h2>
                   <div className="flex flex-wrap">
-                    {tags.sort().map((tag) => (
-                      <Tag key={tag} text={tag} />
+                    {sortTagsByAlpha(tags).map((sluggedTag) => (
+                      <Tag key={sluggedTag.tag} sluggedTag={sluggedTag} />
                     ))}
                   </div>
                 </div>

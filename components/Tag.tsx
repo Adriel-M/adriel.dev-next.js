@@ -1,17 +1,17 @@
-import { slug } from 'github-slugger'
-
 import Link from '@/components/Link'
+import { SluggedTag } from '@/lib/SluggedTag'
+
 interface Props {
-  text: string
+  sluggedTag: SluggedTag
 }
 
-const Tag = ({ text }: Props) => {
+const Tag = ({ sluggedTag }: Props) => {
   return (
     <Link
-      href={`/tags/${slug(text)}`}
+      href={`/tags/${sluggedTag.tag}`}
       className="mr-3 mt-1 text-sm font-medium uppercase text-primary-500 underline hover:text-primary-600"
     >
-      #{text.split(' ').join('-')}
+      #{sluggedTag.tag}
     </Link>
   )
 }
