@@ -37,8 +37,8 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.json",
-    "./velite/*.json",
-    "./velite/*.ts",
+    ".velite/*.json",
+    ".velite/*.ts",
     ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
