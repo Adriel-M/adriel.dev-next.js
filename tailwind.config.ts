@@ -34,17 +34,12 @@ export default {
               '&:hover': {
                 color: theme('colors.primary.600'),
               },
-              code: { color: theme('colors.primary.400') },
             },
             'h1,h2': {
               fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
             },
             h3: {
               fontWeight: '600',
-            },
-            code: {
-              color: theme('colors.indigo.500'),
             },
             '--tw-prose-pre-bg': theme('colors.slate.100 / 75%'),
           },
