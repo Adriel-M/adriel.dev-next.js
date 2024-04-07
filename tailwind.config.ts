@@ -24,7 +24,7 @@ export default {
         gray: colors.gray,
       },
       fontFamily: {
-        mono: 'inherit',
+        mono: 'var(--font-jetbrains-mono)',
       },
       typography: ({ theme }: { theme: Theme }) => ({
         DEFAULT: {
