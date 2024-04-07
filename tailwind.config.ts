@@ -41,6 +41,9 @@ export default {
             h3: {
               fontWeight: '600',
             },
+            'h1,h2,h3,h4,h5,h6': {
+              letterSpacing: theme('letterSpacing.tight'),
+            },
             '--tw-prose-pre-bg': theme('colors.slate.100 / 75%'),
           },
         },
