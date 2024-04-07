@@ -13,11 +13,11 @@ lastmod: 2024-03-06T23:09:23.603Z
 
 # TL;DR
 
-Berry (yarn v2) isn’t completely supported by vercel [^VercelPackageManager]. While berry can be used manage and build the project,
+Berry (yarn v2) isn’t completely supported by vercel[^VercelPackageManager]. While berry can be used manage and build the project,
 caching isn’t properly configured. To hack around the caching issue, we need to follow these two steps:
 
-1. Set the `YARN_CACHE_FOLDER` environment variable [^YarnCacheFolder] to a place that gets cached by vercel [^VercelCaching]
-2. Restore `.yarn/install-state.gz` which is used in the linking step [^YarnQA]
+1. Set the `YARN_CACHE_FOLDER` environment variable[^YarnCacheFolder] to a place that gets cached by vercel[^VercelCaching]
+2. Restore `.yarn/install-state.gz` which is used in the linking step[^YarnQA]
 
 See the script that does all of these [here](#putting-it-all-together).
 
@@ -26,7 +26,7 @@ See the script that does all of these [here](#putting-it-all-together).
 This blog uses next.js and deployed to vercel. I didn’t create this blog from scratch and used this
 [template](https://github.com/timlrx/tailwind-nextjs-starter-blog) to bootstrap this blog. I am also using
 [TinaCMS](https://tina.io/) to manage the content for simple blog posts; it doesn’t fully support all the features I
-want [^TinaLimitation], but that’s a different story.
+want[^TinaLimitation], but that’s a different story.
 
 The initial build time with just the template was 2 minutes 1 second where the fetch and link step took 1 minute 17
 seconds. From here on out, I'll only be focusing on these two steps and will only mention these durations.
@@ -45,10 +45,10 @@ In my opinion, this is fine so far and optimizing the build didn't even cross my
 ➤ YN0000: └ Completed in 3s 412ms
 ```
 
-Now let's add TinaCMS [^TinaInstallation]. I've removed the `tinacms build` step and the `pages` folder as they require a valid tina client id and unused respectively
+Now let's add TinaCMS[^TinaInstallation]. I've removed the `tinacms build` step and the `pages` folder as they require a valid tina client id and unused respectively
 (the PR can be found [here](https://github.com/Adriel-M/speed-up-berry-builds-vercel/pull/2)). Wow, the fetch step is now 2 minutes
-52 seconds and the linking step is 1 minute 6 seconds [^FullBuildLogs]. Why does it keep refetching the dependencies and why
-isn't the linking step cached? Vercel has a finite amount of build minutes [^VercelPricing] and optimizing the build time might be
+52 seconds and the linking step is 1 minute 6 seconds[^FullBuildLogs]. Why does it keep refetching the dependencies and why
+isn't the linking step cached? Vercel has a finite amount of build minutes[^VercelPricing] and optimizing the build time might be
 necessary if I actually end up posting frequently.
 
 ```console
@@ -131,10 +131,10 @@ PR can be found [here](https://github.com/Adriel-M/speed-up-berry-builds-vercel/
 
 ## Moving the Yarn Cache Folder
 
-Looking at the supported package managers by vercel, only yarn classic is supported [^VercelPackageManager]. The `.yarn` folder isn't
-cached [^VercelCaching] which contains the cache folder used by yarn [^YarnCacheFolder]. We need to set the yarn cache folder to a location that is cached
-by vercel; for this project, we'll use `.next/cache` as that's cached [^VercelCaching].
-We also need to set the `YARN_CACHE_FOLDER` environment variable [^YarnCacheFolder] when we run `yarn install`.
+Looking at the supported package managers by vercel, only yarn classic is supported[^VercelPackageManager]. The `.yarn` folder isn't
+cached[^VercelCaching] which contains the cache folder used by yarn[^YarnCacheFolder]. We need to set the yarn cache folder to a location that is cached
+by vercel; for this project, we'll use `.next/cache` as that's cached[^VercelCaching].
+We also need to set the `YARN_CACHE_FOLDER` environment variable[^YarnCacheFolder] when we run `yarn install`.
 
 ```shell title="scripts/vercel-build.sh" {5-7} showLineNumbers
 #!/bin/bash
@@ -176,7 +176,7 @@ PR can be found [here](https://github.com/Adriel-M/speed-up-berry-builds-vercel/
 ## Caching the Linking Step
 
 Looking at this [GitHub discussion](https://github.com/yarnpkg/berry/discussions/4978#discussioncomment-7251866), it looks
-like caching `.yarn/install-state.gz` is what we want to do. The yarn docs state [^YarnQA]:
+like caching `.yarn/install-state.gz` is what we want to do. The yarn docs state[^YarnQA]:
 
 > .yarn/install-state.gz is an optimization file that you shouldn't ever have to commit. It simply stores the exact
 > state of your project so that the next commands can boot without having to resolve your workspaces all over again.

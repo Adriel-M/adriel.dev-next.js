@@ -23,14 +23,14 @@ I want it. Here are some updates to this website:
 
 For those not familiar with [Contentlayer](https://github.com/contentlayerdev/contentlayer) and [Velite](https://github.com/zce/velite), these tools are able to create collections from content (for this site, mdx + yaml files) and do
 transformations on them. The transformations beneficial for my use case is transforming MDX (markdown with JSX) content into HTML (with mdx-bundler and mdx-js respectively).
-The most main reason for the switch is because Contentlayer not actively maintained anymore [^ContentLayerMaintenance]. The biggest upside to the switch is that defining the schema
+The most main reason for the switch is because Contentlayer not actively maintained anymore[^ContentLayerMaintenance]. The biggest upside to the switch is that defining the schema
 is less verbose, being able to hook into the build process prior to outputting the files, as well as doing extra validation on the frontmatter. I should write a post about this :thinking:.
 
 ### Moving Images From Public Folder to Being Bundle
 
 > Next.js cannot safely cache assets in the public folder because they may change.
 
-The contents inside the public folder have a cache control with `max-age=0` [^NextJsPublicFolderCache]. For my blog, this is weird
+The contents inside the public folder have a cache control with `max-age=0`[^NextJsPublicFolderCache]. For my blog, this is weird
 considering each update I do requires a full rebuild and deployment of the website. I initially thought all files would be static in the full
 lifetime of a deployment. After thinking about this, the reason does make sense considering that these files aren't part of the bundle and it
 has no way to differentiate if a file with the same name changes in future deploys. The only way for an image to be bundled is to statically import
@@ -40,10 +40,10 @@ and rewriting the path passed into the `Image` component. I'll definitely write 
 ### Vercel to Cloudflare Pages
 
 I switched to using [Cloudflare Pages](https://pages.cloudflare.com/) for hosting this website. There is no real reason to switch and it was more of a
-pre-optimization. Cloudflare has a more generous free tier [^CloudflarePagesPricing] compared to Vercel [^VercelHobbyPricing]
+pre-optimization. Cloudflare has a more generous free tier[^CloudflarePagesPricing] compared to Vercel[^VercelHobbyPricing]
 but its limits are a little bit harder to gauge since it's not clear what functions hits are considered (are they consumed on build time as well????).
 The other downside from the switch is that image optimization isn't available on the free tier as well as requiring routes to use the edge
-runtime [^EdgeRequirement]. While there are limitations, the switch was quite easy though and definitely deserves a post in the future on the exact steps I took.
+runtime[^EdgeRequirement]. While there are limitations, the switch was quite easy though and definitely deserves a post in the future on the exact steps I took.
 
 ### Yarn to Bun
 

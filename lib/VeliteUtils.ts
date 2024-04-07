@@ -8,7 +8,7 @@ import siteMetadata from '@/data/siteMetadata'
 import remarkExtractFirstSectionText from '@/lib/remarkPlugins/RemarkExtractFirstSectionText'
 
 // Strip this since manually so we can get rid of the whitespace left behind
-const footnoteReferenceRegex = /\s+\[\^\w+]/
+const footnoteReferenceRegex = /\[\^\w+]/
 const newLineRegex = /\s+/
 
 const markdownStripper = remark().use(remarkExtractFirstSectionText).use(strip)
