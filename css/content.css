@@ -1,23 +1,25 @@
-.content-header-link-placeholder {
-  opacity: 0;
-  margin-left: -20px;
-  padding-right: 4px;
-}
+article {
+  .content-header-link-placeholder {
+    @apply -ml-5 pr-1 opacity-0;
+  }
 
-.content-header-link-placeholder:hover {
-  opacity: 100;
-}
+  .content-header-link-placeholder:hover {
+    @apply opacity-100;
 
-.content-header:hover .content-header-link-placeholder {
-  opacity: 100;
-}
+    .octicon {
+      @apply fill-current text-primary-500;
+    }
+  }
 
-.octicon {
-  display: inline;
-  vertical-align: middle;
-  overflow: visible;
-}
+  .content-header:hover .content-header-link-placeholder {
+    @apply opacity-100;
+  }
 
-article sup {
-  @apply pl-1;
+  .octicon {
+    @apply inline overflow-hidden align-middle;
+  }
+
+  sup {
+    @apply pl-1;
+  }
 }
