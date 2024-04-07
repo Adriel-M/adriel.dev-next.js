@@ -1,22 +1,21 @@
 article {
   .content-header-link-placeholder {
     @apply -ml-5 pr-1 opacity-0;
+    transition: opacity 0.15s ease;
   }
 
-  .content-header-link-placeholder:hover {
-    @apply opacity-100;
-
-    .octicon {
-      @apply fill-current text-primary-500;
-    }
-  }
-
+  .content-header-link-placeholder:hover,
   .content-header:hover .content-header-link-placeholder {
     @apply opacity-100;
+    transition: opacity 0.15s ease;
+  }
+
+  .content-header-link-placeholder {
+    @apply text-gray-700 hover:text-primary-500;
   }
 
   .octicon {
-    @apply inline overflow-hidden align-middle;
+    @apply inline overflow-hidden fill-current align-middle text-inherit;
   }
 
   sup {
