@@ -6,7 +6,6 @@ import { VeliteMarkdownRenderer } from '@/components/VeliteMarkdownRenderer'
 import siteMetadata from '@/data/siteMetadata'
 import PostSimple from '@/layouts/PostSimple'
 import { getAllPosts, getPostBySlug } from '@/lib/CollectionUtils'
-import { sortPosts } from '@/lib/PlinyUtils'
 
 interface Params {
   slug: string
@@ -61,12 +60,7 @@ export const generateStaticParams = () => {
 export default function Page({ params }: { params: Params }) {
   const slug = decodeURI(params.slug)
 
-  const sortedPosts = sortPosts(getAllPosts())
-  const postIndex = sortedPosts.findIndex((p) => p.slug === slug)
-
-  const prev = sortedPosts[postIndex + 1]
-  const next = sortedPosts[postIndex - 1]
-  const post = sortedPosts[postIndex]
+  const post = getPostBySlug(slug)
 
   return (
     <>
@@ -74,7 +68,7 @@ export default function Page({ params }: { params: Params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(post.structuredData) }}
       />
-      <PostSimple content={post} next={next} prev={prev}>
+      <PostSimple content={post}>
         <VeliteMarkdownRenderer content={post} />
       </PostSimple>
     </>

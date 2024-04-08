@@ -33,31 +33,6 @@ export const generateSummary = (rawPostBody: string) => {
   return output.join(' ')
 }
 
-const TITLE_MAX_LENGTH = 20
-export const generateShortenedTitle = (title: string): string => {
-  if (title.length < TITLE_MAX_LENGTH) return title
-
-  const words = title.split(' ')
-  let characterLength = 0
-  const newTitleArr: string[] = []
-
-  let isEnd = false
-  for (let i = 0; i < words.length; i++) {
-    newTitleArr.push(words[i])
-    characterLength += words[i].length
-    if (i === words.length - 1) isEnd = true
-    if (characterLength > TITLE_MAX_LENGTH) break
-  }
-
-  let newTitle = newTitleArr.join(' ')
-
-  if (!isEnd) {
-    newTitle += '…'
-  }
-
-  return newTitle
-}
-
 export const headerIcon = fromHtmlIsomorphic(
   `<span class="content-header-link-placeholder">${octicons.hash.toSVG()}</span>`,
   { fragment: true }

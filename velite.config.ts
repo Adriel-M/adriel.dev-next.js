@@ -11,7 +11,7 @@ import remarkImgToJsx from '@/lib/remarkPlugins/RemarkImgToJsx'
 import remarkTitleCase from '@/lib/remarkPlugins/RemarkTitleCase'
 import getFeed from '@/lib/Rss'
 import { SluggedTag } from '@/lib/SluggedTag'
-import { generateShortenedTitle, generateSummary, headerIcon } from '@/lib/VeliteUtils'
+import { generateSummary, headerIcon } from '@/lib/VeliteUtils'
 
 const config = defineConfig({
   collections: {
@@ -85,7 +85,6 @@ const config = defineConfig({
               ],
             },
             summary,
-            shortenedTitle: generateShortenedTitle(data.title),
           }
         }),
     },

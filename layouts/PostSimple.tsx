@@ -1,6 +1,5 @@
 import { ReactNode } from 'react'
 
-import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
 import ScrollTop from '@/components/ScrollTop'
 import SectionContainer from '@/components/SectionContainer'
@@ -13,11 +12,9 @@ import { Post } from '#veliteContent'
 interface LayoutProps {
   content: Post
   children: ReactNode
-  next?: { path: string; title: string; shortenedTitle: string }
-  prev?: { path: string; title: string; shortenedTitle: string }
 }
 
-export default function PostLayout({ content, next, prev, children }: LayoutProps) {
+export default function PostLayout({ content, children }: LayoutProps) {
   const { date, title, tags } = content
 
   return (
@@ -57,40 +54,6 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
                   </div>
                 </div>
               )}
-              <div className="flex flex-col text-sm font-medium sm:flex-row sm:justify-between sm:text-base">
-                <div>
-                  {prev && prev.path && (
-                    <>
-                      <div className="flex flex-col items-start">
-                        <h2 className="text-xs uppercase tracking-wide text-gray-500">Previous</h2>
-                        <Link
-                          href={`/${prev.path}`}
-                          className="hover:text-primary-500"
-                          aria-label={`Previous post: ${prev.title}`}
-                        >
-                          &larr; {prev.shortenedTitle}
-                        </Link>
-                      </div>
-                    </>
-                  )}
-                </div>
-                <div>
-                  {next && next.path && (
-                    <>
-                      <div className="flex flex-col items-start pt-3 sm:items-end sm:pt-0">
-                        <h2 className="text-xs uppercase tracking-wide text-gray-500">Next</h2>
-                        <Link
-                          href={`/${next.path}`}
-                          className="hover:text-primary-500"
-                          aria-label={`Next post: ${next.title}`}
-                        >
-                          {next.shortenedTitle} &rarr;
-                        </Link>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
             </footer>
           </div>
         </div>
