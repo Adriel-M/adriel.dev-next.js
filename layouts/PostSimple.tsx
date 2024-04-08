@@ -45,14 +45,14 @@ export default function PostLayout({ content, children }: LayoutProps) {
             </div>
             <footer>
               {tags && tags.length > 0 && (
-                <div className="py-4 xl:py-8">
+                <>
                   <h2 className="text-xs uppercase tracking-wide text-gray-500">Tags</h2>
                   <div className="flex flex-wrap">
                     {sortTagsByAlpha(tags).map((sluggedTag) => (
                       <Tag key={sluggedTag.tag} sluggedTag={sluggedTag} />
                     ))}
                   </div>
-                </div>
+                </>
               )}
             </footer>
           </div>
