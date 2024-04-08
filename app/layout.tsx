@@ -3,6 +3,7 @@ import 'css/tailwind.css'
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
 
+import ScrollTop from '@/app/ScrollTop'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import SectionContainer from '@/components/SectionContainer'
@@ -76,7 +77,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <SectionContainer>
           <div className="flex h-screen flex-col justify-between">
             <Header />
-            <main className="mb-auto">{children}</main>
+            <main className="mb-auto">
+              {children}
+              <ScrollTop />
+            </main>
             <Footer />
           </div>
         </SectionContainer>

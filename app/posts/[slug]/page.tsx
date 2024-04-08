@@ -2,9 +2,9 @@ import '@/css/user-content.css'
 
 import { Metadata } from 'next'
 
+import PostSimple from '@/app/posts/[slug]/PostSimple'
 import { VeliteMarkdownRenderer } from '@/components/VeliteMarkdownRenderer'
 import siteMetadata from '@/data/siteMetadata'
-import PostSimple from '@/layouts/PostSimple'
 import { getAllPosts, getPostBySlug } from '@/lib/CollectionUtils'
 
 interface Params {
