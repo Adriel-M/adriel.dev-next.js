@@ -38,8 +38,7 @@ export default function PagedListLayoutWithTags({
 
   return (
     <ListLayoutWithTags
-      posts={posts}
-      initialDisplayPosts={displayPosts}
+      postsToDisplay={displayPosts}
       pagination={pagination}
       title={title}
       currentTag={currentTag}

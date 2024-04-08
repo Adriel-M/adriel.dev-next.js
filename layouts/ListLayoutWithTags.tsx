@@ -13,9 +13,8 @@ export interface PaginationProps {
   basePath: string
 }
 interface ListLayoutWithTagsProps {
-  posts: Post[]
+  postsToDisplay: Post[]
   title: string
-  initialDisplayPosts?: Post[]
   pagination?: PaginationProps
   currentTag?: SluggedTag
 }
@@ -76,9 +75,8 @@ function compareTagsByCountThenAlpha(
 }
 
 export default function ListLayoutWithTags({
-  posts,
+  postsToDisplay,
   title,
-  initialDisplayPosts = [],
   pagination,
   currentTag,
 }: ListLayoutWithTagsProps) {
@@ -86,8 +84,6 @@ export default function ListLayoutWithTags({
   const sortedTags = tagKeys
     .sort(compareTagsByCountThenAlpha(getTagCounts()))
     .map((t) => new SluggedTag(t))
-
-  const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
 
   let allPostsCss: string
 
@@ -131,7 +127,7 @@ export default function ListLayoutWithTags({
           </div>
           <div>
             <ul>
-              {displayPosts.map((post) => {
+              {postsToDisplay.map((post) => {
                 const { path, date, title, summary, tags } = post
                 return (
                   <li key={path} className="py-5">
