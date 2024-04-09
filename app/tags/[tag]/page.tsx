@@ -2,7 +2,7 @@ import { genPageMetadata } from 'app/seo'
 import { Metadata } from 'next'
 
 import siteMetadata from '@/data/siteMetadata'
-import PagedListLayoutWithTags from '@/layouts/PagedListLayoutWithTags'
+import PagedBody from '@/layouts/ListLayoutWithTags/PagedBody'
 import { getPostsByTagSlug, getTagCounts } from '@/lib/CollectionUtils'
 import { sortPosts } from '@/lib/PlinyUtils'
 import { SluggedTag } from '@/lib/SluggedTag'
@@ -30,16 +30,7 @@ export default function TagPage({ params }: { params: Params }) {
   const tag = params.tag
   const sluggedTag = new SluggedTag(tag)
 
-  // Capitalize first letter and convert space to dash
-  const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
   const filteredPosts = sortPosts(getPostsByTagSlug(sluggedTag))
 
-  return (
-    <PagedListLayoutWithTags
-      posts={filteredPosts}
-      title={title}
-      pageNumber={1}
-      currentTag={sluggedTag}
-    />
-  )
+  return <PagedBody posts={filteredPosts} pageNumber={1} currentTag={sluggedTag} />
 }
