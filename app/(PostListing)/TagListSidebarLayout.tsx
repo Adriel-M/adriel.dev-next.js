@@ -1,15 +1,12 @@
 import { ReactNode } from 'react'
 
 import Link from '@/components/Link'
-import { NOT_CURRENT_PAGE, ON_CURRENT_PAGE } from '@/layouts/ListLayoutWithTags/styles'
 import { getTagCounts } from '@/lib/CollectionUtils'
 import { SluggedTag } from '@/lib/SluggedTag'
 import { generateTagsPath } from '@/lib/UtlLibs'
 
-interface Props {
-  currentTag?: SluggedTag
-  children: ReactNode
-}
+const ON_CURRENT_PAGE = 'text-primary-500 hover:text-primary-600'
+const NOT_CURRENT_PAGE = 'text-gray-700 hover:text-primary-500'
 
 function compareTagsByCountThenAlpha(
   tagCounts: Record<string, number>
@@ -19,7 +16,12 @@ function compareTagsByCountThenAlpha(
   }
 }
 
-export default function TagListLayout({ currentTag = undefined, children }: Props) {
+interface Props {
+  currentTag?: SluggedTag
+  children: ReactNode
+}
+
+export default function TagListSidebarLayout({ currentTag = undefined, children }: Props) {
   const tagKeys = Object.keys(getTagCounts())
   const sortedTags = tagKeys
     .sort(compareTagsByCountThenAlpha(getTagCounts()))

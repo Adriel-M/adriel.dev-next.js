@@ -1,4 +1,4 @@
-import PagedBody from '@/layouts/ListLayoutWithTags/PagedBody'
+import PostListingPage from '@/app/(PostListing)/PostListingPage'
 import { getAllPosts } from '@/lib/CollectionUtils'
 import { getTotalPages } from '@/lib/PagingUtils'
 import { sortPosts } from '@/lib/PlinyUtils'
@@ -14,5 +14,5 @@ export default function Page({ params }: { params: { page: string } }) {
   const posts = sortPosts(getAllPosts())
   const pageNumber = parseInt(params.page)
 
-  return <PagedBody posts={posts} pageNumber={pageNumber} />
+  return <PostListingPage posts={posts} pageNumber={pageNumber} />
 }

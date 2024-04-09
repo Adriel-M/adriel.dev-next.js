@@ -1,8 +1,8 @@
-import { genPageMetadata } from 'app/seo'
 import { Metadata } from 'next'
 
+import PostListingPage from '@/app/(PostListing)/PostListingPage'
+import { genPageMetadata } from '@/app/seo'
 import siteMetadata from '@/data/siteMetadata'
-import PagedBody from '@/layouts/ListLayoutWithTags/PagedBody'
 import { getPostsByTagSlug, getTagCounts } from '@/lib/CollectionUtils'
 import { sortPosts } from '@/lib/PlinyUtils'
 import { SluggedTag } from '@/lib/SluggedTag'
@@ -32,5 +32,5 @@ export default function TagPage({ params }: { params: Params }) {
 
   const filteredPosts = sortPosts(getPostsByTagSlug(sluggedTag))
 
-  return <PagedBody posts={filteredPosts} pageNumber={1} currentTag={sluggedTag} />
+  return <PostListingPage posts={filteredPosts} pageNumber={1} currentTag={sluggedTag} />
 }

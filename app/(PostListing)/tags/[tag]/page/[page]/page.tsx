@@ -1,4 +1,4 @@
-import PagedBody from '@/layouts/ListLayoutWithTags/PagedBody'
+import PostListingPage from '@/app/(PostListing)/PostListingPage'
 import { getPostsByTagSlug, getTagCounts } from '@/lib/CollectionUtils'
 import { getTotalPages } from '@/lib/PagingUtils'
 import { sortPosts } from '@/lib/PlinyUtils'
@@ -35,5 +35,5 @@ export default function Page({ params }: { params: { page: string; tag: string }
 
   const filteredPosts = sortPosts(getPostsByTagSlug(sluggedTag))
 
-  return <PagedBody posts={filteredPosts} pageNumber={pageNumber} currentTag={sluggedTag} />
+  return <PostListingPage posts={filteredPosts} pageNumber={pageNumber} currentTag={sluggedTag} />
 }
