@@ -2,7 +2,7 @@ import { Feed } from 'feed'
 
 import siteMetadata from '@/data/siteMetadata'
 import { sortPosts } from '@/lib/PlinyUtils'
-import { generateTagsPath } from '@/lib/UtlLibs'
+import { generateTagsPath } from '@/lib/UrlLibs'
 import { Post } from '#veliteContent'
 
 class StyledFeed {

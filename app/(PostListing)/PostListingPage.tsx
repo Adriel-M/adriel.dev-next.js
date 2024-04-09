@@ -5,7 +5,7 @@ import { sortTagsByAlpha } from '@/lib/CollectionUtils'
 import { getTotalPages } from '@/lib/PagingUtils'
 import { formatDate } from '@/lib/PlinyUtils'
 import { SluggedTag } from '@/lib/SluggedTag'
-import { generateTagsPath } from '@/lib/UtlLibs'
+import { generateTagsPath } from '@/lib/UrlLibs'
 import { Post } from '#veliteContent'
 
 interface Props {

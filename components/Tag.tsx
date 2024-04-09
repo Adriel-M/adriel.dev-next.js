@@ -1,6 +1,6 @@
 import Link from '@/components/Link'
 import { SluggedTag } from '@/lib/SluggedTag'
-import { generateTagsPath } from '@/lib/UtlLibs'
+import { generateTagsPath } from '@/lib/UrlLibs'
 
 interface Props {
   sluggedTag: SluggedTag

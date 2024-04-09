@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 import Link from '@/components/Link'
 import { getTagCounts } from '@/lib/CollectionUtils'
 import { SluggedTag } from '@/lib/SluggedTag'
-import { generateTagsPath } from '@/lib/UtlLibs'
+import { generateTagsPath } from '@/lib/UrlLibs'
 
 const ON_CURRENT_PAGE = 'text-primary-500 hover:text-primary-600'
 const NOT_CURRENT_PAGE = 'text-gray-700 hover:text-primary-500'
