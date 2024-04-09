@@ -10,7 +10,6 @@ export default function TagLayout({
   children: ReactNode
   params: { tag: string }
 }) {
-  console.log('there')
   const sluggedTag = new SluggedTag(params.tag)
 
   return <TagListLayout currentTag={sluggedTag}>{children}</TagListLayout>

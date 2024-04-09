@@ -8,6 +8,5 @@ export default function PostPageLayout({
   children: ReactNode
   params: { tag: string }
 }) {
-  console.log('lmaooo')
   return <TagListLayout currentTag={undefined}>{children}</TagListLayout>
 }
