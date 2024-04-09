@@ -19,7 +19,7 @@ function compareTagsByCountThenAlpha(
   }
 }
 
-export default function TagListLayout({ currentTag, children }: Props) {
+export default function TagListLayout({ currentTag = undefined, children }: Props) {
   const tagKeys = Object.keys(getTagCounts())
   const sortedTags = tagKeys
     .sort(compareTagsByCountThenAlpha(getTagCounts()))
