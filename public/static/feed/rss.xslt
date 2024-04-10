@@ -34,10 +34,7 @@ SOFTWARE.
 		<meta name="referrer" content="unsafe-url" />
 		<title><xsl:value-of select="/rss/channel/title"/></title>
 		<link rel="stylesheet" href="/static/feed/water.light.min.css" />
-		<script src="/static/feed/clipboard.min.js"></script>
-		<script>
-			new ClipboardJS('.clipboard');
-		</script>
+		<script src="/static/feed/clickToCopy.js"></script>
 	</head>
 	<body>
 		<h1><xsl:value-of select="/rss/channel/title"/></h1>
@@ -58,14 +55,16 @@ SOFTWARE.
 
 		<p>
 			<pre>
-				<code id="feedurl"><xsl:value-of select="/rss/channel/atom:link/@href"/></code>
+				<code id="feedUrl"><xsl:value-of select="/rss/channel/atom:link/@href"/></code>
 			</pre>
 			<button
-				class="clipboard"
-				data-clipboard-target="#feedurl">
+				id="copyButton">
 				Copy to clipboard
 			</button>
 		</p>
+		<script>
+			clickToCopy("copyButton", "feedUrl")
+		</script>
 
 		<ul>
 		<xsl:for-each select="/rss/channel/item">
