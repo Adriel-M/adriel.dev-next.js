@@ -29,7 +29,7 @@ const config = defineConfig({
       pattern: 'posts/**/*.mdx',
       schema: s
         .object({
-          title: s.string(),
+          title: s.string().transform((title) => titleCase(title)),
           date: s.isodate(),
           tags: s
             .array(s.string())
@@ -66,7 +66,6 @@ const config = defineConfig({
           const summary = generateSummary(meta.content!)
           return {
             ...data,
-            title: titleCase(data.title),
             slug: data.path.replace(/^.+?(\/)/, ''),
             structuredData: {
               '@context': 'https://schema.org',
@@ -91,18 +90,11 @@ const config = defineConfig({
     projects: {
       name: 'Project',
       pattern: 'projects/**/*.yaml',
-      schema: s
-        .object({
-          title: s.string(),
-          description: s.string(),
-          href: s.string().url(),
-        })
-        .transform((data) => {
-          return {
-            ...data,
-            title: titleCase(data.title),
-          }
-        }),
+      schema: s.object({
+        title: s.string().transform((title) => titleCase(title)),
+        description: s.string(),
+        href: s.string().url(),
+      }),
     },
     tags: {
       name: 'Tag',
