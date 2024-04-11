@@ -15,6 +15,7 @@ import { SluggedTag } from '@/lib/SluggedTag'
 import { generateSummary, headerIcon } from '@/lib/VeliteUtils'
 
 const config = defineConfig({
+  strict: true,
   collections: {
     authors: {
       name: 'Author',
