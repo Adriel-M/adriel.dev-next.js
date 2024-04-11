@@ -66,6 +66,8 @@ const transformNodeToNextImage = async (imageNode: ImageNode) => {
       { type: 'mdxJsxAttribute', name: 'src', value: imageNode.url },
       { type: 'mdxJsxAttribute', name: 'width', value: metadata.width },
       { type: 'mdxJsxAttribute', name: 'height', value: metadata.height },
+      { type: 'mdxJsxAttribute', name: 'blurDataURL', value: metadata.blurDataURL },
+      { type: 'mdxJsxAttribute', name: 'placeholder', value: 'blur' },
     ])
 }
 
