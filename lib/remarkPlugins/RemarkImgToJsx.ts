@@ -22,46 +22,51 @@
  * SOFTWARE.
  */
 
-import fs from 'fs'
-import { sync as sizeOf } from 'probe-image-size'
-import { Literal, Node, Parent } from 'unist'
+import { readFile } from 'node:fs/promises'
+
+import { Literal, Node } from 'unist'
 import { visit } from 'unist-util-visit'
+import { getImageMetadata } from 'velite'
 
 // original license can be found here https://github.com/timlrx/pliny/blob/main/LICENSE
 
 // copy of remarkImgToJsx from pliny but changing the path from public... to
 // image...
 
-export type ImageNode = Parent & {
+export type ImageNode = Node & {
   url: string
   alt: string
   name: string
   attributes: (Literal & { name: string })[]
 }
 const remarkImgToJsx = () => {
-  return (tree: Node) => {
+  return async (tree: Node) => {
+    const promises: Promise<void>[] = []
     visit(
       tree,
       // only visit p tags that contain an img element
       'image',
-      (node: Node, _, parent: Parent) => {
-        const imageNode = node as ImageNode
-        const path = process.cwd() + imageNode.url
-        const dimensions = sizeOf(fs.readFileSync(path))
-
-        // Convert original node to next/image
-        ;(imageNode.type = 'mdxJsxFlowElement'),
-          (imageNode.name = 'Image'),
-          (imageNode.attributes = [
-            { type: 'mdxJsxAttribute', name: 'alt', value: imageNode.alt },
-            { type: 'mdxJsxAttribute', name: 'src', value: imageNode.url },
-            { type: 'mdxJsxAttribute', name: 'width', value: dimensions!.width },
-            { type: 'mdxJsxAttribute', name: 'height', value: dimensions!.height },
-          ])
-        parent.type = 'div'
+      (imageNode: ImageNode) => {
+        promises.push(transformNodeToNextImage(imageNode))
       }
     )
+    await Promise.all(promises)
   }
+}
+
+const transformNodeToNextImage = async (imageNode: ImageNode) => {
+  const path = process.cwd() + imageNode.url
+  const buffer = await readFile(path)
+  const metadata = await getImageMetadata(buffer)
+  if (!metadata) return
+  ;(imageNode.type = 'mdxJsxFlowElement'),
+    (imageNode.name = 'Image'),
+    (imageNode.attributes = [
+      { type: 'mdxJsxAttribute', name: 'alt', value: imageNode.alt },
+      { type: 'mdxJsxAttribute', name: 'src', value: imageNode.url },
+      { type: 'mdxJsxAttribute', name: 'width', value: metadata.width },
+      { type: 'mdxJsxAttribute', name: 'height', value: metadata.height },
+    ])
 }
 
 export default remarkImgToJsx
