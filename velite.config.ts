@@ -62,9 +62,9 @@ const config = defineConfig({
           lastmod: s.isodate().optional(),
           path: s.path(),
           code: s.mdx(),
+          summary: s.raw().transform((raw) => generateSummary(raw)),
         })
-        .transform((data, { meta }) => {
-          const summary = generateSummary(meta.content!)
+        .transform((data) => {
           return {
             ...data,
             slug: data.path.replace(/^.+?(\/)/, ''),
@@ -74,7 +74,7 @@ const config = defineConfig({
               headline: data.title,
               datePublished: data.date,
               dateModified: data.lastmod || data.date,
-              description: summary,
+              description: data.summary,
               image: siteMetadata.socialBanner,
               url: `${siteMetadata.siteUrl}/${data.path}`,
               author: [
@@ -84,7 +84,6 @@ const config = defineConfig({
                 },
               ],
             },
-            summary,
           }
         }),
     },
