@@ -7,6 +7,7 @@ import { titleCase } from 'title-case'
 import { defineConfig, s } from 'velite'
 
 import siteMetadata from '@/data/siteMetadata'
+import { sortPosts } from '@/lib/PlinyUtils'
 import remarkImgToJsx from '@/lib/remarkPlugins/RemarkImgToJsx'
 import remarkTitleCase from '@/lib/remarkPlugins/RemarkTitleCase'
 import getFeed from '@/lib/Rss'
@@ -139,7 +140,13 @@ const config = defineConfig({
     assets: 'public/velite',
     base: '/velite/',
   },
-  prepare: ({ posts, tags }) => {
+  prepare: (collections) => {
+    // sort posts on content build time so we don't have to manually sort
+    // in the actual page implementation.
+    Object.assign(collections, {
+      posts: sortPosts(collections.posts),
+    })
+    const { posts, tags } = collections
     const tagCount: Record<string, number> = {}
     posts.forEach((post) => {
       post.tags.forEach((sluggedTag) => {

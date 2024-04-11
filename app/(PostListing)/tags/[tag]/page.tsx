@@ -4,7 +4,6 @@ import PostListingPage from '@/app/(PostListing)/PostListingPage'
 import { genPageMetadata } from '@/app/seo'
 import siteMetadata from '@/data/siteMetadata'
 import { getPostsByTagSlug, getTagCounts } from '@/lib/CollectionUtils'
-import { sortPosts } from '@/lib/PlinyUtils'
 import { SluggedTag } from '@/lib/SluggedTag'
 
 interface Params {
@@ -30,7 +29,7 @@ export default function TagPage({ params }: { params: Params }) {
   const tag = params.tag
   const sluggedTag = new SluggedTag(tag)
 
-  const filteredPosts = sortPosts(getPostsByTagSlug(sluggedTag))
+  const filteredPosts = getPostsByTagSlug(sluggedTag)
 
   return <PostListingPage posts={filteredPosts} pageNumber={1} currentTag={sluggedTag} />
 }

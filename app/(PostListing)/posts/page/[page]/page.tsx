@@ -1,7 +1,6 @@
 import PostListingPage from '@/app/(PostListing)/PostListingPage'
 import { getAllPosts } from '@/lib/CollectionUtils'
 import { getTotalPages } from '@/lib/PagingUtils'
-import { sortPosts } from '@/lib/PlinyUtils'
 
 export const dynamicParams = false
 
@@ -11,7 +10,7 @@ export const generateStaticParams = () => {
 }
 
 export default function Page({ params }: { params: { page: string } }) {
-  const posts = sortPosts(getAllPosts())
+  const posts = getAllPosts()
   const pageNumber = parseInt(params.page)
 
   return <PostListingPage posts={posts} pageNumber={pageNumber} />
