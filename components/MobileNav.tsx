@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import headerNavLinks from '@/data/headerNavLinks'
+import headerNavLinks from '@/components/headerNavLinks'
 
 import Link from './Link'
 

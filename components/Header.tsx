@@ -1,7 +1,7 @@
+import headerNavLinks from '@/components/headerNavLinks'
 import Logo from '@/components/Logo'
 import DocSearchButton from '@/components/search/DocSearchButton'
-import headerNavLinks from '@/data/headerNavLinks'
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from '@/lib/siteMetadata'
 
 import Link from './Link'
 import MobileNav from './MobileNav'

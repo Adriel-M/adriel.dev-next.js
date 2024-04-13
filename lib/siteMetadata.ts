@@ -5,7 +5,6 @@ const siteMetadata = {
   description: 'Stuff I think about 🤔',
   language: 'en-us',
   siteUrl: 'https://adriel.dev',
-  siteRepo: 'https://github.com/Adriel-M/adriel.dev',
   github: 'https://github.com/Adriel-M',
   linkedin: 'https://www.linkedin.com/in/adrielmartinez/',
   locale: 'en-US',

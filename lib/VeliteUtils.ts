@@ -4,8 +4,8 @@ import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 import { remark } from 'remark'
 import strip from 'strip-markdown'
 
-import siteMetadata from '@/data/siteMetadata'
 import remarkExtractFirstSectionText from '@/lib/remarkPlugins/RemarkExtractFirstSectionText'
+import siteMetadata from '@/lib/siteMetadata'
 
 // Strip this since manually so we can get rid of the whitespace left behind
 const footnoteReferenceRegex = /\[\^\w+]/

@@ -4,8 +4,8 @@ import { Metadata } from 'next'
 
 import PostSimple from '@/app/posts/[slug]/PostSimple'
 import { VeliteMarkdownRenderer } from '@/components/VeliteMarkdownRenderer'
-import siteMetadata from '@/data/siteMetadata'
 import { getAllPosts, getPostBySlug } from '@/lib/CollectionUtils'
+import siteMetadata from '@/lib/siteMetadata'
 
 interface Params {
   slug: string

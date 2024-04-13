@@ -13,7 +13,7 @@ import {
 import { ReactNode } from 'react'
 
 import Link from '@/components/Link'
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from '@/lib/siteMetadata'
 
 const TRAILING_ELLIPSIS_PATTERN = /\s+…$/
 const transformItems = (items: DocSearchHit[]): DocSearchHit[] => {

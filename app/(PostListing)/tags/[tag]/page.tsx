@@ -2,8 +2,8 @@ import { Metadata } from 'next'
 
 import PostListingPage from '@/app/(PostListing)/PostListingPage'
 import { genPageMetadata } from '@/app/seo'
-import siteMetadata from '@/data/siteMetadata'
 import { getPostsByTagSlug, getTagCounts } from '@/lib/CollectionUtils'
+import siteMetadata from '@/lib/siteMetadata'
 import { SluggedTag } from '@/lib/SluggedTag'
 
 interface Params {

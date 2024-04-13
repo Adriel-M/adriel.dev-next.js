@@ -2,9 +2,9 @@ import { ReactNode } from 'react'
 
 import PageTitle from '@/components/PageTitle'
 import Tag from '@/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
 import { sortTagsByAlpha } from '@/lib/CollectionUtils'
 import { formatDate } from '@/lib/PlinyUtils'
+import siteMetadata from '@/lib/siteMetadata'
 import { Post } from '#veliteContent'
 
 interface LayoutProps {

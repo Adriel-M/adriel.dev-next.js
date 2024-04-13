@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from '@/lib/siteMetadata'
 
 interface PageSEOProps {
   title: string

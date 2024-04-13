@@ -20,7 +20,6 @@
       "@/app/*": ["app/*"],
       "@/components/*": ["components/*"],
       "@/css/*": ["css/*"],
-      "@/data/*": ["data/*"],
       "@/layouts/*": ["layouts/*"],
       "@/lib/*": ["lib/*"],
       "#veliteContent": ["./.velite"]

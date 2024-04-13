@@ -1,6 +1,6 @@
 import NextImage from 'next/image'
 
-import logoMinSvg from '../data/logo.min.svg'
+import logoMinSvg from './logo.min.svg'
 
 const Logo = () => {
   return (

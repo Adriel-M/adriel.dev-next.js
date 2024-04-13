@@ -1,5 +1,5 @@
 import SocialIcon from '@/components/social-icons'
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from '@/lib/siteMetadata'
 
 import Link from './Link'
 

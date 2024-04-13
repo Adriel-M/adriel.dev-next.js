@@ -1,6 +1,6 @@
 import { Feed } from 'feed'
 
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from '@/lib/siteMetadata'
 import { generateTagsPath } from '@/lib/UrlLibs'
 import { Post } from '#veliteContent'
 

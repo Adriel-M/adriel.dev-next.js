@@ -6,11 +6,11 @@ import remarkGemoji from 'remark-gemoji'
 import { titleCase } from 'title-case'
 import { defineConfig, s } from 'velite'
 
-import siteMetadata from '@/data/siteMetadata'
 import { sortPosts } from '@/lib/PlinyUtils'
 import remarkImgToJsx from '@/lib/remarkPlugins/RemarkImgToJsx'
 import remarkTitleCase from '@/lib/remarkPlugins/RemarkTitleCase'
 import getFeed from '@/lib/Rss'
+import siteMetadata from '@/lib/siteMetadata'
 import { SluggedTag } from '@/lib/SluggedTag'
 import { generateSummary, headerIcon } from '@/lib/VeliteUtils'
 

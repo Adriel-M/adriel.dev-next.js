@@ -5,7 +5,7 @@ import { genPageMetadata } from 'app/seo'
 import PageSimple from '@/app/about/PageSimple'
 import ObfuscatedEmail from '@/components/ObfuscatedEmail'
 import { VeliteMarkdownRenderer } from '@/components/VeliteMarkdownRenderer'
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from '@/lib/siteMetadata'
 import { authors } from '#veliteContent'
 
 const title = 'About'

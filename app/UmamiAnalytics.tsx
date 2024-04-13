@@ -1,16 +1,15 @@
 import Script from 'next/script'
 
+import siteMetadata from '@/lib/siteMetadata'
+
 const isProduction = process.env.NODE_ENV === 'production'
 
-interface Props {
-  websiteId?: string
-  scriptPath?: string
-}
-const UmamiAnalytics = ({ websiteId, scriptPath }: Props) => {
+const UmamiAnalytics = () => {
+  const { umamiWebsiteId, src } = siteMetadata.analytics.umamiAnalytics
   return (
     <>
-      {isProduction && websiteId && scriptPath && (
-        <Script defer data-website-id={websiteId} src={scriptPath} />
+      {isProduction && umamiWebsiteId && src && (
+        <Script defer data-website-id={umamiWebsiteId} src={src} />
       )}
     </>
   )
