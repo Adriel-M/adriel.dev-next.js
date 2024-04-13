@@ -76,7 +76,7 @@ const config = defineConfig({
               datePublished: data.date,
               dateModified: data.lastmod || data.date,
               description: data.summary,
-              image: siteMetadata.socialBanner,
+              image: '/og',
               url: `${siteMetadata.siteUrl}/${data.path}`,
               author: [
                 {
