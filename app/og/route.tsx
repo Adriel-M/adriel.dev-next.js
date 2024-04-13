@@ -3,8 +3,7 @@ import { NextRequest } from 'next/server'
 
 export const runtime = 'edge'
 
-export const alt = `Adriel's Thoughts`
-export const size = {
+const size = {
   width: 1200,
   height: 600,
 }
