@@ -5,8 +5,8 @@ export const runtime = 'edge'
 
 export const alt = `Adriel's Thoughts`
 export const size = {
-  width: 1600,
-  height: 1200,
+  width: 1200,
+  height: 600,
 }
 
 const isProduction = process.env.NODE_ENV === 'production'
@@ -32,8 +32,8 @@ export async function GET(req: NextRequest) {
       >
         <div
           style={{
-            width: '1100px',
-            height: '550px',
+            width: '800px',
+            height: '350px',
             flexDirection: 'column',
             alignItems: 'flex-start',
             justifyContent: 'center',
@@ -42,12 +42,11 @@ export async function GET(req: NextRequest) {
         >
           <div
             style={{
-              fontSize: 80,
+              fontSize: 50,
               fontFamily: 'Jetbrains Mono',
               letterSpacing: '-0.05em',
               fontStyle: 'normal',
               color: 'black',
-              lineHeight: '100px',
               whiteSpace: 'pre-wrap',
               display: 'flex',
               marginLeft: 100,
