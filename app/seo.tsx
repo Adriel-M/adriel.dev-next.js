@@ -5,12 +5,12 @@ import siteMetadata from '@/data/siteMetadata'
 interface PageSEOProps {
   title: string
   description?: string
-  image?: string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any
 }
 
-export function genPageMetadata({ title, description, image, ...rest }: PageSEOProps): Metadata {
+export function genPageMetadata({ title, description, ...rest }: PageSEOProps): Metadata {
+  const ogImage = [`/og?title=${encodeURI(title)}`]
   return {
     title,
     openGraph: {
@@ -18,14 +18,14 @@ export function genPageMetadata({ title, description, image, ...rest }: PageSEOP
       description: description || siteMetadata.description,
       url: './',
       siteName: siteMetadata.title,
-      images: image ? [image] : [siteMetadata.socialBanner],
+      images: ogImage,
       locale: 'en_US',
       type: 'website',
     },
     twitter: {
       title: `${title} | ${siteMetadata.title}`,
       card: 'summary_large_image',
-      images: image ? [image] : [siteMetadata.socialBanner],
+      images: ogImage,
     },
     ...rest,
   }
