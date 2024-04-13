@@ -6,7 +6,6 @@ const siteMetadata = {
   language: 'en-us',
   siteUrl: 'https://adriel.dev',
   siteRepo: 'https://github.com/Adriel-M/adriel.dev',
-  socialBanner: '/static/images/twitter-card.png',
   github: 'https://github.com/Adriel-M',
   linkedin: 'https://www.linkedin.com/in/adrielmartinez/',
   locale: 'en-US',
