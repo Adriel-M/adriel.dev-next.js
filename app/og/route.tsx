@@ -13,12 +13,9 @@ const isProduction = process.env.NODE_ENV === 'production'
 export async function GET(req: NextRequest) {
   const postTitle = getTitle(req)
   const backgroundImageUrl = getBackgroundUrl(req)
-  console.log(backgroundImageUrl)
 
-  const font = fetch(new URL('./JetBrainsMono-Bold.ttf', import.meta.url)).then((res) =>
-    res.arrayBuffer()
-  )
-  const fontData = await font
+  const response = await fetch(new URL('./JetBrainsMono-Bold.ttf', import.meta.url))
+  const fontData = await response.arrayBuffer()
 
   return new ImageResponse(
     (
