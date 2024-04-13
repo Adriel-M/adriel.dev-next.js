@@ -1,6 +1,8 @@
 import { ImageResponse } from 'next/og'
 import { NextRequest } from 'next/server'
 
+import images from '@/lib/Images'
+
 export const runtime = 'edge'
 
 const size = {
@@ -81,7 +83,8 @@ const getTitle = (req: NextRequest): string => {
 
 const getBackgroundUrl = (req: NextRequest): string => {
   const host = req.headers.get('host')
+  const path = images['/images/og-bg.png']
 
   const protocol = isProduction ? 'https' : 'http'
-  return `${protocol}://${host}/static/images/og-bg.png`
+  return `${protocol}://${host}${path}`
 }
