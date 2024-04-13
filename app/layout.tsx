@@ -1,4 +1,4 @@
-import 'css/tailwind.css'
+import '@/css/globals.css'
 
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
