@@ -5,7 +5,7 @@ import { getTotalPages } from '@/lib/PagingUtils'
 import { formatDate } from '@/lib/PlinyUtils'
 import siteMetadata from '@/lib/siteMetadata'
 import { SluggedTag } from '@/lib/SluggedTag'
-import { generateTagsPath } from '@/lib/UrlLibs'
+import { generatePostsPath, generateTagsPath } from '@/lib/UrlLibs'
 import { Post } from '#veliteContent'
 
 interface Props {
@@ -50,7 +50,10 @@ export default function PostListingPage({ posts, pageNumber, currentTag }: Props
                 <div className="space-y-3">
                   <div>
                     <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                      <Link href={`/${path}`} className="text-gray-900 hover:text-primary-500">
+                      <Link
+                        href={generatePostsPath(post)}
+                        className="text-gray-900 hover:text-primary-500"
+                      >
                         {title}
                       </Link>
                     </h2>

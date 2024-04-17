@@ -3,6 +3,7 @@ import Tag from '@/components/Tag'
 import { sortTagsByAlpha } from '@/lib/CollectionUtils'
 import { formatDate } from '@/lib/PlinyUtils'
 import siteMetadata from '@/lib/siteMetadata'
+import { generatePostsPath } from '@/lib/UrlLibs'
 import { Post } from '#veliteContent'
 
 interface Props {
@@ -22,7 +23,7 @@ export default function Home({ posts }: Props) {
         <ul className="divide-y divide-gray-200">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, siteMetadata.postsInFrontPageCount).map((post) => {
-            const { slug, date, title, summary, tags, path } = post
+            const { slug, date, title, summary, tags } = post
             return (
               <li key={slug} className="py-12">
                 <article>
@@ -38,7 +39,7 @@ export default function Home({ posts }: Props) {
                         <div>
                           <h2 className="text-2xl font-bold leading-8 tracking-tight">
                             <Link
-                              href={`/${path}`}
+                              href={generatePostsPath(post)}
                               className="text-gray-900 hover:text-primary-500"
                             >
                               {title}
@@ -54,7 +55,7 @@ export default function Home({ posts }: Props) {
                       </div>
                       <div className="text-base font-medium leading-6">
                         <Link
-                          href={`/${path}`}
+                          href={generatePostsPath(post)}
                           className="hover:text-primary-500"
                           aria-label={`Read more: "${title}"`}
                         >
