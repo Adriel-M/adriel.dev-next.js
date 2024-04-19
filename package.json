@@ -61,7 +61,7 @@
     "eslint-plugin-unused-imports": "3.1.0",
     "gray-matter": "4.0.3",
     "husky": "9.0.11",
-    "inquirer": "9.2.18",
+    "inquirer": "9.2.19",
     "lint-staged": "15.2.2",
     "prettier": "3.2.5",
     "prettier-plugin-tailwindcss": "0.5.14",
