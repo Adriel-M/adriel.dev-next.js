@@ -32,6 +32,19 @@ article {
 
   .footnotes {
     @apply mt-12 border-t border-gray-200;
+
+    ol > li:target {
+      animation: highlight-footer 3s;
+
+      @keyframes highlight-footer {
+        from {
+          background: theme('colors.yellow.300');
+        }
+        to {
+          background: transparent;
+        }
+      }
+    }
   }
 
   .data-footnote-backref {
