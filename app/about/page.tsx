@@ -9,7 +9,7 @@ import siteMetadata from '@/lib/siteMetadata'
 import { author } from '#veliteContent'
 
 const title = 'About'
-export const metadata = genPageMetadata({ title: title })
+export const metadata = genPageMetadata({ title })
 
 export default function Page() {
   return (
