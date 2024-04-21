@@ -4,11 +4,7 @@ import logoMinSvg from './logo.min.svg'
 
 const Logo = () => {
   return (
-    <NextImage
-      src={logoMinSvg}
-      alt="logo"
-      className="h-[80px] w-[80px] rounded-br-[40px] rounded-tr-[40px]"
-    />
+    <NextImage src={logoMinSvg} alt="logo" height={75} width={75} className="rounded-br-[37px]" />
   )
 }
 
