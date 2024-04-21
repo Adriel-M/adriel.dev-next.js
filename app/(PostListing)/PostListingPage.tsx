@@ -20,13 +20,8 @@ export default function PostListingPage({ posts, pageNumber, currentTag }: Props
     siteMetadata.postsInPostsPageCount * pageNumber
   )
 
-  let basePath: string
+  const basePath = currentTag ? generateTagsPath(currentTag) : '/posts'
 
-  if (currentTag) {
-    basePath = generateTagsPath(currentTag)
-  } else {
-    basePath = '/posts'
-  }
   const pagination = {
     currentPage: pageNumber,
     totalPages: getTotalPages(posts.length),
