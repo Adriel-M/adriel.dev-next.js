@@ -15,7 +15,6 @@ module.exports = {
     'plugin:@typescript-eslint/stylistic-type-checked',
     'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
-    'plugin:react/recommended',
     'next',
     'next/core-web-vitals',
   ],
