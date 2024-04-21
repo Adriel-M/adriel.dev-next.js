@@ -53,6 +53,9 @@ const securityHeaders = [
   },
 ]
 
+/**
+ * @type {import('next/dist/next-server/server/config').NextConfig}
+ **/
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'mdx'],
   eslint: {
@@ -115,7 +118,4 @@ class VeliteWebpackPlugin {
   }
 }
 
-/**
- * @type {import('next/dist/next-server/server/config').NextConfig}
- **/
 module.exports = withPlugins([withBundleAnalyzer], nextConfig)
