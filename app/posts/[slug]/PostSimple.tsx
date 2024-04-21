@@ -40,7 +40,7 @@ export default function PostLayout({ content, children }: LayoutProps) {
             </div>
           </div>
           <footer>
-            {tags && tags.length > 0 && (
+            {tags.length > 0 && (
               <>
                 <h2 className="pt-4 text-xs uppercase tracking-wide text-gray-500">Tags</h2>
                 <div className="flex flex-wrap">

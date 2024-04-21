@@ -65,7 +65,7 @@ export default function PostListingPage({ posts, pageNumber, currentTag }: Props
           )
         })}
       </ul>
-      {pagination && pagination.totalPages > 1 && <Pagination {...pagination} />}
+      {pagination.totalPages > 1 && <Pagination {...pagination} />}
     </div>
   )
 }
