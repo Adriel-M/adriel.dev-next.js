@@ -1,6 +1,6 @@
 import RequireContext = __WebpackModuleApi.RequireContext
 const importFromFolder = (context: RequireContext) => {
-  const images: { [key: string]: { default: { src: string } } } = {}
+  const images: Record<string, { default: { src: string } }> = {}
 
   for (const key of context.keys()) {
     // keys are duplicated in a sense that there are two keys for the same image
@@ -17,7 +17,7 @@ const importFromFolder = (context: RequireContext) => {
 
 const getImages = () => {
   const keyToModule = importFromFolder(require.context('../images', true, /\.(png|jpe?g|svg)$/))
-  const keyToPath: { [key: string]: string } = {}
+  const keyToPath: Record<string, string> = {}
 
   for (const [key, value] of Object.entries(keyToModule)) {
     keyToPath[key] = value.default.src

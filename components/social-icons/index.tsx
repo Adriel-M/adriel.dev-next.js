@@ -8,7 +8,7 @@ const components = {
   rss: RSS,
 }
 
-type SocialIconProps = {
+interface SocialIconProps {
   kind: keyof typeof components
   href: string | undefined
   size?: number

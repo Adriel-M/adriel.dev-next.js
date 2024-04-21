@@ -31,7 +31,7 @@ export const updatePost = async () => {
 
   const { content, data } = matter(fileContent)
 
-  data['lastmod'] = new Date()
+  data.lastmod = new Date()
 
   await Bun.write(filePath, matter.stringify(content, data))
 

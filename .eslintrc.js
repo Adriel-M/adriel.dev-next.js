@@ -12,6 +12,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/stylistic-type-checked',
     'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
     'next',

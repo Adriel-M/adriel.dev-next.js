@@ -15,8 +15,8 @@ const PostCollection = defineCollection({
       tags: s
         .array(s.string())
         .superRefine((tags, { addIssue }) => {
-          const seenTags: Set<string> = new Set()
-          const duplicateTags: Set<string> = new Set()
+          const seenTags = new Set<string>()
+          const duplicateTags = new Set<string>()
 
           for (const tag of tags) {
             if (seenTags.has(tag)) {
@@ -51,7 +51,7 @@ const PostCollection = defineCollection({
           '@type': 'BlogPosting',
           headline: data.title,
           datePublished: data.date,
-          dateModified: data.lastmod || data.date,
+          dateModified: data.lastmod ?? data.date,
           description: data.summary,
           image: '/og',
           url: `${siteMetadata.siteUrl}/${data.path}`,

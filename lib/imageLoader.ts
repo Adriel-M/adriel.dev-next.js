@@ -5,7 +5,7 @@ const CustomLoader: ImageLoader = ({ src, width, quality }) => {
   // do not optimize svgs and gifs
   if (/\.(svg|gif)$/.test(src)) return src + '?uo'
   // pre-optimize images with zimg in production build
-  if (/^\//.test(src)) return src.replace(/\.[a-z]+$/i, `.${width}.webp`)
+  if (src.startsWith('/')) return src.replace(/\.[a-z]+$/i, `.${width}.webp`)
   return `${src}?w=${width}&q=${quality ?? 75}`
 }
 
