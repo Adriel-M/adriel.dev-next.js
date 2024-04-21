@@ -36,22 +36,20 @@ const config = defineConfig({
           tags: s
             .array(s.string())
             .superRefine((tags, { addIssue }) => {
-              const countsPerTag: Record<string, number> = {}
+              const seenTags: Set<string> = new Set()
+              const duplicateTags: Set<string> = new Set()
 
               for (const tag of tags) {
-                if (!(tag in countsPerTag)) {
-                  countsPerTag[tag] = 0
+                if (seenTags.has(tag)) {
+                  duplicateTags.add(tag)
                 }
-
-                countsPerTag[tag] += 1
+                seenTags.add(tag)
               }
 
-              const duplicateTags = Object.keys(countsPerTag).filter((tag) => countsPerTag[tag] > 1)
-
-              if (duplicateTags.length > 0) {
+              if (duplicateTags.size > 0) {
                 addIssue({
                   code: 'custom',
-                  message: `Duplicate tags found: ${duplicateTags}`,
+                  message: `Duplicate tags found: ${[...duplicateTags]}`,
                 })
 
                 return s.NEVER
