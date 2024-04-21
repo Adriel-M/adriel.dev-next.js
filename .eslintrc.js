@@ -15,6 +15,7 @@ module.exports = {
     'plugin:@typescript-eslint/stylistic-type-checked',
     'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
+    'plugin:react/recommended',
     'next',
     'next/core-web-vitals',
   ],
@@ -26,7 +27,6 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'error',
-    'react/react-in-jsx-scope': 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',
       {
@@ -35,13 +35,7 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton'],
       },
     ],
-    'react/prop-types': 0,
-    '@typescript-eslint/no-unused-vars': 0,
-    'react/no-unescaped-entities': 0,
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-var-requires': 'off',
-    '@typescript-eslint/ban-ts-comment': 'off',
-    '@typescript-eslint/no-unused-var': 'off',
     'unused-imports/no-unused-imports': 'error',
     'unused-imports/no-unused-vars': [
       'error',
