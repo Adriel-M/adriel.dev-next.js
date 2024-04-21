@@ -5,7 +5,7 @@
   "scripts": {
     "start": "next dev",
     "dev": "next dev",
-    "build": "next build && bun optimize-images.ts",
+    "build": "next build && bun scripts/optimize-images.ts",
     "serve": "next start",
     "analyze": "ANALYZE=true next build",
     "lint": "next lint --fix --dir app --dir components --dir lib --dir layouts --dir scripts --file velite.config.ts --dir content",
