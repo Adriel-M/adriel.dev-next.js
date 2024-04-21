@@ -1,6 +1,0 @@
-.github
-.husky
-.idea
-.vscode
-/admin/.gitignore
-scripts/cli
