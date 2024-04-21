@@ -6,7 +6,7 @@ import PageSimple from '@/app/about/PageSimple'
 import ObfuscatedEmail from '@/components/ObfuscatedEmail'
 import { VeliteMarkdownRenderer } from '@/components/VeliteMarkdownRenderer'
 import siteMetadata from '@/lib/siteMetadata'
-import { authors } from '#veliteContent'
+import { author } from '#veliteContent'
 
 const title = 'About'
 export const metadata = genPageMetadata({ title: title })
@@ -16,7 +16,7 @@ export default function Page() {
     <>
       <PageSimple title={title}>
         <VeliteMarkdownRenderer
-          content={authors}
+          content={author}
           components={{ ObfuscatedEmail }}
           emailAddress={siteMetadata.emailAddress}
         />

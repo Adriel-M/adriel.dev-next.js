@@ -56,7 +56,7 @@ const securityHeaders = [
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'mdx'],
   eslint: {
-    dirs: ['app', 'components', 'layouts', 'lib', 'scripts', 'content'],
+    dirs: ['app', 'components', 'layouts', 'lib', 'scripts', 'content', 'velite-collections'],
   },
   async rewrites() {
     return [

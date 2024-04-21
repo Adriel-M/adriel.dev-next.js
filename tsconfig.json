@@ -22,7 +22,8 @@
       "@/css/*": ["css/*"],
       "@/layouts/*": ["layouts/*"],
       "@/lib/*": ["lib/*"],
-      "#veliteContent": ["./.velite"]
+      "@/veliteCollections/*": ["./velite-collections/*"],
+      "#veliteContent": ["./.velite"],
     },
     "plugins": [
       {
