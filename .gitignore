@@ -39,9 +39,6 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# Contentlayer
-.contentlayer
-
 node_modules
 .env
 .velite
