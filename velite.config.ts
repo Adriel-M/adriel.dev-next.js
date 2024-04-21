@@ -61,7 +61,7 @@ const config = defineConfig({
           lastmod: s.isodate().optional(),
           path: s.path(),
           code: s.mdx(),
-          summary: s.raw().transform((raw) => generateSummary(raw)),
+          summary: s.raw().transform(generateSummary),
         })
         .transform((data) => {
           return {
@@ -97,7 +97,7 @@ const config = defineConfig({
     },
     tags: {
       name: 'Tag',
-      pattern: 'tags/**/*.yaml',
+      pattern: 'virtual',
       schema: s.object({
         counts: s.record(s.string(), s.number()),
       }),
