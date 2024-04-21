@@ -32,7 +32,7 @@ SOFTWARE.
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="referrer" content="unsafe-url" />
 		<title><xsl:value-of select="/atom:feed/atom:title"/></title>
-		<link rel="stylesheet" href="/static/feed/water.light.min.css" />
+		<link rel="stylesheet" href="/static/feed/water.light.css" />
 		<script src="/static/feed/clickToCopy.js"></script>
 	</head>
 	<body>
@@ -75,7 +75,7 @@ SOFTWARE.
 		</xsl:for-each>
 		</ul>
 		<p><xsl:value-of select="count(/atom:feed/atom:entry)"/> news items.</p>
-		<p><small>Powered by <a href="https://www.feed.style/"><img referrerpolicy="origin" src="https://www.feed.style/favicon.svg" style="height:1em;padding-right:0.25em;vertical-align:middle;" />Feed.Style</a></small></p>
+		<p><small>Powered by <a rel="noopener noreferrer" href="https://www.feed.style/">Feed.Style</a></small></p>
 	</body>
 </html>
 	</xsl:template>
