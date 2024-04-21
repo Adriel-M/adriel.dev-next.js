@@ -3,7 +3,7 @@ import '@/css/user-content.css'
 import { Metadata } from 'next'
 
 import PostSimple from '@/app/posts/[slug]/PostSimple'
-import { VeliteMarkdownRenderer } from '@/components/VeliteMarkdownRenderer'
+import { MDXContent } from '@/components/mdx-content'
 import { getAllPosts, getPostBySlug } from '@/lib/CollectionUtils'
 import siteMetadata from '@/lib/siteMetadata'
 
@@ -65,7 +65,7 @@ export default function Page({ params }: { params: Params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(post.structuredData) }}
       />
       <PostSimple content={post}>
-        <VeliteMarkdownRenderer content={post} />
+        <MDXContent content={post} />
       </PostSimple>
     </>
   )

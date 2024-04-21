@@ -24,7 +24,7 @@ interface MDXProps {
 }
 
 // MDXContent component
-export const VeliteMarkdownRenderer = ({ content, components, ...rest }: MDXProps) => {
+export const MDXContent = ({ content, components, ...rest }: MDXProps) => {
   const Component = useMDXComponent(content.code)
   return <Component components={{ ...globalComponents, ...components }} {...rest} />
 }

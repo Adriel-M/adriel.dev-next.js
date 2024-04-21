@@ -3,8 +3,8 @@ import '@/css/user-content.css'
 import { genPageMetadata } from 'app/seo'
 
 import PageSimple from '@/app/about/PageSimple'
+import { MDXContent } from '@/components/mdx-content'
 import ObfuscatedEmail from '@/components/ObfuscatedEmail'
-import { VeliteMarkdownRenderer } from '@/components/VeliteMarkdownRenderer'
 import siteMetadata from '@/lib/siteMetadata'
 import { author } from '#veliteContent'
 
@@ -15,7 +15,7 @@ export default function Page() {
   return (
     <>
       <PageSimple title={title}>
-        <VeliteMarkdownRenderer
+        <MDXContent
           content={author}
           components={{ ObfuscatedEmail }}
           emailAddress={siteMetadata.emailAddress}
