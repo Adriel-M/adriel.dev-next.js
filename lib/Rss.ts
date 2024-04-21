@@ -1,7 +1,7 @@
 import { Feed } from 'feed'
 
 import siteMetadata from '@/lib/siteMetadata'
-import { generateTagsPath } from '@/lib/UrlLibs'
+import { generateTagsPath, URLS } from '@/lib/UrlLibs'
 import { Post } from '#veliteContent'
 
 class StyledFeed {
@@ -52,8 +52,8 @@ const getFeed = (posts: Post[]) => {
     favicon: `${siteMetadata.siteUrl}/static/images/favicon.ico`,
     updated: posts.length > 0 ? new Date(posts[0].date) : undefined,
     feedLinks: {
-      rss: siteMetadata.siteUrl + '/rss.xml',
-      atom: siteMetadata.siteUrl + '/atom.xml',
+      rss: `${siteMetadata.siteUrl}${URLS.RSS}`,
+      atom: `${siteMetadata.siteUrl}${URLS.ATOM}`,
     },
     author: author,
     copyright: copyrightNotice,

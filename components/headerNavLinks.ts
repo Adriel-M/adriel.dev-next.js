@@ -1,8 +1,10 @@
+import { URLS } from '@/lib/UrlLibs'
+
 const headerNavLinks = [
-  { href: '/', title: 'Home' },
-  { href: '/posts', title: 'Posts' },
-  { href: '/projects', title: 'Projects' },
-  { href: '/about', title: 'About' },
+  { href: URLS.HOME, title: 'Home' },
+  { href: URLS.POSTS, title: 'Posts' },
+  { href: URLS.PROJECTS, title: 'Projects' },
+  { href: URLS.ABOUT, title: 'About' },
 ]
 
 export default headerNavLinks

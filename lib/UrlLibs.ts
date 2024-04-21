@@ -10,3 +10,12 @@ export const generateTagsPath = (sluggedTag: SluggedTag): string => {
 export const generatePostsPath = (post: Post): string => {
   return `/${post.path}`
 }
+
+export const URLS = {
+  HOME: '/',
+  POSTS: '/posts',
+  PROJECTS: '/projects',
+  ABOUT: '/about',
+  RSS: '/rss.xml',
+  ATOM: '/atom.xml',
+}

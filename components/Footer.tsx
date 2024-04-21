@@ -1,5 +1,6 @@
 import SocialIcon from '@/components/social-icons'
 import siteMetadata from '@/lib/siteMetadata'
+import { URLS } from '@/lib/UrlLibs'
 
 import Link from './Link'
 
@@ -10,7 +11,7 @@ export default function Footer() {
         <div className="mb-4 flex space-x-4">
           <SocialIcon kind="github" href={siteMetadata.github} size={6} />
           <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
-          <SocialIcon kind="rss" href="/rss.xml" size={6} />
+          <SocialIcon kind="rss" href={URLS.RSS} size={6} />
         </div>
         <div className="mb-8 flex space-x-2 text-sm text-gray-500">
           <div>{`© ${new Date().getFullYear()}`}</div>

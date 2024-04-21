@@ -3,7 +3,7 @@ import Tag from '@/components/Tag'
 import { sortTagsByAlpha } from '@/lib/CollectionUtils'
 import { formatDate } from '@/lib/PlinyUtils'
 import siteMetadata from '@/lib/siteMetadata'
-import { generatePostsPath } from '@/lib/UrlLibs'
+import { generatePostsPath, URLS } from '@/lib/UrlLibs'
 import { Post } from '#veliteContent'
 
 interface Props {
@@ -72,7 +72,7 @@ export default function Home({ posts }: Props) {
       </div>
       {posts.length > siteMetadata.postsInFrontPageCount && (
         <div className="flex justify-end text-base font-medium leading-6">
-          <Link href="/posts" className="hover:text-primary-500" aria-label="All posts">
+          <Link href={URLS.POSTS} className="hover:text-primary-500" aria-label="All posts">
             All Posts &rarr;
           </Link>
         </div>
