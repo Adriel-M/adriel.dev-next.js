@@ -10,7 +10,7 @@ export function GET(_: NextRequest, { params }: { params: { slug: string[] } }) 
   const newImagePath = images[imagePath]
 
   if (!newImagePath) {
-    throw notFound()
+    notFound()
   }
 
   redirect(newImagePath)
