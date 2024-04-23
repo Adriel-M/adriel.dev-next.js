@@ -24,15 +24,14 @@
 
 import { Post } from '#veliteContent'
 
-export const formatDate = (date: string, locale = 'en-US') => {
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }
-  const now = new Date(date).toLocaleDateString(locale, options)
+const localeDateStringOptions: Intl.DateTimeFormatOptions = {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}
 
-  return now
+export const formatDate = (date: string, locale = 'en-US') => {
+  return new Date(date).toLocaleDateString(locale, localeDateStringOptions)
 }
 
 const postSortFun = (a: Post, b: Post): number => {
