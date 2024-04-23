@@ -68,7 +68,7 @@ const nextConfig = {
         destination: 'https://analytics.adriel.dev/:match*',
       },
       {
-        source: '/rum',
+        source: '/cfBeacon',
         destination: 'https://static.cloudflareinsights.com/beacon.min.js',
       }
     ]
