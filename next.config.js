@@ -67,10 +67,6 @@ const nextConfig = {
         source: '/stats/:match*',
         destination: 'https://analytics.adriel.dev/:match*',
       },
-      {
-        source: '/rum',
-        destination: 'https://static.cloudflareinsights.com/beacon.min.js',
-      }
     ]
   },
   async redirects() {

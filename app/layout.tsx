@@ -3,7 +3,6 @@ import '@/css/globals.css'
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
 
-import RUM from '@/app/RUM'
 import ScrollTop from '@/app/ScrollTop'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
@@ -72,7 +71,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <link rel="alternate" type="application/rss+xml" href={URLS.RSS} />
       <link rel="alternate" type="application/atom+xml" href={URLS.ATOM} />
       <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased">
-        <RUM />
         <UmamiAnalytics />
         <SectionContainer>
           <div className="flex h-screen flex-col justify-between">
