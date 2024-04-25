@@ -12,8 +12,34 @@ const size = {
 
 const isProduction = process.env.NODE_ENV === 'production'
 
+const key = crypto.subtle.importKey(
+  'raw',
+  new TextEncoder().encode(process.env.OG_SECRET ?? 'my_secret'),
+  { name: 'HMAC', hash: { name: 'SHA-256' } },
+  false,
+  ['sign']
+)
+
+const toHex = (arrayBuffer: ArrayBuffer): string => {
+  return Array.prototype.map
+    .call(new Uint8Array(arrayBuffer), (n) => n.toString(16).padStart(2, '0'))
+    .join('')
+}
+
 export async function GET(req: NextRequest) {
-  const postTitle = getTitle(req)
+  const { searchParams } = req.nextUrl
+  const title = searchParams.get('title')
+  const token = searchParams.get('token')
+  if (!title || !token) {
+    return new Response('Missing parameters', { status: 400 })
+  }
+  const decodedTitle = decodeURI(title)
+  const decodedToken = decodeURI(token)
+
+  if (!(await verifyTitleAndToken(decodedTitle, decodedToken))) {
+    return new Response('Invalid token', { status: 401 })
+  }
+
   const backgroundImageUrl = getBackgroundUrl(req)
 
   const response = await fetch(new URL('./JetBrainsMono-Bold.ttf', import.meta.url))
@@ -52,7 +78,7 @@ export async function GET(req: NextRequest) {
               marginRight: 100,
             }}
           >
-            {postTitle}
+            {decodedTitle}
           </div>
         </div>
       </div>
@@ -71,14 +97,11 @@ export async function GET(req: NextRequest) {
   )
 }
 
-const getTitle = (req: NextRequest): string => {
-  const { searchParams } = req.nextUrl
-  const fromParams = searchParams.get('title')
-  if (fromParams) {
-    return decodeURI(fromParams)
-  }
-
-  return `Adriel's Thoughts`
+const verifyTitleAndToken = async (title: string, token: string): Promise<boolean> => {
+  const decrypted = toHex(
+    await crypto.subtle.sign('HMAC', await key, new TextEncoder().encode(title))
+  )
+  return decrypted === token
 }
 
 const getBackgroundUrl = (req: NextRequest): string => {

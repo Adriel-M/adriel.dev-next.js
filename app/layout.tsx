@@ -7,51 +7,55 @@ import ScrollTop from '@/app/ScrollTop'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import SectionContainer from '@/components/SectionContainer'
+import { DEFAULT_OG_TITLE, generateOgPath } from '@/lib/OgUtils'
 import siteMetadata from '@/lib/siteMetadata'
 import { URLS } from '@/lib/UrlLibs'
 
 import fonts from './fonts'
 import UmamiAnalytics from './UmamiAnalytics'
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteMetadata.siteUrl),
-  title: {
-    default: siteMetadata.title,
-    template: `%s | ${siteMetadata.title}`,
-  },
-  description: siteMetadata.description,
-  openGraph: {
-    title: siteMetadata.title,
-    description: siteMetadata.description,
-    url: './',
-    siteName: siteMetadata.title,
-    images: ['/og'],
-    locale: 'en_US',
-    type: 'website',
-  },
-  alternates: {
-    canonical: './',
-    types: {
-      'application/rss+xml': `${siteMetadata.siteUrl}/rss.xml`,
-      'application/atom+xml': `${siteMetadata.siteUrl}/atom.xml`,
+export async function generateMetadata(): Promise<Metadata> {
+  const ogImage = [generateOgPath(DEFAULT_OG_TITLE)]
+  return {
+    metadataBase: new URL(siteMetadata.siteUrl),
+    title: {
+      default: siteMetadata.title,
+      template: `%s | ${siteMetadata.title}`,
     },
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+    description: siteMetadata.description,
+    openGraph: {
+      title: siteMetadata.title,
+      description: siteMetadata.description,
+      url: './',
+      siteName: siteMetadata.title,
+      images: ogImage,
+      locale: 'en_US',
+      type: 'website',
+    },
+    alternates: {
+      canonical: './',
+      types: {
+        'application/rss+xml': `${siteMetadata.siteUrl}/rss.xml`,
+        'application/atom+xml': `${siteMetadata.siteUrl}/atom.xml`,
+      },
+    },
+    robots: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
-  },
-  twitter: {
-    title: siteMetadata.title,
-    card: 'summary_large_image',
-    images: ['/og'],
-  },
+    twitter: {
+      title: siteMetadata.title,
+      card: 'summary_large_image',
+      images: ogImage,
+    },
+  }
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

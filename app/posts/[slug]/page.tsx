@@ -5,6 +5,7 @@ import { Metadata } from 'next'
 import PostSimple from '@/app/posts/[slug]/PostSimple'
 import { MDXContent } from '@/components/mdx-content'
 import { getAllPosts, getPostBySlug } from '@/lib/CollectionUtils'
+import { generateOgPath } from '@/lib/OgUtils'
 import siteMetadata from '@/lib/siteMetadata'
 
 interface Params {
@@ -21,7 +22,7 @@ export function generateMetadata({ params }: { params: Params }): Metadata | und
   const publishedAt = new Date(post.date).toISOString()
   const modifiedAt = new Date(post.lastmod ?? post.date).toISOString()
 
-  const ogImage = [`/og?title=${encodeURI(post.title)}`]
+  const ogImage = [generateOgPath(post.title)]
 
   return {
     title: post.title,

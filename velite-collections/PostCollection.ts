@@ -1,6 +1,7 @@
 import { titleCase } from 'title-case'
 import { defineCollection, s } from 'velite'
 
+import { DEFAULT_OG_TITLE, generateOgPath } from '@/lib/OgUtils'
 import siteMetadata from '@/lib/siteMetadata'
 import { SluggedTag } from '@/lib/SluggedTag'
 import { generateSummary } from '@/lib/VeliteUtils'
@@ -53,7 +54,7 @@ const PostCollection = defineCollection({
           datePublished: data.date,
           dateModified: data.lastmod ?? data.date,
           description: data.summary,
-          image: '/og',
+          image: generateOgPath(DEFAULT_OG_TITLE),
           url: `${siteMetadata.siteUrl}/${data.path}`,
           author: [
             {

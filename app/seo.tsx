@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 
+import { generateOgPath } from '@/lib/OgUtils'
 import siteMetadata from '@/lib/siteMetadata'
 
 interface PageSEOProps {
@@ -10,7 +11,7 @@ interface PageSEOProps {
 }
 
 export function genPageMetadata({ title, description, ...rest }: PageSEOProps): Metadata {
-  const ogImage = [`/og?title=${encodeURI(title)}`]
+  const ogImage = [generateOgPath(title)]
   return {
     title,
     openGraph: {
