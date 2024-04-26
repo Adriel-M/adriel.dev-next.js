@@ -50,6 +50,7 @@
 .DocSearch-Input:focus {
   box-shadow: 0 0 #0000 !important;
   background: transparent !important;
+  outline: unset;
 }
 
 .DocSearch-Button:active,

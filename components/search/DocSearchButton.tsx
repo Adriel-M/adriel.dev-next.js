@@ -2,7 +2,7 @@
 
 import '@docsearch/css/dist/button.css'
 import '@docsearch/css/dist/modal.css'
-import './variables.css'
+import './docsearch.css'
 
 import { DocSearch } from '@docsearch/react'
 import {
