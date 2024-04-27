@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 import Link from '@/components/Link'
 import { getTagCounts } from '@/lib/CollectionUtils'
 import { SluggedTag } from '@/lib/SluggedTag'
-import { generateTagsPath } from '@/lib/UrlLibs'
+import { generateTagsPath, URLS } from '@/lib/UrlLibs'
 
 const ON_CURRENT_PAGE = 'text-primary-500 hover:text-primary-600'
 const NOT_CURRENT_PAGE = 'text-gray-700 hover:text-primary-500'
@@ -49,7 +49,7 @@ export default function TagListSidebarLayout({ currentTag = undefined, children 
         <div className="flex sm:space-x-24">
           <div className="shadow-md/70/40 hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded bg-gray-50 pt-5 sm:flex">
             <div className="px-6 py-4">
-              <Link href={`/posts`} className={`${allPostsCss} font-bold uppercase`}>
+              <Link href={URLS.POSTS} className={`${allPostsCss} font-bold uppercase`}>
                 All Posts
               </Link>
               <ul>
