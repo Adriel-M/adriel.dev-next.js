@@ -42,6 +42,7 @@ const PostCollection = defineCollection({
       path: s.path(),
       code: s.mdx(),
       summary: s.raw().transform(generateSummary),
+      toc: s.toc(),
     })
     .transform((data) => {
       return {

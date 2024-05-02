@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 
+import FloatingTOC from '@/app/posts/[slug]/FloatingTOC'
 import PageTitle from '@/components/PageTitle'
 import Tag from '@/components/Tag'
 import { sortTagsByAlpha } from '@/lib/CollectionUtils'
@@ -13,7 +14,7 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, children }: LayoutProps) {
-  const { date, title, tags } = content
+  const { date, title, tags, toc } = content
 
   return (
     <article>
@@ -33,6 +34,7 @@ export default function PostLayout({ content, children }: LayoutProps) {
             </div>
           </div>
         </header>
+        <FloatingTOC toc={toc} />
         <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:divide-y-0">
           <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0">
             <div id="article-body" className="prose max-w-none pb-4 pt-10">
