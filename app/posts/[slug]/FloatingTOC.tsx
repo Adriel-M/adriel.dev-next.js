@@ -60,14 +60,19 @@ const FloatingTOC = ({ toc }: { toc: TocEntry[] }) => {
 
   const handleScroll = () => {
     const headers = document.querySelectorAll('.content-header')
+    let headerId = ''
     for (const header of headers) {
       if (header.id === 'footnote-label') continue
 
       const rect = header.getBoundingClientRect()
 
-      if (rect.top <= 10) {
-        setActiveHeadingId(`#${header.id}`)
+      if (rect.top <= 100) {
+        headerId = header.id
       }
+    }
+
+    if (headerId) {
+      setActiveHeadingId(`#${headerId}`)
     }
   }
 
