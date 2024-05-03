@@ -67,7 +67,7 @@ export default {
         if (sizeValue) {
           tocStyles[`.w-toc-${size}`] = {
             width: `calc(50vw - (${sizeValue} / 2))`,
-            transform: `translateX(calc(-100% - ${padding2})) translateY(1rem)`,
+            transform: `translateX(calc(100% + ${padding2})) translateY(1rem)`,
           }
         }
       })

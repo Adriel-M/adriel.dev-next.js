@@ -82,8 +82,8 @@ const FloatingTOC = ({ toc }: Props) => {
     }
   }, [])
   return (
-    <div className="sticky top-20 hidden h-0 px-8 text-xs w-toc-2xl lg:block xl:w-toc-4xl">
-      <div className="pb-2 text-sm underline underline-offset-4">Table of Contents</div>
+    <div className="sticky top-20 float-right hidden h-0 px-8 text-xs w-toc-2xl lg:block xl:w-toc-4xl">
+      <div className="pb-2 text-sm">Table of Contents</div>
       <TocEntryList activeSectionUrl={activeId} level={toc} />
     </div>
   )
