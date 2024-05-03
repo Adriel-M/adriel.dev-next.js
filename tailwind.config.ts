@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss'
 import colors from 'tailwindcss/colors'
+import plugin from 'tailwindcss/plugin'
 
 type Theme = (color: string) => string
 
@@ -50,5 +51,27 @@ export default {
       }),
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    plugin(function ({ addUtilities, theme }) {
+      const sizes = ['2xl', '4xl'] // Specific sizes to handle
+      const maxWidths = theme('maxWidth')!
+      const paddings = theme('padding')!
+      const padding2 = paddings['2']!
+      const tocStyles: Record<string, Record<string, string>> = {}
+      sizes.forEach((size) => {
+        const sizeValue = maxWidths[size]
+        /*
+         * The width is 50% of viewport width - (the size of the article content / 2)
+         */
+        if (sizeValue) {
+          tocStyles[`.w-toc-${size}`] = {
+            width: `calc(50vw - (${sizeValue} / 2))`,
+            transform: `translateX(calc(100% + ${padding2})) translateY(1rem)`,
+          }
+        }
+      })
+      addUtilities(tocStyles)
+    }),
+  ],
 } satisfies Config
