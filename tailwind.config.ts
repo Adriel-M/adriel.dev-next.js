@@ -53,6 +53,7 @@ export default {
   },
   plugins: [
     require('@tailwindcss/typography'),
+    // custom plugin to avoid hardcoding the values associated with 2xl and 4xl
     plugin(function ({ addUtilities, theme }) {
       const sizes = ['2xl', '4xl'] // Specific sizes to handle
       const maxWidths = theme('maxWidth')!

@@ -20,10 +20,6 @@ interface TocEntry {
   items: TocEntry[]
 }
 
-interface Props {
-  toc: TocEntry[]
-}
-
 const TocEntryList = ({
   activeSectionUrl,
   isNested,
@@ -59,7 +55,7 @@ const TocEntryList = ({
   )
 }
 
-const FloatingTOC = ({ toc }: Props) => {
+const FloatingTOC = ({ toc }: { toc: TocEntry[] }) => {
   const [activeId, setActiveId] = useState('')
 
   const handleScroll = () => {
