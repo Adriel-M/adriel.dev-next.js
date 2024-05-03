@@ -21,11 +21,11 @@ interface TocEntry {
 }
 
 const TocEntryList = ({
-  activeSectionUrl,
+  activeHeadingUrl,
   isNested,
   level,
 }: {
-  activeSectionUrl: string
+  activeHeadingUrl: string
   isNested?: boolean
   level?: TocEntry[]
 }) => {
@@ -39,7 +39,7 @@ const TocEntryList = ({
         // (if no active [say from page load], set the first as active
         // else set the active when matching the section url
         const isActive =
-          (!activeSectionUrl && !isNested && index === 0) || entry.url === activeSectionUrl
+          (!activeHeadingUrl && !isNested && index === 0) || entry.url === activeHeadingUrl
 
         const activeCss = isActive ? 'text-primary-500' : ''
         return (
@@ -47,7 +47,7 @@ const TocEntryList = ({
             <Link className={'no-underline hover:text-primary-600 ' + activeCss} href={entry.url}>
               {entry.title}
             </Link>
-            <TocEntryList activeSectionUrl={activeSectionUrl} isNested={true} level={entry.items} />
+            <TocEntryList activeHeadingUrl={activeHeadingUrl} isNested={true} level={entry.items} />
           </li>
         )
       })}
@@ -56,7 +56,7 @@ const TocEntryList = ({
 }
 
 const FloatingTOC = ({ toc }: { toc: TocEntry[] }) => {
-  const [activeId, setActiveId] = useState('')
+  const [activeHeadingId, setActiveHeadingId] = useState('')
 
   const handleScroll = () => {
     const headers = document.querySelectorAll('.content-header')
@@ -66,7 +66,7 @@ const FloatingTOC = ({ toc }: { toc: TocEntry[] }) => {
       const rect = header.getBoundingClientRect()
 
       if (rect.top <= 10) {
-        setActiveId(`#${header.id}`)
+        setActiveHeadingId(`#${header.id}`)
       }
     }
   }
@@ -80,7 +80,7 @@ const FloatingTOC = ({ toc }: { toc: TocEntry[] }) => {
   return (
     <div className="sticky top-20 float-right hidden h-0 px-8 text-xs w-toc-2xl lg:block xl:w-toc-4xl">
       <div className="pb-2 text-sm">Table of Contents</div>
-      <TocEntryList activeSectionUrl={activeId} level={toc} />
+      <TocEntryList activeHeadingUrl={activeHeadingId} level={toc} />
     </div>
   )
 }
