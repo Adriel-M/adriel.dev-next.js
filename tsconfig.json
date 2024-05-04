@@ -20,7 +20,6 @@
       "@/app/*": ["app/*"],
       "@/components/*": ["components/*"],
       "@/css/*": ["css/*"],
-      "@/layouts/*": ["layouts/*"],
       "@/lib/*": ["lib/*"],
       "@/veliteCollections/*": ["./velite-collections/*"],
       "#veliteContent": ["./.velite"],
@@ -41,5 +40,7 @@
     ".velite/*.ts",
     ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
