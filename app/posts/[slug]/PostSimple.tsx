@@ -31,6 +31,13 @@ export default function PostLayout({ content, children }: LayoutProps) {
             </dl>
             <div>
               <PageTitle>{title}</PageTitle>
+              {tags.length > 0 && (
+                <div className="align-center flex flex-wrap justify-center pt-2">
+                  {sortTagsByAlpha(tags).map((sluggedTag) => (
+                    <Tag key={sluggedTag.tag} sluggedTag={sluggedTag} />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </header>
@@ -41,18 +48,6 @@ export default function PostLayout({ content, children }: LayoutProps) {
               {children}
             </div>
           </div>
-          <footer>
-            {tags.length > 0 && (
-              <>
-                <h2 className="pt-4 text-xs uppercase tracking-wide text-gray-500">Tags</h2>
-                <div className="flex flex-wrap">
-                  {sortTagsByAlpha(tags).map((sluggedTag) => (
-                    <Tag key={sluggedTag.tag} sluggedTag={sluggedTag} />
-                  ))}
-                </div>
-              </>
-            )}
-          </footer>
         </div>
       </div>
     </article>
