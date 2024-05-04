@@ -66,7 +66,7 @@ const FloatingTOC = ({ toc }: { toc: TocEntry[] }) => {
 
       const rect = header.getBoundingClientRect()
 
-      if (rect.top <= 100) {
+      if (rect.top <= 10) {
         headerId = header.id
       }
     }
