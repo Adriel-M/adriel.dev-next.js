@@ -1,11 +1,13 @@
 import { writeFileSync } from 'fs'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import { rehypeGithubAlerts } from 'rehype-github-alerts'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import remarkGemoji from 'remark-gemoji'
 import { defineConfig } from 'velite'
 
 import { sortPosts } from '@/lib/PlinyUtils'
+import rehypeGithubAlertsConfig from '@/lib/rehypeConfigs/RehypeGithubAlertsConfig'
 import remarkImgToJsx from '@/lib/remarkPlugins/RemarkImgToJsx'
 import remarkTitleCase from '@/lib/remarkPlugins/RemarkTitleCase'
 import getFeed from '@/lib/Rss'
@@ -49,6 +51,7 @@ const config = defineConfig({
           theme: 'github-light',
         },
       ],
+      [rehypeGithubAlerts, rehypeGithubAlertsConfig],
     ],
     copyLinkedFiles: false,
     removeComments: true,
