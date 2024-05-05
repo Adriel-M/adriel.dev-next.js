@@ -21,7 +21,7 @@ export const createNewPost = async () => {
   const fullPath = `${postsFolder}/${fileName}`
   const frontMatter = {
     title,
-    date: now,
+    createdAt: now,
     tags: ['tag'],
   }
 
