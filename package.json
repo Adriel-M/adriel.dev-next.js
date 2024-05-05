@@ -3,10 +3,9 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "start": "next dev",
+    "start": "next start",
     "dev": "next dev",
     "build": "next build && bun scripts/optimize-images.ts",
-    "serve": "next start",
     "analyze": "ANALYZE=true next build",
     "lint": "next lint --fix --dir app --dir components --dir lib --dir layouts --dir scripts --file velite.config.ts --dir content --dir velite-collections",
     "prepare": "husky",
