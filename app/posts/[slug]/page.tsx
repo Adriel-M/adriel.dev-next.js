@@ -19,8 +19,8 @@ export function generateMetadata({ params }: { params: Params }): Metadata | und
     return
   }
 
-  const publishedAt = new Date(post.date).toISOString()
-  const modifiedAt = new Date(post.lastmod ?? post.date).toISOString()
+  const publishedAt = new Date(post.createdAt).toISOString()
+  const modifiedAt = new Date(post.updatedAt ?? post.createdAt).toISOString()
 
   const ogImage = [generateOgPath(post.title)]
 

@@ -23,7 +23,7 @@ export default function Home({ posts }: Props) {
         <ul className="divide-y divide-gray-200">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, siteMetadata.postsInFrontPageCount).map((post) => {
-            const { slug, date, title, summary, tags } = post
+            const { slug, createdAt, title, summary, tags } = post
             return (
               <li key={slug} className="py-12">
                 <article>
@@ -31,7 +31,9 @@ export default function Home({ posts }: Props) {
                     <dl>
                       <dt className="sr-only">Published on</dt>
                       <dd className="text-base font-medium leading-6 text-gray-500">
-                        <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
+                        <time dateTime={createdAt}>
+                          {formatDate(createdAt, siteMetadata.locale)}
+                        </time>
                       </dd>
                     </dl>
                     <div className="space-y-5 xl:col-span-3">

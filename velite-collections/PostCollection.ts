@@ -12,7 +12,7 @@ const PostCollection = defineCollection({
   schema: s
     .object({
       title: s.string().transform((title) => titleCase(title)),
-      date: s.isodate(),
+      createdAt: s.isodate(),
       tags: s
         .array(s.string())
         .superRefine((tags, { addIssue }) => {
@@ -38,7 +38,7 @@ const PostCollection = defineCollection({
         .transform((tags) => {
           return tags.map((t) => new SluggedTag(t))
         }),
-      lastmod: s.isodate().optional(),
+      updatedAt: s.isodate().optional(),
       path: s.path(),
       code: s.mdx(),
       summary: s.raw().transform(generateSummary),
@@ -52,8 +52,8 @@ const PostCollection = defineCollection({
           '@context': 'https://schema.org',
           '@type': 'BlogPosting',
           headline: data.title,
-          datePublished: data.date,
-          dateModified: data.lastmod ?? data.date,
+          datePublished: data.createdAt,
+          dateModified: data.updatedAt ?? data.createdAt,
           description: data.summary,
           image: generateOgPath(DEFAULT_OG_TITLE),
           url: `${siteMetadata.siteUrl}/${data.path}`,

@@ -50,7 +50,7 @@ const getFeed = (posts: Post[]) => {
     link: siteMetadata.siteUrl,
     language: siteMetadata.locale,
     favicon: `${siteMetadata.siteUrl}/static/images/favicon.ico`,
-    updated: posts.length > 0 ? new Date(posts[0].date) : undefined,
+    updated: posts.length > 0 ? new Date(posts[0].createdAt) : undefined,
     feedLinks: {
       rss: `${siteMetadata.siteUrl}${URLS.RSS}`,
       atom: `${siteMetadata.siteUrl}${URLS.ATOM}`,
@@ -64,7 +64,7 @@ const getFeed = (posts: Post[]) => {
       id: `${siteMetadata.siteUrl}/${post.path}`,
       link: `${siteMetadata.siteUrl}/${post.path}`,
       description: post.summary,
-      date: new Date(post.date),
+      date: new Date(post.createdAt),
       author: [author],
       category: post.tags.map((sluggedTag) => ({
         name: sluggedTag.tag,

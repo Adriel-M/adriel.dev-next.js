@@ -14,7 +14,7 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, children }: LayoutProps) {
-  const { date, title, tags, toc } = content
+  const { createdAt, title, tags, toc } = content
 
   return (
     <article>
@@ -25,7 +25,7 @@ export default function PostLayout({ content, children }: LayoutProps) {
               <div>
                 <dt className="sr-only">Published on</dt>
                 <dd className="text-base font-medium leading-6 text-gray-500">
-                  <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
+                  <time dateTime={createdAt}>{formatDate(createdAt, siteMetadata.locale)}</time>
                 </dd>
               </div>
             </dl>

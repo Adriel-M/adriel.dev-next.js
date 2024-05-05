@@ -6,8 +6,8 @@ import { postsPath } from './paths'
 
 const EXIT = 'exitPrompt'
 
-const DATE_FIELD = 'date'
-const LASTMOD_FIELD = 'lastmod'
+const CREATED_AT = 'createdAt'
+const UPDATED_AT = 'updatedAt'
 
 export const updatePost = async () => {
   const postsFolder = `${process.cwd()}/${postsPath}`
@@ -35,7 +35,7 @@ export const updatePost = async () => {
         type: 'list',
         name: 'field',
         message: 'Which field do you want to update',
-        choices: [DATE_FIELD, LASTMOD_FIELD, new inquirer.Separator(), EXIT],
+        choices: [CREATED_AT, UPDATED_AT, new inquirer.Separator(), EXIT],
       },
     ])
   ).field
@@ -50,11 +50,7 @@ export const updatePost = async () => {
 
   const { content, data } = matter(fileContent)
 
-  if (field === DATE_FIELD) {
-    data.date = new Date()
-  } else if (field === LASTMOD_FIELD) {
-    data.lastmod = new Date()
-  }
+  data[field] = new Date()
 
   await Bun.write(filePath, matter.stringify(content, data))
 

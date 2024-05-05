@@ -35,8 +35,8 @@ export const formatDate = (date: string, locale = 'en-US') => {
 }
 
 const postSortFun = (a: Post, b: Post): number => {
-  if (a.date > b.date) return -1
-  if (a.date < b.date) return 1
+  if (a.createdAt > b.createdAt) return -1
+  if (a.createdAt < b.createdAt) return 1
 
   return 0
 }

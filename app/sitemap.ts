@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogRoutes = getAllPosts().map((post) => ({
     url: `${siteUrl}/${post.path}`,
-    lastModified: post.lastmod ?? post.date,
+    lastModified: post.updatedAt ?? post.createdAt,
   }))
 
   const now = new Date().toISOString().split('T')[0]

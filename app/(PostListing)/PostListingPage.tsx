@@ -32,14 +32,14 @@ export default function PostListingPage({ posts, pageNumber, currentTag }: Props
     <div>
       <ul>
         {postsToDisplay.map((post) => {
-          const { path, date, title, summary, tags } = post
+          const { path, createdAt, title, summary, tags } = post
           return (
             <li key={path} className="py-5">
               <article className="flex flex-col space-y-2 xl:space-y-0">
                 <dl>
                   <dt className="sr-only">Published on</dt>
                   <dd className="text-base font-medium leading-6 text-gray-500">
-                    <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
+                    <time dateTime={createdAt}>{formatDate(createdAt, siteMetadata.locale)}</time>
                   </dd>
                 </dl>
                 <div className="space-y-3">
