@@ -7,11 +7,12 @@ import remarkGemoji from 'remark-gemoji'
 import { defineConfig } from 'velite'
 
 import { sortPosts } from '@/lib/PlinyUtils'
+import rehypeAutolinkHeadingsConfig from '@/lib/rehypeConfigs/RehypeAutolinkHeadingsConfig'
 import rehypeGithubAlertsConfig from '@/lib/rehypeConfigs/RehypeGithubAlertsConfig'
+import rehypePrettyCodeConfig from '@/lib/rehypeConfigs/RehypePrettyCodeConfig'
 import remarkImgToJsx from '@/lib/remarkPlugins/RemarkImgToJsx'
 import remarkTitleCase from '@/lib/remarkPlugins/RemarkTitleCase'
 import getFeed from '@/lib/Rss'
-import { headerIcon } from '@/lib/VeliteUtils'
 import AuthorCollection from '@/veliteCollections/AuthorCollection'
 import PostCollection from '@/veliteCollections/PostCollection'
 import ProjectCollection from '@/veliteCollections/ProjectCollection'
@@ -30,27 +31,8 @@ const config = defineConfig({
     remarkPlugins: [remarkGemoji, remarkImgToJsx, remarkTitleCase],
     rehypePlugins: [
       rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: 'prepend',
-          headingProperties: {
-            className: ['content-header'],
-          },
-          content: headerIcon,
-        },
-      ],
-      [
-        rehypePrettyCode,
-        {
-          keepBackground: false,
-          defaultLang: {
-            block: 'ts',
-            inline: 'console',
-          },
-          theme: 'github-light',
-        },
-      ],
+      [rehypeAutolinkHeadings, rehypeAutolinkHeadingsConfig],
+      [rehypePrettyCode, rehypePrettyCodeConfig],
       [rehypeGithubAlerts, rehypeGithubAlertsConfig],
     ],
     copyLinkedFiles: false,

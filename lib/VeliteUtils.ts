@@ -1,6 +1,4 @@
-import octicons from '@primer/octicons'
 import nlp from 'compromise'
-import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 import { remark } from 'remark'
 import strip from 'strip-markdown'
 
@@ -32,8 +30,3 @@ export const generateSummary = (rawPostBody: string) => {
   }
   return output.join(' ')
 }
-
-export const headerIcon = fromHtmlIsomorphic(
-  `<span class="content-header-link-placeholder">${octicons.hash.toSVG()}</span>`,
-  { fragment: true }
-)
