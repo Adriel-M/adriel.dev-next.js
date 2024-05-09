@@ -61,28 +61,6 @@ const nextConfig = {
   eslint: {
     dirs: ['app', 'components', 'layouts', 'lib', 'scripts', 'content', 'velite-collections'],
   },
-  async rewrites() {
-    return [
-      {
-        source: '/stats/:match*',
-        destination: 'https://analytics.adriel.dev/:match*',
-      },
-    ]
-  },
-  async redirects() {
-    return [
-      {
-        source: '/blog',
-        destination: '/posts',
-        permanent: true,
-      },
-      {
-        source: '/blog/:path',
-        destination: '/posts/:path',
-        permanent: true,
-      },
-    ]
-  },
   async headers() {
     return [
       {

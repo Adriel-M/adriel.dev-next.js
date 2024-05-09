@@ -16,7 +16,7 @@ const siteMetadata = {
     umamiAnalytics: {
       // We use an env variable for this site to avoid other users cloning our analytics ID
       umamiWebsiteId: process.env.NEXT_UMAMI_ID, // e.g. 123e4567-e89b-12d3-a456-426614174000
-      src: '/stats/script.js',
+      src: process.env.UMAMI_SCRIPT_SRC,
     },
   },
   search: {
