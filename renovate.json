@@ -17,6 +17,10 @@
     {
       "matchDatasources": ["npm"],
       "minimumReleaseAge": "3 days"
+    },
+    {
+      "matchPackageNames": ["eslint"],
+      "enabled": false
     }
   ],
   "lockFileMaintenance": {
