@@ -14,6 +14,7 @@ export function genPageMetadata({ title, description, ...rest }: PageSEOProps): 
   const ogImage = [generateOgPath(title)]
   return {
     title,
+    description: description || siteMetadata.description,
     openGraph: {
       title: `${title} | ${siteMetadata.title}`,
       description: description ?? siteMetadata.description,
