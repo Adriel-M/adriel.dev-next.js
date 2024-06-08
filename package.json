@@ -41,7 +41,7 @@
     "@types/bun": "1.1.3",
     "@types/inquirer": "9.0.7",
     "@types/mdx": "2.0.13",
-    "@types/node": "20.12.13",
+    "@types/node": "20.14.1",
     "@types/primer__octicons": "19.6.3",
     "@types/react": "18.3.3",
     "@types/remove-markdown": "0.3.4",
