@@ -59,7 +59,7 @@
     "inquirer": "9.2.23",
     "lint-staged": "15.2.7",
     "prettier": "3.3.2",
-    "prettier-plugin-tailwindcss": "0.5.14",
+    "prettier-plugin-tailwindcss": "0.6.5",
     "rehype-github-alerts": "3.0.0",
     "typescript": "5.5.2"
   },
