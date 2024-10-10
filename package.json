@@ -23,7 +23,7 @@
     "next": "14.2.4",
     "next-compose-plugins": "^2.2.1",
     "postcss": "^8.4.38",
-    "react-obfuscate-email": "1.1.2",
+    "react-obfuscate-email": "1.1.5",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-pretty-code": "^0.13.1",
     "rehype-slug": "^6.0.0",
