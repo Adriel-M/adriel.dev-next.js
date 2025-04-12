@@ -3,6 +3,8 @@ import { NextRequest } from 'next/server'
 
 import images from '@/lib/Images'
 
+export const runtime = 'edge'
+
 export async function GET(_: NextRequest, props: { params: Promise<{ slug: string[] }> }) {
   const params = await props.params
   const imagePath = ['/images', ...params.slug].join('/')
