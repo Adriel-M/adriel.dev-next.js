@@ -3,8 +3,6 @@ import { NextRequest } from 'next/server'
 
 import images from '@/lib/Images'
 
-export const runtime = 'edge'
-
 const size = {
   width: 1200,
   height: 600,
