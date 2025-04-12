@@ -4,12 +4,7 @@ import '@docsearch/css/dist/button.css'
 import '@docsearch/css/dist/modal.css'
 import './docsearch.css'
 
-import { DocSearch } from '@docsearch/react'
-import {
-  DocSearchHit,
-  InternalDocSearchHit,
-  StoredDocSearchHit,
-} from '@docsearch/react/dist/esm/types'
+import { DocSearch, DocSearchHit, InternalDocSearchHit, StoredDocSearchHit } from '@docsearch/react'
 import { ReactNode } from 'react'
 
 import Link from '@/components/Link'
