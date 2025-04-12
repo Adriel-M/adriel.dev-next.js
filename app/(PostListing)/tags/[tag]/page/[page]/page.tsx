@@ -26,8 +26,7 @@ export function generateStaticParams() {
   return entries
 }
 
-export default async function Page(props: { params: Promise<{ page: string; tag: string }> }) {
-  const params = await props.params
+export default function Page({ params }: { params: { page: string; tag: string } }) {
   const pageNumber = parseInt(params.page)
 
   const tag = params.tag

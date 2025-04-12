@@ -5,8 +5,7 @@ import images from '@/lib/Images'
 
 export const runtime = 'edge'
 
-export async function GET(_: NextRequest, props: { params: Promise<{ slug: string[] }> }) {
-  const params = await props.params
+export function GET(_: NextRequest, { params }: { params: { slug: string[] } }) {
   const imagePath = ['/images', ...params.slug].join('/')
   const newImagePath = images[imagePath]
 
