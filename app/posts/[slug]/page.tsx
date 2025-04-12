@@ -12,7 +12,10 @@ interface Params {
   slug: string
 }
 
-export function generateMetadata({ params }: { params: Params }): Metadata | undefined {
+export async function generateMetadata(props: {
+  params: Promise<Params>
+}): Promise<Metadata | undefined> {
+  const params = await props.params
   const slug = decodeURI(params.slug)
   const post = getPostBySlug(slug)
   if (!post) {
@@ -54,7 +57,8 @@ export const generateStaticParams = () => {
   return getAllPosts().map((p) => ({ slug: p.slug }))
 }
 
-export default function Page({ params }: { params: Params }) {
+export default async function Page(props: { params: Promise<Params> }) {
+  const params = await props.params
   const slug = decodeURI(params.slug)
 
   const post = getPostBySlug(slug)

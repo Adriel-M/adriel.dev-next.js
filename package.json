@@ -20,7 +20,7 @@
     "feed": "^4.2.2",
     "github-slugger": "^2.0.0",
     "hast-util-from-html-isomorphic": "^2.0.0",
-    "next": "14.2.4",
+    "next": "15.3.0",
     "next-compose-plugins": "^2.2.1",
     "postcss": "^8.4.38",
     "react-obfuscate-email": "1.1.5",
@@ -34,22 +34,24 @@
     "tailwindcss": "^3.4.1",
     "title-case": "^4.3.1",
     "velite": "0.2.2",
-    "zimg": "^0.1.0"
+    "zimg": "^0.1.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "14.2.4",
+    "@next/bundle-analyzer": "15.3.0",
     "@types/bun": "1.1.8",
     "@types/inquirer": "9.0.7",
     "@types/mdx": "2.0.13",
     "@types/node": "22.5.1",
     "@types/primer__octicons": "19.6.3",
-    "@types/react": "18.3.4",
+    "@types/react": "19.1.1",
     "@types/remove-markdown": "0.3.4",
     "@types/webpack-env": "1.18.5",
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
     "eslint": "8.57.0",
-    "eslint-config-next": "14.2.4",
+    "eslint-config-next": "15.3.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.2.1",
     "eslint-plugin-simple-import-sort": "12.1.1",
@@ -70,5 +72,8 @@
     "*.+(ts|tsx|css|mdx)": [
       "prettier --write"
     ]
+  },
+  "overrides": {
+    "@types/react": "19.1.1"
   }
 }
