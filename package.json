@@ -6,6 +6,7 @@
     "start": "next start",
     "dev": "next dev",
     "build": "next build && bun scripts/optimize-images.ts",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "analyze": "ANALYZE=true next build",
     "lint": "next lint --fix --dir app --dir components --dir lib --dir layouts --dir scripts --file velite.config.ts --dir content --dir velite-collections",
     "prepare": "husky",
