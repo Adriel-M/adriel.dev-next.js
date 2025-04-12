@@ -59,16 +59,16 @@ const transformNodeToNextImage = async (imageNode: ImageNode) => {
   const buffer = await readFile(path)
   const metadata = await getImageMetadata(buffer)
   if (!metadata) return
-  ;(imageNode.type = 'mdxJsxFlowElement'),
-    (imageNode.name = 'Image'),
-    (imageNode.attributes = [
-      { type: 'mdxJsxAttribute', name: 'alt', value: imageNode.alt },
-      { type: 'mdxJsxAttribute', name: 'src', value: imageNode.url },
-      { type: 'mdxJsxAttribute', name: 'width', value: metadata.width },
-      { type: 'mdxJsxAttribute', name: 'height', value: metadata.height },
-      { type: 'mdxJsxAttribute', name: 'blurDataURL', value: metadata.blurDataURL },
-      { type: 'mdxJsxAttribute', name: 'placeholder', value: 'blur' },
-    ])
+  imageNode.type = 'mdxJsxFlowElement'
+  imageNode.name = 'Image'
+  imageNode.attributes = [
+    { type: 'mdxJsxAttribute', name: 'alt', value: imageNode.alt },
+    { type: 'mdxJsxAttribute', name: 'src', value: imageNode.url },
+    { type: 'mdxJsxAttribute', name: 'width', value: metadata.width },
+    { type: 'mdxJsxAttribute', name: 'height', value: metadata.height },
+    { type: 'mdxJsxAttribute', name: 'blurDataURL', value: metadata.blurDataURL },
+    { type: 'mdxJsxAttribute', name: 'placeholder', value: 'blur' },
+  ]
 }
 
 export default remarkImgToJsx
