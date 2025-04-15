@@ -5,50 +5,16 @@ import { Metadata } from 'next'
 import PostSimple from '@/app/posts/[slug]/PostSimple'
 import { MDXContent } from '@/components/mdx-content'
 import { getAllPosts, getPostBySlug } from '@/lib/CollectionUtils'
-import { generateOgPath } from '@/lib/OgUtils'
-import siteMetadata from '@/lib/siteMetadata'
 
 interface Params {
   slug: string
 }
 
-export async function generateMetadata(props: {
-  params: Promise<Params>
-}): Promise<Metadata | undefined> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
   const params = await props.params
   const slug = decodeURI(params.slug)
   const post = getPostBySlug(slug)
-  if (!post) {
-    return
-  }
-
-  const publishedAt = new Date(post.createdAt).toISOString()
-  const modifiedAt = new Date(post.updatedAt ?? post.createdAt).toISOString()
-
-  const ogImage = [generateOgPath(post.title)]
-
-  return {
-    title: post.title,
-    description: post.summary,
-    openGraph: {
-      title: post.title,
-      description: post.summary,
-      siteName: siteMetadata.title,
-      locale: 'en_US',
-      type: 'article',
-      publishedTime: publishedAt,
-      modifiedTime: modifiedAt,
-      url: './',
-      images: ogImage,
-      authors: [siteMetadata.author],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.summary,
-      images: ogImage,
-    },
-  }
+  return post.metadata
 }
 
 export const dynamicParams = false
