@@ -9,7 +9,8 @@ import { SluggedTag } from '@/lib/SluggedTag'
 interface Params {
   tag: string
 }
-export function generateMetadata({ params }: { params: Params }): Metadata {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params
   const tag = params.tag
   return genPageMetadata({
     title: tag,
@@ -25,7 +26,8 @@ export const generateStaticParams = () => {
   }))
 }
 
-export default function TagPage({ params }: { params: Params }) {
+export default async function TagPage(props: { params: Promise<Params> }) {
+  const params = await props.params
   const tag = params.tag
   const sluggedTag = new SluggedTag(tag)
 
