@@ -1,7 +1,7 @@
 import { titleCase } from 'title-case'
 import { defineCollection, s } from 'velite'
 
-import { DEFAULT_OG_TITLE, generateOgPath } from '@/lib/OgUtils'
+import { generateOgPath } from '@/lib/OgUtils'
 import siteMetadata from '@/lib/siteMetadata'
 import { SluggedTag } from '@/lib/SluggedTag'
 import { generateSummary } from '@/lib/VeliteUtils'
@@ -45,25 +45,56 @@ const PostCollection = defineCollection({
       toc: s.toc(),
     })
     .transform((data) => {
+      const ogImage = generateOgPath(data.title)
+      const modifiedDate = data.updatedAt ?? data.createdAt
+
+      const structuredData = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: data.title,
+        datePublished: data.createdAt,
+        dateModified: modifiedDate,
+        description: data.summary,
+        image: ogImage,
+        url: `${siteMetadata.siteUrl}/${data.path}`,
+        author: [
+          {
+            '@type': 'Person',
+            name: siteMetadata.author,
+          },
+        ],
+      }
+
+      const metadataImages = [ogImage]
+
+      const metadata = {
+        title: data.title,
+        description: data.summary,
+        openGraph: {
+          title: data.title,
+          description: data.summary,
+          siteName: siteMetadata.title,
+          locale: 'en_US',
+          type: 'article',
+          publishedTime: data.createdAt,
+          modifiedTime: modifiedDate,
+          url: './',
+          images: metadataImages,
+          authors: [siteMetadata.author],
+        },
+        twitter: {
+          card: 'summary_large_image',
+          title: data.title,
+          description: data.summary,
+          images: metadataImages,
+        },
+      }
+
       return {
         ...data,
         slug: data.path.replace(/^.+?(\/)/, ''),
-        structuredData: {
-          '@context': 'https://schema.org',
-          '@type': 'BlogPosting',
-          headline: data.title,
-          datePublished: data.createdAt,
-          dateModified: data.updatedAt ?? data.createdAt,
-          description: data.summary,
-          image: generateOgPath(DEFAULT_OG_TITLE),
-          url: `${siteMetadata.siteUrl}/${data.path}`,
-          author: [
-            {
-              '@type': 'Person',
-              name: siteMetadata.author,
-            },
-          ],
-        },
+        structuredData,
+        metadata,
       }
     }),
 })
