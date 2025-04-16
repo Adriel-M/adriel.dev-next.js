@@ -1,15 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { FlatCompat } from '@eslint/eslintrc'
-import typescriptEslint from '@typescript-eslint/eslint-plugin'
-import tsParser from '@typescript-eslint/parser'
 import { defineConfig } from 'eslint/config'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import unusedImports from 'eslint-plugin-unused-imports'
-import globals from 'globals'
+import typescriptEslint from 'typescript-eslint'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -18,31 +18,7 @@ const compat = new FlatCompat({
 })
 
 export default defineConfig([
-  ...compat.extends(
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/stylistic-type-checked',
-    'next/typescript',
-    'next/core-web-vitals'
-  ),
-  {
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.amd,
-        ...globals.node,
-      },
-
-      parser: tsParser,
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-
-      parserOptions: {
-        project: true,
-        tsconfigRootDir: '/Users/adriel/git/adriel.dev',
-      },
-    },
-  },
+  ...compat.extends('next', 'next/core-web-vitals'),
   {
     plugins: {
       'jsx-a11y': jsxA11y,
@@ -84,14 +60,17 @@ export default defineConfig([
       'simple-import-sort/exports': 'error',
     },
   },
-  {
-    plugins: {
-      '@typescript-eslint': typescriptEslint,
-    },
-
-    rules: {
-      '@typescript-eslint/explicit-module-boundary-types': 'off',
-    },
-  },
+  ...(typescriptEslint.config(
+    typescriptEslint.configs.recommended,
+    typescriptEslint.configs.stylisticTypeChecked,
+    {
+      languageOptions: {
+        parserOptions: {
+          projectService: true,
+          tsconfigRootDir: import.meta.dirname,
+        },
+      },
+    }
+  ) as any[]),
   eslintPluginPrettierRecommended,
 ])

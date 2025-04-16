@@ -20,7 +20,7 @@ const config: IOptions = {
     },
     {
       keyword: 'TIP',
-      icon: octicons['light-bulb']!.toSVG(),
+      icon: octicons['light-bulb'].toSVG(),
       title: 'Tip',
     },
     {
