@@ -4,8 +4,6 @@ import { join } from 'node:path'
 import { ImageResponse } from 'next/og'
 import { NextRequest } from 'next/server'
 
-import images from '@/lib/Images'
-
 const size = {
   width: 1200,
   height: 600,
@@ -106,8 +104,7 @@ const verifyTitleAndToken = async (title: string, token: string): Promise<boolea
 
 const getBackgroundUrl = (req: NextRequest): string => {
   const host = req.headers.get('host')
-  const path = images['/images/og-bg.png']
 
   const protocol = isProduction ? 'https' : 'http'
-  return `${protocol}://${host}${path}`
+  return `${protocol}://${host}/static/og-bg.png`
 }
