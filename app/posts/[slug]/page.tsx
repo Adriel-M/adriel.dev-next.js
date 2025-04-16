@@ -33,7 +33,7 @@ export default async function Page(props: { params: Promise<Params> }) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(post.structuredData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(post.jsonLd) }}
       />
       <PostSimple content={post}>
         <MDXContent content={post} />
