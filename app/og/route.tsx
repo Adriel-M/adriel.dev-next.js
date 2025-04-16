@@ -1,16 +1,13 @@
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
+
 import { ImageResponse } from 'next/og'
 import { NextRequest } from 'next/server'
-
-import images from '@/lib/Images'
-
-export const runtime = 'edge'
 
 const size = {
   width: 1200,
   height: 600,
 }
-
-const isProduction = process.env.NODE_ENV === 'production'
 
 const key = crypto.subtle.importKey(
   'raw',
@@ -40,10 +37,8 @@ export async function GET(req: NextRequest) {
     return new Response('Invalid token', { status: 401 })
   }
 
-  const backgroundImageUrl = getBackgroundUrl(req)
-
-  const response = await fetch(new URL('./JetBrainsMono-Bold.ttf', import.meta.url))
-  const fontData = await response.arrayBuffer()
+  const fontData = await readFile(join(process.cwd(), 'public/static/JetBrainsMono-Bold.ttf'))
+  const backgroundImageUrl = await getBackgroundUrl()
 
   return new ImageResponse(
     (
@@ -104,10 +99,9 @@ const verifyTitleAndToken = async (title: string, token: string): Promise<boolea
   return decrypted === token
 }
 
-const getBackgroundUrl = (req: NextRequest): string => {
-  const host = req.headers.get('host')
-  const path = images['/images/og-bg.png']
-
-  const protocol = isProduction ? 'https' : 'http'
-  return `${protocol}://${host}${path}`
+const getBackgroundUrl = async (): Promise<string> => {
+  const imageBuffer = await readFile(join(process.cwd(), 'public/static/og-bg.png'))
+  const base64Image = imageBuffer.toString('base64')
+  const mimeType = 'image/png' // or 'image/png' based on your file
+  return `data:${mimeType};base64,${base64Image}`
 }
