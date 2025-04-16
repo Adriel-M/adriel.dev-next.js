@@ -1,9 +1,10 @@
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
+
 import { ImageResponse } from 'next/og'
 import { NextRequest } from 'next/server'
 
 import images from '@/lib/Images'
-
-export const runtime = 'edge'
 
 const size = {
   width: 1200,
@@ -42,8 +43,7 @@ export async function GET(req: NextRequest) {
 
   const backgroundImageUrl = getBackgroundUrl(req)
 
-  const response = await fetch(new URL('./JetBrainsMono-Bold.ttf', import.meta.url))
-  const fontData = await response.arrayBuffer()
+  const fontData = await readFile(join(process.cwd(), 'public/static/JetBrainsMono-Bold.ttf'))
 
   return new ImageResponse(
     (
