@@ -9,8 +9,6 @@ const size = {
   height: 600,
 }
 
-const isProduction = process.env.NODE_ENV === 'production'
-
 const key = crypto.subtle.importKey(
   'raw',
   new TextEncoder().encode(process.env.OG_SECRET ?? 'my_secret'),
@@ -39,9 +37,8 @@ export async function GET(req: NextRequest) {
     return new Response('Invalid token', { status: 401 })
   }
 
-  const backgroundImageUrl = getBackgroundUrl(req)
-
   const fontData = await readFile(join(process.cwd(), 'public/static/JetBrainsMono-Bold.ttf'))
+  const backgroundImageUrl = await getBackgroundUrl()
 
   return new ImageResponse(
     (
@@ -102,9 +99,9 @@ const verifyTitleAndToken = async (title: string, token: string): Promise<boolea
   return decrypted === token
 }
 
-const getBackgroundUrl = (req: NextRequest): string => {
-  const host = req.headers.get('host')
-
-  const protocol = isProduction ? 'https' : 'http'
-  return `${protocol}://${host}/static/og-bg.png`
+const getBackgroundUrl = async (): Promise<string> => {
+  const imageBuffer = await readFile(join(process.cwd(), 'public/static/og-bg.png'))
+  const base64Image = imageBuffer.toString('base64')
+  const mimeType = 'image/png' // or 'image/png' based on your file
+  return `data:${mimeType};base64,${base64Image}`
 }
