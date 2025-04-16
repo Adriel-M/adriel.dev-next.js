@@ -1,3 +1,4 @@
+import FooterYear from '@/components/FooterYear'
 import SocialIcon from '@/components/social-icons'
 import siteMetadata from '@/lib/siteMetadata'
 import { URLS } from '@/lib/UrlLibs'
@@ -14,7 +15,7 @@ export default function Footer() {
           <SocialIcon kind="rss" href={URLS.RSS} size={6} />
         </div>
         <div className="mb-8 flex space-x-2 text-sm text-gray-500">
-          <div>{`© ${new Date().getFullYear()}`}</div>
+          <FooterYear />
           <div>{` • `}</div>
           <div>Adriel Martinez</div>
           <div>{` • `}</div>
