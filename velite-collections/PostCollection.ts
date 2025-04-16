@@ -1,3 +1,4 @@
+import { BlogPosting, WithContext } from 'schema-dts'
 import { titleCase } from 'title-case'
 import { defineCollection, s } from 'velite'
 
@@ -48,7 +49,7 @@ const PostCollection = defineCollection({
       const ogImage = generateOgPath(data.title)
       const modifiedDate = data.updatedAt ?? data.createdAt
 
-      const structuredData = {
+      const jsonLd: WithContext<BlogPosting> = {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: data.title,
@@ -57,12 +58,10 @@ const PostCollection = defineCollection({
         description: data.summary,
         image: ogImage,
         url: `${siteMetadata.siteUrl}/${data.path}`,
-        author: [
-          {
-            '@type': 'Person',
-            name: siteMetadata.author,
-          },
-        ],
+        author: {
+          '@type': 'Person',
+          name: siteMetadata.author,
+        },
       }
 
       const metadataImages = [ogImage]
@@ -93,7 +92,7 @@ const PostCollection = defineCollection({
       return {
         ...data,
         slug: data.path.replace(/^.+?(\/)/, ''),
-        structuredData,
+        jsonLd,
         metadata,
       }
     }),
