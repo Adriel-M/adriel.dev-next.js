@@ -5,7 +5,6 @@ import { fileURLToPath } from 'node:url'
 
 import { FlatCompat } from '@eslint/eslintrc'
 import { defineConfig } from 'eslint/config'
-import jsxA11y from 'eslint-plugin-jsx-a11y'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import unusedImports from 'eslint-plugin-unused-imports'
@@ -19,21 +18,6 @@ const compat = new FlatCompat({
 
 export default defineConfig([
   ...compat.extends('next', 'next/core-web-vitals'),
-  {
-    plugins: {
-      'jsx-a11y': jsxA11y,
-    },
-    rules: {
-      'jsx-a11y/anchor-is-valid': [
-        'error',
-        {
-          components: ['Link'],
-          specialLink: ['hrefLeft', 'hrefRight'],
-          aspects: ['invalidHref', 'preferButton'],
-        },
-      ],
-    },
-  },
   {
     plugins: {
       'unused-imports': unusedImports,
