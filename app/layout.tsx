@@ -35,8 +35,8 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: './',
       types: {
-        'application/rss+xml': `${siteMetadata.siteUrl}/rss.xml`,
-        'application/atom+xml': `${siteMetadata.siteUrl}/atom.xml`,
+        'application/rss+xml': URLS.RSS,
+        'application/atom+xml': URLS.ATOM,
       },
     },
     robots: {
@@ -72,8 +72,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#5bbad5" />
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
-      <link rel="alternate" type="application/rss+xml" href={URLS.RSS} />
-      <link rel="alternate" type="application/atom+xml" href={URLS.ATOM} />
       <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased">
         <UmamiAnalytics />
         <SectionContainer>
