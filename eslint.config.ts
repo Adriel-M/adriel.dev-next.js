@@ -6,6 +6,8 @@ import js from '@eslint/js'
 import typescriptEslint from '@typescript-eslint/eslint-plugin'
 import tsParser from '@typescript-eslint/parser'
 import { defineConfig } from 'eslint/config'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import unusedImports from 'eslint-plugin-unused-imports'
 import globals from 'globals'
@@ -23,8 +25,6 @@ export default defineConfig([
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/stylistic-type-checked',
-    'plugin:jsx-a11y/recommended',
-    'plugin:prettier/recommended',
     'next/typescript',
     'next/core-web-vitals'
   ),
@@ -48,14 +48,9 @@ export default defineConfig([
   },
   {
     plugins: {
-      '@typescript-eslint': typescriptEslint,
-      'unused-imports': unusedImports,
-      'simple-import-sort': simpleImportSort,
+      'jsx-a11y': jsxA11y,
     },
-
     rules: {
-      'prettier/prettier': 'error',
-
       'jsx-a11y/anchor-is-valid': [
         'error',
         {
@@ -64,10 +59,14 @@ export default defineConfig([
           aspects: ['invalidHref', 'preferButton'],
         },
       ],
-
-      '@typescript-eslint/explicit-module-boundary-types': 'off',
+    },
+  },
+  {
+    plugins: {
+      'unused-imports': unusedImports,
+    },
+    rules: {
       'unused-imports/no-unused-imports': 'error',
-
       'unused-imports/no-unused-vars': [
         'error',
         {
@@ -77,9 +76,25 @@ export default defineConfig([
           argsIgnorePattern: '^_',
         },
       ],
-
+    },
+  },
+  {
+    plugins: {
+      'simple-import-sort': simpleImportSort,
+    },
+    rules: {
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
     },
   },
+  {
+    plugins: {
+      '@typescript-eslint': typescriptEslint,
+    },
+
+    rules: {
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+    },
+  },
+  eslintPluginPrettierRecommended,
 ])
