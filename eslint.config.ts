@@ -25,7 +25,7 @@ export default defineConfig([
     'plugin:@typescript-eslint/stylistic-type-checked',
     'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
-    'next',
+    'next/typescript',
     'next/core-web-vitals'
   ),
   {
