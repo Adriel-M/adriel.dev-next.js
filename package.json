@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@docsearch/react": "3.9.0",
-    "@primer/octicons": "^19.9.0",
     "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.19",
     "caniuse-lite": "^1.0.30001713",
@@ -46,7 +45,6 @@
     "@types/bun": "1.2.9",
     "@types/mdx": "2.0.13",
     "@types/node": "22.14.0",
-    "@types/primer__octicons": "19.11.0",
     "@types/react": "19.1.2",
     "@types/remove-markdown": "0.3.4",
     "@types/webpack-env": "1.18.8",
