@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 
 import { getAllPosts } from '@/lib/CollectionUtils'
+import { getDateString } from '@/lib/DateUtils'
 import siteMetadata from '@/lib/siteMetadata'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -11,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: post.updatedAt ?? post.createdAt,
   }))
 
-  const now = new Date().toISOString().split('T')[0]
+  const now = getDateString(new Date())
 
   const routes = ['', 'posts', 'projects', 'about'].map((route) => ({
     url: `${siteUrl}/${route}`,

@@ -2,6 +2,8 @@ import { input } from '@inquirer/prompts'
 import { slug } from 'github-slugger'
 import matter from 'gray-matter'
 
+import { getDateString } from '@/lib/DateUtils'
+
 import { postsPath } from '../paths'
 import CommandInterface from './CommandInterface'
 
@@ -12,7 +14,7 @@ class NewPost implements CommandInterface {
     const title = await input({ message: 'Title of Post?' })
 
     const now = new Date()
-    const date = now.toISOString().split('T')[0]
+    const date = getDateString(now)
     const fileName = `${date}-${slug(title)}.mdx`
     const fullPath = `${postsFolder}/${fileName}`
     const frontMatter = {
