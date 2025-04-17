@@ -2,7 +2,8 @@ import { input } from '@inquirer/prompts'
 import { slug } from 'github-slugger'
 import matter from 'gray-matter'
 
-import { getDateString } from '../../utils'
+import { getDateString } from '@/lib/DateUtils'
+
 import UpdatePostCommandInterface from './UpdatePostCommandInterface'
 
 class Title implements UpdatePostCommandInterface {

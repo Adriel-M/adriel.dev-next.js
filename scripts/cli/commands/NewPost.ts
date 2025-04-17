@@ -2,8 +2,9 @@ import { input } from '@inquirer/prompts'
 import { slug } from 'github-slugger'
 import matter from 'gray-matter'
 
+import { getDateString } from '@/lib/DateUtils'
+
 import { postsPath } from '../paths'
-import { getDateString } from '../utils'
 import CommandInterface from './CommandInterface'
 
 class NewPost implements CommandInterface {
