@@ -35,6 +35,8 @@ class CreatedAt implements UpdatePostCommandInterface {
 
     console.log(`Updated ${fileName}`)
   }
+
+  choice: { name: string; value: UpdatePostCommandInterface } = { name: this.name, value: this }
 }
 
 const createdAt = new CreatedAt()
