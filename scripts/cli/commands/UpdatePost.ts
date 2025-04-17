@@ -1,9 +1,12 @@
 import { select, Separator } from '@inquirer/prompts'
 import { promises } from 'fs'
-import matter from 'gray-matter'
 
 import { postsPath } from '../paths'
 import CommandInterface from './CommandInterface'
+import Exit from './Exit'
+import CreatedAt from './updatePost/CreatedAt'
+import Title from './updatePost/Title'
+import UpdatePostUpdateFieldUpdatedAt from './updatePost/UpdatedAt'
 
 const exitEntry = {
   name: 'Exit',
@@ -16,8 +19,6 @@ const generateSimpleChoice = (name: string) => {
     value: name,
   }
 }
-
-const fieldChoices = ['createdAt', 'updatedAt'].map(generateSimpleChoice)
 
 class UpdatePost implements CommandInterface {
   name = 'Update Post'
@@ -37,27 +38,31 @@ class UpdatePost implements CommandInterface {
 
     const field = await select({
       message: 'Which field do you want to update?',
-      choices: [...fieldChoices, new Separator(), exitEntry],
+      choices: [
+        {
+          name: CreatedAt.name,
+          value: CreatedAt,
+        },
+        {
+          name: UpdatePostUpdateFieldUpdatedAt.name,
+          value: UpdatePostUpdateFieldUpdatedAt,
+        },
+        {
+          name: Title.name,
+          value: Title,
+        },
+        new Separator(),
+        {
+          name: Exit.name,
+          value: Exit,
+        },
+      ],
     })
 
-    if (field === exitEntry.value) {
-      process.exit()
-    }
-
-    const filePath = `${postsFolder}/${fileName}`
-    const file = Bun.file(filePath)
-    const fileContent = await file.text()
-
-    const { content, data } = matter(fileContent)
-
-    data[field] = new Date()
-
-    await Bun.write(filePath, matter.stringify(content, data))
-
-    console.log(`Updated ${fileName}`)
+    await field.run(postsFolder, fileName)
   }
 }
 
-const updatePostClass = new UpdatePost()
+const updatePost = new UpdatePost()
 
-export default updatePostClass
+export default updatePost
