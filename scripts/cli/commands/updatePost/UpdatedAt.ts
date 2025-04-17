@@ -18,6 +18,8 @@ class UpdatedAt implements UpdatePostCommandInterface {
 
     console.log(`Updated ${fileName}`)
   }
+
+  choice: { name: string; value: UpdatePostCommandInterface } = { name: this.name, value: this }
 }
 
 const updatedAt = new UpdatedAt()

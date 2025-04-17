@@ -27,6 +27,8 @@ class NewPost implements CommandInterface {
 
     console.log(`Created new post at ${fullPath}`)
   }
+
+  choice: { name: string; value: CommandInterface } = { name: this.name, value: this }
 }
 
 const newPost = new NewPost()

@@ -7,6 +7,7 @@ class Exit implements CommandInterface, UpdatePostCommandInterface {
     console.log('Exiting')
     process.exit()
   }
+  choice: { name: string; value: CommandInterface } = { name: this.name, value: this }
 }
 
 const exit = new Exit()

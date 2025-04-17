@@ -7,21 +7,7 @@ import UpdatePost from './commands/UpdatePost'
 const main = async () => {
   const command = await select({
     message: 'What do you want to do?',
-    choices: [
-      {
-        name: NewPost.name,
-        value: NewPost,
-      },
-      {
-        name: UpdatePost.name,
-        value: UpdatePost,
-      },
-      new Separator(),
-      {
-        name: Exit.name,
-        value: Exit,
-      },
-    ],
+    choices: [NewPost.choice, UpdatePost.choice, new Separator(), Exit.choice],
   })
 
   await command.run()
