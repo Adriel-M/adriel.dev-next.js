@@ -41,7 +41,7 @@
     "zimg": "^0.1.0"
   },
   "devDependencies": {
-    "@inquirer/prompts": "^7.4.1",
+    "@inquirer/prompts": "7.4.1",
     "@next/bundle-analyzer": "15.3.0",
     "@types/bun": "1.2.9",
     "@types/mdx": "2.0.13",
