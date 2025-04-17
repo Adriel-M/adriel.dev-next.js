@@ -17,10 +17,10 @@ class UpdatePost implements CommandInterface {
 
     const files = await promises.readdir(postsFolder)
 
-    const fileName = await select({
+    const fileName = (await select({
       message: 'Which file do you want to update?',
       choices: [...files, new Separator(), EXIT],
-    })
+    })) as string
 
     if (fileName === EXIT) {
       process.exit()
