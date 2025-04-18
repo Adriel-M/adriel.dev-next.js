@@ -40,12 +40,16 @@ const PostCollection = defineCollection({
           return tags.map((t) => new SluggedTag(t))
         }),
       updatedAt: s.isodate().optional(),
-      path: s.path(),
+      filePath: s.path(),
       code: s.mdx(),
       summary: s.raw().transform(generateSummary),
       toc: s.toc(),
     })
     .transform((data) => {
+      const parts = data.filePath.split('/')
+      const slug = parts[parts.length - 2]
+      const path = `posts/${slug}`
+
       const ogImage = generateOgPath(data.title)
       const modifiedDate = data.updatedAt ?? data.createdAt
 
@@ -57,7 +61,7 @@ const PostCollection = defineCollection({
         dateModified: modifiedDate,
         description: data.summary,
         image: ogImage,
-        url: `${siteMetadata.siteUrl}/${data.path}`,
+        url: `${siteMetadata.siteUrl}/${path}`,
         author: {
           '@type': 'Person',
           name: siteMetadata.author,
@@ -91,7 +95,8 @@ const PostCollection = defineCollection({
 
       return {
         ...data,
-        slug: data.path.replace(/^.+?(\/)/, ''),
+        slug: parts[parts.length - 2],
+        path,
         jsonLd,
         metadata,
       }

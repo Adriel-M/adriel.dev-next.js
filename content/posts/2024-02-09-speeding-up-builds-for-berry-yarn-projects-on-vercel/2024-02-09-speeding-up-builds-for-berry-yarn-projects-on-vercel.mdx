@@ -94,7 +94,7 @@ To override the install step on vercel, go to `Settings > General` then override
 `Build & Development Settings > Project Settings > Install Command`. Now toggle the override and put in the path
 to the script file `./scripts/vercel-build.sh`.
 
-![Picture of project settings overriding install command](/images/2024-02-09-speeding-up-builds-for-berry-yarn-projects-on-vercel/override-install.png)
+![Picture of project settings overriding install command](override-install.png)
 
 PR can be found [here](https://github.com/Adriel-M/speed-up-berry-builds-vercel/pull/1).
 
@@ -309,6 +309,7 @@ is [turborepo](https://turbo.build/) and see if that would speed up the build ti
     un-truncated logs can be found [here](https://gist.github.com/Adriel-M/856546e5a064aeb55916dffbdbae9fe1).
 
 [^VercelPricing]: At the time of this writing, vercel has 6000 minutes on the hobby plan. Check the pricing page [here](https://vercel.com/pricing).
+
 [^VercelCaching]:
     For our project, only `node_modules`, `.next/cache`, and `yarn.lock` are cached. Check out the vercel documentation on which folders are cached
     [here](https://vercel.com/docs/deployments/troubleshoot-a-build#what-is-cached).
