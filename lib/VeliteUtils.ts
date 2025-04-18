@@ -8,11 +8,15 @@ import siteMetadata from '@/lib/siteMetadata'
 // Strip this since manually so we can get rid of the whitespace left behind
 const footnoteReferenceRegex = /\[\^\w+]/
 const newLineRegex = /\s+/
+const blockQuoteRegex = /^\s*>.*(?:\n|$)/gm
 
 const markdownStripper = remark().use(remarkExtractFirstSectionText).use(strip)
 
 const stripMarkdown = (content: string): string => {
-  const regexedContent = content.replace(footnoteReferenceRegex, '').replace(newLineRegex, ' ') // replace new line as space
+  const regexedContent = content
+    .replace(footnoteReferenceRegex, '')
+    .replace(blockQuoteRegex, '')
+    .replace(newLineRegex, ' ') // replace new line as space
   return String(markdownStripper.processSync(regexedContent)).trim()
 }
 

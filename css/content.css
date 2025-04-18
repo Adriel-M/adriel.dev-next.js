@@ -50,4 +50,8 @@ article {
   .data-footnote-backref {
     @apply no-underline;
   }
+
+  img {
+    @apply mx-auto;
+  }
 }
