@@ -23,14 +23,9 @@ const remarkCopyLinkedImage = () => {
       await mkdir(bundledImageFolder)
     }
     const promises: Promise<void>[] = []
-    visit(
-      tree,
-      // only visit p tags that contain an img element
-      'image',
-      (imageNode: ImageNode) => {
-        promises.push(transformNodeToNextImage(file, bundledImageFolder, imageNode))
-      }
-    )
+    visit(tree, 'image', (imageNode: ImageNode) => {
+      promises.push(transformNodeToNextImage(file, bundledImageFolder, imageNode))
+    })
     await Promise.all(promises)
   }
 }
