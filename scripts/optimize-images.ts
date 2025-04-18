@@ -6,7 +6,7 @@ const optimizeImages = async () => {
   await zimg({
     cwd: process.cwd(),
     pattern: `${mediaPath}/*.{jpg,jpeg,png}`,
-    sizes: [160, 320, 480, 640, 960, 1280, 2560, 3840],
+    sizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     quality: 100,
   })
 }
