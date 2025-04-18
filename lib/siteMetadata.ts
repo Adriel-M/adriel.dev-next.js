@@ -32,6 +32,7 @@ const siteMetadata = {
   emailAddress: process.env.EMAIL_ADDRESS,
   postsInFrontPageCount: 5,
   postsInPostsPageCount: 5,
+  bundledImagesFolderName: 'bundled-images',
 }
 
 export default siteMetadata

@@ -23,6 +23,7 @@
  */
 
 import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
 
 import { Literal, Node } from 'unist'
 import { visit } from 'unist-util-visit'
@@ -55,7 +56,7 @@ const remarkImgToJsx = () => {
 }
 
 const transformNodeToNextImage = async (imageNode: ImageNode) => {
-  const path = process.cwd() + imageNode.url
+  const path = join(process.cwd(), imageNode.url)
   const buffer = await readFile(path)
   const metadata = await getImageMetadata(buffer)
   if (!metadata) return

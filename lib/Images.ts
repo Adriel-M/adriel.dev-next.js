@@ -1,4 +1,5 @@
 import RequireContext = __WebpackModuleApi.RequireContext
+import siteMetadata from '@/lib/siteMetadata'
 const importFromFolder = (context: RequireContext) => {
   const images: Record<string, { default: { src: string } }> = {}
 
@@ -6,8 +7,9 @@ const importFromFolder = (context: RequireContext) => {
     // keys are duplicated in a sense that there are two keys for the same image
     // one with a relative path inside images folder and the other with images
     // folder a prefix
-    if (!key.startsWith('images/')) continue
+    if (!key.startsWith(`${siteMetadata.bundledImagesFolderName}/`)) continue
 
+    // prepend a leading slash to it matches the src passed in to the image (after
     const newKey = '/' + key
     images[newKey] = context(key)
   }
@@ -16,8 +18,9 @@ const importFromFolder = (context: RequireContext) => {
 }
 
 const getImages = () => {
+  // The path has to be hardcoded, can't pass in a variable for the path
   const keyToModule = importFromFolder(
-    require.context('../images', true, /\.(png|jpe?g|svg|webp)$/)
+    require.context('../bundled-images', true, /\.(png|jpe?g|svg|webp)$/)
   )
   const keyToPath: Record<string, string> = {}
 
