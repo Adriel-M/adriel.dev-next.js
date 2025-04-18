@@ -38,7 +38,7 @@ asset in the public folder[^NextJsStaticAssets]). The issue with this, stated in
 Resulting in the served image to have this header: `cache-control: public, max-age=0, must-revalidate`. This can be reproduced by going to this [page](https://next-js-blog-image-caching.vercel.app/blog/release-of-tailwind-nextjs-starter-blog-v2.0),
 opening the browser console, and scrolling down enough to trigger the lazy fetch of the image.[^UncachedSource]
 
-![Uncached Image Headers](/images/2025-04-17-properly-caching-images-in-your-mdx-based-nextjs-blog/uncached-image.png)
+![Uncached Image Headers](uncached-image.png)
 
 While intuitively, the website content can not change
 in the same deploy (assuming we're not fetching dynamic data and all content is static), the urls to the assets will be
@@ -74,7 +74,7 @@ Now when visiting a [page](https://next-js-blog-image-caching-7dy4dsi0t-adriel-t
 image, the cache header of the image is now `cache-control
 public,max-age=31536000,immutable`.[^StaticImportSource]
 
-![Statically import Image Headers](/images/2025-04-17-properly-caching-images-in-your-mdx-based-nextjs-blog/static-import.png)
+![Statically import Image Headers](static-import.png)
 
 The image is now served from `/_next/static/media/image.8f2816bd.png`. Notice that the image path is not in the top level `static` folder
 but now in a folder in `_next` (which means we're serving a bundled image now). Also note that the file name is different
@@ -297,7 +297,7 @@ If you did everything right, the image being served is the bundled image and not
 Now when visiting a [page](https://next-js-blog-image-caching-nbej0gc4d-adriel-team.vercel.app/blog/release-of-tailwind-nextjs-starter-blog-v2.0)
 that is serving a bundled image, the cache header is now `cache-control: public,max-age=31536000,immutable`.[^BundledImageSource]
 
-![Uncached Image Headers](/images/2025-04-17-properly-caching-images-in-your-mdx-based-nextjs-blog/bundled-image.png)
+![Uncached Image Headers](bundled-image.png)
 
 # Conclusion
 
