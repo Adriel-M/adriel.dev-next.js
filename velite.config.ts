@@ -9,6 +9,7 @@ import { defineConfig } from 'velite'
 import { sortPosts } from '@/lib/PlinyUtils'
 import rehypeAutolinkHeadingsConfig from '@/lib/rehypeConfigs/RehypeAutolinkHeadingsConfig'
 import rehypePrettyCodeConfig from '@/lib/rehypeConfigs/RehypePrettyCodeConfig'
+import remarkCopyLinkedImage from '@/lib/remarkPlugins/RemarkCopyLinkedImage'
 import remarkImgToJsx from '@/lib/remarkPlugins/RemarkImgToJsx'
 import remarkTitleCase from '@/lib/remarkPlugins/RemarkTitleCase'
 import getFeed from '@/lib/Rss'
@@ -27,7 +28,7 @@ const config = defineConfig({
   },
   mdx: {
     gfm: true,
-    remarkPlugins: [remarkGemoji, remarkImgToJsx, remarkTitleCase],
+    remarkPlugins: [remarkCopyLinkedImage, remarkGemoji, remarkImgToJsx, remarkTitleCase],
     rehypePlugins: [
       rehypeSlug,
       [rehypeAutolinkHeadings, rehypeAutolinkHeadingsConfig],

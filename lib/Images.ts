@@ -6,7 +6,7 @@ const importFromFolder = (context: RequireContext) => {
     // keys are duplicated in a sense that there are two keys for the same image
     // one with a relative path inside images folder and the other with images
     // folder a prefix
-    if (!key.startsWith('images/')) continue
+    if (!key.startsWith('bundled-images/')) continue
 
     const newKey = '/' + key
     images[newKey] = context(key)
@@ -17,7 +17,7 @@ const importFromFolder = (context: RequireContext) => {
 
 const getImages = () => {
   const keyToModule = importFromFolder(
-    require.context('../images', true, /\.(png|jpe?g|svg|webp)$/)
+    require.context('../bundled-images', true, /\.(png|jpe?g|svg|webp)$/)
   )
   const keyToPath: Record<string, string> = {}
 
