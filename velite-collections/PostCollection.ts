@@ -47,7 +47,7 @@ const PostCollection = defineCollection({
     })
     .transform((data) => {
       const parts = data.filePath.split('/')
-      const slug = parts[parts.length - 2]
+      const slug = parts[parts.length - 1]
       const path = `posts/${slug}`
 
       const ogImage = generateOgPath(data.title)
@@ -95,7 +95,7 @@ const PostCollection = defineCollection({
 
       return {
         ...data,
-        slug: parts[parts.length - 2],
+        slug,
         path,
         jsonLd,
         metadata,
