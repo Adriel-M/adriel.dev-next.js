@@ -11,23 +11,8 @@ export type ImageNode = Node & {
   url: string
 }
 
-const options = {
-  destinationDir: 'bundled-images',
-}
-
-const remarkCopyLinkedImage = () => {
-  const bundledImageFolder = join(process.cwd(), options.destinationDir)
-
-  return async (tree: Node, file: VFile) => {
-    if (!existsSync(bundledImageFolder)) {
-      await mkdir(bundledImageFolder)
-    }
-    const promises: Promise<void>[] = []
-    visit(tree, 'image', (imageNode: ImageNode) => {
-      promises.push(transformNodeToNextImage(file, bundledImageFolder, imageNode))
-    })
-    await Promise.all(promises)
-  }
+export interface RemarkCopyLinkedImageOptions {
+  destinationDir: string
 }
 
 // Hardcoded so images will have the same hash across deploys
@@ -37,32 +22,43 @@ const generateHashFromBuffer = (buffer: Buffer): string => {
   return XXH.h32(seed).update(buffer).digest().toString(16)
 }
 
-const transformNodeToNextImage = async (
-  file: VFile,
-  bundledImageFolder: string,
-  imageNode: ImageNode
-) => {
-  let imagePath: string
+const remarkCopyLinkedImage = (options: RemarkCopyLinkedImageOptions) => {
+  const bundledImageFolder = join(process.cwd(), options.destinationDir)
 
-  if (isAbsolute(imageNode.url)) {
-    imagePath = join(process.cwd(), imageNode.url)
-  } else {
-    imagePath = join(file.dirname!, imageNode.url)
+  const transformNodeToNextImage = async (file: VFile, imageNode: ImageNode) => {
+    let imagePath: string
+
+    if (isAbsolute(imageNode.url)) {
+      imagePath = join(process.cwd(), imageNode.url)
+    } else {
+      imagePath = join(file.dirname!, imageNode.url)
+    }
+
+    const buffer = await readFile(imagePath)
+    const hash = generateHashFromBuffer(buffer)
+
+    const extName = extname(imagePath)
+    const fileName = basename(imagePath, extName)
+    const targetFileName = `${fileName}.${hash}${extName}`
+    const targetFilePath = join(bundledImageFolder, targetFileName)
+
+    if (!existsSync(targetFilePath)) {
+      await writeFile(targetFilePath, buffer)
+    }
+
+    imageNode.url = join('/', options.destinationDir, targetFileName)
   }
 
-  const buffer = await readFile(imagePath)
-  const hash = generateHashFromBuffer(buffer)
-
-  const extName = extname(imagePath)
-  const fileName = basename(imagePath, extName)
-  const targetFileName = `${fileName}.${hash}${extName}`
-  const targetFilePath = join(bundledImageFolder, targetFileName)
-
-  if (!existsSync(targetFilePath)) {
-    await writeFile(targetFilePath, buffer)
+  return async (tree: Node, file: VFile) => {
+    if (!existsSync(bundledImageFolder)) {
+      await mkdir(bundledImageFolder)
+    }
+    const promises: Promise<void>[] = []
+    visit(tree, 'image', (imageNode: ImageNode) => {
+      promises.push(transformNodeToNextImage(file, imageNode))
+    })
+    await Promise.all(promises)
   }
-
-  imageNode.url = join('/', options.destinationDir, targetFileName)
 }
 
 export default remarkCopyLinkedImage
