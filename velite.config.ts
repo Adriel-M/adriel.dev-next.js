@@ -50,15 +50,12 @@ const config = defineConfig({
     })
     const { posts, tags } = collections
     const tagCount: Record<string, number> = {}
-    posts.forEach((post) => {
-      post.tags.forEach((sluggedTag) => {
-        if (!(sluggedTag.tag in tagCount)) {
-          tagCount[sluggedTag.tag] = 0
-        }
 
-        tagCount[sluggedTag.tag] += 1
-      })
-    })
+    for (const post of posts) {
+      for (const sluggedTag of post.tags) {
+        tagCount[sluggedTag.tag] = (tagCount[sluggedTag.tag] ?? 0) + 1
+      }
+    }
 
     tags.push({
       counts: tagCount,
