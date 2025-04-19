@@ -1,0 +1,163 @@
+---
+title: RemarkCopyLinkedImages
+createdAt: 2025-04-19T21:52:25.172Z
+tags:
+  - remark
+  - next
+  - tech
+---
+
+# Motivation
+
+On my previous [post](./2025-04-17-properly-caching-images-in-your-mdx-based-nextjs-blog), one concern with bundling
+all images in a predefined folder is that there's no guarantee that all images in that folder are actually used. If an
+image is an orphan, it would still be part of the Next.js bundle. I wanted to avoid this and
+only bundle images that I care about, so I created a remark[^Remark] plugin to copy over images referenced in the `mdx`
+file and rewrite the image url to point to the copied image.
+
+Another annoyance I wanted to solve was to avoid passing in an absolute path to the image, especially because I had
+a separate folder for images per post while all `mdx` live in a separate folder. This is done
+to group up images that belong to the same post but it is quite annoying keeping the paths in sync if the post title
+gets changed.
+
+```ansi title="Pre folder based posts"
+content/posts
+├── 2024-01-05-hello-world.mdx
+├── 2024-01-06-website-stack.mdx
+├── 2024-02-09-speeding-up-builds-for-berry-yarn-projects-on-vercel.mdx
+├── 2024-04-05-website-stack-update.mdx
+└── 2025-04-17-properly-caching-images-in-your-mdx-based-nextjs-blog.mdx
+images
+├── 2024-02-09-speeding-up-builds-for-berry-yarn-projects-on-vercel
+│   └── override-install.png
+└── 2025-04-17-properly-caching-images-in-your-mdx-based-nextjs-blog
+    ├── bundled-image.png
+    ├── static-import.png
+    └── uncached-image.png
+```
+
+# Plugin
+
+For the most up to do date implementation, check the src [here](https://github.com/Adriel-M/adriel.dev/blob/cba3a8c4c62b337c581d10c93864384336e21970/lib/remarkPlugins/RemarkCopyLinkedImages.ts).
+
+```ts title="RemarkCopyLinkedImages.ts" showLineNumbers
+import { existsSync, mkdirSync } from 'node:fs'
+import { readFile, writeFile } from 'node:fs/promises'
+import { basename, extname, isAbsolute, join } from 'node:path'
+
+import type { Node } from 'unist'
+import { visit } from 'unist-util-visit'
+import { VFile } from 'vfile'
+import XXH from 'xxhashjs'
+
+export type ImageNode = Node & {
+  url: string
+}
+
+export interface RemarkCopyLinkedImagesOptions {
+  destinationDir: string
+}
+
+// Hardcoded so images will have the same hash across deploys
+const seed = 0xc8052e18
+
+const generateHashFromBuffer = (buffer: Buffer): string => {
+  return XXH.h64(seed).update(buffer).digest().toString(16)
+}
+
+const remarkCopyLinkedImages = (options: RemarkCopyLinkedImagesOptions) => {
+  const bundledImageFolder = join(process.cwd(), options.destinationDir)
+
+  if (!existsSync(bundledImageFolder)) {
+    mkdirSync(bundledImageFolder)
+  }
+
+  const processImage = async (file: VFile, imageNode: ImageNode) => {
+    let imagePath: string
+
+    if (isAbsolute(imageNode.url)) {
+      imagePath = join(process.cwd(), imageNode.url)
+    } else {
+      imagePath = join(file.dirname!, imageNode.url)
+    }
+
+    const buffer = await readFile(imagePath)
+    const hash = generateHashFromBuffer(buffer)
+
+    const extName = extname(imagePath)
+    const fileName = basename(imagePath, extName)
+    const targetFileName = `${fileName}.${hash}${extName}`
+    const targetFilePath = join(bundledImageFolder, targetFileName)
+
+    if (!existsSync(targetFilePath)) {
+      await writeFile(targetFilePath, buffer)
+    }
+
+    imageNode.url = join('/', options.destinationDir, targetFileName)
+  }
+
+  return async (tree: Node, file: VFile) => {
+    const promises: Promise<void>[] = []
+    visit(tree, 'image', (imageNode: ImageNode) => {
+      promises.push(processImage(file, imageNode))
+    })
+    await Promise.all(promises)
+  }
+}
+
+export default remarkCopyLinkedImages
+```
+
+This plugins contains two parts:
+
+1. `remarkCopyLinkedImages`: The entry point of our plugin where it returns a parser (another function). What the parser
+   does here is to only look for `image` nodes and call `processImage` on the imageNode as well as store the promise in a list.
+2. `processImage`: Given an `image` node, do the following:
+
+- Identify whether the path is an absolute path from the project root or a relative path from where the `mdx` file is
+- Read the file and hash it. I chose [xxhash64](https://xxhash.com/) as the hashing algorithm since I needed a fast algorithm
+  and didn't need a cryptographic secure algorithm.
+- Copy over the image into the `options.destinationDir` folder with a naming scheme `<name>.<hash>.<extension>`.
+
+# End State
+
+Now, the images get copied over to `options.destinationDir`:
+
+```
+bundled-images
+├── bundled-image.2aa8264d51fb6cec.png
+├── bundled-image.2ab7c44.png
+├── override-install.c7d75ca514282102.png
+├── override-install.df6cf4fd.png
+├── static-import.4cb4ac63.png
+├── static-import.6b226ead295b7eb5.png
+├── uncached-image.6e00d9893afee24b.png
+└── uncached-image.722c2010.png
+```
+
+While my folder structure for my posts is now:
+
+```
+content/posts
+├── 2024-01-05-hello-world
+│   └── index.mdx
+├── 2024-01-06-website-stack
+│   └── index.mdx
+├── 2024-02-09-speeding-up-builds-for-berry-yarn-projects-on-vercel
+│   ├── index.mdx
+│   └── override-install.png
+├── 2024-04-05-website-stack-update
+│   └── index.mdx
+├── 2025-04-17-properly-caching-images-in-your-mdx-based-nextjs-blog
+│   ├── bundled-image.png
+│   ├── index.mdx
+│   ├── static-import.png
+│   └── uncached-image.png
+└── 2025-04-19-remarkcopylinkedimages
+    └── index.mdx
+```
+
+And the image path in the `mdx` is `override-install.png` instead of `/images/2024-02-09-speeding-up-builds-for-berry-yarn-projects-on-vercel/override-install.png`;
+a way simpler path to type and keep in sync.
+
+[^Remark]: Remark allows processing and transforming markdown files. For more information, check it out [here](https://remark.js.org/).
