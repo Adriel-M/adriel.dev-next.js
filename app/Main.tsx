@@ -2,7 +2,7 @@ import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import { sortTagsByAlpha } from '@/lib/CollectionUtils'
 import { formatDate } from '@/lib/PlinyUtils'
-import siteMetadata from '@/lib/siteMetadata'
+import siteConfig from '@/lib/siteConfig'
 import { generatePostsPath, URLS } from '@/lib/UrlLibs'
 import { Post } from '#veliteContent'
 
@@ -18,11 +18,11 @@ export default function Home({ posts }: Props) {
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             Latest
           </h1>
-          <p className="text-lg leading-7 text-gray-500">{siteMetadata.description}</p>
+          <p className="text-lg leading-7 text-gray-500">{siteConfig.description}</p>
         </div>
         <ul className="divide-y divide-gray-200">
           {!posts.length && 'No posts found.'}
-          {posts.slice(0, siteMetadata.postsInFrontPageCount).map((post) => {
+          {posts.slice(0, siteConfig.postsInFrontPageCount).map((post) => {
             const { slug, createdAt, title, summary, tags } = post
             return (
               <li key={slug} className="py-12">
@@ -31,9 +31,7 @@ export default function Home({ posts }: Props) {
                     <dl>
                       <dt className="sr-only">Published on</dt>
                       <dd className="text-base font-medium leading-6 text-gray-500">
-                        <time dateTime={createdAt}>
-                          {formatDate(createdAt, siteMetadata.locale)}
-                        </time>
+                        <time dateTime={createdAt}>{formatDate(createdAt, siteConfig.locale)}</time>
                       </dd>
                     </dl>
                     <div className="space-y-5 xl:col-span-3">
@@ -72,7 +70,7 @@ export default function Home({ posts }: Props) {
           })}
         </ul>
       </div>
-      {posts.length > siteMetadata.postsInFrontPageCount && (
+      {posts.length > siteConfig.postsInFrontPageCount && (
         <div className="flex justify-end text-base font-medium leading-6">
           <Link href={URLS.POSTS} className="hover:text-primary-500" aria-label="All posts">
             All Posts &rarr;

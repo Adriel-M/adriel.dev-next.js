@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import PostListingPage from '@/app/(PostListing)/PostListingPage'
 import { genPageMetadata } from '@/app/seo'
 import { getPostsByTagSlug, getTagCounts } from '@/lib/CollectionUtils'
-import siteMetadata from '@/lib/siteMetadata'
+import siteConfig from '@/lib/siteConfig'
 import { SluggedTag } from '@/lib/SluggedTag'
 
 interface Params {
@@ -14,7 +14,7 @@ export async function generateMetadata(props: { params: Promise<Params> }): Prom
   const tag = params.tag
   return genPageMetadata({
     title: tag,
-    description: `${siteMetadata.title} ${tag} tagged content`,
+    description: `${siteConfig.title} ${tag} tagged content`,
   })
 }
 

@@ -3,7 +3,7 @@ import { titleCase } from 'title-case'
 import { defineCollection, s } from 'velite'
 
 import { generateOgPath } from '@/lib/OgUtils'
-import siteMetadata from '@/lib/siteMetadata'
+import siteConfig from '@/lib/siteConfig'
 import { SluggedTag } from '@/lib/SluggedTag'
 import { generateSummary } from '@/lib/VeliteUtils'
 
@@ -61,10 +61,10 @@ const PostCollection = defineCollection({
         dateModified: modifiedDate,
         description: data.summary,
         image: ogImage,
-        url: `${siteMetadata.siteUrl}/${path}`,
+        url: `${siteConfig.siteUrl}/${path}`,
         author: {
           '@type': 'Person',
-          name: siteMetadata.author,
+          name: siteConfig.author,
         },
       }
 
@@ -76,14 +76,14 @@ const PostCollection = defineCollection({
         openGraph: {
           title: data.title,
           description: data.summary,
-          siteName: siteMetadata.title,
+          siteName: siteConfig.title,
           locale: 'en_US',
           type: 'article',
           publishedTime: data.createdAt,
           modifiedTime: modifiedDate,
           url: './',
           images: metadataImages,
-          authors: [siteMetadata.author],
+          authors: [siteConfig.author],
         },
         twitter: {
           card: 'summary_large_image',

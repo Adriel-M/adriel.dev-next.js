@@ -5,7 +5,7 @@ import PageTitle from '@/components/PageTitle'
 import Tag from '@/components/Tag'
 import { sortTagsByAlpha } from '@/lib/CollectionUtils'
 import { formatDate } from '@/lib/PlinyUtils'
-import siteMetadata from '@/lib/siteMetadata'
+import siteConfig from '@/lib/siteConfig'
 import { Post } from '#veliteContent'
 
 interface LayoutProps {
@@ -25,7 +25,7 @@ export default function PostLayout({ content, children }: LayoutProps) {
               <div>
                 <dt className="sr-only">Published on</dt>
                 <dd className="text-base font-medium leading-6 text-gray-500">
-                  <time dateTime={createdAt}>{formatDate(createdAt, siteMetadata.locale)}</time>
+                  <time dateTime={createdAt}>{formatDate(createdAt, siteConfig.locale)}</time>
                 </dd>
               </div>
             </dl>

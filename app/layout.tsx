@@ -8,7 +8,7 @@ import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import SectionContainer from '@/components/SectionContainer'
 import { DEFAULT_OG_TITLE, generateOgPath } from '@/lib/OgUtils'
-import siteMetadata from '@/lib/siteMetadata'
+import siteConfig from '@/lib/siteConfig'
 import { URLS } from '@/lib/UrlLibs'
 
 import fonts from './fonts'
@@ -17,17 +17,17 @@ import UmamiAnalytics from './UmamiAnalytics'
 export async function generateMetadata(): Promise<Metadata> {
   const ogImage = [generateOgPath(DEFAULT_OG_TITLE)]
   return {
-    metadataBase: new URL(siteMetadata.siteUrl),
+    metadataBase: new URL(siteConfig.siteUrl),
     title: {
-      default: siteMetadata.title,
-      template: `%s | ${siteMetadata.title}`,
+      default: siteConfig.title,
+      template: `%s | ${siteConfig.title}`,
     },
-    description: siteMetadata.description,
+    description: siteConfig.description,
     openGraph: {
-      title: siteMetadata.title,
-      description: siteMetadata.description,
+      title: siteConfig.title,
+      description: siteConfig.description,
       url: './',
-      siteName: siteMetadata.title,
+      siteName: siteConfig.title,
       images: ogImage,
       locale: 'en_US',
       type: 'website',
@@ -51,7 +51,7 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     twitter: {
-      title: siteMetadata.title,
+      title: siteConfig.title,
       card: 'summary_large_image',
       images: ogImage,
     },
@@ -61,7 +61,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
-      lang={siteMetadata.language}
+      lang={siteConfig.language}
       className={`${fonts.className} scroll-smooth`}
       suppressHydrationWarning
     >

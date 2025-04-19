@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 import { generateOgPath } from '@/lib/OgUtils'
-import siteMetadata from '@/lib/siteMetadata'
+import siteConfig from '@/lib/siteConfig'
 
 interface PageSEOProps {
   title: string
@@ -14,18 +14,18 @@ export function genPageMetadata({ title, description, ...rest }: PageSEOProps): 
   const ogImage = [generateOgPath(title)]
   return {
     title,
-    description: description ?? siteMetadata.description,
+    description: description ?? siteConfig.description,
     openGraph: {
-      title: `${title} | ${siteMetadata.title}`,
-      description: description ?? siteMetadata.description,
+      title: `${title} | ${siteConfig.title}`,
+      description: description ?? siteConfig.description,
       url: './',
-      siteName: siteMetadata.title,
+      siteName: siteConfig.title,
       images: ogImage,
       locale: 'en_US',
       type: 'website',
     },
     twitter: {
-      title: `${title} | ${siteMetadata.title}`,
+      title: `${title} | ${siteConfig.title}`,
       card: 'summary_large_image',
       images: ogImage,
     },

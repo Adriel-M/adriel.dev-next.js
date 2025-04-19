@@ -3,7 +3,7 @@ import Tag from '@/components/Tag'
 import { sortTagsByAlpha } from '@/lib/CollectionUtils'
 import { getTotalPages } from '@/lib/PagingUtils'
 import { formatDate } from '@/lib/PlinyUtils'
-import siteMetadata from '@/lib/siteMetadata'
+import siteConfig from '@/lib/siteConfig'
 import { SluggedTag } from '@/lib/SluggedTag'
 import { generatePostsPath, generateTagsPath } from '@/lib/UrlLibs'
 import { Post } from '#veliteContent'
@@ -16,8 +16,8 @@ interface Props {
 
 export default function PostListingPage({ posts, pageNumber, currentTag }: Props) {
   const postsToDisplay = posts.slice(
-    siteMetadata.postsInPostsPageCount * (pageNumber - 1),
-    siteMetadata.postsInPostsPageCount * pageNumber
+    siteConfig.postsInPostsPageCount * (pageNumber - 1),
+    siteConfig.postsInPostsPageCount * pageNumber
   )
 
   const basePath = currentTag ? generateTagsPath(currentTag) : '/posts'
@@ -39,7 +39,7 @@ export default function PostListingPage({ posts, pageNumber, currentTag }: Props
                 <dl>
                   <dt className="sr-only">Published on</dt>
                   <dd className="text-base font-medium leading-6 text-gray-500">
-                    <time dateTime={createdAt}>{formatDate(createdAt, siteMetadata.locale)}</time>
+                    <time dateTime={createdAt}>{formatDate(createdAt, siteConfig.locale)}</time>
                   </dd>
                 </dl>
                 <div className="space-y-3">
