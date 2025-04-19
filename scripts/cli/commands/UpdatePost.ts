@@ -1,5 +1,7 @@
+import { readdir } from 'node:fs/promises'
+import { join } from 'node:path'
+
 import { select, Separator } from '@inquirer/prompts'
-import { promises } from 'fs'
 
 import { postsPath } from '../paths'
 import CommandInterface from './CommandInterface'
@@ -13,16 +15,16 @@ const EXIT = 'Exit'
 class UpdatePost implements CommandInterface {
   name = 'Update Post'
   async run(): Promise<void> {
-    const postsFolder = `${process.cwd()}/${postsPath}`
+    const postsFolder = join(process.cwd(), postsPath)
 
-    const files = await promises.readdir(postsFolder)
+    const files = await readdir(postsFolder)
 
-    const fileName = (await select({
+    const postName = (await select({
       message: 'Which file do you want to update?',
       choices: [...files, new Separator(), EXIT],
     })) as string
 
-    if (fileName === EXIT) {
+    if (postName === EXIT) {
       process.exit()
     }
 
@@ -31,7 +33,7 @@ class UpdatePost implements CommandInterface {
       choices: [CreatedAt.choice, UpdatedAt.choice, Title.choice, new Separator(), Exit.choice],
     })
 
-    await field.run(postsFolder, fileName)
+    await field.run(postsFolder, postName)
   }
 
   choice: { name: string; value: CommandInterface } = { name: this.name, value: this }
