@@ -19,10 +19,7 @@ export default function Footer() {
           <div>{` • `}</div>
           <div>Adriel Martinez</div>
           <div>{` • `}</div>
-          <Link
-            className="hover:text-primary-500"
-            href="https://creativecommons.org/licenses/by/4.0/"
-          >
+          <Link className="hover:text-primary-500" href="/license">
             CC BY 4.0
           </Link>
         </div>

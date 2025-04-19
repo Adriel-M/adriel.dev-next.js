@@ -10,4 +10,4 @@ Original License [MIT](https://github.com/timlrx/tailwind-nextjs-starter-blog/bl
 
 Code License [MIT](LICENSE) © [Adriel Martinez](https://github.com/Adriel-M)
 
-Non-code License [CC BY 4.0](NON-CODE-LICENSE) © [Adriel Martinez](https://github.com/Adriel-M)
+Blog Content License [CC BY 4.0](BLOG-CONTENT-LICENSE) © [Adriel Martinez](https://github.com/Adriel-M)
