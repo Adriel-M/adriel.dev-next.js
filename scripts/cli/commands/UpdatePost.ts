@@ -18,10 +18,11 @@ class UpdatePost implements CommandInterface {
     const postsFolder = join(process.cwd(), postsPath)
 
     const files = await readdir(postsFolder)
+    const sortedFileNmaes = files.sort().reverse()
 
     const postName = (await select({
       message: 'Which file do you want to update?',
-      choices: [...files, new Separator(), EXIT],
+      choices: [...sortedFileNmaes, new Separator(), EXIT],
     })) as string
 
     if (postName === EXIT) {
