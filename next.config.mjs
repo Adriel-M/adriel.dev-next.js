@@ -1,6 +1,9 @@
-const withPlugins = require('next-compose-plugins')
+import { build } from 'velite'
+import withPlugins from 'next-compose-plugins'
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+import bundleAnalyzer from '@next/bundle-analyzer'
+
+const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })
 
@@ -90,10 +93,9 @@ class VeliteWebpackPlugin {
       if (VeliteWebpackPlugin.started) return
       VeliteWebpackPlugin.started = true
       const dev = compiler.options.mode === 'development'
-      const { build } = await import('velite')
       await build({ watch: dev, clean: !dev })
     })
   }
 }
 
-module.exports = withPlugins([withBundleAnalyzer], nextConfig)
+export default withPlugins([withBundleAnalyzer], nextConfig)
