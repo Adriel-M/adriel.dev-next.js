@@ -15,6 +15,7 @@ import remarkImgToJsx from '@/lib/remarkPlugins/RemarkImgToJsx'
 import remarkTitleCase from '@/lib/remarkPlugins/RemarkTitleCase'
 import getFeed from '@/lib/Rss'
 import AuthorCollection from '@/veliteCollections/AuthorCollection'
+import LicenseCollection from '@/veliteCollections/LicenseCollection'
 import PostCollection from '@/veliteCollections/PostCollection'
 import ProjectCollection from '@/veliteCollections/ProjectCollection'
 import TagCollection from '@/veliteCollections/TagCollection'
@@ -26,6 +27,7 @@ const config = defineConfig({
     posts: PostCollection,
     projects: ProjectCollection,
     tags: TagCollection,
+    license: LicenseCollection,
   },
   mdx: {
     gfm: true,

@@ -4,22 +4,16 @@ import { genPageMetadata } from 'app/seo'
 
 import PageSimple from '@/app/PageSimple'
 import { MDXContent } from '@/components/mdx-content'
-import ObfuscatedEmail from '@/components/ObfuscatedEmail'
-import siteConfig from '@/lib/siteConfig'
-import { author } from '#veliteContent'
+import { license } from '#veliteContent'
 
-const title = 'About'
+const title = 'License'
 export const metadata = genPageMetadata({ title })
 
 export default function Page() {
   return (
     <>
       <PageSimple title={title}>
-        <MDXContent
-          content={author}
-          components={{ ObfuscatedEmail }}
-          emailAddress={siteConfig.emailAddress}
-        />
+        <MDXContent content={license} />
       </PageSimple>
     </>
   )
