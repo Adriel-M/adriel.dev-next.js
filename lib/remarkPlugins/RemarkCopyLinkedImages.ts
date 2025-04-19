@@ -29,7 +29,7 @@ const remarkCopyLinkedImages = (options: RemarkCopyLinkedImagesOptions) => {
     mkdirSync(bundledImageFolder)
   }
 
-  const transformNodeToNextImage = async (file: VFile, imageNode: ImageNode) => {
+  const processImage = async (file: VFile, imageNode: ImageNode) => {
     let imagePath: string
 
     if (isAbsolute(imageNode.url)) {
@@ -56,7 +56,7 @@ const remarkCopyLinkedImages = (options: RemarkCopyLinkedImagesOptions) => {
   return async (tree: Node, file: VFile) => {
     const promises: Promise<void>[] = []
     visit(tree, 'image', (imageNode: ImageNode) => {
-      promises.push(transformNodeToNextImage(file, imageNode))
+      promises.push(processImage(file, imageNode))
     })
     await Promise.all(promises)
   }
