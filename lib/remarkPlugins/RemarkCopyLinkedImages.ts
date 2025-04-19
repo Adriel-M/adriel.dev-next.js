@@ -11,7 +11,7 @@ export type ImageNode = Node & {
   url: string
 }
 
-export interface RemarkCopyLinkedImageOptions {
+export interface RemarkCopyLinkedImagesOptions {
   destinationDir: string
 }
 
@@ -22,7 +22,7 @@ const generateHashFromBuffer = (buffer: Buffer): string => {
   return XXH.h64(seed).update(buffer).digest().toString(16)
 }
 
-const remarkCopyLinkedImage = (options: RemarkCopyLinkedImageOptions) => {
+const remarkCopyLinkedImages = (options: RemarkCopyLinkedImagesOptions) => {
   const bundledImageFolder = join(process.cwd(), options.destinationDir)
 
   if (!existsSync(bundledImageFolder)) {
@@ -62,4 +62,4 @@ const remarkCopyLinkedImage = (options: RemarkCopyLinkedImageOptions) => {
   }
 }
 
-export default remarkCopyLinkedImage
+export default remarkCopyLinkedImages

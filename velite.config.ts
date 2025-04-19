@@ -10,7 +10,7 @@ import { sortPosts } from '@/lib/PlinyUtils'
 import rehypeAutolinkHeadingsConfig from '@/lib/rehypeConfigs/RehypeAutolinkHeadingsConfig'
 import rehypePrettyCodeConfig from '@/lib/rehypeConfigs/RehypePrettyCodeConfig'
 import remarkCopyLinkedImageConfig from '@/lib/remarkConfigs/remarkCopyLinkedImageConfig'
-import remarkCopyLinkedImage from '@/lib/remarkPlugins/RemarkCopyLinkedImage'
+import remarkCopyLinkedImages from '@/lib/remarkPlugins/RemarkCopyLinkedImages'
 import remarkImgToJsx from '@/lib/remarkPlugins/RemarkImgToJsx'
 import remarkTitleCase from '@/lib/remarkPlugins/RemarkTitleCase'
 import getFeed from '@/lib/Rss'
@@ -32,7 +32,7 @@ const config = defineConfig({
   mdx: {
     gfm: true,
     remarkPlugins: [
-      [remarkCopyLinkedImage, remarkCopyLinkedImageConfig],
+      [remarkCopyLinkedImages, remarkCopyLinkedImageConfig],
       remarkGemoji,
       remarkImgToJsx,
       remarkTitleCase,
