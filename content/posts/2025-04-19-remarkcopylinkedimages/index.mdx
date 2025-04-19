@@ -9,7 +9,7 @@ tags:
 
 # Motivation
 
-On my previous [post](./2025-04-17-properly-caching-images-in-your-mdx-based-nextjs-blog), one concern with bundling
+On my previous [post](/posts/2025-04-17-properly-caching-images-in-your-mdx-based-nextjs-blog), one concern with bundling
 all images in a predefined folder is that there's no guarantee that all images in that folder are actually used. If an
 image is an orphan, it would still be part of the Next.js bundle. I wanted to avoid this and
 only bundle images that I care about, so I created a remark[^Remark] plugin to copy over images referenced in the `mdx`
