@@ -1,3 +1,6 @@
+import { mkdir } from 'node:fs/promises'
+import { join } from 'node:path'
+
 import { input } from '@inquirer/prompts'
 import { slug } from 'github-slugger'
 import matter from 'gray-matter'
@@ -10,22 +13,26 @@ import CommandInterface from './CommandInterface'
 class NewPost implements CommandInterface {
   name = 'New Post'
   async run(): Promise<void> {
-    const postsFolder = `${process.cwd()}/${postsPath}`
     const title = await input({ message: 'Title of Post?' })
 
     const now = new Date()
     const date = getDateString(now)
-    const fileName = `${date}-${slug(title)}.mdx`
-    const fullPath = `${postsFolder}/${fileName}`
+    const folderName = `${date}-${slug(title)}`
+    const targetFolder = join(process.cwd(), postsPath, folderName)
+
+    await mkdir(targetFolder)
+
     const frontMatter = {
       title,
       createdAt: now,
       tags: ['tag'],
     }
 
-    await Bun.write(fullPath, matter.stringify('', frontMatter))
+    const mdxPath = join(targetFolder, 'index.mdx')
 
-    console.log(`Created new post at ${fullPath}`)
+    await Bun.write(mdxPath, matter.stringify('', frontMatter))
+
+    console.log(`Created new post at ${targetFolder}`)
   }
 
   choice: { name: string; value: CommandInterface } = { name: this.name, value: this }

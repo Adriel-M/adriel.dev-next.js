@@ -1,3 +1,6 @@
+import { rename } from 'node:fs/promises'
+import { join } from 'node:path'
+
 import { slug } from 'github-slugger'
 import matter from 'gray-matter'
 
@@ -8,8 +11,10 @@ import UpdatePostCommandInterface from './UpdatePostCommandInterface'
 class CreatedAt implements UpdatePostCommandInterface {
   name = 'createdAt'
 
-  async run(postsFolder: string, fileName: string): Promise<void> {
-    const filePath = `${postsFolder}/${fileName}`
+  async run(postsFolder: string, postName: string): Promise<void> {
+    const folderPath = join(postsFolder, postName)
+    const filePath = join(folderPath, 'index.mdx')
+
     const file = Bun.file(filePath)
     const fileContent = await file.text()
 
@@ -20,20 +25,17 @@ class CreatedAt implements UpdatePostCommandInterface {
 
     const nowDateString = getDateString(new Date())
 
-    const targetFileName = `${nowDateString}-${slug(data.title)}.mdx`
+    // overwrite original file
+    await Bun.write(filePath, matter.stringify(content, data))
 
-    const fullPath = `${postsFolder}/${targetFileName}`
+    const targetFolderName = `${nowDateString}-${slug(data.title)}`
+    const targetFolderPath = join(postsFolder, targetFolderName)
 
-    await Bun.write(fullPath, matter.stringify(content, data))
-
-    if (targetFileName !== fileName) {
-      console.log('deleting original file')
-      await file.delete()
-    } else {
-      console.log('not deleting')
+    if (targetFolderName !== postName) {
+      await rename(folderPath, targetFolderPath)
     }
 
-    console.log(`Updated ${fileName}`)
+    console.log(`Updated ${targetFolderName}`)
   }
 
   choice: { name: string; value: UpdatePostCommandInterface } = { name: this.name, value: this }
