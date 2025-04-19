@@ -1,3 +1,6 @@
+import { rename } from 'node:fs/promises'
+import { join } from 'node:path'
+
 import { input } from '@inquirer/prompts'
 import { slug } from 'github-slugger'
 import matter from 'gray-matter'
@@ -16,7 +19,8 @@ class Title implements UpdatePostCommandInterface {
       process.exit()
     }
 
-    const filePath = `${postsFolder}/${postName}`
+    const folderPath = join(postsFolder, postName)
+    const filePath = join(folderPath, 'index.mdx')
     const file = Bun.file(filePath)
     const fileContent = await file.text()
 
@@ -24,22 +28,18 @@ class Title implements UpdatePostCommandInterface {
 
     data.title = newTitle
 
+    await Bun.write(filePath, matter.stringify(content, data))
+
     const createdAtDateString = getDateString(data.createdAt)
+    const targetFolderName = `${createdAtDateString}-${slug(data.title)}`
 
-    const targetFileName = `${createdAtDateString}-${slug(data.title)}.mdx`
+    const targetFolderPath = join(postsFolder, targetFolderName)
 
-    const fullPath = `${postsFolder}/${targetFileName}`
-
-    await Bun.write(fullPath, matter.stringify(content, data))
-
-    if (targetFileName !== postName) {
-      console.log('deleting original file')
-      await file.delete()
-    } else {
-      console.log('not deleting')
+    if (targetFolderName !== postName) {
+      await rename(folderPath, targetFolderPath)
     }
 
-    console.log(`Updated ${postName}`)
+    console.log(`Updated ${targetFolderName}`)
   }
 
   choice: { name: string; value: UpdatePostCommandInterface } = { name: this.name, value: this }
