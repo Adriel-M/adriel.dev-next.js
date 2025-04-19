@@ -21,7 +21,7 @@ interface Props {
   children: ReactNode
 }
 
-export default function TagListSidebarLayout({ currentTag = undefined, children }: Props) {
+export default function TagListSidebar({ currentTag = undefined, children }: Props) {
   const tagKeys = Object.keys(getTagCounts())
   const sortedTags = tagKeys
     .sort(compareTagsByCountThenAlpha(getTagCounts()))

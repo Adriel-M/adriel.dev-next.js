@@ -2,8 +2,8 @@ import '@/css/user-content.css'
 
 import { Metadata } from 'next'
 
-import PostSimple from '@/app/posts/[slug]/PostSimple'
 import { MDXContent } from '@/components/mdx-content'
+import PostSimple from '@/components/page-display/BlogPostPage'
 import { getAllPosts, getPostBySlug } from '@/lib/CollectionUtils'
 
 interface Params {

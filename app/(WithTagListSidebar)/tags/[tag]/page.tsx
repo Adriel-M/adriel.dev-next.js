@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
-import PostListingPage from '@/app/(PostListing)/PostListingPage'
 import { genPageMetadata } from '@/app/seo'
+import PostListingPage from '@/components/page-display/PostListingPage'
 import { getPostsByTagSlug, getTagCounts } from '@/lib/CollectionUtils'
 import siteConfig from '@/lib/siteConfig'
 import { SluggedTag } from '@/lib/SluggedTag'

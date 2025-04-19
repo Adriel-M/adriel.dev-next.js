@@ -1,4 +1,4 @@
-import PostListingPage from '@/app/(PostListing)/PostListingPage'
+import PostListingPage from '@/components/page-display/PostListingPage'
 import { getAllPosts } from '@/lib/CollectionUtils'
 import { getTotalPages } from '@/lib/PagingUtils'
 

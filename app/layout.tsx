@@ -3,16 +3,16 @@ import '@/css/globals.css'
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
 
-import ScrollTop from '@/app/ScrollTop'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import ScrollTop from '@/components/ScrollTop'
 import SectionContainer from '@/components/SectionContainer'
+import UmamiAnalytics from '@/components/UmamiAnalytics'
 import { DEFAULT_OG_TITLE, generateOgPath } from '@/lib/OgUtils'
 import siteConfig from '@/lib/siteConfig'
 import { URLS } from '@/lib/UrlLibs'
 
 import fonts from './fonts'
-import UmamiAnalytics from './UmamiAnalytics'
 
 export async function generateMetadata(): Promise<Metadata> {
   const ogImage = [generateOgPath(DEFAULT_OG_TITLE)]
