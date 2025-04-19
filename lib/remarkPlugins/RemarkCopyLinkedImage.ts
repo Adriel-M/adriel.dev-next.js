@@ -1,5 +1,5 @@
-import { existsSync } from 'node:fs'
-import { mkdir, readFile, writeFile } from 'node:fs/promises'
+import { existsSync, mkdirSync } from 'node:fs'
+import { readFile, writeFile } from 'node:fs/promises'
 import { basename, extname, isAbsolute, join } from 'node:path'
 
 import { Node } from 'unist'
@@ -24,6 +24,10 @@ const generateHashFromBuffer = (buffer: Buffer): string => {
 
 const remarkCopyLinkedImage = (options: RemarkCopyLinkedImageOptions) => {
   const bundledImageFolder = join(process.cwd(), options.destinationDir)
+
+  if (!existsSync(bundledImageFolder)) {
+    mkdirSync(bundledImageFolder)
+  }
 
   const transformNodeToNextImage = async (file: VFile, imageNode: ImageNode) => {
     let imagePath: string
@@ -50,9 +54,6 @@ const remarkCopyLinkedImage = (options: RemarkCopyLinkedImageOptions) => {
   }
 
   return async (tree: Node, file: VFile) => {
-    if (!existsSync(bundledImageFolder)) {
-      await mkdir(bundledImageFolder)
-    }
     const promises: Promise<void>[] = []
     visit(tree, 'image', (imageNode: ImageNode) => {
       promises.push(transformNodeToNextImage(file, imageNode))
