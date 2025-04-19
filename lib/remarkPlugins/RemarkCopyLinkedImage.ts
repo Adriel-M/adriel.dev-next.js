@@ -19,7 +19,7 @@ export interface RemarkCopyLinkedImageOptions {
 const seed = 0xc8052e18
 
 const generateHashFromBuffer = (buffer: Buffer): string => {
-  return XXH.h32(seed).update(buffer).digest().toString(16)
+  return XXH.h64(seed).update(buffer).digest().toString(16)
 }
 
 const remarkCopyLinkedImage = (options: RemarkCopyLinkedImageOptions) => {
