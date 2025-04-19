@@ -7,7 +7,7 @@ interface LayoutProps {
   children: ReactNode
 }
 
-export default function PageSimple({ title, children }: LayoutProps) {
+export default function SimplePage({ title, children }: LayoutProps) {
   return (
     <article>
       <div>

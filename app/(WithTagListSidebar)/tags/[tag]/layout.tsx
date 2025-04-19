@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import TagListSidebarLayout from '@/app/(PostListing)/TagListSidebarLayout'
+import TagListSidebar from '@/components/TagListSidebar'
 import { SluggedTag } from '@/lib/SluggedTag'
 
 export default async function TagLayout(props: {
@@ -13,5 +13,5 @@ export default async function TagLayout(props: {
 
   const sluggedTag = new SluggedTag(params.tag)
 
-  return <TagListSidebarLayout currentTag={sluggedTag}>{children}</TagListSidebarLayout>
+  return <TagListSidebar currentTag={sluggedTag}>{children}</TagListSidebar>
 }
