@@ -1,7 +1,7 @@
-import { RemarkCopyLinkedImageOptions } from '@/lib/remarkPlugins/RemarkCopyLinkedImage'
+import { RemarkCopyLinkedImagesOptions } from '@/lib/remarkPlugins/RemarkCopyLinkedImages'
 import siteConfig from '@/lib/siteConfig'
 
-const config: RemarkCopyLinkedImageOptions = {
+const config: RemarkCopyLinkedImagesOptions = {
   destinationDir: siteConfig.bundledImagesFolderName,
 }
 
