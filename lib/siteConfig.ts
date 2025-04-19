@@ -1,4 +1,4 @@
-const siteMetadata = {
+const siteConfig = {
   title: "Adriel's Thoughts",
   author: 'Adriel Martinez',
   headerTitle: "Adriel's Thoughts",
@@ -35,4 +35,4 @@ const siteMetadata = {
   bundledImagesFolderName: 'bundled-images',
 }
 
-export default siteMetadata
+export default siteConfig

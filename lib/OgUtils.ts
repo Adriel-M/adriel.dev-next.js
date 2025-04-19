@@ -1,6 +1,6 @@
 import { createHmac } from 'node:crypto'
 
-import siteMetadata from '@/lib/siteMetadata'
+import siteConfig from '@/lib/siteConfig'
 
 export const DEFAULT_OG_TITLE = `Adriel's Thoughts`
 
@@ -12,7 +12,7 @@ const generateTokenForTitle = (title: string): string => {
 
 export const generateOgPath = (title: string): string => {
   const token = generateTokenForTitle(title)
-  const url = new URL(siteMetadata.siteUrl)
+  const url = new URL(siteConfig.siteUrl)
   url.pathname = 'og'
   url.searchParams.append('title', title)
   url.searchParams.append('token', token)

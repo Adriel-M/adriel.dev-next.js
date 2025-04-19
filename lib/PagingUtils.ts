@@ -1,5 +1,5 @@
-import siteMetadata from '@/lib/siteMetadata'
+import siteConfig from '@/lib/siteConfig'
 
 export const getTotalPages = (numberOfPosts: number): number => {
-  return Math.ceil(numberOfPosts / siteMetadata.postsInPostsPageCount)
+  return Math.ceil(numberOfPosts / siteConfig.postsInPostsPageCount)
 }

@@ -1,5 +1,5 @@
 import RequireContext = __WebpackModuleApi.RequireContext
-import siteMetadata from '@/lib/siteMetadata'
+import siteConfig from '@/lib/siteConfig'
 const importFromFolder = (context: RequireContext) => {
   const images: Record<string, { default: { src: string } }> = {}
 
@@ -7,7 +7,7 @@ const importFromFolder = (context: RequireContext) => {
     // keys are duplicated in a sense that there are two keys for the same image
     // one with a relative path inside images folder and the other with images
     // folder a prefix
-    if (!key.startsWith(`${siteMetadata.bundledImagesFolderName}/`)) continue
+    if (!key.startsWith(`${siteConfig.bundledImagesFolderName}/`)) continue
 
     // prepend a leading slash to it matches the src passed in to the image (after
     const newKey = '/' + key

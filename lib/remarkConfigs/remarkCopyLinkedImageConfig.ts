@@ -1,8 +1,8 @@
 import { RemarkCopyLinkedImageOptions } from '@/lib/remarkPlugins/RemarkCopyLinkedImage'
-import siteMetadata from '@/lib/siteMetadata'
+import siteConfig from '@/lib/siteConfig'
 
 const config: RemarkCopyLinkedImageOptions = {
-  destinationDir: siteMetadata.bundledImagesFolderName,
+  destinationDir: siteConfig.bundledImagesFolderName,
 }
 
 export default config

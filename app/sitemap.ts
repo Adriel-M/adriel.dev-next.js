@@ -2,10 +2,10 @@ import { MetadataRoute } from 'next'
 
 import { getAllPosts } from '@/lib/CollectionUtils'
 import { getDateString } from '@/lib/DateUtils'
-import siteMetadata from '@/lib/siteMetadata'
+import siteConfig from '@/lib/siteConfig'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = siteMetadata.siteUrl
+  const siteUrl = siteConfig.siteUrl
 
   const blogRoutes = getAllPosts().map((post) => ({
     url: `${siteUrl}/${post.path}`,

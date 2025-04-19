@@ -1,7 +1,7 @@
 import headerNavLinks from '@/components/headerNavLinks'
 import Logo from '@/components/Logo'
 import DocSearchButton from '@/components/search/DocSearchButton'
-import siteMetadata from '@/lib/siteMetadata'
+import siteConfig from '@/lib/siteConfig'
 import { URLS } from '@/lib/UrlLibs'
 
 import Link from './Link'
@@ -11,13 +11,13 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between py-10">
       <div>
-        <Link href={URLS.HOME} aria-label={siteMetadata.headerTitle}>
+        <Link href={URLS.HOME} aria-label={siteConfig.headerTitle}>
           <div className="flex items-center justify-between hover:text-primary-500">
             <div className="mr-5">
               <Logo />
             </div>
             <div className="hidden h-6 text-xl font-semibold xl:block">
-              {siteMetadata.headerTitle}
+              {siteConfig.headerTitle}
             </div>
           </div>
         </Link>

@@ -1,6 +1,6 @@
 import { Feed } from 'feed'
 
-import siteMetadata from '@/lib/siteMetadata'
+import siteConfig from '@/lib/siteConfig'
 import { generateTagsPath, URLS } from '@/lib/UrlLibs'
 import { Post } from '#veliteContent'
 
@@ -35,25 +35,25 @@ class StyledFeed {
 }
 
 const author = {
-  name: siteMetadata.author,
+  name: siteConfig.author,
   email: 'contact@websiteDomain',
 }
 
 const copyrightNotice =
   'Copyright Adriel Martinez. Some rights reserved. Licensed under CC BY 4.0: http://creativecommons.org/licenses/by/4.0/'
 const getFeed = (posts: Post[]) => {
-  const title = siteMetadata.title
+  const title = siteConfig.title
   const feed = new Feed({
     title,
-    description: siteMetadata.description,
-    id: siteMetadata.siteUrl,
-    link: siteMetadata.siteUrl,
-    language: siteMetadata.locale,
-    favicon: `${siteMetadata.siteUrl}/static/images/favicon.ico`,
+    description: siteConfig.description,
+    id: siteConfig.siteUrl,
+    link: siteConfig.siteUrl,
+    language: siteConfig.locale,
+    favicon: `${siteConfig.siteUrl}/static/images/favicon.ico`,
     updated: posts.length > 0 ? new Date(posts[0].createdAt) : undefined,
     feedLinks: {
-      rss: `${siteMetadata.siteUrl}${URLS.RSS}`,
-      atom: `${siteMetadata.siteUrl}${URLS.ATOM}`,
+      rss: `${siteConfig.siteUrl}${URLS.RSS}`,
+      atom: `${siteConfig.siteUrl}${URLS.ATOM}`,
     },
     author: author,
     copyright: copyrightNotice,
@@ -61,14 +61,14 @@ const getFeed = (posts: Post[]) => {
   for (const post of posts) {
     feed.addItem({
       title: post.title,
-      id: `${siteMetadata.siteUrl}/${post.path}`,
-      link: `${siteMetadata.siteUrl}/${post.path}`,
+      id: `${siteConfig.siteUrl}/${post.path}`,
+      link: `${siteConfig.siteUrl}/${post.path}`,
       description: post.summary,
       date: new Date(post.createdAt),
       author: [author],
       category: post.tags.map((sluggedTag) => ({
         name: sluggedTag.tag,
-        domain: `${siteMetadata.siteUrl}${generateTagsPath(sluggedTag)}`,
+        domain: `${siteConfig.siteUrl}${generateTagsPath(sluggedTag)}`,
       })),
     })
   }

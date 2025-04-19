@@ -8,7 +8,7 @@ import { DocSearch, DocSearchHit, InternalDocSearchHit, StoredDocSearchHit } fro
 import { ReactNode } from 'react'
 
 import Link from '@/components/Link'
-import siteMetadata from '@/lib/siteMetadata'
+import siteConfig from '@/lib/siteConfig'
 
 const TRAILING_ELLIPSIS_PATTERN = /\s+…$/
 const transformItems = (items: DocSearchHit[]): DocSearchHit[] => {
@@ -46,7 +46,7 @@ const Hit = ({
 }
 
 const DocSearchButton = () => {
-  const searchConfig = siteMetadata.search
+  const searchConfig = siteConfig.search
   const { appId, apiKey, indexName } = searchConfig.algoliaConfig
   return (
     <DocSearch

@@ -3,7 +3,7 @@ import { remark } from 'remark'
 import strip from 'strip-markdown'
 
 import remarkExtractFirstSectionText from '@/lib/remarkPlugins/RemarkExtractFirstSectionText'
-import siteMetadata from '@/lib/siteMetadata'
+import siteConfig from '@/lib/siteConfig'
 
 // Strip this since manually so we can get rid of the whitespace left behind
 const footnoteReferenceRegex = /\[\^\w+]/
@@ -28,7 +28,7 @@ export const generateSummary = (rawPostBody: string) => {
   for (const sentence of sentences) {
     output.push(sentence.text)
     currentNumberOfWords += sentence.terms.length
-    if (currentNumberOfWords >= siteMetadata.postSummaryLength) {
+    if (currentNumberOfWords >= siteConfig.postSummaryLength) {
       break
     }
   }
