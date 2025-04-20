@@ -5,6 +5,7 @@ tags:
   - remark
   - next
   - tech
+updatedAt: 2025-04-20T00:50:27.850Z
 ---
 
 # Motivation
@@ -114,16 +115,16 @@ This plugins contains two parts:
    does here is to only look for `image` nodes and call `processImage` on the imageNode as well as store the promise in a list.
 2. `processImage`: Given an `image` node, do the following:
 
-- Identify whether the path is an absolute path from the project root or a relative path from where the `mdx` file is
-- Read the file and hash it. I chose [xxhash64](https://xxhash.com/) as the hashing algorithm since I needed a fast algorithm
-  and didn't need a cryptographic secure algorithm.
-- Copy over the image into the `options.destinationDir` folder with a naming scheme `<name>.<hash>.<extension>`.
+   1. Identify whether the path is an absolute path from the project root or a relative path from where the `mdx` file is
+   2. Read the file and hash it. I chose [xxhash64](https://xxhash.com/) as the hashing algorithm since I needed a fast algorithm
+      and didn't need a cryptographic secure algorithm.
+   3. Copy over the image into the `options.destinationDir` folder with a naming scheme `<name>.<hash>.<extension>`.
 
 # End State
 
 Now, the images get copied over to `options.destinationDir`:
 
-```
+```ansi title="bundled-images folder"
 bundled-images
 ├── bundled-image.2aa8264d51fb6cec.png
 ├── bundled-image.2ab7c44.png
@@ -137,7 +138,7 @@ bundled-images
 
 While my folder structure for my posts is now:
 
-```
+```ansi title="Folder based posts"
 content/posts
 ├── 2024-01-05-hello-world
 │   └── index.mdx
