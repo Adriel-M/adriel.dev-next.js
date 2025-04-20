@@ -3,7 +3,9 @@ import { genPageMetadata } from 'app/seo'
 import Card from '@/components/Card'
 import { getAllProjects } from '@/lib/CollectionUtils'
 
-export const metadata = genPageMetadata({ title: 'Projects' })
+import { title } from './route-utils'
+
+export const metadata = genPageMetadata({ title })
 
 export default function Projects() {
   return (

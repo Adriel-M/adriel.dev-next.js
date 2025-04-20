@@ -8,14 +8,12 @@ import Header from '@/components/Header'
 import ScrollTop from '@/components/ScrollTop'
 import SectionContainer from '@/components/SectionContainer'
 import UmamiAnalytics from '@/components/UmamiAnalytics'
-import { DEFAULT_OG_TITLE, generateOgPath } from '@/lib/OgUtils'
 import siteConfig from '@/lib/siteConfig'
 import { URLS } from '@/lib/UrlLibs'
 
 import fonts from './fonts'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const ogImage = [generateOgPath(DEFAULT_OG_TITLE)]
   return {
     metadataBase: new URL(siteConfig.siteUrl),
     title: {
@@ -28,7 +26,6 @@ export async function generateMetadata(): Promise<Metadata> {
       description: siteConfig.description,
       url: './',
       siteName: siteConfig.title,
-      images: ogImage,
       locale: 'en_US',
       type: 'website',
     },
@@ -49,11 +46,6 @@ export async function generateMetadata(): Promise<Metadata> {
         'max-image-preview': 'large',
         'max-snippet': -1,
       },
-    },
-    twitter: {
-      title: siteConfig.title,
-      card: 'summary_large_image',
-      images: ogImage,
     },
   }
 }

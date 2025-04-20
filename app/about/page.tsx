@@ -8,7 +8,8 @@ import SimplePage from '@/components/page-display/SimplePage'
 import siteConfig from '@/lib/siteConfig'
 import { author } from '#veliteContent'
 
-const title = 'About'
+import { title } from './route-utils'
+
 export const metadata = genPageMetadata({ title })
 
 export default function Page() {

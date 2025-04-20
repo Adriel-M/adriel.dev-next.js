@@ -10,7 +10,7 @@ export const ogSize = {
 
 export const ogContentType = 'image/png'
 
-const libOgPath = 'lib/og'
+const libOgPath = 'public/static'
 
 const getBackgroundUrl = async (): Promise<string> => {
   const imageBuffer = await readFile(join(process.cwd(), libOgPath, 'og-bg.png'))
