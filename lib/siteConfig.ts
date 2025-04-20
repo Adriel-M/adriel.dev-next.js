@@ -30,8 +30,8 @@ const siteConfig = {
     },
   },
   emailAddress: process.env.EMAIL_ADDRESS,
-  postsInFrontPageCount: 5,
-  postsInPostsPageCount: 5,
+  postsInFrontPageCount: 2,
+  postsInPostsPageCount: 2,
   bundledImagesFolderName: 'bundled-images',
 }
 
