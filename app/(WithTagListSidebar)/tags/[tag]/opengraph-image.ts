@@ -1,3 +1,5 @@
+import { titleCase } from 'title-case'
+
 import { getTagCounts } from '@/lib/CollectionUtils'
 import { generateOgResponse, ogContentType, ogSize } from '@/lib/GenerateOgResponse'
 
@@ -18,5 +20,5 @@ export const generateStaticParams = () => {
 export default async function Image(props: { params: Promise<Params> }) {
   const params = await props.params
 
-  return generateOgResponse(params.tag)
+  return generateOgResponse(titleCase(params.tag))
 }
