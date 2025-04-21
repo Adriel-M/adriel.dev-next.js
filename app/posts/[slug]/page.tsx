@@ -6,9 +6,7 @@ import { MDXContent } from '@/components/mdx-content'
 import PostSimple from '@/components/page-display/BlogPostPage'
 import { getAllPosts, getPostBySlug } from '@/lib/CollectionUtils'
 
-interface Params {
-  slug: string
-}
+import { Params } from './route-utils'
 
 export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
   const params = await props.params

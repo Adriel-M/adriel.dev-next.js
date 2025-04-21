@@ -2,7 +2,6 @@ import { BlogPosting, WithContext } from 'schema-dts'
 import { titleCase } from 'title-case'
 import { defineCollection, s } from 'velite'
 
-import { generateOgPath } from '@/lib/OgUtils'
 import siteConfig from '@/lib/siteConfig'
 import { SluggedTag } from '@/lib/SluggedTag'
 import { generateSummary } from '@/lib/VeliteUtils'
@@ -50,7 +49,6 @@ const PostCollection = defineCollection({
       const slug = parts[parts.length - 1]
       const path = `posts/${slug}`
 
-      const ogImage = generateOgPath(data.title)
       const modifiedDate = data.updatedAt ?? data.createdAt
 
       const jsonLd: WithContext<BlogPosting> = {
@@ -60,15 +58,13 @@ const PostCollection = defineCollection({
         datePublished: data.createdAt,
         dateModified: modifiedDate,
         description: data.summary,
-        image: ogImage,
+        image: `${siteConfig.siteUrl}/${path}/opengraph-image`,
         url: `${siteConfig.siteUrl}/${path}`,
         author: {
           '@type': 'Person',
           name: siteConfig.author,
         },
       }
-
-      const metadataImages = [ogImage]
 
       const metadata = {
         title: data.title,
@@ -82,14 +78,7 @@ const PostCollection = defineCollection({
           publishedTime: data.createdAt,
           modifiedTime: modifiedDate,
           url: './',
-          images: metadataImages,
           authors: [siteConfig.author],
-        },
-        twitter: {
-          card: 'summary_large_image',
-          title: data.title,
-          description: data.summary,
-          images: metadataImages,
         },
       }
 

@@ -6,9 +6,8 @@ import { getPostsByTagSlug, getTagCounts } from '@/lib/CollectionUtils'
 import siteConfig from '@/lib/siteConfig'
 import { SluggedTag } from '@/lib/SluggedTag'
 
-interface Params {
-  tag: string
-}
+import { Params } from './route-utils'
+
 export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
   const params = await props.params
   const tag = params.tag
