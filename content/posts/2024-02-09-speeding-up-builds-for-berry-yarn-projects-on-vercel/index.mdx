@@ -16,8 +16,8 @@ updatedAt: 2024-03-06T23:09:23.603Z
 Berry (yarn v2) isn’t completely supported by vercel[^VercelPackageManager]. While berry can be used manage and build the project,
 caching isn’t properly configured. To hack around the caching issue, we need to follow these two steps:
 
-1. Set the `YARN_CACHE_FOLDER` environment variable[^YarnCacheFolder] to a place that gets cached by vercel[^VercelCaching]
-2. Restore `.yarn/install-state.gz` which is used in the linking step[^YarnQA]
+1. Set the `YARN_CACHE_FOLDER` environment variable[^YarnCacheFolder] to a place that gets cached by vercel[^VercelCaching].
+2. Restore `.yarn/install-state.gz` which is used in the linking step[^YarnQA].
 
 See the script that does all of these [here](#putting-it-all-together).
 

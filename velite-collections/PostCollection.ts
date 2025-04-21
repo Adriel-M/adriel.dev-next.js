@@ -2,9 +2,9 @@ import { BlogPosting, WithContext } from 'schema-dts'
 import { titleCase } from 'title-case'
 import { defineCollection, s } from 'velite'
 
+import { generateSummary } from '@/lib/generate-summary'
 import siteConfig from '@/lib/siteConfig'
 import { SluggedTag } from '@/lib/SluggedTag'
-import { generateSummary } from '@/lib/VeliteUtils'
 
 const PostCollection = defineCollection({
   name: 'Post',
