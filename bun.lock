@@ -643,7 +643,7 @@
 
     "efrt": ["efrt@2.7.0", "", {}, "sha512-/RInbCy1d4P6Zdfa+TMVsf/ufZVotat5hCw3QXmWtjU+3pFEOvOQ7ibo3aIxyCJw2leIeAMjmPj+1SLJiCpdrQ=="],
 
-    "electron-to-chromium": ["electron-to-chromium@1.5.139", "", {}, "sha512-GGnRYOTdN5LYpwbIr0rwP/ZHOQSvAF6TG0LSzp28uCBb9JiXHJGmaaKw29qjNJc5bGnnp6kXJqRnGMQoELwi5w=="],
+    "electron-to-chromium": ["electron-to-chromium@1.5.140", "", {}, "sha512-o82Rj+ONp4Ip7Cl1r7lrqx/pXhbp/lh9DpKcMNscFJdh8ebyRofnc7Sh01B4jx403RI0oqTBvlZ7OBIZLMr2+Q=="],
 
     "emoji-regex": ["emoji-regex@9.2.2", "", {}, "sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg=="],
 
