@@ -27,12 +27,10 @@ import { join } from 'node:path'
 
 import { Literal, Node } from 'unist'
 import { visit } from 'unist-util-visit'
-import { getImageMetadata } from 'velite'
 
-// original license can be found here https://github.com/timlrx/pliny/blob/main/LICENSE
+import { getImageMetadata } from '@/lib/remarkPlugins/get-image-metadata'
 
-// copy of remarkImgToJsx from pliny but changing the path from public... to
-// image...
+// Original implementation: https://github.com/timlrx/pliny/blob/f6302e3e0723888accb2d8a02068d6bc5c1377b9/packages/pliny/src/mdx-plugins/remark-img-to-jsx.ts#L17
 
 export type ImageNode = Node & {
   url: string
