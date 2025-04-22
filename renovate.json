@@ -5,37 +5,21 @@
   ],
   "packageRules": [
     {
-      "matchDepTypes": [
-        "devDependencies"
-      ],
-      "automerge": true,
-      "matchPackageNames": [
-        "/lint/",
-        "/prettier/"
-      ]
+      "matchPackagePatterns": ["^eslint", "eslint-.*", ".*eslint.*"],
+      "automerge": true
     },
     {
-      "groupName": "Types dependencies",
-      "matchDepTypes": [
-        "devDependencies"
-      ],
-      "schedule": "on saturday",
-      "automerge": true,
-      "matchPackageNames": [
-        "@types/{/,}**"
-      ]
+      "matchPackagePatterns": ["^prettier", "prettier-.*"],
+      "automerge": true
     },
     {
-      "matchDatasources": [
-        "npm"
-      ],
-      "minimumReleaseAge": "3 days"
+      "matchPackagePatterns": ["^@types/"],
+      "automerge": true
     },
     {
-      "matchPackageNames": [
-        "eslint"
-      ],
-      "enabled": false
+      "matchUpdateTypes": ["major", "minor", "patch"],
+      "groupName": "all updates (major + non-major)",
+      "minimumReleaseAge": 3
     }
   ],
   "lockFileMaintenance": {
