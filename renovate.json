@@ -1,20 +1,18 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:best-practices"
-  ],
+  "extends": ["config:best-practices"],
   "packageRules": [
     {
-      "matchPackagePatterns": ["^eslint", "eslint-.*", ".*eslint.*"],
-      "automerge": true
+      "automerge": true,
+      "matchPackageNames": ["/^eslint/", "/eslint-.*/", "/.*eslint.*/"]
     },
     {
-      "matchPackagePatterns": ["^prettier", "prettier-.*"],
-      "automerge": true
+      "automerge": true,
+      "matchPackageNames": ["/^prettier/", "/prettier-.*/"]
     },
     {
-      "matchPackagePatterns": ["^@types/"],
-      "automerge": true
+      "automerge": true,
+      "matchPackageNames": ["/^@types//"]
     },
     {
       "matchUpdateTypes": ["major", "minor", "patch"],
@@ -23,11 +21,7 @@
   ],
   "lockFileMaintenance": {
     "enabled": true,
-    "schedule": [
-      "every 1 month on the first day of the month"
-    ]
+    "schedule": ["every 1 month on the first day of the month"]
   },
-  "reviewers": [
-    "Adriel-M"
-  ]
+  "reviewers": ["Adriel-M"]
 }
