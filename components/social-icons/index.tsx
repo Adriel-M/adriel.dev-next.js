@@ -24,6 +24,7 @@ const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
       className="text-sm text-gray-500 transition hover:text-gray-600"
       href={href}
       data-umami-event={'Footer ' + kind}
+      data-ph-capture-attribute-footer={kind}
     >
       <span className="sr-only">{kind}</span>
       <SocialSvg
