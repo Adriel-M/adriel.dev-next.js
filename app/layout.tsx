@@ -5,6 +5,7 @@ import { ReactNode } from 'react'
 
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import PostHogProvider from '@/components/posthog'
 import ScrollTop from '@/components/ScrollTop'
 import SectionContainer from '@/components/SectionContainer'
 import UmamiAnalytics from '@/components/UmamiAnalytics'
@@ -66,16 +67,18 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased">
         <UmamiAnalytics />
-        <SectionContainer>
-          <div className="flex h-screen flex-col justify-between">
-            <Header />
-            <main className="mb-auto">
-              {children}
-              <ScrollTop />
-            </main>
-            <Footer />
-          </div>
-        </SectionContainer>
+        <PostHogProvider>
+          <SectionContainer>
+            <div className="flex h-screen flex-col justify-between">
+              <Header />
+              <main className="mb-auto">
+                {children}
+                <ScrollTop />
+              </main>
+              <Footer />
+            </div>
+          </SectionContainer>
+        </PostHogProvider>
       </body>
     </html>
   )
