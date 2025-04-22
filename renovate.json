@@ -18,7 +18,6 @@
     },
     {
       "matchUpdateTypes": ["major", "minor", "patch"],
-      "groupName": "all updates (major + non-major)",
       "minimumReleaseAge": "3 days"
     }
   ],
