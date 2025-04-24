@@ -8,7 +8,6 @@ import Header from '@/components/Header'
 import PostHogProvider from '@/components/posthog'
 import ScrollTop from '@/components/ScrollTop'
 import SectionContainer from '@/components/SectionContainer'
-import UmamiAnalytics from '@/components/UmamiAnalytics'
 import siteConfig from '@/lib/siteConfig'
 import { URLS } from '@/lib/UrlLibs'
 
@@ -66,7 +65,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased">
-        <UmamiAnalytics />
         <PostHogProvider>
           <SectionContainer>
             <div className="flex h-screen flex-col justify-between">
