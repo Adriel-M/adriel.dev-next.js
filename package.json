@@ -21,7 +21,7 @@
     "react-obfuscate-email": "1.1.5"
   },
   "devDependencies": {
-    "@inquirer/prompts": "7.4.1",
+    "@inquirer/prompts": "7.5.0",
     "@next/bundle-analyzer": "15.3.1",
     "@primer/octicons": "19.15.1",
     "@tailwindcss/typography": "0.5.16",
