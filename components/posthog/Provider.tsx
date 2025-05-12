@@ -12,6 +12,7 @@ export function Provider({ children }: { children: React.ReactNode }) {
       api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
       ui_host: 'https://us.posthog.com',
       capture_pageview: false, // Disable automatic pageview capture, as we capture manually
+      capture_pageleave: true,
       persistence: 'memory',
     })
   }, [])
