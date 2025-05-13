@@ -13,6 +13,7 @@ export function Provider({ children }: { children: React.ReactNode }) {
       ui_host: 'https://us.posthog.com',
       capture_pageview: false, // Disable automatic pageview capture, as we capture manually
       capture_pageleave: true,
+      autocapture: true,
       persistence: 'memory',
     })
   }, [])
