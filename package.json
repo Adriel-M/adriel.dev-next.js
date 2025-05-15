@@ -9,10 +9,15 @@
     "analyze": "ANALYZE=true next build",
     "lint": "next lint --fix --dir app --dir components --dir lib --dir layouts --dir scripts --file velite.config.ts --dir content --dir velite-collections --file eslint.config.ts",
     "prepare": "husky",
-    "cli": "bun scripts/cli/index.ts"
+    "cli": "bun scripts/cli/index.ts",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
     "@docsearch/react": "3.9.0",
+    "@opennextjs/cloudflare": "^1.0.2",
     "next": "15.3.2",
     "next-compose-plugins": "^2.2.1",
     "posthog-js": "^1.236.4",
@@ -64,6 +69,7 @@
     "typescript": "5.8.3",
     "typescript-eslint": "8.32.0",
     "velite": "0.2.2",
+    "wrangler": "^4.15.2",
     "xxhashjs": "0.2.2",
     "zimg": "0.1.0"
   },
