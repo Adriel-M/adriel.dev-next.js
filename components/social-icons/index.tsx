@@ -20,11 +20,7 @@ const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
   const SocialSvg = components[kind]
 
   return (
-    <Link
-      className="text-sm text-gray-500 transition hover:text-gray-600"
-      href={href}
-      data-ph-capture-attribute-footer={kind}
-    >
+    <Link className="text-sm text-gray-500 transition hover:text-gray-600" href={href}>
       <span className="sr-only">{kind}</span>
       <SocialSvg
         className={`fill-current text-gray-700 hover:text-primary-500 h-${size} w-${size}`}
