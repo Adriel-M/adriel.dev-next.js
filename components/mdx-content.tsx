@@ -1,3 +1,4 @@
+import { runSync } from '@mdx-js/mdx'
 import { ComponentType } from 'react'
 import * as runtime from 'react/jsx-runtime'
 
@@ -11,10 +12,10 @@ const globalComponents = {
   table: TableWrapper,
 }
 
-// parse the Velite generated MDX code into a React component function
-const useMDXComponent = (code: string) => {
-  const fn = new Function(code)
-  return fn({ ...runtime }).default
+const runComponent = (code: string) => {
+  return runSync(code, {
+    ...runtime,
+  }).default
 }
 
 interface MDXProps {
@@ -25,6 +26,6 @@ interface MDXProps {
 
 // MDXContent component
 export const MDXContent = ({ content, components, ...rest }: MDXProps) => {
-  const Component = useMDXComponent(content.code)
+  const Component = runComponent(content.code)
   return <Component components={{ ...globalComponents, ...components }} {...rest} />
 }
