@@ -2,7 +2,7 @@ const siteConfig = {
   title: "Adriel's Thoughts",
   author: 'Adriel Martinez',
   headerTitle: "Adriel's Thoughts",
-  description: 'Stuff I think about 🤔',
+  description: 'Thinking emoji 🤔',
   language: 'en-us',
   siteUrl: 'https://adriel.dev',
   github: 'https://github.com/Adriel-M',
