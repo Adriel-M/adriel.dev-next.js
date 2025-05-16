@@ -83,7 +83,7 @@ const FloatingTOC = ({ toc }: { toc: TocEntry[] }) => {
     }
   }, [])
   return (
-    <div className="sticky top-20 float-right hidden h-0 px-8 text-xs w-toc-2xl lg:block xl:w-toc-4xl">
+    <div className="sticky top-20 float-right hidden h-0 px-8 text-xs w-toc-2xl lg:block xl:w-toc-5xl">
       <div className="pb-2 text-sm">Table of Contents</div>
       <TocEntryList activeHeadingUrl={activeHeadingId} level={toc} />
     </div>
