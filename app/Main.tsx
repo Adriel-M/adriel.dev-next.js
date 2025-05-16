@@ -1,6 +1,4 @@
 import Link from '@/components/Link'
-import Tag from '@/components/Tag'
-import { sortTagsByAlpha } from '@/lib/CollectionUtils'
 import { formatDate } from '@/lib/PlinyUtils'
 import siteConfig from '@/lib/siteConfig'
 import { generatePostsPath, URLS } from '@/lib/UrlLibs'
@@ -20,12 +18,12 @@ export default function Home({ posts }: Props) {
           </h1>
           <p className="text-lg leading-7 text-gray-500">{siteConfig.description}</p>
         </div>
-        <ul className="divide-y divide-gray-200">
+        <ul>
           {!posts.length && 'No posts found.'}
           {posts.slice(0, siteConfig.postsInFrontPageCount).map((post) => {
-            const { slug, createdAt, title, summary, tags } = post
+            const { slug, createdAt, title } = post
             return (
-              <li key={slug} className="py-12">
+              <li key={slug} className="py-4">
                 <article>
                   <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                     <dl>
@@ -37,7 +35,7 @@ export default function Home({ posts }: Props) {
                     <div className="space-y-5 xl:col-span-3">
                       <div className="space-y-6">
                         <div>
-                          <h2 className="text-2xl font-bold leading-8 tracking-tight">
+                          <h2 className="text-xl font-bold leading-8 tracking-tight">
                             <Link
                               href={generatePostsPath(post)}
                               className="text-gray-900 hover:text-primary-500"
@@ -45,22 +43,7 @@ export default function Home({ posts }: Props) {
                               {title}
                             </Link>
                           </h2>
-                          <div className="flex flex-wrap">
-                            {sortTagsByAlpha(tags).map((sluggedTag) => (
-                              <Tag key={sluggedTag.tag} sluggedTag={sluggedTag} />
-                            ))}
-                          </div>
                         </div>
-                        <div className="prose max-w-none text-gray-500">{summary}</div>
-                      </div>
-                      <div className="text-base font-medium leading-6">
-                        <Link
-                          href={generatePostsPath(post)}
-                          className="hover:text-primary-500"
-                          aria-label={`Read more: "${title}"`}
-                        >
-                          Read more &rarr;
-                        </Link>
                       </div>
                     </div>
                   </div>

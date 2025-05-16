@@ -29,10 +29,10 @@ export default function PostListingPage({ posts, pageNumber, currentTag }: Props
   }
 
   return (
-    <div>
+    <div className="flex-1">
       <ul>
         {postsToDisplay.map((post) => {
-          const { path, createdAt, title, summary, tags } = post
+          const { path, createdAt, title, tags } = post
           return (
             <li key={path} className="py-5">
               <article className="flex flex-col space-y-2 xl:space-y-0">
@@ -44,7 +44,7 @@ export default function PostListingPage({ posts, pageNumber, currentTag }: Props
                 </dl>
                 <div className="space-y-3">
                   <div>
-                    <h2 className="text-2xl font-bold leading-8 tracking-tight">
+                    <h2 className="text-xl font-bold leading-8 tracking-tight">
                       <Link
                         href={generatePostsPath(post)}
                         className="text-gray-900 hover:text-primary-500"
@@ -58,7 +58,6 @@ export default function PostListingPage({ posts, pageNumber, currentTag }: Props
                       ))}
                     </div>
                   </div>
-                  <div className="prose max-w-none text-gray-500">{summary}</div>
                 </div>
               </article>
             </li>
