@@ -6,14 +6,13 @@ tags:
   - caching
   - next
   - tech
-  - long-form
 createdAt: 2024-02-09T20:03:12.109Z
-updatedAt: 2024-03-06T23:09:23.603Z
+updatedAt: 2025-05-16T04:19:56.795Z
 ---
 
 # TL;DR
 
-Berry (yarn v2) isn’t completely supported by vercel[^VercelPackageManager]. While berry can be used manage and build the project,
+Berry (yarn v2) isn’t completely supported by vercel[^VercelPackageManager]. While berry can be used to manage and build the project,
 caching isn’t properly configured. To hack around the caching issue, we need to follow these two steps:
 
 1. Set the `YARN_CACHE_FOLDER` environment variable[^YarnCacheFolder] to a place that gets cached by vercel[^VercelCaching].
