@@ -11,14 +11,12 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between py-10">
       <div>
-        <Link href={URLS.HOME} aria-label={siteConfig.headerTitle}>
+        <Link href={URLS.HOME} aria-label={siteConfig.title}>
           <div className="flex items-center justify-between hover:text-primary-500">
             <div className="mr-5">
               <Logo />
             </div>
-            <div className="hidden h-6 text-xl font-semibold xl:block">
-              {siteConfig.headerTitle}
-            </div>
+            <div className="hidden h-6 text-xl font-semibold xl:block">{siteConfig.title}</div>
           </div>
         </Link>
       </div>
