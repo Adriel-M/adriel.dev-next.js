@@ -24,7 +24,7 @@
   "devDependencies": {
     "@inquirer/prompts": "7.5.1",
     "@next/bundle-analyzer": "15.3.2",
-    "@primer/octicons": "19.15.1",
+    "@primer/octicons": "19.15.2",
     "@tailwindcss/typography": "0.5.16",
     "@types/bun": "1.2.13",
     "@types/mdx": "2.0.13",
