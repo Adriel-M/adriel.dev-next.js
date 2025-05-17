@@ -33,12 +33,12 @@ const MobileNav = () => {
         </svg>
       </button>
       <div
-        className={`ease-in-out[0.98] fixed left-0 top-0 z-10 h-full w-full transform bg-white opacity-95 duration-300 ${
+        className={`ease-in-out[0.98] fixed left-0 top-0 z-10 h-full w-full transform bg-white duration-300 ${
           navShow ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         <div className="flex justify-end">
-          <button className="mr-8 mt-11 h-8 w-8" aria-label="Toggle Menu" onClick={onToggleNav}>
+          <button className="mr-11 mt-16 h-8 w-8" aria-label="Toggle Menu" onClick={onToggleNav}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
