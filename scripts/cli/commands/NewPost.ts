@@ -30,7 +30,7 @@ class NewPost implements CommandInterface {
 
     const mdxPath = join(targetFolder, 'index.mdx')
 
-    await Bun.write(mdxPath, matter.stringify('', frontMatter))
+    await Bun.write(mdxPath, matter.stringify('content body', frontMatter))
 
     console.log(`Created new post at ${targetFolder}`)
   }
