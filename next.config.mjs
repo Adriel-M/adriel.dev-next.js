@@ -1,7 +1,14 @@
-import { build } from 'velite'
 import withPlugins from 'next-compose-plugins'
 
 import bundleAnalyzer from '@next/bundle-analyzer'
+
+const isDev = process.argv.indexOf('dev') !== -1
+const isBuild = process.argv.indexOf('build') !== -1
+if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
+  process.env.VELITE_STARTED = '1'
+  const { build } = await import('velite')
+  await build({ watch: isDev, clean: !isDev })
+}
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
@@ -72,30 +79,11 @@ const nextConfig = {
       },
     ]
   },
-  webpack: (config) => {
-    config.plugins.push(new VeliteWebpackPlugin())
-
-    return config
-  },
   images: {
     loader: 'custom',
     loaderFile: './lib/imageLoader.ts'
   },
   poweredByHeader: false,
-}
-
-class VeliteWebpackPlugin {
-  static started = false
-  apply(/** @type {import('webpack').Compiler} */ compiler) {
-    // executed three times in nextjs
-    // twice for the server (nodejs / edge runtime) and once for the client
-    compiler.hooks.beforeCompile.tap('VeliteWebpackPlugin', async () => {
-      if (VeliteWebpackPlugin.started) return
-      VeliteWebpackPlugin.started = true
-      const dev = compiler.options.mode === 'development'
-      await build({ watch: dev, clean: !dev })
-    })
-  }
 }
 
 export default withPlugins([withBundleAnalyzer], nextConfig)
