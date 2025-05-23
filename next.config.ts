@@ -1,7 +1,14 @@
-import { build } from 'velite'
+import bundleAnalyzer from '@next/bundle-analyzer'
+import { NextConfig } from 'next'
+// @ts-expect-error: No Types definition
 import withPlugins from 'next-compose-plugins'
 
-import bundleAnalyzer from '@next/bundle-analyzer'
+const isDev = process.argv.includes('dev')
+const isBuild = process.argv.includes('build')
+if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
+  process.env.VELITE_STARTED = '1'
+  import('velite').then((m) => m.build({ watch: isDev, clean: !isDev }))
+}
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
@@ -56,10 +63,7 @@ const securityHeaders = [
   },
 ]
 
-/**
- * @type {import('next/dist/next-server/server/config').NextConfig}
- **/
-const nextConfig = {
+const nextConfig: NextConfig = {
   pageExtensions: ['ts', 'tsx', 'mdx'],
   eslint: {
     dirs: ['app', 'components', 'layouts', 'lib', 'scripts', 'content', 'velite-collections'],
@@ -72,30 +76,11 @@ const nextConfig = {
       },
     ]
   },
-  webpack: (config) => {
-    config.plugins.push(new VeliteWebpackPlugin())
-
-    return config
-  },
   images: {
     loader: 'custom',
-    loaderFile: './lib/imageLoader.ts'
+    loaderFile: './lib/imageLoader.ts',
   },
   poweredByHeader: false,
-}
-
-class VeliteWebpackPlugin {
-  static started = false
-  apply(/** @type {import('webpack').Compiler} */ compiler) {
-    // executed three times in nextjs
-    // twice for the server (nodejs / edge runtime) and once for the client
-    compiler.hooks.beforeCompile.tap('VeliteWebpackPlugin', async () => {
-      if (VeliteWebpackPlugin.started) return
-      VeliteWebpackPlugin.started = true
-      const dev = compiler.options.mode === 'development'
-      await build({ watch: dev, clean: !dev })
-    })
-  }
 }
 
 export default withPlugins([withBundleAnalyzer], nextConfig)
