@@ -1,3 +1,7 @@
+# NOTICE
+
+I've rewritten my site to use astro [here](https://github.com/Adriel-M/adriel.dev).
+
 # adriel.dev
 
 My personal site. Based off [tailwind-nextjs-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog).
